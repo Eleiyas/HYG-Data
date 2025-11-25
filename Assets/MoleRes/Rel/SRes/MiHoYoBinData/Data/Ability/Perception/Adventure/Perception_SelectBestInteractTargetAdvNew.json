@@ -1,0 +1,3889 @@
+{
+  "$type": "miHoYo.HYG.GameplayAbilities.HScriptAbility, Assembly-CSharp",
+  "_variableDefinitions": {
+    "$type": "miHoYo.HYG.Scripting.HScriptVariableDefinition[], Assembly-CSharp",
+    "$values": []
+  },
+  "_blackboardConfig": {
+    "$type": "miHoYo.HYG.DataSharing.BlackboardConfigPicker, Assembly-CSharp",
+    "paraKeys": null,
+    "configs": {
+      "$type": "System.Collections.Generic.List`1[[miHoYo.JsonPicker`1[[miHoYo.HYG.DataSharing.SingleBlackboardConfig, Assembly-CSharp]], Assembly-CSharp]], mscorlib",
+      "$values": [
+        {
+          "$type": "miHoYo.JsonPicker`1[[miHoYo.HYG.DataSharing.SingleBlackboardConfig, Assembly-CSharp]], Assembly-CSharp",
+          "_assetGuid": "bc02d13fba9218346b7dd7b265c9b693",
+          "_assetPath": "Data/AI/Blackboard/v3/Interact/BB_InteractContext.json"
+        },
+        {
+          "$type": "miHoYo.JsonPicker`1[[miHoYo.HYG.DataSharing.SingleBlackboardConfig, Assembly-CSharp]], Assembly-CSharp",
+          "_assetGuid": "cc2a7d2fef45c534b82845bfb4b9d15e",
+          "_assetPath": "Data/AI/02Blackboard/Test/BB_TestGlobal.json"
+        },
+        {
+          "$type": "miHoYo.JsonPicker`1[[miHoYo.HYG.DataSharing.SingleBlackboardConfig, Assembly-CSharp]], Assembly-CSharp",
+          "_assetGuid": "d0086480f939447448063c86cf4694fb",
+          "_assetPath": "Data/AI/02Blackboard/Gameplay/Adv/BB_Initialization.json"
+        },
+        {
+          "$type": "miHoYo.JsonPicker`1[[miHoYo.HYG.DataSharing.SingleBlackboardConfig, Assembly-CSharp]], Assembly-CSharp",
+          "_assetGuid": "b28bc76b1bdcb364a9840cb506b4ba82",
+          "_assetPath": "Data/AI/02Blackboard/Blackboard/v2/Navigation/BB_RepositionStrategy.json"
+        }
+      ]
+    },
+    "noSharingKeys": {
+      "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.BlackboardConfigData, Assembly-CSharp]], mscorlib",
+      "$values": [
+        {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardConfigData, Assembly-CSharp",
+          "isStatic": false,
+          "mustNoSharing": true,
+          "showName": "Teammates",
+          "DataType": 133,
+          "sharingStrategy": 1,
+          "category": null,
+          "nameHistory": {
+            "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+            "$values": [
+              "instance-0bf99bc6-d27c-439b-8beb-7c974758c102"
+            ]
+          }
+        },
+        {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardConfigData, Assembly-CSharp",
+          "isStatic": false,
+          "mustNoSharing": true,
+          "showName": "OtherNPC",
+          "DataType": 6,
+          "sharingStrategy": 1,
+          "category": null,
+          "nameHistory": {
+            "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+            "$values": [
+              "instance-c3ee1baf-5b26-4ec6-a109-aabb984d83d2"
+            ]
+          }
+        },
+        {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardConfigData, Assembly-CSharp",
+          "isStatic": false,
+          "mustNoSharing": true,
+          "showName": "OtherNPCTarget",
+          "DataType": 6,
+          "sharingStrategy": 1,
+          "category": null,
+          "nameHistory": {
+            "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+            "$values": [
+              "instance-52b938e4-f60a-4d7b-bf5d-b426772c607f"
+            ]
+          }
+        },
+        {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardConfigData, Assembly-CSharp",
+          "isStatic": false,
+          "mustNoSharing": true,
+          "showName": "Target",
+          "DataType": 6,
+          "sharingStrategy": 1,
+          "category": null,
+          "nameHistory": {
+            "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+            "$values": [
+              "instance-e3a116a0-cb64-478b-bccc-29597f1ea669"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "_nodes": {
+    "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Scripting.Node, Assembly-CSharp]], mscorlib",
+    "$values": [
+      {
+        "$type": "miHoYo.HYG.GameplayAbilities.ScriptOnActivateAbility, Assembly-CSharp",
+        "outDataWasActivatedByEvent": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "Guid": 1765213247
+        },
+        "outDataTriggerEventData": {
+          "$type": "miHoYo.HYG.Scripting.OutDataGameplayEventDataPort, Assembly-CSharp",
+          "outDataEventTag": {
+            "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp]], Assembly-CSharp",
+            "Guid": 2974234946
+          },
+          "outDataInstigator": {
+            "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], Assembly-CSharp",
+            "Guid": 3530139478
+          },
+          "outDataTarget": {
+            "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], Assembly-CSharp",
+            "Guid": 1287694175
+          },
+          "outDataCustomData": {
+            "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.Entities.GameplayEvents.IGameplayEventCustomData, Assembly-CSharp]], Assembly-CSharp",
+            "Guid": 2385786272
+          },
+          "Mode": 0,
+          "Guid": 3542146269
+        },
+        "eventOutPort": {
+          "$type": "miHoYo.HYG.Scripting.OutEventPort, Assembly-CSharp",
+          "Guid": 3941531360
+        },
+        "outExec": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 1447911043
+        },
+        "Guid": 2332177667
+      },
+      {
+        "$type": "miHoYo.HYG.GameplayAbilities.ScriptOnDectivateAbility, Assembly-CSharp",
+        "outDataReason": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.GameplayAbilities.GameplayAbilityDeactivationReason, Assembly-CSharp]], Assembly-CSharp",
+          "Guid": 1166529654
+        },
+        "eventOutPort": {
+          "$type": "miHoYo.HYG.Scripting.OutEventPort, Assembly-CSharp",
+          "Guid": 2714626811
+        },
+        "outExec": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 303099889
+        },
+        "Guid": 3168872132
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.SequenceNode, Assembly-CSharp",
+        "outExecsThen": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort[], Assembly-CSharp",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+              "Guid": 269355372
+            },
+            {
+              "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+              "Guid": 2019520514
+            },
+            {
+              "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+              "Guid": 365553219
+            }
+          ]
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 251357834
+        },
+        "Guid": 3847629112
+      },
+      {
+        "$type": "miHoYo.HYG.GameplayAbilities.BindSphereTriggerTaskNode, Assembly-CSharp",
+        "FollowTarget": {
+          "$type": "miHoYo.HYG.Scripting.InDataEntityPort, Assembly-CSharp",
+          "Guid": 3833899481
+        },
+        "FilterType": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[miHoYo.HYG.PhyEntityFilter, Assembly-CSharp]], Assembly-CSharp",
+          "_value": -2147473919,
+          "Guid": 1003004128
+        },
+        "Radius": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Single, mscorlib]], Assembly-CSharp",
+          "_value": 0.0,
+          "Guid": 2664910064
+        },
+        "OnTriggerEnter": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 1700203989
+        },
+        "OnTriggerEnter_1": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.UInt64, mscorlib]], Assembly-CSharp",
+          "Guid": 2247368739
+        },
+        "OnTriggerExit": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 2076528605
+        },
+        "OnTriggerExit_1": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.UInt64, mscorlib]], Assembly-CSharp",
+          "Guid": 3755027609
+        },
+        "outExec": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 3182625064
+        },
+        "taskHandle": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.GameplayTasks.GameplayTaskHandle, Assembly-CSharp]], Assembly-CSharp",
+          "Guid": 4031906350
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 3543468486
+        },
+        "Guid": 2331522361
+      },
+      {
+        "$type": "miHoYo.HYG.GameplayTasks.RunEQSQueryTaskNode, Assembly-CSharp",
+        "configAsset": {
+          "$type": "miHoYo.JsonPicker`1[[miHoYo.HYG.EntityQueryConfig, Assembly-CSharp]], Assembly-CSharp",
+          "_assetGuid": "c6da4cc4ee261e443af4a72e13d4c215",
+          "_assetPath": "Data/Query/EQS/AI/v3/Filter/EQS_FilterNpc.json"
+        },
+        "portParas": {
+          "$type": "miHoYo.HYG.Scripting.InDataPort[], Assembly-CSharp",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Scripting.InDataPort, Assembly-CSharp",
+              "Guid": 3840124016
+            }
+          ]
+        },
+        "OnQueryDoneEvent": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 396622779
+        },
+        "OnQueryDoneEvent_1": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "Guid": 3178856961
+        },
+        "OnQueryDoneEvent_2": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.Collections.Generic.List`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], mscorlib]], Assembly-CSharp",
+          "Guid": 249125614
+        },
+        "outExec": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 3027104347
+        },
+        "taskHandle": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.GameplayTasks.GameplayTaskHandle, Assembly-CSharp]], Assembly-CSharp",
+          "Guid": 1016834382
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 3439549782
+        },
+        "Guid": 3119546329
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.LiteralFloatNode, Assembly-CSharp",
+        "inDataValue": 999.0,
+        "outDataResult": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.Single, mscorlib]], Assembly-CSharp",
+          "Guid": 3009259168
+        },
+        "Guid": 3538789482
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.BranchNode, Assembly-CSharp",
+        "outExecTrue": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 1194226520
+        },
+        "outExecFalse": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 1050120169
+        },
+        "inDataCondition": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "_value": false,
+          "Guid": 1419083893
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 2283939676
+        },
+        "Guid": 2576924269
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.ArrayGetNode, Assembly-CSharp",
+        "inDataArray": {
+          "$type": "miHoYo.HYG.Scripting.InDataPort`1[[System.Collections.IList, mscorlib]], Assembly-CSharp",
+          "Guid": 1180615266
+        },
+        "inDataIndex": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Int32, mscorlib]], Assembly-CSharp",
+          "_value": 0,
+          "Guid": 326961596
+        },
+        "outDataResult": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort, Assembly-CSharp",
+          "Guid": 975788051
+        },
+        "Guid": 460799930
+      },
+      {
+        "$type": "miHoYo.HYG.GameplayTasks.RunEQSThenPQSTaskNode, Assembly-CSharp",
+        "EQSConfigAsset": {
+          "$type": "miHoYo.JsonPicker`1[[miHoYo.HYG.EntityQueryConfig, Assembly-CSharp]], Assembly-CSharp",
+          "_assetGuid": "4472f78e34efb724b9c5dae1a0c98110",
+          "_assetPath": "Data/Query/EQS/00AI/Gameplay/Adv/EQS_GetSortedTodoList.json"
+        },
+        "PQSConfigAsset": {
+          "$type": "miHoYo.JsonPicker`1[[miHoYo.HYG.PointQueryConfig, Assembly-CSharp]], Assembly-CSharp",
+          "_assetGuid": "c1c43a6026c487e46afc1bc6fe64c472",
+          "_assetPath": "Data/Query/PQS/00AI/Gameplay/Adv/Interact/PQS_FindBestInteractPosition.json"
+        },
+        "EQSPortParas": {
+          "$type": "miHoYo.HYG.Scripting.InDataPort[], Assembly-CSharp",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Scripting.InDataPort, Assembly-CSharp",
+              "Guid": 2860282097
+            },
+            {
+              "$type": "miHoYo.HYG.Scripting.InDataPort, Assembly-CSharp",
+              "Guid": 3958877318
+            }
+          ]
+        },
+        "PQSPortParas": {
+          "$type": "miHoYo.HYG.Scripting.InDataPort[], Assembly-CSharp",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Scripting.InDataPort, Assembly-CSharp",
+              "Guid": 2692835508
+            },
+            {
+              "$type": "miHoYo.HYG.Scripting.InDataPort, Assembly-CSharp",
+              "Guid": 3073990606
+            },
+            {
+              "$type": "miHoYo.HYG.Scripting.InDataPort, Assembly-CSharp",
+              "Guid": 795460670
+            }
+          ]
+        },
+        "OnEntityRefreshEvent": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 1024487891
+        },
+        "OnEntityRefreshEvent_1": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], Assembly-CSharp",
+          "Guid": 472362574
+        },
+        "OnQueryDoneEvent": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 664197600
+        },
+        "OnQueryDoneEvent_1": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "Guid": 2043489371
+        },
+        "OnQueryDoneEvent_2": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], Assembly-CSharp",
+          "Guid": 1531746645
+        },
+        "OnQueryDoneEvent_3": {
+          "$type": "miHoYo.HYG.Scripting.OutDataVector3Port, Assembly-CSharp",
+          "outDataX": null,
+          "outDataY": null,
+          "outDataZ": null,
+          "Mode": 0,
+          "Guid": 1562216142
+        },
+        "outExec": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 3663760557
+        },
+        "taskHandle": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.GameplayTasks.GameplayTaskHandle, Assembly-CSharp]], Assembly-CSharp",
+          "Guid": 3565837217
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 4117428542
+        },
+        "Guid": 3843219383
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.SequenceNode, Assembly-CSharp",
+        "outExecsThen": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort[], Assembly-CSharp",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+              "Guid": 1389344825
+            },
+            {
+              "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+              "Guid": 3949662034
+            }
+          ]
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 3697958769
+        },
+        "Guid": 1280646484
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.SequenceNode, Assembly-CSharp",
+        "outExecsThen": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort[], Assembly-CSharp",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+              "Guid": 2408339203
+            }
+          ]
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 1144918436
+        },
+        "Guid": 940403230
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.SequenceNode, Assembly-CSharp",
+        "outExecsThen": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort[], Assembly-CSharp",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+              "Guid": 2883282634
+            },
+            {
+              "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+              "Guid": 1269856375
+            },
+            {
+              "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+              "Guid": 2087739534
+            },
+            {
+              "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+              "Guid": 433490369
+            }
+          ]
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 3473863973
+        },
+        "Guid": 3023486031
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.SetBlackboardUInt64Node, Assembly-CSharp",
+        "inDataValue": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.UInt64, mscorlib]], Assembly-CSharp",
+          "_value": 0,
+          "Guid": 3191044574
+        },
+        "outDataValue": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.UInt64, mscorlib]], Assembly-CSharp",
+          "Guid": 481833386
+        },
+        "key": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "instance-52b938e4-f60a-4d7b-bf5d-b426772c607f"
+        },
+        "OutExec": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 1062429880
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 1996579895
+        },
+        "Guid": 3693070036
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.GetBlackboardUInt64Node, Assembly-CSharp",
+        "outDataValue": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.UInt64, mscorlib]], Assembly-CSharp",
+          "Guid": 32819601
+        },
+        "targetEntity": {
+          "$type": "miHoYo.HYG.Scripting.InDataEntityPort, Assembly-CSharp",
+          "Guid": 1097389292
+        },
+        "key": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "CurrentInteractTarget-bc02d13fba9218346b7dd7b265c9b693-0"
+        },
+        "Guid": 3438043648
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.SetBlackboardUInt64Node, Assembly-CSharp",
+        "inDataValue": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.UInt64, mscorlib]], Assembly-CSharp",
+          "_value": 0,
+          "Guid": 1124589503
+        },
+        "outDataValue": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.UInt64, mscorlib]], Assembly-CSharp",
+          "Guid": 3681827828
+        },
+        "key": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "instance-e3a116a0-cb64-478b-bccc-29597f1ea669"
+        },
+        "OutExec": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 4036705510
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 64860852
+        },
+        "Guid": 2266928500
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.BranchNode, Assembly-CSharp",
+        "outExecTrue": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 3961891749
+        },
+        "outExecFalse": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 2920353931
+        },
+        "inDataCondition": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "_value": false,
+          "Guid": 2759088999
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 1814160739
+        },
+        "Guid": 2963757327
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.SetBlackboardVector3Node, Assembly-CSharp",
+        "inDataValue": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[UnityEngine.Vector3, UnityEngine.CoreModule]], Assembly-CSharp",
+          "_value": {
+            "$type": "UnityEngine.Vector3, UnityEngine.CoreModule",
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "Guid": 1951385605
+        },
+        "outDataValue": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[UnityEngine.Vector3, UnityEngine.CoreModule]], Assembly-CSharp",
+          "Guid": 2533666091
+        },
+        "key": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "CurrentInteractPosition-bc02d13fba9218346b7dd7b265c9b693-0"
+        },
+        "OutExec": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 1610190720
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 4141418212
+        },
+        "Guid": 4164121460
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.BranchNode, Assembly-CSharp",
+        "outExecTrue": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 4105517131
+        },
+        "outExecFalse": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 1078902981
+        },
+        "inDataCondition": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "_value": false,
+          "Guid": 319387248
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 3842083028
+        },
+        "Guid": 4148464134
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.NodeUtilsULongEqualPureNode, Assembly-CSharp",
+        "autoGenResult": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "Guid": 3493573147
+        },
+        "a": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.UInt64, mscorlib]], Assembly-CSharp",
+          "_value": 0,
+          "Guid": 4209674782
+        },
+        "b": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.UInt64, mscorlib]], Assembly-CSharp",
+          "_value": 0,
+          "Guid": 2769797106
+        },
+        "Guid": 4172107313
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.GetBlackboardUInt64Node, Assembly-CSharp",
+        "outDataValue": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.UInt64, mscorlib]], Assembly-CSharp",
+          "Guid": 762102806
+        },
+        "targetEntity": {
+          "$type": "miHoYo.HYG.Scripting.InDataEntityPort, Assembly-CSharp",
+          "Guid": 3644675727
+        },
+        "key": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "CurrentInteractTarget-bc02d13fba9218346b7dd7b265c9b693-0"
+        },
+        "Guid": 2332591865
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.BranchNode, Assembly-CSharp",
+        "outExecTrue": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 3220070378
+        },
+        "outExecFalse": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 1368473952
+        },
+        "inDataCondition": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "_value": true,
+          "Guid": 572131092
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 2528665185
+        },
+        "Guid": 1569534829
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.GetBlackboardEntityNode, Assembly-CSharp",
+        "outDataValue": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], Assembly-CSharp",
+          "Guid": 3887441208
+        },
+        "targetEntity": {
+          "$type": "miHoYo.HYG.Scripting.InDataEntityPort, Assembly-CSharp",
+          "Guid": 1135300614
+        },
+        "key": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "instance-c3ee1baf-5b26-4ec6-a109-aabb984d83d2"
+        },
+        "Guid": 2203497899
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.SetBlackboardUInt64Node, Assembly-CSharp",
+        "inDataValue": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.UInt64, mscorlib]], Assembly-CSharp",
+          "_value": 0,
+          "Guid": 690401259
+        },
+        "outDataValue": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.UInt64, mscorlib]], Assembly-CSharp",
+          "Guid": 3924972839
+        },
+        "key": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "CurrentInteractTarget-bc02d13fba9218346b7dd7b265c9b693-0"
+        },
+        "OutExec": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 2826607903
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 1424584790
+        },
+        "Guid": 736123143
+      },
+      {
+        "$type": "miHoYo.HYG.GameplayTasks.RunEQSQueryTaskNode, Assembly-CSharp",
+        "configAsset": {
+          "$type": "miHoYo.JsonPicker`1[[miHoYo.HYG.EntityQueryConfig, Assembly-CSharp]], Assembly-CSharp",
+          "_assetGuid": "f1417b407b57cb64ca5705ddf322886f",
+          "_assetPath": "Data/Query/EQS/AI/v3/EQS_FindAllInterestedCollectables.json"
+        },
+        "portParas": {
+          "$type": "miHoYo.HYG.Scripting.InDataPort[], Assembly-CSharp",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Scripting.InDataPort, Assembly-CSharp",
+              "Guid": 2588053605
+            }
+          ]
+        },
+        "OnQueryDoneEvent": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 2436945391
+        },
+        "OnQueryDoneEvent_1": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "Guid": 3297802442
+        },
+        "OnQueryDoneEvent_2": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.Collections.Generic.List`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], mscorlib]], Assembly-CSharp",
+          "Guid": 108396192
+        },
+        "outExec": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 4142873791
+        },
+        "taskHandle": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.GameplayTasks.GameplayTaskHandle, Assembly-CSharp]], Assembly-CSharp",
+          "Guid": 907562045
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 1530389243
+        },
+        "Guid": 2384446274
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.SetBlackboardUInt64Node, Assembly-CSharp",
+        "inDataValue": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.UInt64, mscorlib]], Assembly-CSharp",
+          "_value": 0,
+          "Guid": 1844962888
+        },
+        "outDataValue": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.UInt64, mscorlib]], Assembly-CSharp",
+          "Guid": 3981661494
+        },
+        "key": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "instance-e3a116a0-cb64-478b-bccc-29597f1ea669"
+        },
+        "OutExec": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 1144599401
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 2076495120
+        },
+        "Guid": 4066806561
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.ArrayGetNode, Assembly-CSharp",
+        "inDataArray": {
+          "$type": "miHoYo.HYG.Scripting.InDataPort`1[[System.Collections.IList, mscorlib]], Assembly-CSharp",
+          "Guid": 1176033716
+        },
+        "inDataIndex": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Int32, mscorlib]], Assembly-CSharp",
+          "_value": 0,
+          "Guid": 2055325447
+        },
+        "outDataResult": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort, Assembly-CSharp",
+          "Guid": 627036236
+        },
+        "Guid": 3831870898
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.LiteralFloatNode, Assembly-CSharp",
+        "inDataValue": 22.0,
+        "outDataResult": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.Single, mscorlib]], Assembly-CSharp",
+          "Guid": 3826059045
+        },
+        "Guid": 1451251914
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.SetBlackboardEntityArrayNode, Assembly-CSharp",
+        "inDataArray": {
+          "$type": "miHoYo.HYG.Scripting.InDataPort`1[[System.Collections.Generic.List`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], mscorlib]], Assembly-CSharp",
+          "Guid": 3244282292
+        },
+        "outDataArray": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.Collections.Generic.List`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], mscorlib]], Assembly-CSharp",
+          "Guid": 3933999893
+        },
+        "key": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "AllPotentialTargets-bc02d13fba9218346b7dd7b265c9b693-0"
+        },
+        "OutExec": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 1865635497
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 2493848722
+        },
+        "Guid": 2520542366
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.SetBlackboardEntityNode, Assembly-CSharp",
+        "inDataValue": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], Assembly-CSharp",
+          "_value": {
+            "$type": "miHoYo.HYG.Entities.Entity, Assembly-CSharp"
+          },
+          "Guid": 3278117917
+        },
+        "outDataValue": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], Assembly-CSharp",
+          "Guid": 985276614
+        },
+        "key": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "CurrentInteractTarget-bc02d13fba9218346b7dd7b265c9b693-0"
+        },
+        "OutExec": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 1683362461
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 2712857954
+        },
+        "Guid": 999543171
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.SetBlackboardEntityNode, Assembly-CSharp",
+        "inDataValue": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], Assembly-CSharp",
+          "_value": {
+            "$type": "miHoYo.HYG.Entities.Entity, Assembly-CSharp"
+          },
+          "Guid": 3267881725
+        },
+        "outDataValue": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], Assembly-CSharp",
+          "Guid": 3785383539
+        },
+        "key": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "instance-e3a116a0-cb64-478b-bccc-29597f1ea669"
+        },
+        "OutExec": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 1113768380
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 1586539973
+        },
+        "Guid": 1911647933
+      },
+      {
+        "$type": "miHoYo.HYG.GameplayAbilities.WaitLoopTaskNode, Assembly-CSharp",
+        "MinRandomCD": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Single, mscorlib]], Assembly-CSharp",
+          "_value": 1.0,
+          "Guid": 1259267214
+        },
+        "MaxRandomCD": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Single, mscorlib]], Assembly-CSharp",
+          "_value": 2.0,
+          "Guid": 3034696953
+        },
+        "TriggerOnInit": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "_value": true,
+          "Guid": 955005289
+        },
+        "TriggerCount": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Int32, mscorlib]], Assembly-CSharp",
+          "_value": 0,
+          "Guid": 1035272988
+        },
+        "OnTrigger": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 2798787567
+        },
+        "OnEnd": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 4178780529
+        },
+        "outExec": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 3625779524
+        },
+        "taskHandle": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.GameplayTasks.GameplayTaskHandle, Assembly-CSharp]], Assembly-CSharp",
+          "Guid": 4277655025
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 334679615
+        },
+        "Guid": 1608382808
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.SequenceNode, Assembly-CSharp",
+        "outExecsThen": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort[], Assembly-CSharp",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+              "Guid": 607365855
+            }
+          ]
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 3298162969
+        },
+        "Guid": 40122570
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.BranchNode, Assembly-CSharp",
+        "outExecTrue": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 2133680209
+        },
+        "outExecFalse": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 790471239
+        },
+        "inDataCondition": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "_value": false,
+          "Guid": 3459680257
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 3182446055
+        },
+        "Guid": 399431085
+      },
+      {
+        "$type": "miHoYo.HYG.Entity.IsValidEntityActionNode, Assembly-CSharp",
+        "autoGenResult": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "Guid": 902642744
+        },
+        "targetEntity": {
+          "$type": "miHoYo.HYG.Scripting.InDataEntityPort, Assembly-CSharp",
+          "Guid": 1832345284
+        },
+        "OutExec": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 2056732713
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 3849761413
+        },
+        "Guid": 1683702989
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.GetBlackboardEntityNode, Assembly-CSharp",
+        "outDataValue": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], Assembly-CSharp",
+          "Guid": 3498068494
+        },
+        "targetEntity": {
+          "$type": "miHoYo.HYG.Scripting.InDataEntityPort, Assembly-CSharp",
+          "Guid": 3689289985
+        },
+        "key": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "CurrentInteractTarget-bc02d13fba9218346b7dd7b265c9b693-0"
+        },
+        "Guid": 3200936910
+      },
+      {
+        "$type": "miHoYo.HYG.GameplayAbilities.AbilityTaskWaitGameplayEventNode, Assembly-CSharp",
+        "Channel": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp]], Assembly-CSharp",
+          "_value": {
+            "$type": "miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp",
+            "TagId": 1609172460
+          },
+          "Guid": 2172559118
+        },
+        "TriggerOnlyOnce": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "_value": true,
+          "Guid": 1475520440
+        },
+        "ReceiveGlobalEvent": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "_value": false,
+          "Guid": 962485986
+        },
+        "EventReceived": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 2734407839
+        },
+        "EventReceived_1": {
+          "$type": "miHoYo.HYG.Scripting.OutDataGameplayEventDataPort, Assembly-CSharp",
+          "outDataEventTag": {
+            "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp]], Assembly-CSharp",
+            "Guid": 1369095853
+          },
+          "outDataInstigator": {
+            "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], Assembly-CSharp",
+            "Guid": 1266880511
+          },
+          "outDataTarget": {
+            "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], Assembly-CSharp",
+            "Guid": 2937188251
+          },
+          "outDataCustomData": {
+            "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.Entities.GameplayEvents.IGameplayEventCustomData, Assembly-CSharp]], Assembly-CSharp",
+            "Guid": 1845042538
+          },
+          "Mode": 0,
+          "Guid": 388813396
+        },
+        "outExec": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 773269319
+        },
+        "taskHandle": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.GameplayTasks.GameplayTaskHandle, Assembly-CSharp]], Assembly-CSharp",
+          "Guid": 725722066
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 430107922
+        },
+        "Guid": 1919383701
+      },
+      {
+        "$type": "miHoYo.HYG.GameplayTasks.RunEQSQueryTaskNode, Assembly-CSharp",
+        "configAsset": {
+          "$type": "miHoYo.JsonPicker`1[[miHoYo.HYG.EntityQueryConfig, Assembly-CSharp]], Assembly-CSharp",
+          "_assetGuid": "df85fd59b2f24584abee5b90ef0169ee",
+          "_assetPath": "Data/Query/EQS/00AI/Gameplay/Adv/EQS_FindAllInterestedCollectablesBackup.json"
+        },
+        "portParas": {
+          "$type": "miHoYo.HYG.Scripting.InDataPort[], Assembly-CSharp",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Scripting.InDataPort, Assembly-CSharp",
+              "Guid": 67451707
+            },
+            {
+              "$type": "miHoYo.HYG.Scripting.InDataPort, Assembly-CSharp",
+              "Guid": 3995632333
+            }
+          ]
+        },
+        "OnQueryDoneEvent": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 1842415665
+        },
+        "OnQueryDoneEvent_1": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "Guid": 1160968879
+        },
+        "OnQueryDoneEvent_2": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.Collections.Generic.List`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], mscorlib]], Assembly-CSharp",
+          "Guid": 3852192247
+        },
+        "outExec": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 697462222
+        },
+        "taskHandle": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.GameplayTasks.GameplayTaskHandle, Assembly-CSharp]], Assembly-CSharp",
+          "Guid": 2772705101
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 1950182027
+        },
+        "Guid": 720665400
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.SetBlackboardEntityArrayNode, Assembly-CSharp",
+        "inDataArray": {
+          "$type": "miHoYo.HYG.Scripting.InDataPort`1[[System.Collections.Generic.List`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], mscorlib]], Assembly-CSharp",
+          "Guid": 834454973
+        },
+        "outDataArray": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.Collections.Generic.List`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], mscorlib]], Assembly-CSharp",
+          "Guid": 1512258002
+        },
+        "key": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "AllPotentialTargets-bc02d13fba9218346b7dd7b265c9b693-0"
+        },
+        "OutExec": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 16553894
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 1109947016
+        },
+        "Guid": 685161023
+      },
+      {
+        "$type": "miHoYo.HYG.GameplayAbilities.AbilityTaskWaitGameplayEventNode, Assembly-CSharp",
+        "Channel": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp]], Assembly-CSharp",
+          "_value": {
+            "$type": "miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp",
+            "TagId": 959453610
+          },
+          "Guid": 1355624119
+        },
+        "TriggerOnlyOnce": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "_value": false,
+          "Guid": 1309618118
+        },
+        "ReceiveGlobalEvent": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "_value": false,
+          "Guid": 3995849940
+        },
+        "EventReceived": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 3373839365
+        },
+        "EventReceived_1": {
+          "$type": "miHoYo.HYG.Scripting.OutDataGameplayEventDataPort, Assembly-CSharp",
+          "outDataEventTag": {
+            "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp]], Assembly-CSharp",
+            "Guid": 2592070023
+          },
+          "outDataInstigator": {
+            "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], Assembly-CSharp",
+            "Guid": 3836148722
+          },
+          "outDataTarget": {
+            "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], Assembly-CSharp",
+            "Guid": 3225414810
+          },
+          "outDataCustomData": {
+            "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.Entities.GameplayEvents.IGameplayEventCustomData, Assembly-CSharp]], Assembly-CSharp",
+            "Guid": 2393778257
+          },
+          "Mode": 0,
+          "Guid": 3119700351
+        },
+        "outExec": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 1345090208
+        },
+        "taskHandle": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.GameplayTasks.GameplayTaskHandle, Assembly-CSharp]], Assembly-CSharp",
+          "Guid": 702361638
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 940919549
+        },
+        "Guid": 1315457290
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.BranchNode, Assembly-CSharp",
+        "outExecTrue": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 2295477649
+        },
+        "outExecFalse": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 2923512695
+        },
+        "inDataCondition": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "_value": false,
+          "Guid": 3525922057
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 2074689374
+        },
+        "Guid": 2987551352
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.GetBlackboardBooleanNode, Assembly-CSharp",
+        "outDataValue": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "Guid": 3113787682
+        },
+        "targetEntity": {
+          "$type": "miHoYo.HYG.Scripting.InDataEntityPort, Assembly-CSharp",
+          "Guid": 2944651960
+        },
+        "key": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "FlagHasInitialized-d0086480f939447448063c86cf4694fb-0"
+        },
+        "Guid": 1467533215
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.SetBlackboardEntityNode, Assembly-CSharp",
+        "inDataValue": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], Assembly-CSharp",
+          "_value": {
+            "$type": "miHoYo.HYG.Entities.Entity, Assembly-CSharp"
+          },
+          "Guid": 1534403293
+        },
+        "outDataValue": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], Assembly-CSharp",
+          "Guid": 2182842603
+        },
+        "key": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "instance-c3ee1baf-5b26-4ec6-a109-aabb984d83d2"
+        },
+        "OutExec": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 2197246554
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 2898146517
+        },
+        "Guid": 3633624954
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.GetBlackboardUInt64Node, Assembly-CSharp",
+        "outDataValue": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.UInt64, mscorlib]], Assembly-CSharp",
+          "Guid": 3724403983
+        },
+        "targetEntity": {
+          "$type": "miHoYo.HYG.Scripting.InDataEntityPort, Assembly-CSharp",
+          "Guid": 1669977277
+        },
+        "key": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "instance-e3a116a0-cb64-478b-bccc-29597f1ea669"
+        },
+        "Guid": 2270140023
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.GetBlackboardFloatNode, Assembly-CSharp",
+        "outDataValue": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.Single, mscorlib]], Assembly-CSharp",
+          "Guid": 2339612026
+        },
+        "targetEntity": {
+          "$type": "miHoYo.HYG.Scripting.InDataEntityPort, Assembly-CSharp",
+          "Guid": 2575259467
+        },
+        "key": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "MaxFollowRange-b28bc76b1bdcb364a9840cb506b4ba82-0"
+        },
+        "Guid": 865412660
+      },
+      {
+        "$type": "miHoYo.HYG.Entity.DebugLogActionNode, Assembly-CSharp",
+        "logCat": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[miHoYo.LogCat, Assembly-Common]], Assembly-CSharp",
+          "_value": 12,
+          "Guid": 2614136169
+        },
+        "logText": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.String, mscorlib]], Assembly-CSharp",
+          "_value": "感知启动！",
+          "Guid": 391848031
+        },
+        "logText2": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.String, mscorlib]], Assembly-CSharp",
+          "_value": null,
+          "Guid": 2507977311
+        },
+        "OutExec": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 4044543447
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 312361196
+        },
+        "Guid": 3924589926
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.SequenceNode, Assembly-CSharp",
+        "outExecsThen": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort[], Assembly-CSharp",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+              "Guid": 3972991627
+            }
+          ]
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 542938288
+        },
+        "Guid": 92799657
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.SequenceNode, Assembly-CSharp",
+        "outExecsThen": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort[], Assembly-CSharp",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+              "Guid": 3414300281
+            },
+            {
+              "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+              "Guid": 957402538
+            },
+            {
+              "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+              "Guid": 3149257909
+            }
+          ]
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 4154046524
+        },
+        "Guid": 2587908380
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.GetBlackboardFloatNode, Assembly-CSharp",
+        "outDataValue": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.Single, mscorlib]], Assembly-CSharp",
+          "Guid": 1785694873
+        },
+        "targetEntity": {
+          "$type": "miHoYo.HYG.Scripting.InDataEntityPort, Assembly-CSharp",
+          "Guid": 51314740
+        },
+        "key": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "MaxFollowRange-b28bc76b1bdcb364a9840cb506b4ba82-0"
+        },
+        "Guid": 693105501
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.GetBlackboardEntityNode, Assembly-CSharp",
+        "outDataValue": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], Assembly-CSharp",
+          "Guid": 4069866839
+        },
+        "targetEntity": {
+          "$type": "miHoYo.HYG.Scripting.InDataEntityPort, Assembly-CSharp",
+          "Guid": 426977271
+        },
+        "key": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "instance-52b938e4-f60a-4d7b-bf5d-b426772c607f"
+        },
+        "Guid": 2049404675
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.BranchNode, Assembly-CSharp",
+        "outExecTrue": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 3855505024
+        },
+        "outExecFalse": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 651685668
+        },
+        "inDataCondition": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "_value": false,
+          "Guid": 2707370423
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 3434453785
+        },
+        "Guid": 3466446532
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.BBUInt64ArrayContainsNode, Assembly-CSharp",
+        "inData": {
+          "$type": "miHoYo.HYG.Scripting.InDataPort`1[[System.UInt64, mscorlib]], Assembly-CSharp",
+          "Guid": 3674593011
+        },
+        "outDataResult": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "Guid": 3075705087
+        },
+        "targetEntity": {
+          "$type": "miHoYo.HYG.Scripting.InDataEntityPort, Assembly-CSharp",
+          "Guid": 2861314534
+        },
+        "key": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "AllPotentialTargets-bc02d13fba9218346b7dd7b265c9b693-0"
+        },
+        "Guid": 1229995974
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.GetBlackboardUInt64Node, Assembly-CSharp",
+        "outDataValue": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.UInt64, mscorlib]], Assembly-CSharp",
+          "Guid": 745734618
+        },
+        "targetEntity": {
+          "$type": "miHoYo.HYG.Scripting.InDataEntityPort, Assembly-CSharp",
+          "Guid": 531187588
+        },
+        "key": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "CurrentInteractTarget-bc02d13fba9218346b7dd7b265c9b693-0"
+        },
+        "Guid": 4203341790
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.BranchNode, Assembly-CSharp",
+        "outExecTrue": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 123092788
+        },
+        "outExecFalse": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 3517200118
+        },
+        "inDataCondition": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "_value": false,
+          "Guid": 3295619132
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 3789573866
+        },
+        "Guid": 1654106466
+      },
+      {
+        "$type": "miHoYo.HYG.GameplayTasks.RunEQSQueryTaskNode, Assembly-CSharp",
+        "configAsset": {
+          "$type": "miHoYo.JsonPicker`1[[miHoYo.HYG.EntityQueryConfig, Assembly-CSharp]], Assembly-CSharp",
+          "_assetGuid": "f1417b407b57cb64ca5705ddf322886f",
+          "_assetPath": "Data/Query/EQS/00AI/Gameplay/Adv/EQS_FindAllInterestedCollectables.json"
+        },
+        "portParas": {
+          "$type": "miHoYo.HYG.Scripting.InDataPort[], Assembly-CSharp",
+          "$values": []
+        },
+        "OnQueryDoneEvent": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 3599535942
+        },
+        "OnQueryDoneEvent_1": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "Guid": 2253503329
+        },
+        "OnQueryDoneEvent_2": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.Collections.Generic.List`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], mscorlib]], Assembly-CSharp",
+          "Guid": 264791713
+        },
+        "outExec": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 2932816110
+        },
+        "taskHandle": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.GameplayTasks.GameplayTaskHandle, Assembly-CSharp]], Assembly-CSharp",
+          "Guid": 2079440947
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 4018054253
+        },
+        "Guid": 1810888497
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.GetBlackboardVector3Node, Assembly-CSharp",
+        "outDataValue": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[UnityEngine.Vector3, UnityEngine.CoreModule]], Assembly-CSharp",
+          "Guid": 3360226242
+        },
+        "targetEntity": {
+          "$type": "miHoYo.HYG.Scripting.InDataEntityPort, Assembly-CSharp",
+          "Guid": 3993484236
+        },
+        "key": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "CurrentInteractPosition-bc02d13fba9218346b7dd7b265c9b693-0"
+        },
+        "Guid": 3190863891
+      },
+      {
+        "$type": "miHoYo.HYG.Entity.GameplayUtilityCanInteractFromPureNode, Assembly-CSharp",
+        "autoGenResult": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "Guid": 3022435247
+        },
+        "caller": {
+          "$type": "miHoYo.HYG.Scripting.InDataEntityPort, Assembly-CSharp",
+          "Guid": 1904332393
+        },
+        "fromPosition": {
+          "$type": "miHoYo.HYG.Scripting.InDataVector3Port, Assembly-CSharp",
+          "inDataX": {
+            "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Single, mscorlib]], Assembly-CSharp",
+            "_value": 0.0,
+            "Guid": 4233700873
+          },
+          "inDataY": {
+            "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Single, mscorlib]], Assembly-CSharp",
+            "_value": 0.0,
+            "Guid": 755183692
+          },
+          "inDataZ": {
+            "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Single, mscorlib]], Assembly-CSharp",
+            "_value": 0.0,
+            "Guid": 1983704445
+          },
+          "_value": {
+            "$type": "UnityEngine.Vector3, UnityEngine.CoreModule",
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "Mode": 0,
+          "Guid": 3533407129
+        },
+        "target": {
+          "$type": "miHoYo.HYG.Scripting.InDataEntityPort, Assembly-CSharp",
+          "Guid": 4017906103
+        },
+        "interactTag": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp]], Assembly-CSharp",
+          "_value": {
+            "$type": "miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp",
+            "TagId": 0
+          },
+          "Guid": 401199105
+        },
+        "Guid": 553931974
+      },
+      {
+        "$type": "miHoYo.HYG.Entity.GameplayUtilityGetPrioritizedInteractTagPureNode, Assembly-CSharp",
+        "autoGenResult": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp]], Assembly-CSharp",
+          "Guid": 4183559202
+        },
+        "caller": {
+          "$type": "miHoYo.HYG.Scripting.InDataEntityPort, Assembly-CSharp",
+          "Guid": 3322391282
+        },
+        "target": {
+          "$type": "miHoYo.HYG.Scripting.InDataEntityPort, Assembly-CSharp",
+          "Guid": 3864527844
+        },
+        "Guid": 1648155842
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.GetOwnerEntityNode, Assembly-CSharp",
+        "outDataResult": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], Assembly-CSharp",
+          "Guid": 2697975166
+        },
+        "Guid": 3125464593
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.GetBlackboardEntityNode, Assembly-CSharp",
+        "outDataValue": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], Assembly-CSharp",
+          "Guid": 1852068780
+        },
+        "targetEntity": {
+          "$type": "miHoYo.HYG.Scripting.InDataEntityPort, Assembly-CSharp",
+          "Guid": 2422482597
+        },
+        "key": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "CurrentInteractTarget-bc02d13fba9218346b7dd7b265c9b693-0"
+        },
+        "Guid": 694419768
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.GetBlackboardUInt64ArrayNode, Assembly-CSharp",
+        "outDataArray": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.Collections.Generic.List`1[[System.UInt64, mscorlib]], mscorlib]], Assembly-CSharp",
+          "Guid": 3084147481
+        },
+        "targetEntity": {
+          "$type": "miHoYo.HYG.Scripting.InDataEntityPort, Assembly-CSharp",
+          "Guid": 2109560884
+        },
+        "key": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "AllPotentialTargets-bc02d13fba9218346b7dd7b265c9b693-0"
+        },
+        "Guid": 2175805253
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.GetBlackboardFloatNode, Assembly-CSharp",
+        "outDataValue": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.Single, mscorlib]], Assembly-CSharp",
+          "Guid": 3712978485
+        },
+        "targetEntity": {
+          "$type": "miHoYo.HYG.Scripting.InDataEntityPort, Assembly-CSharp",
+          "Guid": 2766260608
+        },
+        "key": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "MaxFollowRange-b28bc76b1bdcb364a9840cb506b4ba82-0"
+        },
+        "Guid": 2271485576
+      },
+      {
+        "$type": "miHoYo.HYG.GameplayAbilities.WaitLoopTaskNode, Assembly-CSharp",
+        "MinRandomCD": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Single, mscorlib]], Assembly-CSharp",
+          "_value": 0.0,
+          "Guid": 2477192665
+        },
+        "MaxRandomCD": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Single, mscorlib]], Assembly-CSharp",
+          "_value": 0.0,
+          "Guid": 2670202524
+        },
+        "TriggerOnInit": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "_value": true,
+          "Guid": 4033403092
+        },
+        "TriggerCount": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Int32, mscorlib]], Assembly-CSharp",
+          "_value": 0,
+          "Guid": 3694164745
+        },
+        "OnTrigger": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 2393088081
+        },
+        "OnEnd": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 1605602214
+        },
+        "outExec": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 577886874
+        },
+        "taskHandle": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.GameplayTasks.GameplayTaskHandle, Assembly-CSharp]], Assembly-CSharp",
+          "Guid": 554893821
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 3458356511
+        },
+        "Guid": 1927578105
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.SequenceNode, Assembly-CSharp",
+        "outExecsThen": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort[], Assembly-CSharp",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+              "Guid": 2363330706
+            },
+            {
+              "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+              "Guid": 163887937
+            }
+          ]
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 1315733625
+        },
+        "Guid": 3209686487
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.WaitTaskNode, Assembly-CSharp",
+        "StartLog": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.String, mscorlib]], Assembly-CSharp",
+          "_value": null,
+          "Guid": 4050895813
+        },
+        "Time": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Single, mscorlib]], Assembly-CSharp",
+          "_value": 0.7,
+          "Guid": 2782750317
+        },
+        "OnEnd": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 909240631
+        },
+        "outExec": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 89351262
+        },
+        "taskHandle": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.GameplayTasks.GameplayTaskHandle, Assembly-CSharp]], Assembly-CSharp",
+          "Guid": 2000170001
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 4067854000
+        },
+        "Guid": 3297352451
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.BranchNode, Assembly-CSharp",
+        "outExecTrue": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 2568308604
+        },
+        "outExecFalse": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 3565762416
+        },
+        "inDataCondition": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "_value": false,
+          "Guid": 1636024523
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 2920330428
+        },
+        "Guid": 2311360694
+      },
+      {
+        "$type": "miHoYo.HYG.Entity.IsValidEntityActionNode, Assembly-CSharp",
+        "autoGenResult": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "Guid": 2721374907
+        },
+        "targetEntity": {
+          "$type": "miHoYo.HYG.Scripting.InDataEntityPort, Assembly-CSharp",
+          "Guid": 1793016831
+        },
+        "OutExec": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 3013479172
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 2322065419
+        },
+        "Guid": 16004512
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.GetBlackboardEntityNode, Assembly-CSharp",
+        "outDataValue": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], Assembly-CSharp",
+          "Guid": 3460657545
+        },
+        "targetEntity": {
+          "$type": "miHoYo.HYG.Scripting.InDataEntityPort, Assembly-CSharp",
+          "Guid": 514986246
+        },
+        "key": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "CurrentInteractTarget-bc02d13fba9218346b7dd7b265c9b693-0"
+        },
+        "Guid": 23554331
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.SetBlackboardBooleanNode, Assembly-CSharp",
+        "inDataValue": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "_value": true,
+          "Guid": 1367426393
+        },
+        "outDataValue": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "Guid": 3581482840
+        },
+        "key": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "ShallWork-bc02d13fba9218346b7dd7b265c9b693-0"
+        },
+        "OutExec": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 3454903660
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 1260287032
+        },
+        "Guid": 2145777100
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.SetBlackboardBooleanNode, Assembly-CSharp",
+        "inDataValue": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "_value": false,
+          "Guid": 4205405885
+        },
+        "outDataValue": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "Guid": 7194095
+        },
+        "key": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "ShallWork-bc02d13fba9218346b7dd7b265c9b693-0"
+        },
+        "OutExec": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 4183628616
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 4143839058
+        },
+        "Guid": 2635558131
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.GetBlackboardUInt64Node, Assembly-CSharp",
+        "outDataValue": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.UInt64, mscorlib]], Assembly-CSharp",
+          "Guid": 896367173
+        },
+        "targetEntity": {
+          "$type": "miHoYo.HYG.Scripting.InDataEntityPort, Assembly-CSharp",
+          "Guid": 2694168436
+        },
+        "key": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "instance-52b938e4-f60a-4d7b-bf5d-b426772c607f"
+        },
+        "Guid": 458699871
+      },
+      {
+        "$type": "miHoYo.HYG.Entity.DebugLogActionNode, Assembly-CSharp",
+        "logCat": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[miHoYo.LogCat, Assembly-Common]], Assembly-CSharp",
+          "_value": 0,
+          "Guid": 1297266760
+        },
+        "logText": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.String, mscorlib]], Assembly-CSharp",
+          "_value": "喵喵喵",
+          "Guid": 1194382773
+        },
+        "logText2": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.String, mscorlib]], Assembly-CSharp",
+          "_value": null,
+          "Guid": 3441103474
+        },
+        "OutExec": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 2050204325
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 1223916958
+        },
+        "Guid": 4237314004
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.BranchNode, Assembly-CSharp",
+        "outExecTrue": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 1384438215
+        },
+        "outExecFalse": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 1863369232
+        },
+        "inDataCondition": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "_value": false,
+          "Guid": 1461492116
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 948424721
+        },
+        "Guid": 2648253310
+      },
+      {
+        "$type": "miHoYo.HYG.Entities.FishingPrivateUtilCanFishingOnLinePureNode, Assembly-CSharp",
+        "autoGenResult": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "Guid": 1080602041
+        },
+        "from": {
+          "$type": "miHoYo.HYG.Scripting.InDataVector3Port, Assembly-CSharp",
+          "inDataX": {
+            "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Single, mscorlib]], Assembly-CSharp",
+            "_value": 0.0,
+            "Guid": 2084263720
+          },
+          "inDataY": {
+            "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Single, mscorlib]], Assembly-CSharp",
+            "_value": 0.0,
+            "Guid": 3005023440
+          },
+          "inDataZ": {
+            "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Single, mscorlib]], Assembly-CSharp",
+            "_value": 0.0,
+            "Guid": 1279854617
+          },
+          "_value": {
+            "$type": "UnityEngine.Vector3, UnityEngine.CoreModule",
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "Mode": 0,
+          "Guid": 2283075334
+        },
+        "to": {
+          "$type": "miHoYo.HYG.Scripting.InDataVector3Port, Assembly-CSharp",
+          "inDataX": {
+            "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Single, mscorlib]], Assembly-CSharp",
+            "_value": 0.0,
+            "Guid": 2814854083
+          },
+          "inDataY": {
+            "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Single, mscorlib]], Assembly-CSharp",
+            "_value": 0.0,
+            "Guid": 3218867903
+          },
+          "inDataZ": {
+            "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Single, mscorlib]], Assembly-CSharp",
+            "_value": 0.0,
+            "Guid": 552910912
+          },
+          "_value": {
+            "$type": "UnityEngine.Vector3, UnityEngine.CoreModule",
+            "x": 3.0,
+            "y": -0.5,
+            "z": 0.1
+          },
+          "Mode": 0,
+          "Guid": 3833531847
+        },
+        "showTip": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "Guid": 1824708977
+        },
+        "Guid": 1492764111
+      },
+      {
+        "$type": "miHoYo.HYG.Entities.MoveGetPositionPureNode, Assembly-CSharp",
+        "autoGenResult": {
+          "$type": "miHoYo.HYG.Scripting.OutDataVector3Port, Assembly-CSharp",
+          "outDataX": null,
+          "outDataY": null,
+          "outDataZ": null,
+          "Mode": 0,
+          "Guid": 695547000
+        },
+        "owner": {
+          "$type": "miHoYo.HYG.Scripting.InDataEntityPort, Assembly-CSharp",
+          "Guid": 334247479
+        },
+        "Guid": 23540475
+      },
+      {
+        "$type": "miHoYo.HYG.Entity.GameplayUtilityGetNewPlayerEntityPureNode, Assembly-CSharp",
+        "autoGenResult": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], Assembly-CSharp",
+          "Guid": 3968938153
+        },
+        "Guid": 287470415
+      },
+      {
+        "$type": "miHoYo.HYG.GameplayAbilities.AbilityTaskWaitGameplayEventNode, Assembly-CSharp",
+        "Channel": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp]], Assembly-CSharp",
+          "_value": {
+            "$type": "miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp",
+            "TagId": 667161832
+          },
+          "Guid": 398136127
+        },
+        "TriggerOnlyOnce": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "_value": false,
+          "Guid": 2414137651
+        },
+        "ReceiveGlobalEvent": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "_value": false,
+          "Guid": 896478845
+        },
+        "EventReceived": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 44954125
+        },
+        "EventReceived_1": {
+          "$type": "miHoYo.HYG.Scripting.OutDataGameplayEventDataPort, Assembly-CSharp",
+          "outDataEventTag": {
+            "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp]], Assembly-CSharp",
+            "Guid": 2546316110
+          },
+          "outDataInstigator": {
+            "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], Assembly-CSharp",
+            "Guid": 2776841071
+          },
+          "outDataTarget": {
+            "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], Assembly-CSharp",
+            "Guid": 3891684688
+          },
+          "outDataCustomData": {
+            "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.Entities.GameplayEvents.IGameplayEventCustomData, Assembly-CSharp]], Assembly-CSharp",
+            "Guid": 682521372
+          },
+          "Mode": 0,
+          "Guid": 1143670254
+        },
+        "outExec": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 2178976938
+        },
+        "taskHandle": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.GameplayTasks.GameplayTaskHandle, Assembly-CSharp]], Assembly-CSharp",
+          "Guid": 926014904
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 2344733755
+        },
+        "Guid": 1382891532
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.SequenceNode, Assembly-CSharp",
+        "outExecsThen": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort[], Assembly-CSharp",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+              "Guid": 2457655022
+            }
+          ]
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 2961185093
+        },
+        "Guid": 1567515189
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.GetBlackboardEntityNode, Assembly-CSharp",
+        "outDataValue": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], Assembly-CSharp",
+          "Guid": 1322891248
+        },
+        "targetEntity": {
+          "$type": "miHoYo.HYG.Scripting.InDataEntityPort, Assembly-CSharp",
+          "Guid": 3997784938
+        },
+        "key": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "CurrentInteractTarget-bc02d13fba9218346b7dd7b265c9b693-0"
+        },
+        "Guid": 1268087422
+      },
+      {
+        "$type": "miHoYo.HYG.Entity.GameplayUtilityIsValidEntityPureNode, Assembly-CSharp",
+        "autoGenResult": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "Guid": 717125677
+        },
+        "targetEntity": {
+          "$type": "miHoYo.HYG.Scripting.InDataEntityPort, Assembly-CSharp",
+          "Guid": 1129243930
+        },
+        "Guid": 1543990333
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.BBEntityArrayAddNode, Assembly-CSharp",
+        "inData": {
+          "$type": "miHoYo.HYG.Scripting.InDataPort`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], Assembly-CSharp",
+          "Guid": 1697650131
+        },
+        "key": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "instance-0bf99bc6-d27c-439b-8beb-7c974758c102"
+        },
+        "OutExec": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 2248357808
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 2192231947
+        },
+        "Guid": 2096558613
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.BBEntityArrayAddNode, Assembly-CSharp",
+        "inData": {
+          "$type": "miHoYo.HYG.Scripting.InDataPort`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], Assembly-CSharp",
+          "Guid": 2593852704
+        },
+        "key": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "instance-0bf99bc6-d27c-439b-8beb-7c974758c102"
+        },
+        "OutExec": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 983801763
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 124888612
+        },
+        "Guid": 1182433500
+      },
+      {
+        "$type": "miHoYo.HYG.Entities.EntitiesGetOwnerPlayerEntityByNpcPureNode, Assembly-CSharp",
+        "autoGenResult": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], Assembly-CSharp",
+          "Guid": 1264349465
+        },
+        "npcGuid": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.UInt64, mscorlib]], Assembly-CSharp",
+          "_value": 0,
+          "Guid": 355516979
+        },
+        "Guid": 1307614130
+      },
+      {
+        "$type": "miHoYo.HYG.Entity.GameplayUtilityGetNewPlayerEntityPureNode, Assembly-CSharp",
+        "autoGenResult": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], Assembly-CSharp",
+          "Guid": 2234974655
+        },
+        "Guid": 2813907724
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.GetBlackboardUInt64ArrayNode, Assembly-CSharp",
+        "outDataArray": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.Collections.Generic.List`1[[System.UInt64, mscorlib]], mscorlib]], Assembly-CSharp",
+          "Guid": 7931534
+        },
+        "targetEntity": {
+          "$type": "miHoYo.HYG.Scripting.InDataEntityPort, Assembly-CSharp",
+          "Guid": 714434195
+        },
+        "key": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "instance-0bf99bc6-d27c-439b-8beb-7c974758c102"
+        },
+        "Guid": 2915123140
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.WaitTaskNode, Assembly-CSharp",
+        "StartLog": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.String, mscorlib]], Assembly-CSharp",
+          "_value": null,
+          "Guid": 2584038084
+        },
+        "Time": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Single, mscorlib]], Assembly-CSharp",
+          "_value": 0.0,
+          "Guid": 1412435112
+        },
+        "OnEnd": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 3101116410
+        },
+        "outExec": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 2116466883
+        },
+        "taskHandle": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.GameplayTasks.GameplayTaskHandle, Assembly-CSharp]], Assembly-CSharp",
+          "Guid": 1839110539
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 1448137189
+        },
+        "Guid": 3029413263
+      },
+      {
+        "$type": "miHoYo.HYG.Entity.GameplayUtilityRandomFloatPureNode, Assembly-CSharp",
+        "autoGenResult": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.Single, mscorlib]], Assembly-CSharp",
+          "Guid": 653305254
+        },
+        "minInclusive": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Single, mscorlib]], Assembly-CSharp",
+          "_value": 0.2,
+          "Guid": 712896542
+        },
+        "maxInclusive": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Single, mscorlib]], Assembly-CSharp",
+          "_value": 1.0,
+          "Guid": 1629310820
+        },
+        "Guid": 4121971098
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.GetBlackboardUInt64Node, Assembly-CSharp",
+        "outDataValue": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.UInt64, mscorlib]], Assembly-CSharp",
+          "Guid": 3694258067
+        },
+        "targetEntity": {
+          "$type": "miHoYo.HYG.Scripting.InDataEntityPort, Assembly-CSharp",
+          "Guid": 907307391
+        },
+        "key": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "instance-52b938e4-f60a-4d7b-bf5d-b426772c607f"
+        },
+        "Guid": 111990065
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.BBEntityArrayContainsNode, Assembly-CSharp",
+        "inData": {
+          "$type": "miHoYo.HYG.Scripting.InDataPort`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], Assembly-CSharp",
+          "Guid": 3982085563
+        },
+        "outDataResult": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "Guid": 1196263305
+        },
+        "targetEntity": {
+          "$type": "miHoYo.HYG.Scripting.InDataEntityPort, Assembly-CSharp",
+          "Guid": 4111840392
+        },
+        "key": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "AllPotentialTargets-bc02d13fba9218346b7dd7b265c9b693-0"
+        },
+        "Guid": 3598094161
+      },
+      {
+        "$type": "miHoYo.HYG.Scripting.NodeUtilsBoolAndNodePureNode, Assembly-CSharp",
+        "autoGenResult": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "Guid": 4142421103
+        },
+        "a": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "_value": false,
+          "Guid": 1777294785
+        },
+        "b": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "_value": false,
+          "Guid": 2540015191
+        },
+        "Guid": 3929311793
+      }
+    ]
+  },
+  "_stateTagsConfig": null,
+  "_tagsToBlockConfig": null,
+  "_tagsToCancelConfig": null,
+  "_requiredTagsConfig": null,
+  "_blockedByTagsConfig": null,
+  "_descriptiveTagsConfig": null,
+  "_gameplayEventTriggersConfig": null,
+  "Edges": {
+    "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm]], mscorlib",
+    "$values": [
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 3840124016,
+        "outputPort": 3009259168
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 1419083893,
+        "outputPort": 3178856961
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 1180615266,
+        "outputPort": 249125614
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 3473863973,
+        "outputPort": 365553219
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 3191044574,
+        "outputPort": 32819601
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 2759088999,
+        "outputPort": 2043489371
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 1951385605,
+        "outputPort": 1562216142
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 319387248,
+        "outputPort": 3493573147
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 3842083028,
+        "outputPort": 2076528605
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 4209674782,
+        "outputPort": 3755027609
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 2769797106,
+        "outputPort": 762102806
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 2528665185,
+        "outputPort": 4105517131
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 2528665185,
+        "outputPort": 1700203989
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 1097389292,
+        "outputPort": 3887441208
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 690401259,
+        "outputPort": 3681827828
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 1424584790,
+        "outputPort": 4036705510
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 4141418212,
+        "outputPort": 2826607903
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 1176033716,
+        "outputPort": 108396192
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 1844962888,
+        "outputPort": 627036236
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 2588053605,
+        "outputPort": 3826059045
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 3244282292,
+        "outputPort": 108396192
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 2493848722,
+        "outputPort": 2436945391
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 4141418212,
+        "outputPort": 1683362461
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 3267881725,
+        "outputPort": 472362574
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 3298162969,
+        "outputPort": 3220070378
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 3459680257,
+        "outputPort": 902642744
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 1832345284,
+        "outputPort": 3498068494
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 834454973,
+        "outputPort": 3852192247
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 1109947016,
+        "outputPort": 1842415665
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 3525922057,
+        "outputPort": 3113787682
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 2074689374,
+        "outputPort": 1447911043
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 430107922,
+        "outputPort": 2923512695
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 251357834,
+        "outputPort": 2295477649
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 3439549782,
+        "outputPort": 3949662034
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 1534403293,
+        "outputPort": 975788051
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 2898146517,
+        "outputPort": 1194226520
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 1586539973,
+        "outputPort": 1024487891
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 3278117917,
+        "outputPort": 1531746645
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 2692835508,
+        "outputPort": 3724403983
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 3073990606,
+        "outputPort": 2339612026
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 4154046524,
+        "outputPort": 2019520514
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 3697958769,
+        "outputPort": 269355372
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 312361196,
+        "outputPort": 1389344825
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 1996579895,
+        "outputPort": 3414300281
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 1950182027,
+        "outputPort": 957402538
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 67451707,
+        "outputPort": 1785694873
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 3674593011,
+        "outputPort": 745734618
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 1144918436,
+        "outputPort": 3517200118
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 1144918436,
+        "outputPort": 651685668
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 4154046524,
+        "outputPort": 3972991627
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 542938288,
+        "outputPort": 607365855
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 3533407129,
+        "outputPort": 3360226242
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 401199105,
+        "outputPort": 4183559202
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 4017906103,
+        "outputPort": 1852068780
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 1904332393,
+        "outputPort": 2697975166
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 3295619132,
+        "outputPort": 3022435247
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 3322391282,
+        "outputPort": 2697975166
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 3864527844,
+        "outputPort": 1852068780
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 2860282097,
+        "outputPort": 3084147481
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 4117428542,
+        "outputPort": 2408339203
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 2664910064,
+        "outputPort": 3712978485
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 3182446055,
+        "outputPort": 2056732713
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 2712857954,
+        "outputPort": 2363330706
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 1636024523,
+        "outputPort": 2721374907
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 1793016831,
+        "outputPort": 3460657545
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 2920330428,
+        "outputPort": 3013479172
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 1315733625,
+        "outputPort": 664197600
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 1814160739,
+        "outputPort": 163887937
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 4067854000,
+        "outputPort": 2920353931
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 1260287032,
+        "outputPort": 3961891749
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 4143839058,
+        "outputPort": 3565762416
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 3995632333,
+        "outputPort": 896367173
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 3298162969,
+        "outputPort": 790471239
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 3298162969,
+        "outputPort": 2798787567
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 3434453785,
+        "outputPort": 3149257909
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 1461492116,
+        "outputPort": 1080602041
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 2283075334,
+        "outputPort": 695547000
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 334247479,
+        "outputPort": 3968938153
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 3458356511,
+        "outputPort": 433490369
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 3298162969,
+        "outputPort": 2393088081
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 2961185093,
+        "outputPort": 44954125
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 2344733755,
+        "outputPort": 2883282634
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 940919549,
+        "outputPort": 1269856375
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 3543468486,
+        "outputPort": 2087739534
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 1144918436,
+        "outputPort": 2457655022
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 2961185093,
+        "outputPort": 3373839365
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 1129243930,
+        "outputPort": 1322891248
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 2322065419,
+        "outputPort": 909240631
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 2539432187,
+        "outputPort": 819478913
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 251357834,
+        "outputPort": 615043741
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 1697650131,
+        "outputPort": 2182842603
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 124888612,
+        "outputPort": 2197246554
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 2192231947,
+        "outputPort": 983801763
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 2593852704,
+        "outputPort": 2234974655
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 795460670,
+        "outputPort": 7931534
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 1448137189,
+        "outputPort": 2734407839
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 251357834,
+        "outputPort": 3101116410
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 1412435112,
+        "outputPort": 653305254
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 3958877318,
+        "outputPort": 3694258067
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 2283939676,
+        "outputPort": 396622779
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 3982085563,
+        "outputPort": 1322891248
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 1777294785,
+        "outputPort": 717125677
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 2540015191,
+        "outputPort": 1196263305
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 2707370423,
+        "outputPort": 4142421103
+      }
+    ]
+  },
+  "EditorData": {
+    "$type": "miHoYo.HYG.FGraph.FasterGraphEditorData, FGraphAsm",
+    "nodes": {
+      "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm]], mscorlib",
+      "$values": [
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 2332177667,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -1624.0,
+            "y": -884.8
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 3168872132,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -745.6,
+            "y": 733.6
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 3847629112,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -1058.4,
+            "y": -568.0
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 2331522361,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -348.8,
+            "y": 1646.4
+          },
+          "comment": "",
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 3119546329,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -196.8,
+            "y": -645.600037
+          },
+          "comment": "获取另外一个随行伙伴",
+          "commentHeight": 40.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 3538789482,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -480.8,
+            "y": -572.8
+          },
+          "comment": "",
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 2576924269,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 107.2,
+            "y": -596.8
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 460799930,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 107.2,
+            "y": -496.0
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 3843219383,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 1121.6,
+            "y": -64.0
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 1280646484,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -536.8,
+            "y": -823.2
+          },
+          "comment": "一次性分支",
+          "commentHeight": 40.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 940403230,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 491.2,
+            "y": 145.6
+          },
+          "comment": "重新查找目标和点位",
+          "commentHeight": 69.6000061,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 3023486031,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -908.0,
+            "y": 1852.0
+          },
+          "comment": "事件触发再次查询",
+          "commentHeight": 75.19995,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 3693070036,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 313.6,
+            "y": -330.400024
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 3438043648,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -1.6,
+            "y": -259.2
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 2266928500,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 2076.0,
+            "y": -84.8
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 2963757327,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 1623.2,
+            "y": 269.599976
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 4164121460,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 2037.6,
+            "y": 34.3999977
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 4148464134,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 310.400024,
+            "y": 1742.4
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 4172107313,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 63.2,
+            "y": 1797.6001
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 2332591865,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -245.6,
+            "y": 1848.0
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 1569534829,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 497.6,
+            "y": 1696.0
+          },
+          "comment": "",
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 2203497899,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -284.0,
+            "y": -259.2
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 736123143,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 2383.2,
+            "y": -84.8
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 2384446274,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 1871.2,
+            "y": -343.2
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 4066806561,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 2158.4,
+            "y": -343.2
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 3831870898,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 1420.79993,
+            "y": -164.8
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 1451251914,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 1668.79993,
+            "y": -179.2
+          },
+          "comment": "",
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 2520542366,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 1587.2,
+            "y": -287.2
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 999543171,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 1736.0,
+            "y": 34.3999977
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 1911647933,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 1533.6,
+            "y": -84.8
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 1608382808,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -304.0,
+            "y": 1984.8
+          },
+          "comment": "",
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 40122570,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 1386.3999,
+            "y": 1696.0
+          },
+          "comment": "事件触发再次查询",
+          "commentHeight": 75.19995,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 399431085,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 91.2,
+            "y": 2548.0
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 1683702989,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -144.8,
+            "y": 2548.0
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 3200936910,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -461.599976,
+            "y": 2495.2
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 1919383701,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -1928.0,
+            "y": -614.4
+          },
+          "comment": "不相信时序，一定等到行为树跑了才开始感知",
+          "commentHeight": 40.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 720665400,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -272.8,
+            "y": -162.4
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 685161023,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 4.79999971,
+            "y": -117.600006
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 1315457290,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -504.8,
+            "y": 1365.6001
+          },
+          "comment": "当采集完成时更新",
+          "commentHeight": 40.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 2987551352,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -1232.8,
+            "y": -861.600037
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 1467533215,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -1585.6001,
+            "y": -736.0
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 3633624954,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 313.6,
+            "y": -596.8
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 2270140023,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 784.8,
+            "y": 68.8
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 865412660,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 808.0,
+            "y": 174.400009
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 3924589926,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -207.2,
+            "y": -823.2
+          },
+          "comment": "",
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 92799657,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -732.0,
+            "y": 246.400009
+          },
+          "comment": "触发再次查询时激活",
+          "commentHeight": 73.6000061,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 2587908380,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -528.8,
+            "y": -330.400024
+          },
+          "comment": "尝试查找",
+          "commentHeight": 40.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 693105501,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -621.6,
+            "y": -151.2
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": true
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 2049404675,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -914.399963,
+            "y": -116.0
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 3466446532,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -272.8,
+            "y": 112.8
+          },
+          "comment": "如果这个点还行就继续",
+          "commentHeight": 65.6,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 1229995974,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -729.6,
+            "y": 68.0
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 4203341790,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -1013.6,
+            "y": 68.0
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 1654106466,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 263.2,
+            "y": 392.0
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 1810888497,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 755.2,
+            "y": -328.800018
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 3190863891,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -549.6,
+            "y": 201.6
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 553931974,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -223.2,
+            "y": 246.400009
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 1648155842,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -203.2,
+            "y": 392.0
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 3125464593,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -504.0,
+            "y": 392.0
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 694419768,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -521.6,
+            "y": 296.8
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 2175805253,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 756.0,
+            "y": -121.600006
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 2271485576,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -638.399963,
+            "y": 1684.0
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": true
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 1927578105,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -348.8,
+            "y": 2184.0
+          },
+          "comment": "",
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 3209686487,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 1533.6,
+            "y": 34.3999977
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 3297352451,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 1800.79993,
+            "y": 354.4
+          },
+          "comment": "",
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 2311360694,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 2243.2,
+            "y": 407.199982
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 16004512,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 2007.2,
+            "y": 407.199982
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 23554331,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 1885.6,
+            "y": 527.2
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 2145777100,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 2413.59985,
+            "y": 269.599976
+          },
+          "comment": "",
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 2635558131,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 2412.0,
+            "y": 457.599976
+          },
+          "comment": "",
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 458699871,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -643.2,
+            "y": -56.0
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 4237314004,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 284.0,
+            "y": 2395.2
+          },
+          "comment": "",
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 2648253310,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 124.0,
+            "y": 2394.40015
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 1492764111,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -153.6,
+            "y": 2419.2
+          },
+          "comment": "",
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 23540475,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -380.0,
+            "y": 2590.40015
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 287470415,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -451.199982,
+            "y": 2699.2
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 1382891532,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -504.8,
+            "y": 1145.6001
+          },
+          "comment": "当采集完成时更新",
+          "commentHeight": 40.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 1567515189,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 310.400024,
+            "y": 1145.6001
+          },
+          "comment": "真的重新跑",
+          "commentHeight": 40.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 1268087422,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -806.399963,
+            "y": 468.8
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 1543990333,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -521.6,
+            "y": 468.8
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 2096558613,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 916.8,
+            "y": -596.8
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 1182433500,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 602.4,
+            "y": -716.0
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 1307614130,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 102.399994,
+            "y": -823.2
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 2813907724,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 306.400024,
+            "y": -754.4
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 2915123140,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 755.2,
+            "y": 269.599976
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 3029413263,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -1361.6001,
+            "y": -515.2
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 4121971098,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -1628.8,
+            "y": -465.6
+          },
+          "comment": "",
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 111990065,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": 785.600037,
+            "y": -26.4000015
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 3598094161,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -806.399963,
+            "y": 564.0
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 3929311793,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -272.8,
+            "y": 495.2
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        }
+      ]
+    },
+    "comment": null,
+    "position": {
+      "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+      "x": 1655.2,
+      "y": 798.4
+    },
+    "scale": 0.7561437
+  },
+  "FilePath": "Assets/MoleRes/Rel/SRes/Data/Ability/Perception/Adventure/Perception_SelectBestInteractTargetAdvNew.json",
+  "InputBindings": null,
+  "ReplicationPolicy": 0,
+  "ActivationPolicy": 1,
+  "RemoveAbilityOnDeactivated": false,
+  "RetriggerAbility": false
+}

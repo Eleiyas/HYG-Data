@@ -1,0 +1,118 @@
+{
+  "systemDecisions": [
+    {
+      "goalID": "SayHello",
+      "systemTag": "SayHelloLastDecisionTime",
+      "goalSceneInfo": {
+        "$type": "SelectSceneByType",
+        "sceneType": "Outdoor"
+      },
+      "predicates": [
+        {
+          "$type": "RelationalOperatorPredicate",
+          "logic": "Greater",
+          "valueA": {
+            "$type": "SystemTimeFromMemoryInput",
+            "systemTag": "SayHelloLastDecisionTime"
+          },
+          "valueB": {
+            "$type": "ConstantInput",
+            "value": 200
+          }
+        }
+      ],
+      "chooseNum": {
+        "$type": "MinInput",
+        "inputs": [
+          {
+            "$type": "MinusAboveZeroInput",
+            "valueA": {
+              "$type": "ConstantInput",
+              "value": 1
+            },
+            "valueB": {
+              "$type": "NPCDistributionInput",
+              "goalID": "SayHello"
+            }
+          },
+          {
+            "$type": "MinusAboveZeroInput",
+            "valueA": {
+              "$type": "ConstantInput",
+              "value": 2
+            },
+            "valueB": {
+              "$type": "SystemMemoryDataInput",
+              "systemTag": "SayHelloNPCCount"
+            }
+          },
+          {
+            "$type": "RandomFromInput",
+            "weights": [
+              1,
+              1
+            ],
+            "values": [
+              0,
+              1
+            ]
+          }
+        ]
+      },
+      "scoreNPCs": [
+        {
+          "$type": "ConsiderationBool",
+          "condition": "Inactive",
+          "trueValue": 3,
+          "falseValue": 0.5,
+          "input": {
+            "$type": "NPCPersonalityInput",
+            "personality": "Outgoing"
+          }
+        },
+        {
+          "$type": "ConsiderationBool",
+          "condition": "Inactive",
+          "trueValue": 1,
+          "falseValue": 0,
+          "input": {
+            "$type": "PredicateInput",
+            "predicates": [
+              {
+                "$type": "CheckNPCScene",
+                "sceneInfo": {
+                  "$type": "SelectSceneByType",
+                  "sceneType": "Outdoor"
+                },
+                "isEqual": true
+              }
+            ]
+          }
+        },
+        {
+          "$type": "ConsiderationBool",
+          "condition": "Inactive",
+          "trueValue": 0,
+          "falseValue": 1,
+          "input": {
+            "$type": "NPCMemoryDataValueInput",
+            "dataType": "HasSayHello"
+          }
+        },
+        {
+          "$type": "ConsiderationLinear",
+          "condition": "Inactive",
+          "curveM": 4,
+          "curveB": 0,
+          "curveC": 0,
+          "input": {
+            "$type": "NPCTimeGapFromMemoryInput",
+            "tag": "LastSuccessSayHelloTime",
+            "clampMin": 0,
+            "clampMax": 200
+          }
+        }
+      ]
+    }
+  ]
+}

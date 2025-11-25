@@ -1,0 +1,486 @@
+{
+  "personalities": [],
+  "preferences": [
+    {
+      "goalID": "WalkAround",
+      "value": 1
+    },
+    {
+      "goalID": "Sightseeing",
+      "value": 0.7
+    },
+    {
+      "goalID": "Yoga",
+      "value": 0.7
+    },
+    {
+      "goalID": "Sing",
+      "value": 1.3
+    },
+    {
+      "goalID": "Fishing",
+      "value": 1.2
+    }
+  ],
+  "relaxDecisions": [
+    {
+      "goalID": "Default",
+      "considerations": [
+        {
+          "$type": "ConsiderationConstant",
+          "condition": "Always",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "goalID": "WalkAround",
+      "predicates": [
+        {
+          "$type": "CheckScene",
+          "sceneInfo": {
+            "$type": "SelectSceneByType",
+            "sceneType": "AllScenes"
+          }
+        }
+      ],
+      "considerations": [
+        {
+          "$type": "ConsiderationConstant",
+          "condition": "Always",
+          "input": {
+            "$type": "NPCPreferenceInput",
+            "goalID": "WalkAround"
+          }
+        },
+        {
+          "$type": "ConsiderationLinear",
+          "condition": "Inactive",
+          "curveM": 1,
+          "curveB": 0,
+          "curveC": 0,
+          "input": {
+            "$type": "NPCTimeGapFromActionMemoryInput",
+            "tag": "WalkAround",
+            "clampMin": 0,
+            "clampMax": 500
+          }
+        },
+        {
+          "$type": "ConsiderationLogistic",
+          "condition": "Active",
+          "curveM": 9,
+          "curveK": 3.9,
+          "curveB": 0.1,
+          "curveC": -5,
+          "input": {
+            "$type": "NPCTimeGapFromMemoryInput",
+            "tag": "LastRelaxActionID",
+            "clampMin": 15,
+            "clampMax": 45
+          }
+        }
+      ]
+    },
+    {
+      "goalID": "Sightseeing",
+      "predicates": [
+        {
+          "$type": "CheckScene",
+          "sceneInfo": {
+            "$type": "SelectSceneByType",
+            "sceneType": "Outdoor"
+          }
+        }
+      ],
+      "goalSceneInfo": {
+        "$type": "SelectSceneByType",
+        "sceneType": "Outdoor"
+      },
+      "considerations": [
+        {
+          "$type": "ConsiderationConstant",
+          "condition": "Always",
+          "input": {
+            "$type": "NPCPreferenceInput",
+            "goalID": "Sightseeing"
+          }
+        },
+        {
+          "$type": "ConsiderationLinear",
+          "condition": "Inactive",
+          "curveM": 1,
+          "curveB": 0,
+          "curveC": 0,
+          "input": {
+            "$type": "NPCTimeGapFromActionMemoryInput",
+            "tag": "Sightseeing",
+            "clampMin": 0,
+            "clampMax": 500
+          }
+        },
+        {
+          "$type": "ConsiderationLogistic",
+          "condition": "Active",
+          "curveM": 9,
+          "curveK": 3.9,
+          "curveB": 0.1,
+          "curveC": -5,
+          "input": {
+            "$type": "NPCTimeGapFromMemoryInput",
+            "tag": "LastRelaxActionID",
+            "clampMin": 20,
+            "clampMax": 30
+          }
+        }
+      ]
+    },
+    {
+      "goalID": "Yoga",
+      "predicates": [
+        {
+          "$type": "CheckScene",
+          "sceneInfo": {
+            "$type": "SelectSceneByType",
+            "sceneType": "AllScenes"
+          }
+        }
+      ],
+      "considerations": [
+        {
+          "$type": "ConsiderationConstant",
+          "condition": "Always",
+          "input": {
+            "$type": "NPCPreferenceInput",
+            "goalID": "Yoga"
+          }
+        },
+        {
+          "$type": "ConsiderationLinear",
+          "condition": "Inactive",
+          "curveM": 1,
+          "curveB": 0,
+          "curveC": 0,
+          "input": {
+            "$type": "NPCTimeGapFromActionMemoryInput",
+            "tag": "Yoga",
+            "clampMin": 0,
+            "clampMax": 500
+          }
+        },
+        {
+          "$type": "ConsiderationLogistic",
+          "condition": "Active",
+          "curveM": 9,
+          "curveK": 3.9,
+          "curveB": 0.1,
+          "curveC": -5,
+          "input": {
+            "$type": "NPCTimeGapFromMemoryInput",
+            "tag": "LastRelaxActionID",
+            "clampMin": 100,
+            "clampMax": 120
+          }
+        }
+      ]
+    },
+    {
+      "goalID": "Sing",
+      "predicates": [
+        {
+          "$type": "CheckScene",
+          "sceneInfo": {
+            "$type": "SelectSceneByType",
+            "sceneType": "Outdoor"
+          }
+        }
+      ],
+      "considerations": [
+        {
+          "$type": "ConsiderationConstant",
+          "condition": "Always",
+          "input": {
+            "$type": "NPCPreferenceInput",
+            "goalID": "Sing"
+          }
+        },
+        {
+          "$type": "ConsiderationLinear",
+          "condition": "Inactive",
+          "curveM": 1,
+          "curveB": 0,
+          "curveC": 0,
+          "input": {
+            "$type": "NPCTimeGapFromActionMemoryInput",
+            "tag": "Sing",
+            "clampMin": 0,
+            "clampMax": 500
+          }
+        },
+        {
+          "$type": "ConsiderationLogistic",
+          "condition": "Active",
+          "curveM": 9,
+          "curveK": 3.9,
+          "curveB": 0.1,
+          "curveC": -5,
+          "input": {
+            "$type": "NPCTimeGapFromMemoryInput",
+            "tag": "LastRelaxActionID",
+            "clampMin": 100,
+            "clampMax": 120
+          }
+        }
+      ]
+    },
+    {
+      "goalID": "WalkToSitSleep",
+      "predicates": [
+        {
+          "$type": "CheckScene",
+          "sceneInfo": {
+            "$type": "SelectSceneByType",
+            "sceneType": "Outdoor"
+          }
+        }
+      ],
+      "considerations": [
+        {
+          "$type": "ConsiderationLinear",
+          "condition": "Inactive",
+          "curveM": 1,
+          "curveB": 0,
+          "curveC": 0,
+          "input": {
+            "$type": "NPCTimeGapFromActionMemoryInput",
+            "tag": "Sing",
+            "clampMin": 0,
+            "clampMax": 500
+          }
+        },
+        {
+          "$type": "ConsiderationLogistic",
+          "condition": "Active",
+          "curveM": 9,
+          "curveK": 3.9,
+          "curveB": 0.1,
+          "curveC": -5,
+          "input": {
+            "$type": "NPCTimeGapFromMemoryInput",
+            "tag": "LastRelaxActionID",
+            "clampMin": 200,
+            "clampMax": 300
+          }
+        }
+      ]
+    },
+    {
+      "goalID": "Fishing",
+      "predicates": [
+        {
+          "$type": "CheckScene",
+          "sceneInfo": {
+            "$type": "SelectSceneByType",
+            "sceneType": "Outdoor"
+          }
+        }
+      ],
+      "considerations": [
+        {
+          "$type": "ConsiderationConstant",
+          "condition": "Always",
+          "input": {
+            "$type": "NPCPreferenceInput",
+            "goalID": "Fishing"
+          }
+        },
+        {
+          "$type": "ConsiderationLinear",
+          "condition": "Inactive",
+          "curveM": 1,
+          "curveB": 0,
+          "curveC": 0,
+          "input": {
+            "$type": "NPCTimeGapFromActionMemoryInput",
+            "tag": "Fishing",
+            "clampMin": 0,
+            "clampMax": 500
+          }
+        },
+        {
+          "$type": "ConsiderationLogistic",
+          "condition": "Active",
+          "curveM": 9,
+          "curveK": 3.9,
+          "curveB": 0.1,
+          "curveC": -5,
+          "input": {
+            "$type": "NPCTimeGapFromMemoryInput",
+            "tag": "LastRelaxActionID",
+            "clampMin": 100,
+            "clampMax": 120
+          }
+        }
+      ]
+    }
+  ],
+  "companionDecisions": [
+    {
+      "goalID": "DefaultCompanion",
+      "considerations": [
+        {
+          "$type": "ConsiderationConstant",
+          "condition": "Always",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "goalID": "Sing",
+      "predicates": [
+        {
+          "$type": "CheckScene",
+          "sceneInfo": {
+            "$type": "SelectSceneByType",
+            "sceneType": "Outdoor"
+          }
+        }
+      ],
+      "considerations": [
+        {
+          "$type": "ConsiderationConstant",
+          "condition": "Always",
+          "input": {
+            "$type": "NPCPreferenceInput",
+            "goalID": "Sing"
+          }
+        },
+        {
+          "$type": "ConsiderationLinear",
+          "condition": "Inactive",
+          "curveM": 1,
+          "curveB": 0,
+          "curveC": 0,
+          "input": {
+            "$type": "NPCTimeGapFromActionMemoryInput",
+            "tag": "Sing",
+            "clampMin": 0,
+            "clampMax": 500
+          }
+        },
+        {
+          "$type": "ConsiderationLogistic",
+          "condition": "Active",
+          "curveM": 9,
+          "curveK": 3.9,
+          "curveB": 0.1,
+          "curveC": -5,
+          "input": {
+            "$type": "NPCTimeGapFromMemoryInput",
+            "tag": "LastRelaxActionID",
+            "clampMin": 100,
+            "clampMax": 120
+          }
+        }
+      ]
+    }
+  ],
+  "dialogSelectors": [
+    {
+      "//": "打招呼",
+      "isExclusive": true,
+      "id": 1,
+      "dialogs": [
+        20101,
+        20111,
+        20121
+      ]
+    },
+    {
+      "//": "打瞌睡被惊醒",
+      "isExclusive": true,
+      "id": 6,
+      "dialogs": [
+        20401,
+        20411
+      ]
+    },
+    {
+      "//": "坐着看风景",
+      "isExclusive": true,
+      "id": 2,
+      "dialogs": [
+        20221
+      ]
+    },
+    {
+      "//": "做瑜伽",
+      "isExclusive": true,
+      "id": 7,
+      "dialogs": [
+        20501,
+        20511
+      ]
+    },
+    {
+      "//": "钓鱼中",
+      "isExclusive": true,
+      "id": 8,
+      "dialogs": [
+        20601,
+        20611
+      ]
+    },
+    {
+      "//": "唱歌",
+      "isExclusive": true,
+      "id": 9,
+      "dialogs": [
+        20701,
+        20711
+      ]
+    },
+    {
+      "//": "户外散步",
+      "isExclusive": false,
+      "id": 3,
+      "weight": 10,
+      "dialogs": [
+        20301,
+        20311
+      ]
+    },
+    {
+      "//": "任务15.1完成后",
+      "isExclusive": false,
+      "id": 11,
+      "weight": 20,
+      "dialogs": [
+        20321
+      ]
+    },
+    {
+      "//": "默认对话",
+      "isExclusive": false,
+      "id": 10000,
+      "weight": 1,
+      "dialogs": [
+        20201,
+        20211
+      ]
+    }
+  ],
+  "firstMeetState": {
+    "scene": {
+      "$type": "SelectSceneByType",
+      "sceneType": "Outdoor"
+    },
+    "curGoal": "Default",
+    "position": {
+      "$type": "StaticPosition",
+      "xPos": 18,
+      "yPos": 0.1,
+      "zPos": 10
+    }
+  }
+}

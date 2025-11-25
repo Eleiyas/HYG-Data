@@ -1,0 +1,44 @@
+red_point_module = red_point_module or {}
+red_point_module.red_point_type = {
+  moblie_phone_func_unlock_anim = 1,
+  npc_contact_book = 2,
+  diy_card_book = 3,
+  diy_group_recipe = 4,
+  mitai_score_level_unlock = 7,
+  luca_heart_unlock_performance = 8,
+  luca_heart_first_open = 9,
+  cook_recipe = 10,
+  luca_heart_unlock = 11,
+  companion_star_new_npc = 12,
+  companion_star_new_npc_condition = 13,
+  bag_new_tag = 14,
+  mitai_unread_order = 15,
+  new_tool = 16,
+  task = 17,
+  companion_star_growth_unlock_npc = 18,
+  new_action = 19,
+  new_luca = 20,
+  npc_house_unread_order = 21,
+  tutorial_handbook = 22,
+  codex_data = 24,
+  memo_tog_task = 25,
+  memo_tog_npc = 26,
+  player_title = 27,
+  codex_sub_type_tog = 28,
+  codex_type_tog = 29,
+  cookware_unlock = 30,
+  npc_event = 31,
+  appearance_dressing_new = 34,
+  appearance_left_type = 35,
+  luca_slot = 36,
+  planet_tree_level_up = 37
+}
+red_point_module.point_style_type = {
+  unlock_rp = 0,
+  strong_rp = 1,
+  num_rp = 2,
+  weak_rp = 3,
+  new_rp = 4,
+  none = 5
+}
+return red_point_module

@@ -1,0 +1,1909 @@
+{
+  "$type": "miHoYo.HYG.AI.UtilityAIConfig, Assembly-CSharp",
+  "description": "访客通用GoalList",
+  "blackboardConfigs": {
+    "$type": "miHoYo.HYG.DataSharing.BlackboardConfigPicker, Assembly-CSharp",
+    "paraKeys": null,
+    "configs": null,
+    "noSharingKeys": null
+  },
+  "goalList": {
+    "$type": "System.Collections.Generic.List`1[[GoalData, Assembly-CSharp]], mscorlib",
+    "$values": [
+      {
+        "$type": "GoalData, Assembly-CSharp",
+        "goalId": 200000024,
+        "goalName": "散步",
+        "enabled": true,
+        "goalType": 0,
+        "behaviourTreeInitializer": {
+          "$type": "miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": []
+          },
+          "_assetGuid": "44e6657f1e5043f39bbe962fc993efce",
+          "_assetPath": "Data/AI/BehaviourTree/BTv3_RefreshNew/BTG/BTGraph_RelaxWalk_v3.json"
+        },
+        "useSequencerBT": false,
+        "sequencerBTInitializers": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "stateScriptInitializer": {
+          "$type": "miHoYo.HYG.Statescript.StatescriptInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": []
+          },
+          "scriptnew": 0
+        },
+        "predicates": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]], Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckSceneBySceneType, Assembly-CSharp",
+              "_callerGUID": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+              },
+              "_isEqual": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedBool, Assembly-CSharp",
+                "_value": true
+              },
+              "_sceneType": 0
+            }
+          ]
+        },
+        "considerations": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Consideration, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.ConsiderationConstant, Assembly-CSharp",
+              "description": "偏好值",
+              "conditions": {
+                "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]][], Assembly-CSharp",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+                    "_operand": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckGoalStateIsActive, Assembly-CSharp",
+                      "_callerGUID": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                      },
+                      "_targetGoalId": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp"
+                      }
+                    }
+                  }
+                ]
+              },
+              "configVarInput": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetNpcPreference, Assembly-CSharp",
+                "configId": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                },
+                "key": "behaviour001"
+              }
+            },
+            {
+              "$type": "miHoYo.HYG.ConsiderationLinear, Assembly-CSharp",
+              "curveM": 1.2E-08,
+              "curveB": 0.0,
+              "curveC": 0.0,
+              "description": "兴趣恢复",
+              "conditions": {
+                "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]][], Assembly-CSharp",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+                    "_operand": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckGoalStateIsActive, Assembly-CSharp",
+                      "_callerGUID": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                      },
+                      "_targetGoalId": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp"
+                      }
+                    }
+                  }
+                ]
+              },
+              "configVarInput": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetDurationSinceTimestamp, Assembly-CSharp",
+                "_timestamp": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMemoryUlongValue, Assembly-CSharp",
+                  "memoryType": 0,
+                  "memoryKey": 202,
+                  "callerConfigId": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                  }
+                }
+              }
+            },
+            {
+              "$type": "miHoYo.HYG.ConsiderationLogistic, Assembly-CSharp",
+              "curveM": 10.0,
+              "curveK": 10.0,
+              "curveB": 1E-07,
+              "curveC": -7.0,
+              "description": "内驱力",
+              "conditions": {
+                "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]][], Assembly-CSharp",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckGoalStateIsActive, Assembly-CSharp",
+                    "_callerGUID": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                    },
+                    "_targetGoalId": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp"
+                    }
+                  }
+                ]
+              },
+              "configVarInput": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarMultiplyFloat, Assembly-CSharp",
+                "_lhs": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloat, Assembly-CSharp",
+                  "_value": 1.2E-05
+                },
+                "_rhs": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarMultiplyFloat, Assembly-CSharp",
+                  "_lhs": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetNpcInnerDrive, Assembly-CSharp",
+                    "configId": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                    },
+                    "key": "behaviour001"
+                  },
+                  "_rhs": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetDurationSinceTimestamp, Assembly-CSharp",
+                    "_timestamp": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMemoryUlongValue, Assembly-CSharp",
+                      "memoryType": 0,
+                      "memoryKey": 202,
+                      "callerConfigId": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "directSetPosWhenEnter": false,
+        "initPosRule": null,
+        "initSceneRule": null,
+        "startTimeStampKey": "202",
+        "endTimeStampKey": "202"
+      },
+      {
+        "$type": "GoalData, Assembly-CSharp",
+        "goalId": 200000026,
+        "goalName": "看书",
+        "enabled": true,
+        "goalType": 0,
+        "behaviourTreeInitializer": {
+          "$type": "miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": []
+          },
+          "_assetGuid": "568ac4401359d2947b5396427d0f956c",
+          "_assetPath": "Data/AI/BehaviourTree/BTv3_RefreshNew/BTG/BTGraph_ReadingBook_v3.json"
+        },
+        "useSequencerBT": false,
+        "sequencerBTInitializers": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "stateScriptInitializer": {
+          "$type": "miHoYo.HYG.Statescript.StatescriptInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": []
+          },
+          "scriptnew": 0
+        },
+        "predicates": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]], Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckSceneBySceneType, Assembly-CSharp",
+              "_callerGUID": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+              },
+              "_isEqual": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedBool, Assembly-CSharp",
+                "_value": true
+              },
+              "_sceneType": 0
+            },
+            {
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckTaskState_IgnoreConfigVar, Assembly-CSharp",
+              "_taskID": 4019,
+              "_targetState": 2
+            }
+          ]
+        },
+        "considerations": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Consideration, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.ConsiderationConstant, Assembly-CSharp",
+              "description": "偏好值",
+              "conditions": {
+                "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]][], Assembly-CSharp",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+                    "_operand": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckGoalStateIsActive, Assembly-CSharp",
+                      "_callerGUID": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                      },
+                      "_targetGoalId": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp"
+                      }
+                    }
+                  }
+                ]
+              },
+              "configVarInput": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetNpcPreference, Assembly-CSharp",
+                "configId": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                },
+                "key": "behaviour009"
+              }
+            },
+            {
+              "$type": "miHoYo.HYG.ConsiderationLinear, Assembly-CSharp",
+              "curveM": 1.2E-08,
+              "curveB": 0.0,
+              "curveC": 0.0,
+              "description": "兴趣恢复",
+              "conditions": {
+                "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]][], Assembly-CSharp",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+                    "_operand": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckGoalStateIsActive, Assembly-CSharp",
+                      "_callerGUID": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                      },
+                      "_targetGoalId": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp"
+                      }
+                    }
+                  }
+                ]
+              },
+              "configVarInput": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetDurationSinceTimestamp, Assembly-CSharp",
+                "_timestamp": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMemoryUlongValue, Assembly-CSharp",
+                  "memoryType": 0,
+                  "memoryKey": 15419,
+                  "callerConfigId": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                  }
+                }
+              }
+            },
+            {
+              "$type": "miHoYo.HYG.ConsiderationLogistic, Assembly-CSharp",
+              "curveM": 10.0,
+              "curveK": 10.0,
+              "curveB": 1E-07,
+              "curveC": -7.0,
+              "description": "内驱力",
+              "conditions": {
+                "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]][], Assembly-CSharp",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckGoalStateIsActive, Assembly-CSharp",
+                    "_callerGUID": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                    },
+                    "_targetGoalId": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp"
+                    }
+                  }
+                ]
+              },
+              "configVarInput": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarMultiplyFloat, Assembly-CSharp",
+                "_lhs": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloat, Assembly-CSharp",
+                  "_value": 1.2E-05
+                },
+                "_rhs": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarMultiplyFloat, Assembly-CSharp",
+                  "_lhs": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetNpcInnerDrive, Assembly-CSharp",
+                    "configId": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                    },
+                    "key": "behaviour009"
+                  },
+                  "_rhs": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetDurationSinceTimestamp, Assembly-CSharp",
+                    "_timestamp": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMemoryUlongValue, Assembly-CSharp",
+                      "memoryType": 0,
+                      "memoryKey": 15419,
+                      "callerConfigId": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "directSetPosWhenEnter": false,
+        "initPosRule": null,
+        "initSceneRule": null,
+        "startTimeStampKey": "15419",
+        "endTimeStampKey": "15419"
+      },
+      {
+        "$type": "GoalData, Assembly-CSharp",
+        "goalId": 200000027,
+        "goalName": "吃吃喝喝",
+        "enabled": true,
+        "goalType": 0,
+        "behaviourTreeInitializer": {
+          "$type": "miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": []
+          },
+          "_assetGuid": "7ac2d0ec341923c4c809b0b0beb294fa",
+          "_assetPath": "Data/AI/BehaviourTree/BTv3_RefreshNew/BTG/BTGraph_EatAndDrink_v3.json"
+        },
+        "useSequencerBT": false,
+        "sequencerBTInitializers": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "stateScriptInitializer": {
+          "$type": "miHoYo.HYG.Statescript.StatescriptInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": []
+          },
+          "scriptnew": 0
+        },
+        "predicates": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]], Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckSceneBySceneType, Assembly-CSharp",
+              "_callerGUID": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+              },
+              "_isEqual": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedBool, Assembly-CSharp",
+                "_value": true
+              },
+              "_sceneType": 0
+            },
+            {
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckTaskState_IgnoreConfigVar, Assembly-CSharp",
+              "_taskID": 4019,
+              "_targetState": 2
+            }
+          ]
+        },
+        "considerations": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Consideration, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.ConsiderationConstant, Assembly-CSharp",
+              "description": "偏好值",
+              "conditions": {
+                "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]][], Assembly-CSharp",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+                    "_operand": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckGoalStateIsActive, Assembly-CSharp",
+                      "_callerGUID": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                      },
+                      "_targetGoalId": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp"
+                      }
+                    }
+                  }
+                ]
+              },
+              "configVarInput": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetNpcPreference, Assembly-CSharp",
+                "configId": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                },
+                "key": "behaviour010"
+              }
+            },
+            {
+              "$type": "miHoYo.HYG.ConsiderationLinear, Assembly-CSharp",
+              "curveM": 1.2E-08,
+              "curveB": 0.0,
+              "curveC": 0.0,
+              "description": "兴趣恢复",
+              "conditions": {
+                "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]][], Assembly-CSharp",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+                    "_operand": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckGoalStateIsActive, Assembly-CSharp",
+                      "_callerGUID": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                      },
+                      "_targetGoalId": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp"
+                      }
+                    }
+                  }
+                ]
+              },
+              "configVarInput": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetDurationSinceTimestamp, Assembly-CSharp",
+                "_timestamp": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMemoryUlongValue, Assembly-CSharp",
+                  "memoryType": 0,
+                  "memoryKey": 15424,
+                  "callerConfigId": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                  }
+                }
+              }
+            },
+            {
+              "$type": "miHoYo.HYG.ConsiderationLogistic, Assembly-CSharp",
+              "curveM": 10.0,
+              "curveK": 10.0,
+              "curveB": 1E-07,
+              "curveC": -7.0,
+              "description": "内驱力",
+              "conditions": {
+                "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]][], Assembly-CSharp",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckGoalStateIsActive, Assembly-CSharp",
+                    "_callerGUID": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                    },
+                    "_targetGoalId": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp"
+                    }
+                  }
+                ]
+              },
+              "configVarInput": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarMultiplyFloat, Assembly-CSharp",
+                "_lhs": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloat, Assembly-CSharp",
+                  "_value": 1.2E-05
+                },
+                "_rhs": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarMultiplyFloat, Assembly-CSharp",
+                  "_lhs": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetNpcInnerDrive, Assembly-CSharp",
+                    "configId": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                    },
+                    "key": "behaviour010"
+                  },
+                  "_rhs": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetDurationSinceTimestamp, Assembly-CSharp",
+                    "_timestamp": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMemoryUlongValue, Assembly-CSharp",
+                      "memoryType": 0,
+                      "memoryKey": 15424,
+                      "callerConfigId": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "directSetPosWhenEnter": false,
+        "initPosRule": null,
+        "initSceneRule": null,
+        "startTimeStampKey": "15424",
+        "endTimeStampKey": "15424"
+      },
+      {
+        "$type": "GoalData, Assembly-CSharp",
+        "goalId": 200000028,
+        "goalName": "浇花",
+        "enabled": true,
+        "goalType": 0,
+        "behaviourTreeInitializer": {
+          "$type": "miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": []
+          },
+          "_assetGuid": "977f8b7e4fc476d4482fab6fab4c58f8",
+          "_assetPath": "Data/AI/BehaviourTree/BTv3_RefreshNew/BTG/BTGraph_Watering_v3.json"
+        },
+        "useSequencerBT": false,
+        "sequencerBTInitializers": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "stateScriptInitializer": {
+          "$type": "miHoYo.HYG.Statescript.StatescriptInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": []
+          },
+          "scriptnew": 0
+        },
+        "predicates": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]], Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckSceneBySceneType, Assembly-CSharp",
+              "_callerGUID": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+              },
+              "_isEqual": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedBool, Assembly-CSharp",
+                "_value": true
+              },
+              "_sceneType": 0
+            },
+            {
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarPlayerHasItem, Assembly-CSharp",
+              "_itemConfigId": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.UInt32, mscorlib]], Assembly-CSharp",
+                "_value": 20012
+              }
+            }
+          ]
+        },
+        "considerations": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Consideration, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.ConsiderationConstant, Assembly-CSharp",
+              "description": "偏好值",
+              "conditions": {
+                "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]][], Assembly-CSharp",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+                    "_operand": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckGoalStateIsActive, Assembly-CSharp",
+                      "_callerGUID": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                      },
+                      "_targetGoalId": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp"
+                      }
+                    }
+                  }
+                ]
+              },
+              "configVarInput": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetNpcPreference, Assembly-CSharp",
+                "configId": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                },
+                "key": "behaviour011"
+              }
+            },
+            {
+              "$type": "miHoYo.HYG.ConsiderationLinear, Assembly-CSharp",
+              "curveM": 1.2E-08,
+              "curveB": 0.0,
+              "curveC": 0.0,
+              "description": "兴趣恢复",
+              "conditions": {
+                "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]][], Assembly-CSharp",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+                    "_operand": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckGoalStateIsActive, Assembly-CSharp",
+                      "_callerGUID": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                      },
+                      "_targetGoalId": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp"
+                      }
+                    }
+                  }
+                ]
+              },
+              "configVarInput": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetDurationSinceTimestamp, Assembly-CSharp",
+                "_timestamp": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMemoryUlongValue, Assembly-CSharp",
+                  "memoryType": 0,
+                  "memoryKey": 15425,
+                  "callerConfigId": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                  }
+                }
+              }
+            },
+            {
+              "$type": "miHoYo.HYG.ConsiderationLogistic, Assembly-CSharp",
+              "curveM": 10.0,
+              "curveK": 10.0,
+              "curveB": 1E-07,
+              "curveC": -7.0,
+              "description": "内驱力",
+              "conditions": {
+                "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]][], Assembly-CSharp",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckGoalStateIsActive, Assembly-CSharp",
+                    "_callerGUID": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                    },
+                    "_targetGoalId": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp"
+                    }
+                  }
+                ]
+              },
+              "configVarInput": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarMultiplyFloat, Assembly-CSharp",
+                "_lhs": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloat, Assembly-CSharp",
+                  "_value": 1.2E-05
+                },
+                "_rhs": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarMultiplyFloat, Assembly-CSharp",
+                  "_lhs": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetNpcInnerDrive, Assembly-CSharp",
+                    "configId": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                    },
+                    "key": "behaviour011"
+                  },
+                  "_rhs": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetDurationSinceTimestamp, Assembly-CSharp",
+                    "_timestamp": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMemoryUlongValue, Assembly-CSharp",
+                      "memoryType": 0,
+                      "memoryKey": 15425,
+                      "callerConfigId": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "directSetPosWhenEnter": false,
+        "initPosRule": null,
+        "initSceneRule": null,
+        "startTimeStampKey": "15425",
+        "endTimeStampKey": "15425"
+      },
+      {
+        "$type": "GoalData, Assembly-CSharp",
+        "goalId": 200000031,
+        "goalName": "观察（自然系） ",
+        "enabled": true,
+        "goalType": 0,
+        "behaviourTreeInitializer": {
+          "$type": "miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": []
+          },
+          "_assetGuid": "818e19b0080d7054ab9573b9a6fded2d",
+          "_assetPath": "Data/AI/BehaviourTree/BTv3_RefreshNew/BTG/BTGraph_ObserveEnvironment_v3.json"
+        },
+        "useSequencerBT": false,
+        "sequencerBTInitializers": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "stateScriptInitializer": {
+          "$type": "miHoYo.HYG.Statescript.StatescriptInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": []
+          },
+          "scriptnew": 0
+        },
+        "predicates": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]], Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckSceneBySceneType, Assembly-CSharp",
+              "_callerGUID": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+              },
+              "_isEqual": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedBool, Assembly-CSharp",
+                "_value": true
+              },
+              "_sceneType": 0
+            }
+          ]
+        },
+        "considerations": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Consideration, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.ConsiderationConstant, Assembly-CSharp",
+              "description": "偏好值",
+              "conditions": {
+                "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]][], Assembly-CSharp",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+                    "_operand": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckGoalStateIsActive, Assembly-CSharp",
+                      "_callerGUID": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                      },
+                      "_targetGoalId": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp"
+                      }
+                    }
+                  }
+                ]
+              },
+              "configVarInput": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetNpcPreference, Assembly-CSharp",
+                "configId": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                },
+                "key": "behaviour016"
+              }
+            },
+            {
+              "$type": "miHoYo.HYG.ConsiderationLinear, Assembly-CSharp",
+              "curveM": 1.2E-08,
+              "curveB": 0.0,
+              "curveC": 0.0,
+              "description": "兴趣恢复",
+              "conditions": {
+                "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]][], Assembly-CSharp",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+                    "_operand": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckGoalStateIsActive, Assembly-CSharp",
+                      "_callerGUID": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                      },
+                      "_targetGoalId": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp"
+                      }
+                    }
+                  }
+                ]
+              },
+              "configVarInput": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetDurationSinceTimestamp, Assembly-CSharp",
+                "_timestamp": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMemoryUlongValue, Assembly-CSharp",
+                  "memoryType": 0,
+                  "memoryKey": 15428,
+                  "callerConfigId": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                  }
+                }
+              }
+            },
+            {
+              "$type": "miHoYo.HYG.ConsiderationLogistic, Assembly-CSharp",
+              "curveM": 10.0,
+              "curveK": 10.0,
+              "curveB": 1E-07,
+              "curveC": -7.0,
+              "description": "内驱力",
+              "conditions": {
+                "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]][], Assembly-CSharp",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckGoalStateIsActive, Assembly-CSharp",
+                    "_callerGUID": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                    },
+                    "_targetGoalId": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp"
+                    }
+                  }
+                ]
+              },
+              "configVarInput": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarMultiplyFloat, Assembly-CSharp",
+                "_lhs": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloat, Assembly-CSharp",
+                  "_value": 1.2E-05
+                },
+                "_rhs": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarMultiplyFloat, Assembly-CSharp",
+                  "_lhs": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetNpcInnerDrive, Assembly-CSharp",
+                    "configId": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                    },
+                    "key": "behaviour016"
+                  },
+                  "_rhs": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetDurationSinceTimestamp, Assembly-CSharp",
+                    "_timestamp": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMemoryUlongValue, Assembly-CSharp",
+                      "memoryType": 0,
+                      "memoryKey": 15428,
+                      "callerConfigId": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "directSetPosWhenEnter": false,
+        "initPosRule": null,
+        "initSceneRule": null,
+        "startTimeStampKey": "15428",
+        "endTimeStampKey": "15428"
+      },
+      {
+        "$type": "GoalData, Assembly-CSharp",
+        "goalId": 200000032,
+        "goalName": "观察（家具系） ",
+        "enabled": true,
+        "goalType": 0,
+        "behaviourTreeInitializer": {
+          "$type": "miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": []
+          },
+          "_assetGuid": "791d20e06ce5dab40a6c3a7cfd7a251b",
+          "_assetPath": "Data/AI/BehaviourTree/BTv3_RefreshNew/BTG/BTGraph_ObserveFurniture_v3.json"
+        },
+        "useSequencerBT": false,
+        "sequencerBTInitializers": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "stateScriptInitializer": {
+          "$type": "miHoYo.HYG.Statescript.StatescriptInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": []
+          },
+          "scriptnew": 0
+        },
+        "predicates": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]], Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckSceneBySceneType, Assembly-CSharp",
+              "_callerGUID": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+              },
+              "_isEqual": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedBool, Assembly-CSharp",
+                "_value": true
+              },
+              "_sceneType": 0
+            }
+          ]
+        },
+        "considerations": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Consideration, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.ConsiderationConstant, Assembly-CSharp",
+              "description": "偏好值",
+              "conditions": {
+                "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]][], Assembly-CSharp",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+                    "_operand": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckGoalStateIsActive, Assembly-CSharp",
+                      "_callerGUID": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                      },
+                      "_targetGoalId": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp"
+                      }
+                    }
+                  }
+                ]
+              },
+              "configVarInput": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetNpcPreference, Assembly-CSharp",
+                "configId": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                },
+                "key": "behaviour017"
+              }
+            },
+            {
+              "$type": "miHoYo.HYG.ConsiderationLinear, Assembly-CSharp",
+              "curveM": 1.2E-08,
+              "curveB": 0.0,
+              "curveC": 0.0,
+              "description": "兴趣恢复",
+              "conditions": {
+                "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]][], Assembly-CSharp",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+                    "_operand": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckGoalStateIsActive, Assembly-CSharp",
+                      "_callerGUID": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                      },
+                      "_targetGoalId": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp"
+                      }
+                    }
+                  }
+                ]
+              },
+              "configVarInput": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetDurationSinceTimestamp, Assembly-CSharp",
+                "_timestamp": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMemoryUlongValue, Assembly-CSharp",
+                  "memoryType": 0,
+                  "memoryKey": 15429,
+                  "callerConfigId": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                  }
+                }
+              }
+            },
+            {
+              "$type": "miHoYo.HYG.ConsiderationLogistic, Assembly-CSharp",
+              "curveM": 10.0,
+              "curveK": 10.0,
+              "curveB": 1E-07,
+              "curveC": -7.0,
+              "description": "内驱力",
+              "conditions": {
+                "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]][], Assembly-CSharp",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckGoalStateIsActive, Assembly-CSharp",
+                    "_callerGUID": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                    },
+                    "_targetGoalId": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp"
+                    }
+                  }
+                ]
+              },
+              "configVarInput": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarMultiplyFloat, Assembly-CSharp",
+                "_lhs": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloat, Assembly-CSharp",
+                  "_value": 1.2E-05
+                },
+                "_rhs": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarMultiplyFloat, Assembly-CSharp",
+                  "_lhs": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetNpcInnerDrive, Assembly-CSharp",
+                    "configId": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                    },
+                    "key": "behaviour017"
+                  },
+                  "_rhs": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetDurationSinceTimestamp, Assembly-CSharp",
+                    "_timestamp": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMemoryUlongValue, Assembly-CSharp",
+                      "memoryType": 0,
+                      "memoryKey": 15429,
+                      "callerConfigId": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "directSetPosWhenEnter": false,
+        "initPosRule": null,
+        "initSceneRule": null,
+        "startTimeStampKey": "15429",
+        "endTimeStampKey": "15429"
+      },
+      {
+        "$type": "GoalData, Assembly-CSharp",
+        "goalId": 200000033,
+        "goalName": "拍照（自然系） （合进其他Goal了",
+        "enabled": false,
+        "goalType": 0,
+        "behaviourTreeInitializer": {
+          "$type": "miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": [
+              {
+                "$type": "miHoYo.HYG.DataSharing.BbVarSetter, Assembly-CSharp",
+                "key": {
+                  "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                  "keyName": "instance-602623fe-fab9-4931-b7e8-2bfc9d0a4556"
+                },
+                "value": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedInt32, Assembly-CSharp",
+                  "_value": 110
+                }
+              }
+            ]
+          },
+          "_assetGuid": "fddd166ba1e332b4185afedea8414ff2",
+          "_assetPath": "Data/AI/BehaviourTree/Test/BTGraph_TempGoal.json"
+        },
+        "useSequencerBT": false,
+        "sequencerBTInitializers": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "stateScriptInitializer": {
+          "$type": "miHoYo.HYG.Statescript.StatescriptInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": []
+          },
+          "scriptnew": 0
+        },
+        "predicates": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]], Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckSceneBySceneType, Assembly-CSharp",
+              "_callerGUID": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+              },
+              "_isEqual": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedBool, Assembly-CSharp",
+                "_value": true
+              },
+              "_sceneType": 0
+            }
+          ]
+        },
+        "considerations": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Consideration, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.ConsiderationConstant, Assembly-CSharp",
+              "description": "偏好值",
+              "conditions": {
+                "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]][], Assembly-CSharp",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+                    "_operand": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckGoalStateIsActive, Assembly-CSharp",
+                      "_callerGUID": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                      },
+                      "_targetGoalId": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp"
+                      }
+                    }
+                  }
+                ]
+              },
+              "configVarInput": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetNpcPreference, Assembly-CSharp",
+                "configId": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                },
+                "key": "behaviour018"
+              }
+            },
+            {
+              "$type": "miHoYo.HYG.ConsiderationLinear, Assembly-CSharp",
+              "curveM": 1.2E-08,
+              "curveB": 0.0,
+              "curveC": 0.0,
+              "description": "兴趣恢复",
+              "conditions": {
+                "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]][], Assembly-CSharp",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+                    "_operand": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckGoalStateIsActive, Assembly-CSharp",
+                      "_callerGUID": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                      },
+                      "_targetGoalId": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp"
+                      }
+                    }
+                  }
+                ]
+              },
+              "configVarInput": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetDurationSinceTimestamp, Assembly-CSharp",
+                "_timestamp": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMemoryUlongValue, Assembly-CSharp",
+                  "memoryType": 0,
+                  "memoryKey": 15430,
+                  "callerConfigId": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                  }
+                }
+              }
+            },
+            {
+              "$type": "miHoYo.HYG.ConsiderationLogistic, Assembly-CSharp",
+              "curveM": 10.0,
+              "curveK": 10.0,
+              "curveB": 1E-07,
+              "curveC": -7.0,
+              "description": "内驱力",
+              "conditions": {
+                "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]][], Assembly-CSharp",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckGoalStateIsActive, Assembly-CSharp",
+                    "_callerGUID": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                    },
+                    "_targetGoalId": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp"
+                    }
+                  }
+                ]
+              },
+              "configVarInput": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarMultiplyFloat, Assembly-CSharp",
+                "_lhs": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloat, Assembly-CSharp",
+                  "_value": 1.2E-05
+                },
+                "_rhs": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarMultiplyFloat, Assembly-CSharp",
+                  "_lhs": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetNpcInnerDrive, Assembly-CSharp",
+                    "configId": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                    },
+                    "key": "behaviour018"
+                  },
+                  "_rhs": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetDurationSinceTimestamp, Assembly-CSharp",
+                    "_timestamp": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMemoryUlongValue, Assembly-CSharp",
+                      "memoryType": 0,
+                      "memoryKey": 15430,
+                      "callerConfigId": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "directSetPosWhenEnter": false,
+        "initPosRule": null,
+        "initSceneRule": null,
+        "startTimeStampKey": "15430",
+        "endTimeStampKey": "15430"
+      },
+      {
+        "$type": "GoalData, Assembly-CSharp",
+        "goalId": 200000034,
+        "goalName": "看风景",
+        "enabled": true,
+        "goalType": 0,
+        "behaviourTreeInitializer": {
+          "$type": "miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": []
+          },
+          "_assetGuid": "1e578e78d95c4e408c1faf307e293d08",
+          "_assetPath": "Data/AI/BehaviourTree/BTv3_RefreshNew/BTG/BTGraph_EnjoyTheScenery_v3.json"
+        },
+        "useSequencerBT": false,
+        "sequencerBTInitializers": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "stateScriptInitializer": {
+          "$type": "miHoYo.HYG.Statescript.StatescriptInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": []
+          },
+          "scriptnew": 0
+        },
+        "predicates": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]], Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckSceneBySceneType, Assembly-CSharp",
+              "_callerGUID": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+              },
+              "_isEqual": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedBool, Assembly-CSharp",
+                "_value": true
+              },
+              "_sceneType": 0
+            }
+          ]
+        },
+        "considerations": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Consideration, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.ConsiderationConstant, Assembly-CSharp",
+              "description": "偏好值",
+              "conditions": {
+                "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]][], Assembly-CSharp",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+                    "_operand": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckGoalStateIsActive, Assembly-CSharp",
+                      "_callerGUID": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                      },
+                      "_targetGoalId": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp"
+                      }
+                    }
+                  }
+                ]
+              },
+              "configVarInput": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetNpcPreference, Assembly-CSharp",
+                "configId": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                },
+                "key": "behaviour020"
+              }
+            },
+            {
+              "$type": "miHoYo.HYG.ConsiderationLinear, Assembly-CSharp",
+              "curveM": 1.2E-08,
+              "curveB": 0.0,
+              "curveC": 0.0,
+              "description": "兴趣恢复",
+              "conditions": {
+                "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]][], Assembly-CSharp",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+                    "_operand": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckGoalStateIsActive, Assembly-CSharp",
+                      "_callerGUID": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                      },
+                      "_targetGoalId": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp"
+                      }
+                    }
+                  }
+                ]
+              },
+              "configVarInput": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetDurationSinceTimestamp, Assembly-CSharp",
+                "_timestamp": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMemoryUlongValue, Assembly-CSharp",
+                  "memoryType": 0,
+                  "memoryKey": 15431,
+                  "callerConfigId": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                  }
+                }
+              }
+            },
+            {
+              "$type": "miHoYo.HYG.ConsiderationLogistic, Assembly-CSharp",
+              "curveM": 10.0,
+              "curveK": 10.0,
+              "curveB": 1E-07,
+              "curveC": -7.0,
+              "description": "内驱力",
+              "conditions": {
+                "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]][], Assembly-CSharp",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckGoalStateIsActive, Assembly-CSharp",
+                    "_callerGUID": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                    },
+                    "_targetGoalId": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp"
+                    }
+                  }
+                ]
+              },
+              "configVarInput": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarMultiplyFloat, Assembly-CSharp",
+                "_lhs": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloat, Assembly-CSharp",
+                  "_value": 1.2E-05
+                },
+                "_rhs": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarMultiplyFloat, Assembly-CSharp",
+                  "_lhs": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetNpcInnerDrive, Assembly-CSharp",
+                    "configId": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                    },
+                    "key": "behaviour020"
+                  },
+                  "_rhs": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetDurationSinceTimestamp, Assembly-CSharp",
+                    "_timestamp": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMemoryUlongValue, Assembly-CSharp",
+                      "memoryType": 0,
+                      "memoryKey": 15431,
+                      "callerConfigId": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "directSetPosWhenEnter": false,
+        "initPosRule": null,
+        "initSceneRule": null,
+        "startTimeStampKey": "15431",
+        "endTimeStampKey": "15431"
+      },
+      {
+        "$type": "GoalData, Assembly-CSharp",
+        "goalId": 200000035,
+        "goalName": "看电视",
+        "enabled": true,
+        "goalType": 0,
+        "behaviourTreeInitializer": {
+          "$type": "miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": []
+          },
+          "_assetGuid": "1e14cf9551a842e4a16c1ad4a7248aab",
+          "_assetPath": "Data/AI/BehaviourTree/BTv3_RefreshNew/BTG/BTGraph_WatchTV_v3.json"
+        },
+        "useSequencerBT": false,
+        "sequencerBTInitializers": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "stateScriptInitializer": {
+          "$type": "miHoYo.HYG.Statescript.StatescriptInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": []
+          },
+          "scriptnew": 0
+        },
+        "predicates": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]], Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckSceneBySceneType, Assembly-CSharp",
+              "_callerGUID": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+              },
+              "_isEqual": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedBool, Assembly-CSharp",
+                "_value": true
+              },
+              "_sceneType": 0
+            },
+            {
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckTaskState_IgnoreConfigVar, Assembly-CSharp",
+              "_taskID": 4019,
+              "_targetState": 2
+            }
+          ]
+        },
+        "considerations": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Consideration, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.ConsiderationConstant, Assembly-CSharp",
+              "description": "偏好值",
+              "conditions": {
+                "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]][], Assembly-CSharp",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+                    "_operand": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckGoalStateIsActive, Assembly-CSharp",
+                      "_callerGUID": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                      },
+                      "_targetGoalId": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp"
+                      }
+                    }
+                  }
+                ]
+              },
+              "configVarInput": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetNpcPreference, Assembly-CSharp",
+                "configId": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                },
+                "key": "behaviour021"
+              }
+            },
+            {
+              "$type": "miHoYo.HYG.ConsiderationLinear, Assembly-CSharp",
+              "curveM": 1.2E-08,
+              "curveB": 0.0,
+              "curveC": 0.0,
+              "description": "兴趣恢复",
+              "conditions": {
+                "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]][], Assembly-CSharp",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+                    "_operand": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckGoalStateIsActive, Assembly-CSharp",
+                      "_callerGUID": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                      },
+                      "_targetGoalId": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp"
+                      }
+                    }
+                  }
+                ]
+              },
+              "configVarInput": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetDurationSinceTimestamp, Assembly-CSharp",
+                "_timestamp": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMemoryUlongValue, Assembly-CSharp",
+                  "memoryType": 0,
+                  "memoryKey": 15432,
+                  "callerConfigId": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                  }
+                }
+              }
+            },
+            {
+              "$type": "miHoYo.HYG.ConsiderationLogistic, Assembly-CSharp",
+              "curveM": 10.0,
+              "curveK": 10.0,
+              "curveB": 1E-07,
+              "curveC": -7.0,
+              "description": "内驱力",
+              "conditions": {
+                "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]][], Assembly-CSharp",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckGoalStateIsActive, Assembly-CSharp",
+                    "_callerGUID": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                    },
+                    "_targetGoalId": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp"
+                    }
+                  }
+                ]
+              },
+              "configVarInput": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarMultiplyFloat, Assembly-CSharp",
+                "_lhs": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloat, Assembly-CSharp",
+                  "_value": 1.2E-05
+                },
+                "_rhs": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarMultiplyFloat, Assembly-CSharp",
+                  "_lhs": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetNpcInnerDrive, Assembly-CSharp",
+                    "configId": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                    },
+                    "key": "behaviour021"
+                  },
+                  "_rhs": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetDurationSinceTimestamp, Assembly-CSharp",
+                    "_timestamp": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMemoryUlongValue, Assembly-CSharp",
+                      "memoryType": 0,
+                      "memoryKey": 15432,
+                      "callerConfigId": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "directSetPosWhenEnter": false,
+        "initPosRule": null,
+        "initSceneRule": null,
+        "startTimeStampKey": "15432",
+        "endTimeStampKey": "15432"
+      },
+      {
+        "$type": "GoalData, Assembly-CSharp",
+        "goalId": 200000036,
+        "goalName": "坐地上休息 ",
+        "enabled": true,
+        "goalType": 0,
+        "behaviourTreeInitializer": {
+          "$type": "miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": []
+          },
+          "_assetGuid": "58ea8f08d4fd46c2916b3a57aa7ee4f5",
+          "_assetPath": "Data/AI/BehaviourTree/BTv3_RefreshNew/BTG/BTGraph_SitRelax_v3.json"
+        },
+        "useSequencerBT": false,
+        "sequencerBTInitializers": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "stateScriptInitializer": {
+          "$type": "miHoYo.HYG.Statescript.StatescriptInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": []
+          },
+          "scriptnew": 0
+        },
+        "predicates": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]], Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckSceneBySceneType, Assembly-CSharp",
+              "_callerGUID": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+              },
+              "_isEqual": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedBool, Assembly-CSharp",
+                "_value": true
+              },
+              "_sceneType": 0
+            }
+          ]
+        },
+        "considerations": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Consideration, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.ConsiderationConstant, Assembly-CSharp",
+              "description": "偏好值",
+              "conditions": {
+                "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]][], Assembly-CSharp",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+                    "_operand": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckGoalStateIsActive, Assembly-CSharp",
+                      "_callerGUID": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                      },
+                      "_targetGoalId": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp"
+                      }
+                    }
+                  }
+                ]
+              },
+              "configVarInput": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetNpcPreference, Assembly-CSharp",
+                "configId": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                },
+                "key": "behaviour022"
+              }
+            },
+            {
+              "$type": "miHoYo.HYG.ConsiderationLinear, Assembly-CSharp",
+              "curveM": 1.2E-08,
+              "curveB": 0.0,
+              "curveC": 0.0,
+              "description": "兴趣恢复",
+              "conditions": {
+                "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]][], Assembly-CSharp",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+                    "_operand": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckGoalStateIsActive, Assembly-CSharp",
+                      "_callerGUID": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                      },
+                      "_targetGoalId": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp"
+                      }
+                    }
+                  }
+                ]
+              },
+              "configVarInput": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetDurationSinceTimestamp, Assembly-CSharp",
+                "_timestamp": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMemoryUlongValue, Assembly-CSharp",
+                  "memoryType": 0,
+                  "memoryKey": 15433,
+                  "callerConfigId": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                  }
+                }
+              }
+            },
+            {
+              "$type": "miHoYo.HYG.ConsiderationLogistic, Assembly-CSharp",
+              "curveM": 10.0,
+              "curveK": 10.0,
+              "curveB": 1E-07,
+              "curveC": -7.0,
+              "description": "内驱力",
+              "conditions": {
+                "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]][], Assembly-CSharp",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckGoalStateIsActive, Assembly-CSharp",
+                    "_callerGUID": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                    },
+                    "_targetGoalId": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp"
+                    }
+                  }
+                ]
+              },
+              "configVarInput": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarMultiplyFloat, Assembly-CSharp",
+                "_lhs": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloat, Assembly-CSharp",
+                  "_value": 1.2E-05
+                },
+                "_rhs": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarMultiplyFloat, Assembly-CSharp",
+                  "_lhs": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetNpcInnerDrive, Assembly-CSharp",
+                    "configId": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                    },
+                    "key": "behaviour022"
+                  },
+                  "_rhs": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetDurationSinceTimestamp, Assembly-CSharp",
+                    "_timestamp": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMemoryUlongValue, Assembly-CSharp",
+                      "memoryType": 0,
+                      "memoryKey": 15433,
+                      "callerConfigId": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "directSetPosWhenEnter": false,
+        "initPosRule": null,
+        "initSceneRule": null,
+        "startTimeStampKey": "15433",
+        "endTimeStampKey": "15433"
+      },
+      {
+        "$type": "GoalData, Assembly-CSharp",
+        "goalId": 200000037,
+        "goalName": "打瞌睡（暂关",
+        "enabled": false,
+        "goalType": 0,
+        "behaviourTreeInitializer": {
+          "$type": "miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": [
+              {
+                "$type": "miHoYo.HYG.DataSharing.BbVarSetter, Assembly-CSharp",
+                "key": {
+                  "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                  "keyName": "instance-602623fe-fab9-4931-b7e8-2bfc9d0a4556"
+                },
+                "value": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedInt32, Assembly-CSharp",
+                  "_value": 99
+                }
+              }
+            ]
+          },
+          "_assetGuid": "fddd166ba1e332b4185afedea8414ff2",
+          "_assetPath": "Data/AI/BehaviourTree/Test/BTGraph_TempGoal.json"
+        },
+        "useSequencerBT": false,
+        "sequencerBTInitializers": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "stateScriptInitializer": {
+          "$type": "miHoYo.HYG.Statescript.StatescriptInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": []
+          },
+          "scriptnew": 0
+        },
+        "predicates": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]], Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckSceneBySceneType, Assembly-CSharp",
+              "_callerGUID": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+              },
+              "_isEqual": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedBool, Assembly-CSharp",
+                "_value": true
+              },
+              "_sceneType": 0
+            }
+          ]
+        },
+        "considerations": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Consideration, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.ConsiderationConstant, Assembly-CSharp",
+              "description": "偏好值",
+              "conditions": {
+                "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]][], Assembly-CSharp",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+                    "_operand": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckGoalStateIsActive, Assembly-CSharp",
+                      "_callerGUID": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                      },
+                      "_targetGoalId": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp"
+                      }
+                    }
+                  }
+                ]
+              },
+              "configVarInput": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetNpcPreference, Assembly-CSharp",
+                "configId": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                },
+                "key": "behaviourao"
+              }
+            },
+            {
+              "$type": "miHoYo.HYG.ConsiderationLinear, Assembly-CSharp",
+              "curveM": 1.2E-08,
+              "curveB": 0.0,
+              "curveC": 0.0,
+              "description": "兴趣恢复",
+              "conditions": {
+                "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]][], Assembly-CSharp",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+                    "_operand": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckGoalStateIsActive, Assembly-CSharp",
+                      "_callerGUID": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                      },
+                      "_targetGoalId": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp"
+                      }
+                    }
+                  }
+                ]
+              },
+              "configVarInput": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetDurationSinceTimestamp, Assembly-CSharp",
+                "_timestamp": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMemoryUlongValue, Assembly-CSharp",
+                  "memoryType": 0,
+                  "memoryKey": 15437,
+                  "callerConfigId": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                  }
+                }
+              }
+            },
+            {
+              "$type": "miHoYo.HYG.ConsiderationLogistic, Assembly-CSharp",
+              "curveM": 10.0,
+              "curveK": 10.0,
+              "curveB": 1E-07,
+              "curveC": -7.0,
+              "description": "内驱力",
+              "conditions": {
+                "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]][], Assembly-CSharp",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckGoalStateIsActive, Assembly-CSharp",
+                    "_callerGUID": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                    },
+                    "_targetGoalId": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp"
+                    }
+                  }
+                ]
+              },
+              "configVarInput": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarMultiplyFloat, Assembly-CSharp",
+                "_lhs": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloat, Assembly-CSharp",
+                  "_value": 1.2E-05
+                },
+                "_rhs": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarMultiplyFloat, Assembly-CSharp",
+                  "_lhs": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetNpcInnerDrive, Assembly-CSharp",
+                    "configId": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                    },
+                    "key": "behaviourao"
+                  },
+                  "_rhs": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetDurationSinceTimestamp, Assembly-CSharp",
+                    "_timestamp": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMemoryUlongValue, Assembly-CSharp",
+                      "memoryType": 0,
+                      "memoryKey": 15437,
+                      "callerConfigId": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "directSetPosWhenEnter": false,
+        "initPosRule": null,
+        "initSceneRule": null,
+        "startTimeStampKey": "15437",
+        "endTimeStampKey": "15437"
+      }
+    ]
+  }
+}

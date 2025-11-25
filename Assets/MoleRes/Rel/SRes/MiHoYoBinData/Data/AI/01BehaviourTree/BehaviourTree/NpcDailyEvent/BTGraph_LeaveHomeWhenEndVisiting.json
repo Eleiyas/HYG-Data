@@ -1,0 +1,300 @@
+{
+  "$type": "miHoYo.HYG.AI.BT.BehaviourTreeGraph, Assembly-CSharp",
+  "redirectData": null,
+  "blackboardConfigs": {
+    "$type": "miHoYo.HYG.DataSharing.BlackboardConfigPicker, Assembly-CSharp",
+    "paraKeys": null,
+    "configs": {
+      "$type": "System.Collections.Generic.List`1[[miHoYo.JsonPicker`1[[miHoYo.HYG.DataSharing.SingleBlackboardConfig, Assembly-CSharp]], Assembly-CSharp]], mscorlib",
+      "$values": [
+        {
+          "$type": "miHoYo.JsonPicker`1[[miHoYo.HYG.DataSharing.SingleBlackboardConfig, Assembly-CSharp]], Assembly-CSharp",
+          "_assetGuid": "91c02740761d06f49909ffb642f55030",
+          "_assetPath": "Data/AI/Blackboard/v2/Navigation/BB_Navigation.json"
+        },
+        {
+          "$type": "miHoYo.JsonPicker`1[[miHoYo.HYG.DataSharing.SingleBlackboardConfig, Assembly-CSharp]], Assembly-CSharp",
+          "_assetGuid": "5b4a2b5ae397ee24885777ebf70787ae",
+          "_assetPath": "Data/AI/Blackboard/v2/Navigation/BB_Transport.json"
+        }
+      ]
+    },
+    "noSharingKeys": null
+  },
+  "NewNodesPlaceholder": {
+    "$type": "miHoYo.HYG.AI.BT.CfgBTBehaviourTreeNode[], Assembly-CSharp",
+    "$values": [
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTSelectorNode, Assembly-CSharp",
+        "_Children": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            1,
+            5
+          ]
+        },
+        "_Services": null,
+        "index": 0,
+        "parentIndex": -1,
+        "Guid": "22df9fb4-6699-4885-bcab-4dc41822d93e"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTSequencerNode, Assembly-CSharp",
+        "_Children": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            2,
+            7,
+            4,
+            8,
+            6
+          ]
+        },
+        "_Services": null,
+        "index": 1,
+        "parentIndex": 0,
+        "Guid": "80a04d89-d54a-4a29-9ce5-e8434e6864e9"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTFindTransportNode, Assembly-CSharp",
+        "mode": 0,
+        "sceneIdVar": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUInt32, Assembly-CSharp",
+          "_value": 2
+        },
+        "sceneInstanceIdVar": null,
+        "npcConfigIdVar": null,
+        "transportGuidKey": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "TransportEntityGUID-5b4a2b5ae397ee24885777ebf70787ae-0"
+        },
+        "transportPointLocationKey": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "TargetPosition-91c02740761d06f49909ffb642f55030-0"
+        },
+        "index": 2,
+        "parentIndex": 1,
+        "Guid": "001e40b1-6458-4f23-b3ce-2d14230c8815"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTRunPQSNode, Assembly-CSharp",
+        "configAsset": {
+          "$type": "miHoYo.JsonPicker`1[[miHoYo.HYG.AI.PQSConfig, Assembly-CSharp]], Assembly-CSharp",
+          "_assetGuid": "a3d5f6328c4c85d41a81f9615dd26a0a",
+          "_assetPath": "Data/AI/PQS/FindAPointToExitHome.json"
+        },
+        "TargetPointKey": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "TargetPosition-91c02740761d06f49909ffb642f55030-0"
+        },
+        "index": 3,
+        "parentIndex": -1,
+        "Guid": "a4867aee-4ca2-473d-a52b-e2960be67f5d"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTSubGraphNode, Assembly-CSharp",
+        "SubGraphInitializer": {
+          "$type": "miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": []
+          },
+          "_assetGuid": "0b3f195876eed1a4bb2af8a644812287",
+          "_assetPath": "Data/AI/BehaviourTree/00General/Navigation/BTAction_WalkToCurrentTarget.json"
+        },
+        "index": 4,
+        "parentIndex": 1,
+        "Guid": "6c62ccb6-5fb0-49cf-9a77-5c293428ef73"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTWaitNode, Assembly-CSharp",
+        "WaitTime": 2.0,
+        "IsRandom": false,
+        "MinWaitTime": 0.0,
+        "MaxWaitTime": 0.0,
+        "index": 5,
+        "parentIndex": 0,
+        "Guid": "e26c37a1-e99c-4bf8-9066-44bbfbe35acf"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTEndNpcVisitingNode, Assembly-CSharp",
+        "index": 6,
+        "parentIndex": 1,
+        "Guid": "46356f57-738c-49fb-bafa-67885ccf5e2d"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTPQSNode, Assembly-CSharp",
+        "queryConfig": {
+          "$type": "miHoYo.JsonPicker`1[[miHoYo.HYG.PointQueryConfig, Assembly-CSharp]], Assembly-CSharp",
+          "_assetGuid": "7b16a140e5cc418da98707db6407f9f8",
+          "_assetPath": "Data/Query/PQS/FindClosePosToExitHome.json"
+        },
+        "key": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "TargetPosition-91c02740761d06f49909ffb642f55030-0"
+        },
+        "bbParams": {
+          "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+          "parameters": []
+        },
+        "_Next": -1,
+        "index": 7,
+        "parentIndex": 1,
+        "Guid": "16679ea6-f4d6-4027-b501-24ee447d8647"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTSubGraphNode, Assembly-CSharp",
+        "SubGraphInitializer": {
+          "$type": "miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": [
+              {
+                "$type": "miHoYo.HYG.DataSharing.BbVarSetter, Assembly-CSharp",
+                "key": {
+                  "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                  "keyName": "TransportEntityGUID-5b4a2b5ae397ee24885777ebf70787ae-0"
+                },
+                "value": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarBlackboardUInt64, Assembly-CSharp",
+                  "_key": {
+                    "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                    "keyName": "TransportEntityGUID-5b4a2b5ae397ee24885777ebf70787ae-0"
+                  },
+                  "targetGuid": null
+                }
+              }
+            ]
+          },
+          "_assetGuid": "d02bd6de533548f4b91cfb97880e0338",
+          "_assetPath": "Data/AI/01BehaviourTree/BehaviourTree/AtomTree/Atom_EnterHouse.json"
+        },
+        "index": 8,
+        "parentIndex": 1,
+        "Guid": "2d66c0a4-87d9-4bab-afcd-de32f5103b76"
+      }
+    ]
+  },
+  "containers": null,
+  "rootIndex": 0,
+  "nodesHash": -207705157,
+  "editorData": {
+    "$type": "miHoYo.HYG.JsonGraph.GraphEditorData, Assembly-CSharp",
+    "danglingIndexes": {
+      "$type": "System.Int32[], mscorlib",
+      "$values": [
+        3
+      ]
+    },
+    "nodeInfos": {
+      "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp]], mscorlib",
+      "$values": [
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 0.0,
+            "y": 557.975037
+          },
+          "guid": "22df9fb4-6699-4885-bcab-4dc41822d93e",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 240.000015,
+            "y": 309.650024
+          },
+          "guid": "80a04d89-d54a-4a29-9ce5-e8434e6864e9",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 480.000031,
+            "y": 0.0
+          },
+          "guid": "001e40b1-6458-4f23-b3ce-2d14230c8815",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 752.0,
+            "y": 192.0
+          },
+          "guid": "a4867aee-4ca2-473d-a52b-e2960be67f5d",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 480.000031,
+            "y": 444.400024
+          },
+          "guid": "6c62ccb6-5fb0-49cf-9a77-5c293428ef73",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 240.000015,
+            "y": 834.9
+          },
+          "guid": "e26c37a1-e99c-4bf8-9066-44bbfbe35acf",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 480.0,
+            "y": 848.0
+          },
+          "guid": "46356f57-738c-49fb-bafa-67885ccf5e2d",
+          "comment": null,
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 480.000031,
+            "y": 191.400009
+          },
+          "guid": "16679ea6-f4d6-4027-b501-24ee447d8647",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 480.0,
+            "y": 592.0
+          },
+          "guid": "2d66c0a4-87d9-4bab-afcd-de32f5103b76",
+          "comment": null,
+          "locked": false,
+          "collapse": false
+        }
+      ]
+    },
+    "comment": null
+  },
+  "path": "Assets/MoleRes/Rel/SRes/Data/AI/01BehaviourTree/BehaviourTree/NpcDailyEvent/BTGraph_LeaveHomeWhenEndVisiting.json",
+  "errors": null,
+  "nodeErrors": {
+    "$type": "System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.String, mscorlib]], mscorlib"
+  }
+}

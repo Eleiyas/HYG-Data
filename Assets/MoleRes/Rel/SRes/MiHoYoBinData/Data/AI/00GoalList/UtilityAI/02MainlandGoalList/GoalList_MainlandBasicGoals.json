@@ -1,0 +1,146 @@
+{
+  "$type": "miHoYo.HYG.AI.UtilityAIConfig, Assembly-CSharp",
+  "description": "请输入对这个GoalList文件的描述",
+  "blackboardConfigs": {
+    "$type": "miHoYo.HYG.DataSharing.BlackboardConfigPicker, Assembly-CSharp",
+    "paraKeys": null,
+    "configs": null,
+    "noSharingKeys": null
+  },
+  "goalList": {
+    "$type": "System.Collections.Generic.List`1[[GoalData, Assembly-CSharp]], mscorlib",
+    "$values": [
+      {
+        "$type": "GoalData, Assembly-CSharp",
+        "goalId": 60,
+        "goalName": "WalkAroundInLongDistance",
+        "enabled": true,
+        "goalType": 0,
+        "behaviourTreeInitializer": {
+          "$type": "miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp",
+          "parameters": {
+            "parameters": []
+          },
+          "_assetGuid": "f8e124a5351f77847a573753c163f42f",
+          "_assetPath": "Data/AI/BehaviourTree/WalkAround/BTGraph_RelaxWalkAroundMainland.json"
+        },
+        "useSequencerBT": false,
+        "sequencerBTInitializers": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "stateScriptInitializer": {
+          "$type": "miHoYo.HYG.Statescript.StatescriptInitializer, Assembly-CSharp",
+          "parameters": {
+            "parameters": []
+          },
+          "scriptnew": 0
+        },
+        "jumpSceneId": null,
+        "predicates": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVarBool, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckNPCIsOnDesignatedScene, Assembly-CSharp",
+              "_callerGUID": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+              },
+              "_sceneType": 0
+            }
+          ]
+        },
+        "considerations": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Consideration, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.ConsiderationConstant, Assembly-CSharp",
+              "description": "基础乘子",
+              "conditions": null,
+              "configVarInput": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloat, Assembly-CSharp",
+                "_value": 99.0
+              }
+            },
+            {
+              "$type": "miHoYo.HYG.ConsiderationCustomCurve, Assembly-CSharp",
+              "curveData": {
+                "$type": "miHoYo.HYG.AI.AnimationCurveData, Assembly-CSharp",
+                "clampMin": 0.0,
+                "clampMax": 7.0,
+                "scoreCoefficient": 1.0,
+                "curve": {
+                  "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
+                  "keys": {
+                    "$type": "UnityEngine.Keyframe[], UnityEngine.CoreModule",
+                    "$values": [
+                      {
+                        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+                        "time": 0.0,
+                        "value": 0.0,
+                        "inTangent": 0.0,
+                        "outTangent": 1.0,
+                        "tangentMode": 0
+                      },
+                      {
+                        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+                        "time": 1.0,
+                        "value": 1.0,
+                        "inTangent": 1.0,
+                        "outTangent": 0.0,
+                        "tangentMode": 0
+                      }
+                    ]
+                  },
+                  "preWrapMode": 8,
+                  "postWrapMode": 8
+                }
+              },
+              "description": "不在执行该行为时对该行为的兴趣逐渐恢复",
+              "conditions": {
+                "$type": "miHoYo.HYG.DataSharing.IConfigVarBool[], Assembly-CSharp",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+                    "_operand": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckGoalStateIsActive, Assembly-CSharp",
+                      "_callerGUID": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                      },
+                      "_targetGoalId": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp",
+                        "_callerGuid": {
+                          "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "configVarInput": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetDurationSinceTimestamp, Assembly-CSharp",
+                "_timestamp": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetGoalEnterExecutionTimestamp, Assembly-CSharp",
+                  "_guid": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                  },
+                  "_goalId": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp",
+                    "_callerGuid": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                    }
+                  },
+                  "_state": 1
+                }
+              }
+            }
+          ]
+        },
+        "directSetPosWhenEnter": false,
+        "initPosRule": null,
+        "initSceneRule": null,
+        "startTimeStampKey": null,
+        "endTimeStampKey": null
+      }
+    ]
+  }
+}

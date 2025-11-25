@@ -1,0 +1,494 @@
+{
+  "$type": "miHoYo.HYG.AI.BT.BehaviourTreeGraph, Assembly-CSharp",
+  "redirectData": null,
+  "blackboardConfigs": {
+    "$type": "miHoYo.HYG.DataSharing.BlackboardConfigPicker, Assembly-CSharp",
+    "paraKeys": {
+      "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.BlackboardSelectKeyParameterSetting, Assembly-CSharp]], mscorlib",
+      "$values": []
+    },
+    "configs": {
+      "$type": "System.Collections.Generic.List`1[[miHoYo.JsonPicker`1[[miHoYo.HYG.DataSharing.SingleBlackboardConfig, Assembly-CSharp]], Assembly-CSharp]], mscorlib",
+      "$values": []
+    },
+    "noSharingKeys": {
+      "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.BlackboardConfigData, Assembly-CSharp]], mscorlib",
+      "$values": [
+        {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardConfigData, Assembly-CSharp",
+          "isStatic": false,
+          "mustNoSharing": true,
+          "showName": "AutoTakeOutDefault",
+          "DataType": 1,
+          "sharingStrategy": 1,
+          "defaultValue": {
+            "$type": "miHoYo.HYG.DataSharing.UnionDefaultBool, Assembly-CSharp",
+            "_value": true
+          },
+          "category": null,
+          "comment": "选了的话，手上没烟花的时候，会掏一个默认ID的烟花。\n否则就返回失败（这个分支暂时没实现）。",
+          "nameHistory": {
+            "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+            "$values": [
+              "instance-d689adf0-6775-4766-ab1f-7b88b4c4e57c"
+            ]
+          }
+        },
+        {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardConfigData, Assembly-CSharp",
+          "isStatic": false,
+          "mustNoSharing": true,
+          "showName": "UseTime",
+          "DataType": 4,
+          "sharingStrategy": 1,
+          "category": null,
+          "comment": "看多久的书",
+          "nameHistory": {
+            "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+            "$values": [
+              "instance-33e4ca4c-67a6-4e1c-b720-31b956202f1f"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "NewNodesPlaceholder": {
+    "$type": "miHoYo.HYG.AI.BT.CfgBTBehaviourTreeNode[], Assembly-CSharp",
+    "$values": [
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTSequencerNode, Assembly-CSharp",
+        "_Children": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            9,
+            1
+          ]
+        },
+        "_Services": null,
+        "index": 0,
+        "parentIndex": 5,
+        "Guid": "77a56391-719d-4e0d-846c-66458ec3d4dc"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTParallelNode, Assembly-CSharp",
+        "FinishMode": 0,
+        "_Children": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            10
+          ]
+        },
+        "_Services": null,
+        "index": 1,
+        "parentIndex": 0,
+        "Guid": "c97b851d-2364-4df0-92c9-fc77055fb9f2"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTSequencerNode, Assembly-CSharp",
+        "_Children": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            13,
+            11
+          ]
+        },
+        "_Services": null,
+        "index": 2,
+        "parentIndex": -1,
+        "Guid": "ce6c140f-6e34-4695-91b2-8af0ac9ee3e8"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTWaitNode, Assembly-CSharp",
+        "WaitTime": 0.0,
+        "IsRandom": true,
+        "MinWaitTime": 4.0,
+        "MaxWaitTime": 9.0,
+        "index": 3,
+        "parentIndex": -1,
+        "Guid": "1c42c745-50a0-438e-bc16-51543530c2b9"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTSubGraphNode, Assembly-CSharp",
+        "SubGraphInitializer": {
+          "$type": "miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": []
+          },
+          "_assetGuid": "bb1caf6898e37e94f92e0942ad97417c",
+          "_assetPath": "Data/AI/BehaviourTree/00General/Tool/BTAction_StartUsePerformItem.json"
+        },
+        "index": 4,
+        "parentIndex": 6,
+        "Guid": "be56868a-7ede-4e8d-84f5-e99f87a1a44b"
+      },
+      {
+        "$type": "Planilo.BT.CfgBTRestartOnResumeNode, Assembly-CSharp",
+        "_Child": 0,
+        "index": 5,
+        "parentIndex": -1,
+        "Guid": "e6627c3f-84cf-4528-8167-c05dc3c39262"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTSimpleIfElseNode, Assembly-CSharp",
+        "_True": 4,
+        "_False": 7,
+        "_condition": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarEqualToUInt32, Assembly-CSharp",
+          "_lhs": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCurrentToolConfigId, Assembly-CSharp",
+            "_entityGuid": {
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+            }
+          },
+          "_rhs": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUInt32, Assembly-CSharp",
+            "_value": 90008
+          }
+        },
+        "_defaultRes": false,
+        "index": 6,
+        "parentIndex": -1,
+        "Guid": "1e685adf-a661-4dbf-8d96-81b171152df7"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTSequencerNode, Assembly-CSharp",
+        "_Children": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            8
+          ]
+        },
+        "_Services": null,
+        "index": 7,
+        "parentIndex": 6,
+        "Guid": "b9ed99b9-26a4-4e84-978f-1fa7d2828c4c"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTSubGraphNode, Assembly-CSharp",
+        "SubGraphInitializer": {
+          "$type": "miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": []
+          },
+          "_assetGuid": "bb1caf6898e37e94f92e0942ad97417c",
+          "_assetPath": "Data/AI/BehaviourTree/00General/Tool/BTAction_StartUsePerformItem.json"
+        },
+        "index": 8,
+        "parentIndex": 7,
+        "Guid": "ebaa79bc-47c6-476c-be60-fe5874767e24"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTSimpleIfElseNode, Assembly-CSharp",
+        "_True": 12,
+        "_False": -1,
+        "_condition": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarBlackboardBool, Assembly-CSharp",
+          "_key": {
+            "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+            "keyName": "instance-d689adf0-6775-4766-ab1f-7b88b4c4e57c"
+          },
+          "targetGuid": null
+        },
+        "_defaultRes": true,
+        "index": 9,
+        "parentIndex": 0,
+        "Guid": "7f2a554b-2f48-4110-ae35-2fad1afdece3"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTSubGraphNode, Assembly-CSharp",
+        "SubGraphInitializer": {
+          "$type": "miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": []
+          },
+          "_assetGuid": "641466b1f0069e54caa6b2fb8772245d",
+          "_assetPath": "Data/AI/01BehaviourTree/BehaviourTree/AtomTree/Atom_UsePerforItem.json"
+        },
+        "index": 10,
+        "parentIndex": 1,
+        "Guid": "f26dc78b-af27-4116-b75d-fecb41f0a05a"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTSubGraphNode, Assembly-CSharp",
+        "SubGraphInitializer": {
+          "$type": "miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": []
+          },
+          "_assetGuid": "dfe2f7a8a56a8b24a901f8eecaf54102",
+          "_assetPath": "Data/AI/01BehaviourTree/BehaviourTree/AtomTree/Atom_UsePerforItemLv2.json"
+        },
+        "index": 11,
+        "parentIndex": 2,
+        "Guid": "6216f96a-8e5d-4a1a-8bb0-1be84ea1b7d9"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTSubGraphNode, Assembly-CSharp",
+        "SubGraphInitializer": {
+          "$type": "miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": [
+              {
+                "$type": "miHoYo.HYG.DataSharing.BbVarSetter, Assembly-CSharp",
+                "key": {
+                  "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                  "keyName": "instance-2027e343-a772-4e97-8f04-46415de2c3e7"
+                },
+                "value": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.UInt32, mscorlib]], Assembly-CSharp",
+                  "_value": 90009
+                }
+              }
+            ]
+          },
+          "_assetGuid": "cfc32077d13924a4fb1de90c0237dcc8",
+          "_assetPath": "Data/AI/01BehaviourTree/BehaviourTree/AtomTree/Atom_SwitchTool.json"
+        },
+        "index": 12,
+        "parentIndex": 9,
+        "Guid": "7ad5c1ce-0ad2-4964-a312-861b97e9000d"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTWaitBBNode, Assembly-CSharp",
+        "WaitTime": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarMultiplyFloat, Assembly-CSharp",
+          "_lhs": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarRandomFloat, Assembly-CSharp",
+            "_minInclusive": {
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
+              "_value": 3.0
+            },
+            "_maxInclusive": {
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
+              "_value": 6.0
+            }
+          },
+          "_rhs": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarBlackboardFloat, Assembly-CSharp",
+            "_key": {
+              "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+              "keyName": "instance-df58653a-b93f-40ee-9b18-5ceb8a0142a4"
+            },
+            "targetGuid": null
+          }
+        },
+        "index": 13,
+        "parentIndex": 2,
+        "Guid": "8f9199bb-9c31-420c-9df1-00d5748607df"
+      }
+    ]
+  },
+  "containers": {
+    "$type": "miHoYo.HYG.AI.BT.CfgBTContainer[], Assembly-CSharp",
+    "$values": [
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTContainer, Assembly-CSharp",
+        "size": {
+          "x": 999.550049,
+          "y": 904.4
+        },
+        "contains": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": []
+        },
+        "index": 14,
+        "parentIndex": -1,
+        "Guid": "80144680-1b62-44ee-a723-497cb0fbc675"
+      }
+    ]
+  },
+  "rootIndex": 5,
+  "nodesHash": 1660374292,
+  "editorData": {
+    "$type": "miHoYo.HYG.JsonGraph.GraphEditorData, Assembly-CSharp",
+    "danglingIndexes": {
+      "$type": "System.Int32[], mscorlib",
+      "$values": [
+        2,
+        3,
+        6,
+        14
+      ]
+    },
+    "nodeInfos": {
+      "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp]], mscorlib",
+      "$values": [
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -432.0,
+            "y": 384.0
+          },
+          "guid": "77a56391-719d-4e0d-846c-66458ec3d4dc",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -112.0,
+            "y": 448.0
+          },
+          "guid": "c97b851d-2364-4df0-92c9-fc77055fb9f2",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 224.0,
+            "y": 656.0
+          },
+          "guid": "ce6c140f-6e34-4695-91b2-8af0ac9ee3e8",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 768.0,
+            "y": 656.0
+          },
+          "guid": "1c42c745-50a0-438e-bc16-51543530c2b9",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 1024.0,
+            "y": 80.0
+          },
+          "guid": "be56868a-7ede-4e8d-84f5-e99f87a1a44b",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -656.0,
+            "y": 448.0
+          },
+          "guid": "e6627c3f-84cf-4528-8167-c05dc3c39262",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 944.0,
+            "y": 368.0
+          },
+          "guid": "1e685adf-a661-4dbf-8d96-81b171152df7",
+          "comment": "如果已经打着伞",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 832.0,
+            "y": 208.0
+          },
+          "guid": "b9ed99b9-26a4-4e84-978f-1fa7d2828c4c",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 1168.0,
+            "y": 384.0
+          },
+          "guid": "ebaa79bc-47c6-476c-be60-fe5874767e24",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 32.0,
+            "y": 96.0
+          },
+          "guid": "7f2a554b-2f48-4110-ae35-2fad1afdece3",
+          "comment": "如果已经打着伞",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 112.0,
+            "y": 400.0
+          },
+          "guid": "f26dc78b-af27-4116-b75d-fecb41f0a05a",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 528.0,
+            "y": 832.0
+          },
+          "guid": "6216f96a-8e5d-4a1a-8bb0-1be84ea1b7d9",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 288.0,
+            "y": 80.0
+          },
+          "guid": "7ad5c1ce-0ad2-4964-a312-861b97e9000d",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 528.0,
+            "y": 592.0
+          },
+          "guid": "8f9199bb-9c31-420c-9df1-00d5748607df",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 384.0,
+            "y": 1104.0
+          },
+          "guid": "80144680-1b62-44ee-a723-497cb0fbc675",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        }
+      ]
+    },
+    "comment": null
+  },
+  "path": "Assets/MoleRes/Rel/SRes/Data/AI/01BehaviourTree/Test/BTAction_UseFirework.json",
+  "errors": null,
+  "nodeErrors": null
+}

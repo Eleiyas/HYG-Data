@@ -1,0 +1,161 @@
+{
+  "$type": "miHoYo.HYG.PointQueryConfig, Assembly-CSharp",
+  "ignoreGadget": {
+    "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+    "_value": true
+  },
+  "checkCanNav": {
+    "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+    "_value": true
+  },
+  "queryPos": {
+    "$type": "miHoYo.HYG.QueryPos, Assembly-CSharp",
+    "center": {
+      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetEntityPosition, Assembly-CSharp",
+      "_entityGuid": {
+        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMealActivitySign, Assembly-CSharp"
+      }
+    },
+    "forward": {
+      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetEntityForward, Assembly-CSharp",
+      "_entityGuid": {
+        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMealActivitySign, Assembly-CSharp"
+      }
+    },
+    "offset": {
+      "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
+      "_value": 0.0
+    }
+  },
+  "source": {
+    "$type": "miHoYo.HYG.PointQuery.RingPointQuery, Assembly-CSharp",
+    "radius": {
+      "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
+      "_value": 1.2
+    },
+    "radialDensity": {
+      "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.UInt32, mscorlib]], Assembly-CSharp",
+      "_value": 2
+    },
+    "circumferentialDensity": {
+      "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.UInt32, mscorlib]], Assembly-CSharp",
+      "_value": 8
+    },
+    "isRandomOffsetWithinTheRing": {
+      "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+      "_value": false
+    }
+  },
+  "maxProcessCount": {
+    "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Int32, mscorlib]], Assembly-CSharp",
+    "_value": 300
+  },
+  "maxSuccessCount": {
+    "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Int32, mscorlib]], Assembly-CSharp",
+    "_value": 100
+  },
+  "conditions": {
+    "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]], Assembly-CSharp]], mscorlib",
+    "$values": [
+      {
+        "$type": "miHoYo.HYG.DataSharing.ConfigVarNpcCanStandOnPoint, Assembly-CSharp",
+        "_queryPoint": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarGetFixedQueryPoint, Assembly-CSharp"
+        },
+        "_otherNpcDis": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloat, Assembly-CSharp",
+          "_value": 0.3
+        },
+        "_circle": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedInt32, Assembly-CSharp",
+          "_value": 1
+        }
+      },
+      {
+        "$type": "miHoYo.HYG.DataSharing.ConfigVarLessThanOrEqualToFloat, Assembly-CSharp",
+        "_lhs": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarAngleVector3, Assembly-CSharp",
+          "_lhs": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetEntityForward, Assembly-CSharp",
+            "_entityGuid": {
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMealActivitySign, Assembly-CSharp"
+            }
+          },
+          "_rhs": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarNormalizeVector3, Assembly-CSharp",
+            "_operand": {
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarSubtractVector3, Assembly-CSharp",
+              "_lhs": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetFixedQueryPoint, Assembly-CSharp"
+              },
+              "_rhs": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetEntityPosition, Assembly-CSharp",
+                "_entityGuid": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMealActivitySign, Assembly-CSharp"
+                }
+              }
+            }
+          }
+        },
+        "_rhs": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloat, Assembly-CSharp",
+          "_value": 90.0
+        }
+      }
+    ]
+  },
+  "strategy": 0,
+  "multiScores": {
+    "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.Single, mscorlib]], Assembly-CSharp]], mscorlib",
+    "$values": [
+      {
+        "$type": "miHoYo.HYG.DataSharing.ConfigVarMultiplyFloat, Assembly-CSharp",
+        "_lhs": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarGetDistanceBetweenEntityAndPointXZ, Assembly-CSharp",
+          "_entityGuid": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPlayerEntityGuid, Assembly-CSharp"
+          },
+          "_point": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetQueryPoint, Assembly-CSharp"
+          }
+        },
+        "_rhs": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloat, Assembly-CSharp",
+          "_value": -1.0
+        }
+      }
+    ]
+  },
+  "addScores": {
+    "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.Single, mscorlib]], Assembly-CSharp]], mscorlib",
+    "$values": []
+  },
+  "reverseScore": {
+    "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+    "_value": false
+  },
+  "selector": {
+    "$type": "miHoYo.HYG.QuerySelector, Assembly-CSharp",
+    "selectorType": 1,
+    "count": {
+      "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Int32, mscorlib]], Assembly-CSharp",
+      "_value": 10
+    },
+    "percent": {
+      "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
+      "_value": 1.0
+    },
+    "randomCvar": {
+      "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+      "_value": false
+    }
+  },
+  "next": {
+    "$type": "miHoYo.JsonPicker`1[[miHoYo.HYG.QueryConfig`1[[UnityEngine.Vector3, UnityEngine.CoreModule]], Assembly-CSharp]], Assembly-CSharp",
+    "_assetGuid": null,
+    "_assetPath": null
+  },
+  "path": "Assets/MoleRes/Rel/SRes/Data/Query/PQS/MealActivity/MealActivityNpcSpawnPoints.json",
+  "keysHash": 0,
+  "bbConfig": null
+}

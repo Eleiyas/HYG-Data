@@ -1,0 +1,135 @@
+{
+  "id": 201,
+  "desc": "NPC",
+  "authoringData": {
+    "$type": "miHoYo.HYG.Entities.EICNpcAuthoring, Assembly-CSharp",
+    "stateTagRelationshipsId": 1,
+    "OwnAbilities": {
+      "_abilities": [
+        {
+          "_value": "NpcNavigation"
+        },
+        {
+          "_value": "GA_PlayATL_Npc"
+        },
+        {
+          "_value": "PickAbility"
+        },
+        {
+          "_value": "GA_ShovelOnce"
+        },
+        {
+          "_value": "GA_PlayExtraATL_Npc"
+        },
+        {
+          "_value": "CrossMove"
+        },
+        {
+          "_value": "CrossRightMove"
+        }
+      ]
+    },
+    "ShowPerformanceCondition": {
+      "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedLogicAnd, Assembly-CSharp",
+      "_operands": [
+        {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+          "_operand": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarIsStarSeaBuddy, Assembly-CSharp",
+            "_npcId": {
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+            }
+          }
+        },
+        {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarTernaryOperatorBool, Assembly-CSharp",
+          "_a": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedLogicAnd, Assembly-CSharp",
+            "_operands": [
+              {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarIsMultiplayerMode, Assembly-CSharp"
+              },
+              {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+                "_operand": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarHasAuthority, Assembly-CSharp",
+                  "_target": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                  }
+                }
+              },
+              {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarIsNpcInWorldIncident, Assembly-CSharp",
+                "_entityGuid": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                }
+              }
+            ]
+          },
+          "_b": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedBool, Assembly-CSharp",
+            "_value": false
+          },
+          "_c": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedBool, Assembly-CSharp",
+            "_value": true
+          }
+        }
+      ]
+    },
+    "introductionSelector": [
+      {
+        "content": {
+          "effects": [],
+          "textId": "NPC_NoConnect_Choice"
+        },
+        "id": 0,
+        "conditionWrapper": {
+          "desc": null,
+          "condition": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedLogicAnd, Assembly-CSharp",
+            "_operands": [
+              {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarEqualToInt32, Assembly-CSharp",
+                "_lhs": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetNPCIdentityType, Assembly-CSharp",
+                  "_npcId": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                  }
+                },
+                "_rhs": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedInt32, Assembly-CSharp",
+                  "_value": 2
+                }
+              },
+              {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+                "_operand": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarNpcIsObtained, Assembly-CSharp",
+                  "_npcId": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                  }
+                }
+              },
+              {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+                "_operand": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarIsMultiplayerMode, Assembly-CSharp"
+                }
+              }
+            ]
+          }
+        },
+        "isExclusive": true,
+        "exclusivePossibility": 100,
+        "useConfigVarWeight": false,
+        "weight": 1.0,
+        "configVarWeight": null,
+        "record": false,
+        "memoryStrKey": null,
+        "memoryKey": 0,
+        "deltaWeight": 0.0
+      }
+    ]
+  }
+}

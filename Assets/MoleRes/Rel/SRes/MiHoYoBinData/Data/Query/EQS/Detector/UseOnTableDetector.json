@@ -1,0 +1,168 @@
+{
+  "$type": "miHoYo.HYG.EntityQueryConfig, Assembly-CSharp",
+  "allowNoRoot": {
+    "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+    "_value": false
+  },
+  "allowSelf": {
+    "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+    "_value": false
+  },
+  "queryPos": {
+    "$type": "miHoYo.HYG.QueryPos, Assembly-CSharp",
+    "center": null,
+    "forward": null,
+    "offset": {
+      "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
+      "_value": 0.0
+    }
+  },
+  "source": {
+    "$type": "miHoYo.HYG.EntityMultiDataSource, Assembly-CSharp",
+    "sources": {
+      "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.QueryDataSource`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], Assembly-CSharp]], mscorlib",
+      "$values": [
+        {
+          "$type": "miHoYo.HYG.SectorEntityQuery, Assembly-CSharp",
+          "radius": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
+            "_value": 0.8
+          },
+          "leftAngle": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
+            "_value": 30.0
+          },
+          "rightAngle": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
+            "_value": 30.0
+          },
+          "checkTargetCenter": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+            "_value": true
+          },
+          "getItemOnTarget": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+            "_value": false
+          }
+        }
+      ]
+    }
+  },
+  "conditions": {
+    "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]], Assembly-CSharp]], mscorlib",
+    "$values": [
+      {
+        "$type": "miHoYo.HYG.DataSharing.ConfigVarLessThanFloat, Assembly-CSharp",
+        "_lhs": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarGetEntityHeightDiffAbs, Assembly-CSharp",
+          "_targetGuid": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+          },
+          "_ownerGuid": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetQueryTarget, Assembly-CSharp"
+          }
+        },
+        "_rhs": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloat, Assembly-CSharp",
+          "_value": 1.2
+        }
+      },
+      {
+        "$type": "miHoYo.HYG.DataSharing.ConfigVarIsTargetOnTablePlane, Assembly-CSharp",
+        "_targetGuid": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarGetQueryTarget, Assembly-CSharp"
+        }
+      },
+      {
+        "$type": "miHoYo.HYG.DataSharing.ConfigVarCanUseItemOnTable, Assembly-CSharp",
+        "_configId": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarGetConfigId, Assembly-CSharp",
+          "_guid": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetQueryTarget, Assembly-CSharp"
+          }
+        }
+      }
+    ]
+  },
+  "multiScores": {
+    "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.Single, mscorlib]], Assembly-CSharp]], mscorlib",
+    "$values": []
+  },
+  "addScores": {
+    "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.Single, mscorlib]], Assembly-CSharp]], mscorlib",
+    "$values": [
+      {
+        "$type": "miHoYo.HYG.DataSharing.ConfigVarMultiplyFloat, Assembly-CSharp",
+        "_lhs": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloat, Assembly-CSharp",
+          "_value": 1000.0
+        },
+        "_rhs": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPickTypeScore, Assembly-CSharp",
+          "_target": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetQueryTarget, Assembly-CSharp"
+          },
+          "_longPick": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedBool, Assembly-CSharp",
+            "_value": false
+          }
+        }
+      },
+      {
+        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetQueryPointAngle, Assembly-CSharp"
+      },
+      {
+        "$type": "miHoYo.HYG.DataSharing.ConfigVarTernaryOperatorFloat, Assembly-CSharp",
+        "_a": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckCanOnlinePickup, Assembly-CSharp",
+          "_ownerGuid": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+          },
+          "_targetGuid": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetQueryTarget, Assembly-CSharp"
+          },
+          "_pickType": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarInteractTypeToInt32, Assembly-CSharp",
+            "_type": 1
+          }
+        },
+        "_b": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloat, Assembly-CSharp",
+          "_value": 0.0
+        },
+        "_c": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloat, Assembly-CSharp",
+          "_value": -9999999.0
+        }
+      }
+    ]
+  },
+  "reverseScore": {
+    "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+    "_value": false
+  },
+  "selector": {
+    "$type": "miHoYo.HYG.QuerySelector, Assembly-CSharp",
+    "selectorType": 0,
+    "count": {
+      "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Int32, mscorlib]], Assembly-CSharp",
+      "_value": 1
+    },
+    "percent": {
+      "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
+      "_value": 1.0
+    },
+    "randomCvar": {
+      "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+      "_value": false
+    }
+  },
+  "next": {
+    "$type": "miHoYo.JsonPicker`1[[miHoYo.HYG.QueryConfig`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], Assembly-CSharp]], Assembly-CSharp",
+    "_assetGuid": null,
+    "_assetPath": null
+  },
+  "path": "Assets/MoleRes/Rel/SRes/Data/Query/EQS/Detector/UseOnTableDetector.json",
+  "keysHash": 0,
+  "bbConfig": null
+}

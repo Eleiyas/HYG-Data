@@ -1,0 +1,114 @@
+{
+  "$type": "miHoYo.HYG.AI.NPCDistributionConfig, Assembly-CSharp",
+  "blackboardConfigs": {
+    "$type": "miHoYo.HYG.DataSharing.BlackboardConfigPicker, Assembly-CSharp",
+    "paraKeys": null,
+    "configs": null,
+    "noSharingKeys": null
+  },
+  "distributions": {
+    "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.AI.NPCDistribution, Assembly-CSharp]], mscorlib",
+    "$values": [
+      {
+        "$type": "miHoYo.HYG.AI.NPCDistribution, Assembly-CSharp",
+        "description": "夜晚（跨天）",
+        "enabled": true,
+        "predicate": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedLogicOr, Assembly-CSharp",
+          "_operands": {
+            "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]], Assembly-CSharp]], mscorlib",
+            "$values": [
+              {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarIsNowTimeBetween_Simple, Assembly-CSharp",
+                "_startHour": 23,
+                "_startMinute": 0,
+                "_endHour": 24,
+                "_endMinute": 0
+              },
+              {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarIsNowTimeBetween_Simple, Assembly-CSharp",
+                "_startHour": 0,
+                "_startMinute": 0,
+                "_endHour": 7,
+                "_endMinute": 0
+              }
+            ]
+          }
+        },
+        "distributionRules": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.AI.NPCDistributionRule, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.AI.NPCDistributionRule, Assembly-CSharp",
+              "sceneRule": {
+                "$type": "miHoYo.HYG.AI.SelectSceneByType, Assembly-CSharp",
+                "sceneType": 1
+              },
+              "isNumer": false,
+              "value": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedInt32, Assembly-CSharp",
+                "_value": 100000
+              },
+              "considerations": {
+                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Consideration, Assembly-CSharp]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.ConsiderationConstant, Assembly-CSharp",
+                    "description": null,
+                    "conditions": null,
+                    "configVarInput": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloat, Assembly-CSharp",
+                      "_value": 1.0
+                    },
+                    "configVarRank": null
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "$type": "miHoYo.HYG.AI.NPCDistribution, Assembly-CSharp",
+        "description": "保底",
+        "enabled": true,
+        "predicate": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedBool, Assembly-CSharp",
+          "_value": true
+        },
+        "distributionRules": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.AI.NPCDistributionRule, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.AI.NPCDistributionRule, Assembly-CSharp",
+              "sceneRule": {
+                "$type": "miHoYo.HYG.AI.SelectSceneByType, Assembly-CSharp",
+                "sceneType": 0
+              },
+              "isNumer": false,
+              "value": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedInt32, Assembly-CSharp",
+                "_value": 100
+              },
+              "considerations": {
+                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Consideration, Assembly-CSharp]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.ConsiderationConstant, Assembly-CSharp",
+                    "description": null,
+                    "conditions": null,
+                    "configVarInput": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloat, Assembly-CSharp",
+                      "_value": 1.0
+                    },
+                    "configVarRank": null
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

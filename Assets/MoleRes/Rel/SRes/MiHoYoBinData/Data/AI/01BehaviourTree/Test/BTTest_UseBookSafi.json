@@ -1,0 +1,283 @@
+{
+  "$type": "miHoYo.HYG.AI.BT.BehaviourTreeGraph, Assembly-CSharp",
+  "redirectData": null,
+  "blackboardConfigs": {
+    "$type": "miHoYo.HYG.DataSharing.BlackboardConfigPicker, Assembly-CSharp",
+    "paraKeys": {
+      "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.BlackboardSelectKeyParameterSetting, Assembly-CSharp]], mscorlib",
+      "$values": [
+        {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKeyParameterSetting, Assembly-CSharp",
+          "key": {
+            "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+            "keyName": "instance-174752ab-ba53-4dd5-97ac-5f8bb93dead1"
+          },
+          "var": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
+            "_value": 15.0
+          }
+        }
+      ]
+    },
+    "configs": {
+      "$type": "System.Collections.Generic.List`1[[miHoYo.JsonPicker`1[[miHoYo.HYG.DataSharing.SingleBlackboardConfig, Assembly-CSharp]], Assembly-CSharp]], mscorlib",
+      "$values": []
+    },
+    "noSharingKeys": {
+      "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.BlackboardConfigData, Assembly-CSharp]], mscorlib",
+      "$values": [
+        {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardConfigData, Assembly-CSharp",
+          "isStatic": false,
+          "mustNoSharing": true,
+          "showName": "AutoTakeOutDefaultBook",
+          "DataType": 1,
+          "sharingStrategy": 1,
+          "defaultValue": {
+            "$type": "miHoYo.HYG.DataSharing.UnionDefaultBool, Assembly-CSharp",
+            "_value": true
+          },
+          "category": null,
+          "comment": "选了的话，手上没书的时候，会掏一本默认ID的书。\n否则没拿书就返回失败（这个分支暂时没实现）。",
+          "nameHistory": {
+            "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+            "$values": [
+              "instance-37de59a8-cf97-4e8a-be7a-6b0f8c6b4b17"
+            ]
+          }
+        },
+        {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardConfigData, Assembly-CSharp",
+          "isStatic": false,
+          "mustNoSharing": true,
+          "showName": "UseTime",
+          "DataType": 4,
+          "sharingStrategy": 1,
+          "category": null,
+          "comment": "看多久的书",
+          "nameHistory": {
+            "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+            "$values": [
+              "instance-174752ab-ba53-4dd5-97ac-5f8bb93dead1"
+            ]
+          }
+        },
+        {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardConfigData, Assembly-CSharp",
+          "isStatic": false,
+          "mustNoSharing": true,
+          "showName": "翻书频率倍率",
+          "DataType": 4,
+          "sharingStrategy": 1,
+          "defaultValue": {
+            "$type": "miHoYo.HYG.DataSharing.UnionDefaultFloat, Assembly-CSharp",
+            "_value": 1.0
+          },
+          "category": null,
+          "comment": "基础频率为3-6秒，倍率基础值为1，倍率越大间隔时间越久。",
+          "nameHistory": {
+            "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+            "$values": [
+              "instance-c6c26b66-514d-4b61-9d11-41bcf5d68f34"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "NewNodesPlaceholder": {
+    "$type": "miHoYo.HYG.AI.BT.CfgBTBehaviourTreeNode[], Assembly-CSharp",
+    "$values": [
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTSequencerNode, Assembly-CSharp",
+        "_Children": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            2,
+            4,
+            5
+          ]
+        },
+        "_Services": null,
+        "index": 0,
+        "parentIndex": 1,
+        "Guid": "77a56391-719d-4e0d-846c-66458ec3d4dc"
+      },
+      {
+        "$type": "Planilo.BT.CfgBTRestartOnResumeNode, Assembly-CSharp",
+        "_Child": 0,
+        "index": 1,
+        "parentIndex": -1,
+        "Guid": "e6627c3f-84cf-4528-8167-c05dc3c39262"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTSimpleIfElseNode, Assembly-CSharp",
+        "_True": 3,
+        "_False": -1,
+        "_condition": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarBlackboardBool, Assembly-CSharp",
+          "_key": {
+            "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+            "keyName": "instance-37de59a8-cf97-4e8a-be7a-6b0f8c6b4b17"
+          },
+          "targetGuid": null
+        },
+        "_defaultRes": true,
+        "index": 2,
+        "parentIndex": 0,
+        "Guid": "7f2a554b-2f48-4110-ae35-2fad1afdece3"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTSubGraphNode, Assembly-CSharp",
+        "SubGraphInitializer": {
+          "$type": "miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": [
+              {
+                "$type": "miHoYo.HYG.DataSharing.BbVarSetter, Assembly-CSharp",
+                "key": {
+                  "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                  "keyName": "instance-2027e343-a772-4e97-8f04-46415de2c3e7"
+                },
+                "value": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.UInt32, mscorlib]], Assembly-CSharp",
+                  "_value": 90008
+                }
+              }
+            ]
+          },
+          "_assetGuid": "cfc32077d13924a4fb1de90c0237dcc8",
+          "_assetPath": "Data/AI/01BehaviourTree/BehaviourTree/AtomTree/Atom_SwitchTool.json"
+        },
+        "index": 3,
+        "parentIndex": 2,
+        "Guid": "7ad5c1ce-0ad2-4964-a312-861b97e9000d"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTSubGraphNode, Assembly-CSharp",
+        "SubGraphInitializer": {
+          "$type": "miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": [
+              {
+                "$type": "miHoYo.HYG.DataSharing.BbVarSetter, Assembly-CSharp",
+                "key": {
+                  "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                  "keyName": "instance-73b975e0-c8b3-4565-94f3-1a4e35100fe1"
+                },
+                "value": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
+                  "_value": 15.0
+                }
+              }
+            ]
+          },
+          "_assetGuid": "db3806b94c6e9ea4ba5897112f799a78",
+          "_assetPath": "Data/AI/01BehaviourTree/_Modular/Holdable/BTAction_ReadBook.json"
+        },
+        "index": 4,
+        "parentIndex": 0,
+        "Guid": "e15dce83-fb5a-49c6-8f54-30bb13c99ba3"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTWaitNode, Assembly-CSharp",
+        "WaitTime": 1.0,
+        "IsRandom": false,
+        "MinWaitTime": 0.0,
+        "MaxWaitTime": 0.0,
+        "index": 5,
+        "parentIndex": 0,
+        "Guid": "74223b3f-a0fe-4e0d-bb41-22353fa10737"
+      }
+    ]
+  },
+  "containers": null,
+  "rootIndex": 1,
+  "nodesHash": -1647639385,
+  "editorData": {
+    "$type": "miHoYo.HYG.JsonGraph.GraphEditorData, Assembly-CSharp",
+    "danglingIndexes": {
+      "$type": "System.Int32[], mscorlib",
+      "$values": []
+    },
+    "nodeInfos": {
+      "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp]], mscorlib",
+      "$values": [
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 249.6,
+            "y": 176.0
+          },
+          "guid": "77a56391-719d-4e0d-846c-66458ec3d4dc",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 0.0,
+            "y": 211.75
+          },
+          "guid": "e6627c3f-84cf-4528-8167-c05dc3c39262",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 489.600037,
+            "y": 7.91249847
+          },
+          "guid": "7f2a554b-2f48-4110-ae35-2fad1afdece3",
+          "comment": "如果已经打着伞",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 739.2001,
+            "y": 0.0
+          },
+          "guid": "7ad5c1ce-0ad2-4964-a312-861b97e9000d",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 489.600037,
+            "y": 228.9375
+          },
+          "guid": "e15dce83-fb5a-49c6-8f54-30bb13c99ba3",
+          "comment": null,
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 489.600037,
+            "y": 455.5375
+          },
+          "guid": "74223b3f-a0fe-4e0d-bb41-22353fa10737",
+          "comment": null,
+          "locked": false,
+          "collapse": false
+        }
+      ]
+    },
+    "comment": null
+  },
+  "path": "Assets/MoleRes/Rel/SRes/Data/AI/01BehaviourTree/Test/BTTest_UseBookSafi.json",
+  "errors": null,
+  "nodeErrors": {
+    "$type": "System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.String, mscorlib]], mscorlib"
+  }
+}

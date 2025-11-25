@@ -1,0 +1,388 @@
+{
+  "personalities": [
+    "StayHome"
+  ],
+  "preferences": [
+    {
+      "goalID": "WalkAround",
+      "value": 0.5
+    },
+    {
+      "goalID": "Sightseeing",
+      "value": 0.2
+    },
+    {
+      "goalID": "Yoga",
+      "value": 0.7
+    },
+    {
+      "goalID": "Sing",
+      "value": 0.5
+    },
+    {
+      "goalID": "Fishing",
+      "value": 1.2
+    }
+  ],
+  "relaxDecisions": [
+    {
+      "goalID": "Default",
+      "considerations": [
+        {
+          "$type": "ConsiderationConstant",
+          "condition": "Always",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "goalID": "WalkAround",
+      "considerations": [
+        {
+          "$type": "ConsiderationConstant",
+          "condition": "Always",
+          "input": {
+            "$type": "NPCPreferenceInput",
+            "goalID": "WalkAround"
+          }
+        },
+        {
+          "$type": "ConsiderationLinear",
+          "condition": "Inactive",
+          "curveM": 1,
+          "curveB": 0,
+          "curveC": 0,
+          "input": {
+            "$type": "NPCTimeGapFromActionMemoryInput",
+            "tag": "WalkAround",
+            "clampMin": 0,
+            "clampMax": 500
+          }
+        },
+        {
+          "$type": "ConsiderationLogistic",
+          "condition": "Active",
+          "curveM": 9,
+          "curveK": 3.9,
+          "curveB": 0.1,
+          "curveC": -5,
+          "input": {
+            "$type": "NPCTimeGapFromMemoryInput",
+            "tag": "LastRelaxActionID",
+            "clampMin": 15,
+            "clampMax": 45
+          }
+        }
+      ]
+    },
+    {
+      "goalID": "WalkToSitSleep",
+      "predicates": [
+        {
+          "$type": "CheckNPCScene",
+          "sceneInfo": {
+            "$type": "SelectSceneByType",
+            "sceneType": "Outdoor"
+          },
+          "isEqual": true
+        }
+      ],
+      "considerations": [
+        {
+          "$type": "ConsiderationLinear",
+          "condition": "Inactive",
+          "curveM": 1,
+          "curveB": 0,
+          "curveC": 0,
+          "input": {
+            "$type": "NPCTimeGapFromActionMemoryInput",
+            "tag": "Sing",
+            "clampMin": 0,
+            "clampMax": 500
+          }
+        },
+        {
+          "$type": "ConsiderationLogistic",
+          "condition": "Active",
+          "curveM": 9,
+          "curveK": 3.9,
+          "curveB": 0.1,
+          "curveC": -5,
+          "input": {
+            "$type": "NPCTimeGapFromMemoryInput",
+            "tag": "LastRelaxActionID",
+            "clampMin": 200,
+            "clampMax": 300
+          }
+        }
+      ]
+    },
+    {
+      "goalID": "Fishing",
+      "predicates": [
+        {
+          "$type": "CheckNPCScene",
+          "sceneInfo": {
+            "$type": "SelectSceneByType",
+            "sceneType": "Outdoor"
+          },
+          "isEqual": true
+        }
+      ],
+      "considerations": [
+        {
+          "$type": "ConsiderationConstant",
+          "condition": "Always",
+          "input": {
+            "$type": "NPCPreferenceInput",
+            "goalID": "Fishing"
+          }
+        },
+        {
+          "$type": "ConsiderationLinear",
+          "condition": "Inactive",
+          "curveM": 1,
+          "curveB": 0,
+          "curveC": 0,
+          "input": {
+            "$type": "NPCTimeGapFromActionMemoryInput",
+            "tag": "Fishing",
+            "clampMin": 0,
+            "clampMax": 20
+          }
+        },
+        {
+          "$type": "ConsiderationLogistic",
+          "condition": "Active",
+          "curveM": 9,
+          "curveK": 3.9,
+          "curveB": 0.1,
+          "curveC": -5,
+          "input": {
+            "$type": "NPCTimeGapFromMemoryInput",
+            "tag": "LastRelaxActionID",
+            "clampMin": 100,
+            "clampMax": 120
+          }
+        }
+      ]
+    }
+  ],
+  "targetRange": 2.5,
+  "exitFollowRange": 4,
+  "performanceRange": 4,
+  "companionMaxDistance": 5,
+  "companionDecisions": [
+    {
+      "goalID": "CompanionFollow",
+      "predicates": [
+        {
+          "$type": "CheckNPCScene",
+          "sceneInfo": {
+            "$type": "SelectSceneByType",
+            "sceneType": "Outdoor"
+          },
+          "isEqual": true
+        }
+      ],
+      "considerations": [
+        {
+          "$type": "ConsiderationBool",
+          "condition": "Active",
+          "trueValue": 100,
+          "falseValue": 0.01,
+          "input": {
+            "$type": "PredicateInput",
+            "predicates": [
+              {
+                "$type": "RelationalOperatorPredicate",
+                "valueA": {
+                  "$type": "DistanceFromPlayer"
+                },
+                "logic": "Greater",
+                "valueB": {
+                  "$type": "NPCTargetRange"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "$type": "ConsiderationBool",
+          "condition": "Inactive",
+          "trueValue": 100,
+          "falseValue": 0.01,
+          "input": {
+            "$type": "PredicateInput",
+            "predicates": [
+              {
+                "$type": "RelationalOperatorPredicate",
+                "valueA": {
+                  "$type": "DistanceFromPlayer"
+                },
+                "logic": "Greater",
+                "valueB": {
+                  "$type": "NPCCompanionMaxDistance"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "goalID": "UseDoubleFurniture",
+      "predicates": [
+        {
+          "$type": "CheckPlayerState",
+          "action": "UseDoubleFurniture"
+        }
+      ],
+      "considerations": [
+        {
+          "$type": "ConsiderationConstant",
+          "condition": "Always",
+          "input": {
+            "$type": "ConstantInput",
+            "value": 120
+          }
+        }
+      ]
+    },
+    {
+      "goalID": "UseFurniture",
+      "considerations": [
+        {
+          "$type": "ConsiderationConstant",
+          "condition": "Always",
+          "input": {
+            "$type": "ConstantInput",
+            "value": 1
+          }
+        }
+      ]
+    },
+    {
+      "goalID": "WalkAround",
+      "considerations": [
+        {
+          "$type": "ConsiderationConstant",
+          "condition": "Inactive",
+          "input": {
+            "$type": "ConstantInput",
+            "value": 0.1
+          }
+        },
+        {
+          "$type": "ConsiderationLogistic",
+          "condition": "Active",
+          "curveM": 9,
+          "curveK": 4.9,
+          "curveB": 0.1,
+          "curveC": -5,
+          "input": {
+            "$type": "NPCTimeGapFromMemoryInput",
+            "tag": "LastCompanionActionId",
+            "clampMin": 5,
+            "clampMax": 10
+          }
+        }
+      ]
+    },
+    {
+      "goalID": "CompanionIdle",
+      "considerations": [
+        {
+          "$type": "ConsiderationConstant",
+          "condition": "Inactive",
+          "input": {
+            "$type": "ConstantInput",
+            "value": 0.01
+          }
+        },
+        {
+          "$type": "ConsiderationLogistic",
+          "condition": "Active",
+          "curveM": 9,
+          "curveK": 4.9,
+          "curveB": 0.01,
+          "curveC": -5,
+          "input": {
+            "$type": "NPCTimeGapFromMemoryInput",
+            "tag": "LastCompanionActionId",
+            "clampMin": 5,
+            "clampMax": 10
+          }
+        }
+      ]
+    }
+  ],
+  "dialogSelectors": [
+    {
+      "isExclusive": true,
+      "id": 1,
+      "dialogs": [
+        6200
+      ]
+    },
+    {
+      "isExclusive": true,
+      "id": 2,
+      "dialogs": [
+        6202
+      ]
+    },
+    {
+      "isExclusive": true,
+      "id": 3,
+      "dialogs": [
+        6203
+      ]
+    },
+    {
+      "isExclusive": true,
+      "id": 4,
+      "dialogs": [
+        6204
+      ]
+    },
+    {
+      "//": "玩家有NPC陪伴但并非当前NPC",
+      "isExclusive": true,
+      "id": 9998,
+      "dialogs": [
+        2204
+      ]
+    },
+    {
+      "//": "当前NPC处于陪伴状态",
+      "isExclusive": true,
+      "id": 9999,
+      "dialogs": [
+        2202
+      ]
+    },
+    {
+      "//": "默认对话",
+      "isExclusive": false,
+      "id": 10000,
+      "weight": 1,
+      "dialogs": [
+        2200
+      ]
+    }
+  ],
+  "firstMeetState": {
+    "scene": {
+      "$type": "SelectSceneByType",
+      "sceneType": "SelfHome"
+    },
+    "curGoal": "Default",
+    "position": {
+      "$type": "StaticPosition",
+      "xPos": 2.5,
+      "yPos": 0.1,
+      "zPos": 2.5
+    }
+  }
+}
