@@ -2,8 +2,8 @@
   "$type": "miHoYo.HYG.Performance.PerformanceGraph, Assembly-CSharp",
   "id": 10000003013,
   "maxVoiceIdIndex": 1,
-  "maxTextMapIdIndex": 31,
-  "name": "NPC事件模板13-拜访玩家家",
+  "maxTextMapIdIndex": 38,
+  "name": "NPC事件模板13-拜访之玩家",
   "kmPageId": 0,
   "kmEncId": null,
   "sheetName": null,
@@ -20,6 +20,7 @@
   },
   "overrideGraphCfg": true,
   "graphCfgId": 0,
+  "UseFakeAvatar": false,
   "castDic": {
     "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Int32, mscorlib]], mscorlib"
   },
@@ -36,10 +37,9 @@
       "isDynamic": true,
       "id": 0,
       "configVarId": {
-        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetFoodOfNpcVisitAffair, Assembly-CSharp",
-        "_npcConfigId": {
-          "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPerformanceTriggerConfigId, Assembly-CSharp"
-        }
+        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetWantFood, Assembly-CSharp",
+        "Override": false,
+        "OverrideValue": false
       }
     },
     "游戏赠礼": {
@@ -47,17 +47,25 @@
       "isDynamic": true,
       "id": 0,
       "configVarId": {
-        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetVisitRewardConfigId, Assembly-CSharp",
-        "_npcConfigId": {
-          "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPerformanceTriggerConfigId, Assembly-CSharp"
-        },
-        "_type": 3
+        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetWantGame, Assembly-CSharp",
+        "Override": false,
+        "OverrideValue": false
+      }
+    },
+    "伴手礼": {
+      "$type": "miHoYo.HYG.Performance.DialogEffect_ItemName, Assembly-CSharp",
+      "isDynamic": true,
+      "id": 0,
+      "configVarId": {
+        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetWantReward, Assembly-CSharp",
+        "Override": false,
+        "OverrideValue": false
       }
     },
     "游戏名称": {
       "$type": "miHoYo.HYG.Performance.DialogEffect_ConfigVarValue, Assembly-CSharp",
       "configVar": {
-        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCfgValue`3[[System.String, mscorlib],[BNpcGameCfg, Assembly-Common],[System.UInt32, mscorlib]], Assembly-CSharp",
+        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCfgValue`3[[System.String, mscorlib],[miHoYo.HYG.ExcelData.BNpcGameCfg, Assembly-Common],[System.UInt32, mscorlib]], Assembly-CSharp",
         "mainKey": {
           "$type": "miHoYo.HYG.DataSharing.ConfigVarGetWatcherUInt32, Assembly-CSharp",
           "key": {
@@ -66,9 +74,13 @@
             "name": "NpcEvent_小游戏抽取ID值",
             "valueType": 5,
             "temp": true
-          }
+          },
+          "Override": false,
+          "OverrideValue": false
         },
-        "key": "gamename"
+        "key": "gamename",
+        "Override": false,
+        "OverrideValue": false
       }
     }
   },
@@ -113,10 +125,9 @@
           "isDynamic": true,
           "id": 0,
           "configVarId": {
-            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetFoodOfNpcVisitAffair, Assembly-CSharp",
-            "_npcConfigId": {
-              "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPerformanceTriggerConfigId, Assembly-CSharp"
-            }
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetWantFood, Assembly-CSharp",
+            "Override": false,
+            "OverrideValue": false
           }
         }
       },
@@ -128,11 +139,23 @@
           "isDynamic": true,
           "id": 0,
           "configVarId": {
-            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetVisitRewardConfigId, Assembly-CSharp",
-            "_npcConfigId": {
-              "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPerformanceTriggerConfigId, Assembly-CSharp"
-            },
-            "_type": 3
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetWantGame, Assembly-CSharp",
+            "Override": false,
+            "OverrideValue": false
+          }
+        }
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.StringEffectPair, Assembly-CSharp",
+        "key": "伴手礼",
+        "value": {
+          "$type": "miHoYo.HYG.Performance.DialogEffect_ItemName, Assembly-CSharp",
+          "isDynamic": true,
+          "id": 0,
+          "configVarId": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetWantReward, Assembly-CSharp",
+            "Override": false,
+            "OverrideValue": false
           }
         }
       },
@@ -142,7 +165,7 @@
         "value": {
           "$type": "miHoYo.HYG.Performance.DialogEffect_ConfigVarValue, Assembly-CSharp",
           "configVar": {
-            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCfgValue`3[[System.String, mscorlib],[BNpcGameCfg, Assembly-Common],[System.UInt32, mscorlib]], Assembly-CSharp",
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCfgValue`3[[System.String, mscorlib],[miHoYo.HYG.ExcelData.BNpcGameCfg, Assembly-Common],[System.UInt32, mscorlib]], Assembly-CSharp",
             "mainKey": {
               "$type": "miHoYo.HYG.DataSharing.ConfigVarGetWatcherUInt32, Assembly-CSharp",
               "key": {
@@ -151,9 +174,13 @@
                 "name": "NpcEvent_小游戏抽取ID值",
                 "valueType": 5,
                 "temp": true
-              }
+              },
+              "Override": false,
+              "OverrideValue": false
             },
-            "key": "gamename"
+            "key": "gamename",
+            "Override": false,
+            "OverrideValue": false
           }
         }
       }
@@ -164,28 +191,13 @@
     "$values": []
   },
   "selectItem_count": 0,
-  "textNodeMaxIndex": 44,
-  "nodeMaxIndex": 178,
+  "textNodeMaxIndex": 59,
+  "nodeMaxIndex": 226,
   "testGMGroup": "",
   "desc": null,
   "NewNodesPlaceholder": {
     "$type": "miHoYo.HYG.Performance.CfgPerformanceNode[], Assembly-CSharp",
     "$values": [
-      {
-        "$type": "miHoYo.HYG.Performance.CfgBranch, Assembly-CSharp",
-        "condition": {
-          "$type": "miHoYo.HYG.DataSharing.ConfigVarIsNPCEntity, Assembly-CSharp",
-          "_entityGuid": {
-            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPerformanceTrigger, Assembly-CSharp"
-          }
-        },
-        "_successOut": 33,
-        "_failOut": 31,
-        "nodeId": 1,
-        "index": 0,
-        "parentIndex": -1,
-        "Guid": "f293759f-4f2f-437a-8f31-6e032b6287cf"
-      },
       {
         "$type": "miHoYo.HYG.Performance.CfgDialogGroup, Assembly-CSharp",
         "desc": null,
@@ -199,14 +211,16 @@
         },
         "banPT": false,
         "positionInfo": null,
-        "_output": 2,
+        "_output": 1,
         "nodeId": 4,
-        "index": 1,
-        "parentIndex": 71,
+        "index": 0,
+        "parentIndex": -1,
         "Guid": "0dc4909f-d241-41c7-ad47-82d7d96ef670"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgChoiceGroup, Assembly-CSharp",
+        "showFavorTitle": false,
+        "showFavorLockTips": false,
         "dynamicType": 0,
         "selectTimes": null,
         "selectTagCounts": null,
@@ -222,8 +236,8 @@
             {
               "$type": "miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp",
               "condition": null,
-              "iconId": 0,
               "style": 0,
+              "newIconId": 0,
               "choiceContent": {
                 "$type": "miHoYo.HYG.Performance.ChoiceContent, Assembly-CSharp",
                 "useContentSelector": false,
@@ -231,7 +245,10 @@
                 "content_l10n": {
                   "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                   "textId": "Performance_10000003013_5_textmap_1",
-                  "value": null
+                  "value": null,
+                  "duration": null,
+                  "durationMap": null,
+                  "chatType": 0
                 },
                 "contentSelector": {
                   "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.StringSelectorItem, Assembly-CSharp]], mscorlib",
@@ -252,12 +269,12 @@
         "_branches": {
           "$type": "System.Int32[], mscorlib",
           "$values": [
-            3
+            2
           ]
         },
         "nodeId": 5,
-        "index": 2,
-        "parentIndex": 1,
+        "index": 1,
+        "parentIndex": 0,
         "Guid": "61749524-0fc6-4885-a65d-b92f5ca52d51"
       },
       {
@@ -273,10 +290,10 @@
         },
         "banPT": false,
         "positionInfo": null,
-        "_output": 5,
+        "_output": 4,
         "nodeId": 6,
-        "index": 3,
-        "parentIndex": 2,
+        "index": 2,
+        "parentIndex": 1,
         "Guid": "318368d4-d6b5-4ef4-af5f-821de867fa75"
       },
       {
@@ -292,14 +309,16 @@
         },
         "banPT": false,
         "positionInfo": null,
-        "_output": 64,
+        "_output": -1,
         "nodeId": 7,
-        "index": 4,
-        "parentIndex": 5,
+        "index": 3,
+        "parentIndex": 4,
         "Guid": "2b600312-55be-43e9-a115-464327843d66"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgChoiceGroup, Assembly-CSharp",
+        "showFavorTitle": false,
+        "showFavorLockTips": false,
         "dynamicType": 0,
         "selectTimes": null,
         "selectTagCounts": null,
@@ -315,8 +334,8 @@
             {
               "$type": "miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp",
               "condition": null,
-              "iconId": 0,
               "style": 0,
+              "newIconId": 0,
               "choiceContent": {
                 "$type": "miHoYo.HYG.Performance.ChoiceContent, Assembly-CSharp",
                 "useContentSelector": false,
@@ -324,7 +343,10 @@
                 "content_l10n": {
                   "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                   "textId": "Performance_10000003013_8_textmap_2",
-                  "value": null
+                  "value": null,
+                  "duration": null,
+                  "durationMap": null,
+                  "chatType": 0
                 },
                 "contentSelector": {
                   "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.StringSelectorItem, Assembly-CSharp]], mscorlib",
@@ -339,8 +361,8 @@
             {
               "$type": "miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp",
               "condition": null,
-              "iconId": 0,
               "style": 0,
+              "newIconId": 0,
               "choiceContent": {
                 "$type": "miHoYo.HYG.Performance.ChoiceContent, Assembly-CSharp",
                 "useContentSelector": false,
@@ -348,7 +370,10 @@
                 "content_l10n": {
                   "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                   "textId": "Performance_10000003013_8_textmap_3",
-                  "value": null
+                  "value": null,
+                  "duration": null,
+                  "durationMap": null,
+                  "chatType": 0
                 },
                 "contentSelector": {
                   "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.StringSelectorItem, Assembly-CSharp]], mscorlib",
@@ -369,17 +394,19 @@
         "_branches": {
           "$type": "System.Int32[], mscorlib",
           "$values": [
-            96,
-            4
+            -1,
+            3
           ]
         },
         "nodeId": 8,
-        "index": 5,
-        "parentIndex": 3,
+        "index": 4,
+        "parentIndex": 2,
         "Guid": "db817afc-a5f3-41c6-99cd-dcdbcbf7c795"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgChoiceGroup, Assembly-CSharp",
+        "showFavorTitle": false,
+        "showFavorLockTips": false,
         "dynamicType": 0,
         "selectTimes": null,
         "selectTagCounts": null,
@@ -395,8 +422,8 @@
             {
               "$type": "miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp",
               "condition": null,
-              "iconId": 0,
               "style": 0,
+              "newIconId": 0,
               "choiceContent": {
                 "$type": "miHoYo.HYG.Performance.ChoiceContent, Assembly-CSharp",
                 "useContentSelector": false,
@@ -404,7 +431,10 @@
                 "content_l10n": {
                   "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                   "textId": "Performance_10000003013_9_textmap_4",
-                  "value": null
+                  "value": null,
+                  "duration": null,
+                  "durationMap": null,
+                  "chatType": 0
                 },
                 "contentSelector": {
                   "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.StringSelectorItem, Assembly-CSharp]], mscorlib",
@@ -419,8 +449,8 @@
             {
               "$type": "miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp",
               "condition": null,
-              "iconId": 0,
               "style": 0,
+              "newIconId": 0,
               "choiceContent": {
                 "$type": "miHoYo.HYG.Performance.ChoiceContent, Assembly-CSharp",
                 "useContentSelector": false,
@@ -428,7 +458,10 @@
                 "content_l10n": {
                   "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                   "textId": "Performance_10000003013_9_textmap_5",
-                  "value": null
+                  "value": null,
+                  "duration": null,
+                  "durationMap": null,
+                  "chatType": 0
                 },
                 "contentSelector": {
                   "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.StringSelectorItem, Assembly-CSharp]], mscorlib",
@@ -449,13 +482,13 @@
         "_branches": {
           "$type": "System.Int32[], mscorlib",
           "$values": [
-            8,
-            10
+            7,
+            9
           ]
         },
         "nodeId": 9,
-        "index": 6,
-        "parentIndex": 7,
+        "index": 5,
+        "parentIndex": 6,
         "Guid": "c8d2dc23-2cb2-4b21-af49-a41f71581549"
       },
       {
@@ -471,10 +504,10 @@
         },
         "banPT": false,
         "positionInfo": null,
-        "_output": 6,
+        "_output": 5,
         "nodeId": 10,
-        "index": 7,
-        "parentIndex": 72,
+        "index": 6,
+        "parentIndex": -1,
         "Guid": "22d17e4b-9385-4ede-a798-c8b86e986d90"
       },
       {
@@ -490,14 +523,16 @@
         },
         "banPT": false,
         "positionInfo": null,
-        "_output": 65,
+        "_output": -1,
         "nodeId": 11,
-        "index": 8,
-        "parentIndex": 6,
+        "index": 7,
+        "parentIndex": 5,
         "Guid": "99a87b66-0786-4c5f-9e2b-8e130ca27000"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgChoiceGroup, Assembly-CSharp",
+        "showFavorTitle": false,
+        "showFavorLockTips": false,
         "dynamicType": 0,
         "selectTimes": null,
         "selectTagCounts": null,
@@ -513,8 +548,8 @@
             {
               "$type": "miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp",
               "condition": null,
-              "iconId": 0,
               "style": 0,
+              "newIconId": 0,
               "choiceContent": {
                 "$type": "miHoYo.HYG.Performance.ChoiceContent, Assembly-CSharp",
                 "useContentSelector": false,
@@ -522,7 +557,10 @@
                 "content_l10n": {
                   "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                   "textId": "Performance_10000003013_12_textmap_6",
-                  "value": null
+                  "value": null,
+                  "duration": null,
+                  "durationMap": null,
+                  "chatType": 0
                 },
                 "contentSelector": {
                   "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.StringSelectorItem, Assembly-CSharp]], mscorlib",
@@ -537,8 +575,8 @@
             {
               "$type": "miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp",
               "condition": null,
-              "iconId": 0,
               "style": 0,
+              "newIconId": 0,
               "choiceContent": {
                 "$type": "miHoYo.HYG.Performance.ChoiceContent, Assembly-CSharp",
                 "useContentSelector": false,
@@ -546,7 +584,10 @@
                 "content_l10n": {
                   "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                   "textId": "Performance_10000003013_12_textmap_7",
-                  "value": null
+                  "value": null,
+                  "duration": null,
+                  "durationMap": null,
+                  "chatType": 0
                 },
                 "contentSelector": {
                   "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.StringSelectorItem, Assembly-CSharp]], mscorlib",
@@ -561,8 +602,8 @@
             {
               "$type": "miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp",
               "condition": null,
-              "iconId": 0,
               "style": 0,
+              "newIconId": 0,
               "choiceContent": {
                 "$type": "miHoYo.HYG.Performance.ChoiceContent, Assembly-CSharp",
                 "useContentSelector": false,
@@ -570,7 +611,10 @@
                 "content_l10n": {
                   "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                   "textId": "Performance_10000003013_12_textmap_8",
-                  "value": null
+                  "value": null,
+                  "duration": null,
+                  "durationMap": null,
+                  "chatType": 0
                 },
                 "contentSelector": {
                   "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.StringSelectorItem, Assembly-CSharp]], mscorlib",
@@ -591,14 +635,14 @@
         "_branches": {
           "$type": "System.Int32[], mscorlib",
           "$values": [
-            35,
-            103,
-            34
+            31,
+            81,
+            30
           ]
         },
         "nodeId": 12,
-        "index": 9,
-        "parentIndex": 12,
+        "index": 8,
+        "parentIndex": 10,
         "Guid": "40d784ff-3bb4-4869-b9fb-e06c89728c2b"
       },
       {
@@ -616,34 +660,9 @@
         "positionInfo": null,
         "_output": -1,
         "nodeId": 13,
-        "index": 10,
-        "parentIndex": 6,
+        "index": 9,
+        "parentIndex": 5,
         "Guid": "1c1f7c4d-0b64-41b7-aeb9-4e2fb4105874"
-      },
-      {
-        "$type": "miHoYo.HYG.Performance.CfgPerformAction, Assembly-CSharp",
-        "action": {
-          "$type": "miHoYo.HYG.Performance.TriggerNpcVisiting, Assembly-CSharp"
-        },
-        "infos": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp]], mscorlib",
-          "$values": [
-            {
-              "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
-              "content": "默认"
-            }
-          ]
-        },
-        "_branches": {
-          "$type": "System.Int32[], mscorlib",
-          "$values": [
-            60
-          ]
-        },
-        "nodeId": 15,
-        "index": 11,
-        "parentIndex": 63,
-        "Guid": "faf5f9b6-d53f-4cda-99ed-4b869135249b"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgDialogGroup, Assembly-CSharp",
@@ -658,10 +677,10 @@
         },
         "banPT": false,
         "positionInfo": null,
-        "_output": 9,
+        "_output": 8,
         "nodeId": 20,
-        "index": 12,
-        "parentIndex": 33,
+        "index": 10,
+        "parentIndex": 29,
         "Guid": "47adf08c-a107-4276-8642-755a12a51f10"
       },
       {
@@ -677,14 +696,16 @@
         },
         "banPT": false,
         "positionInfo": null,
-        "_output": 14,
+        "_output": 12,
         "nodeId": 21,
-        "index": 13,
-        "parentIndex": 36,
+        "index": 11,
+        "parentIndex": -1,
         "Guid": "e0ab4be8-29da-444a-bb4e-83fee46e2ec3"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgChoiceGroup, Assembly-CSharp",
+        "showFavorTitle": false,
+        "showFavorLockTips": false,
         "dynamicType": 0,
         "selectTimes": null,
         "selectTagCounts": null,
@@ -700,8 +721,8 @@
             {
               "$type": "miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp",
               "condition": null,
-              "iconId": 0,
               "style": 0,
+              "newIconId": 0,
               "choiceContent": {
                 "$type": "miHoYo.HYG.Performance.ChoiceContent, Assembly-CSharp",
                 "useContentSelector": false,
@@ -709,7 +730,10 @@
                 "content_l10n": {
                   "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                   "textId": "Performance_10000003013_23_textmap_9",
-                  "value": null
+                  "value": null,
+                  "duration": null,
+                  "durationMap": null,
+                  "chatType": 0
                 },
                 "contentSelector": {
                   "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.StringSelectorItem, Assembly-CSharp]], mscorlib",
@@ -724,8 +748,8 @@
             {
               "$type": "miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp",
               "condition": null,
-              "iconId": 0,
               "style": 0,
+              "newIconId": 0,
               "choiceContent": {
                 "$type": "miHoYo.HYG.Performance.ChoiceContent, Assembly-CSharp",
                 "useContentSelector": false,
@@ -733,7 +757,10 @@
                 "content_l10n": {
                   "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                   "textId": "Performance_10000003013_23_textmap_10",
-                  "value": null
+                  "value": null,
+                  "duration": null,
+                  "durationMap": null,
+                  "chatType": 0
                 },
                 "contentSelector": {
                   "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.StringSelectorItem, Assembly-CSharp]], mscorlib",
@@ -754,17 +781,19 @@
         "_branches": {
           "$type": "System.Int32[], mscorlib",
           "$values": [
-            17,
-            18
+            15,
+            16
           ]
         },
         "nodeId": 23,
-        "index": 14,
-        "parentIndex": 13,
+        "index": 12,
+        "parentIndex": 11,
         "Guid": "015b24dc-fb08-4a1b-965d-0517e5817cf3"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgChoiceGroup, Assembly-CSharp",
+        "showFavorTitle": false,
+        "showFavorLockTips": false,
         "dynamicType": 0,
         "selectTimes": null,
         "selectTagCounts": null,
@@ -780,8 +809,8 @@
             {
               "$type": "miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp",
               "condition": null,
-              "iconId": 0,
               "style": 0,
+              "newIconId": 0,
               "choiceContent": {
                 "$type": "miHoYo.HYG.Performance.ChoiceContent, Assembly-CSharp",
                 "useContentSelector": false,
@@ -789,7 +818,10 @@
                 "content_l10n": {
                   "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                   "textId": "Performance_10000003013_24_textmap_11",
-                  "value": null
+                  "value": null,
+                  "duration": null,
+                  "durationMap": null,
+                  "chatType": 0
                 },
                 "contentSelector": {
                   "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.StringSelectorItem, Assembly-CSharp]], mscorlib",
@@ -804,8 +836,8 @@
             {
               "$type": "miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp",
               "condition": null,
-              "iconId": 0,
               "style": 0,
+              "newIconId": 0,
               "choiceContent": {
                 "$type": "miHoYo.HYG.Performance.ChoiceContent, Assembly-CSharp",
                 "useContentSelector": false,
@@ -813,7 +845,10 @@
                 "content_l10n": {
                   "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                   "textId": "Performance_10000003013_24_textmap_12",
-                  "value": null
+                  "value": null,
+                  "duration": null,
+                  "durationMap": null,
+                  "chatType": 0
                 },
                 "contentSelector": {
                   "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.StringSelectorItem, Assembly-CSharp]], mscorlib",
@@ -834,13 +869,13 @@
         "_branches": {
           "$type": "System.Int32[], mscorlib",
           "$values": [
-            87,
-            25
+            68,
+            23
           ]
         },
         "nodeId": 24,
-        "index": 15,
-        "parentIndex": 23,
+        "index": 13,
+        "parentIndex": 21,
         "Guid": "4955c9c1-44b2-4d1f-b7b1-4d016f9930b4"
       },
       {
@@ -856,10 +891,10 @@
         },
         "banPT": false,
         "positionInfo": null,
-        "_output": 38,
+        "_output": 33,
         "nodeId": 25,
-        "index": 16,
-        "parentIndex": 36,
+        "index": 14,
+        "parentIndex": 31,
         "Guid": "c933aca8-daae-477f-8db2-083bed62d8dc"
       },
       {
@@ -877,8 +912,8 @@
         "positionInfo": null,
         "_output": -1,
         "nodeId": 26,
-        "index": 17,
-        "parentIndex": 14,
+        "index": 15,
+        "parentIndex": 12,
         "Guid": "decbe128-1662-4df0-a757-1bee9c7aab37"
       },
       {
@@ -894,10 +929,10 @@
         },
         "banPT": false,
         "positionInfo": null,
-        "_output": 37,
+        "_output": 32,
         "nodeId": 27,
-        "index": 18,
-        "parentIndex": 14,
+        "index": 16,
+        "parentIndex": 12,
         "Guid": "e1007ba6-6c3f-451d-a331-413316fef5d9"
       },
       {
@@ -915,8 +950,8 @@
         "positionInfo": null,
         "_output": -1,
         "nodeId": 28,
-        "index": 19,
-        "parentIndex": 44,
+        "index": 17,
+        "parentIndex": 39,
         "Guid": "46300bdd-d1a9-4004-b6b8-99ab2c407150"
       },
       {
@@ -934,8 +969,8 @@
         "positionInfo": null,
         "_output": -1,
         "nodeId": 33,
-        "index": 20,
-        "parentIndex": 44,
+        "index": 18,
+        "parentIndex": 39,
         "Guid": "09b45d42-58e7-45a2-b78f-60508d176a58"
       },
       {
@@ -953,8 +988,8 @@
         "positionInfo": null,
         "_output": -1,
         "nodeId": 34,
-        "index": 21,
-        "parentIndex": 44,
+        "index": 19,
+        "parentIndex": 39,
         "Guid": "b76f6486-2ea8-44a1-b466-107766f95905"
       },
       {
@@ -972,8 +1007,8 @@
         "positionInfo": null,
         "_output": -1,
         "nodeId": 35,
-        "index": 22,
-        "parentIndex": 43,
+        "index": 20,
+        "parentIndex": 38,
         "Guid": "a6dc0680-1701-4373-8838-f8cb22eba719"
       },
       {
@@ -989,10 +1024,10 @@
         },
         "banPT": false,
         "positionInfo": null,
-        "_output": 15,
+        "_output": 13,
         "nodeId": 38,
-        "index": 23,
-        "parentIndex": 43,
+        "index": 21,
+        "parentIndex": 38,
         "Guid": "07d148c3-e10c-4f72-84df-cb0763365c58"
       },
       {
@@ -1010,8 +1045,8 @@
         "positionInfo": null,
         "_output": -1,
         "nodeId": 39,
-        "index": 24,
-        "parentIndex": 69,
+        "index": 22,
+        "parentIndex": 54,
         "Guid": "704b096f-998c-462c-a24f-849ab1ddc5f4"
       },
       {
@@ -1029,16 +1064,20 @@
         "positionInfo": null,
         "_output": -1,
         "nodeId": 43,
-        "index": 25,
-        "parentIndex": 15,
+        "index": 23,
+        "parentIndex": 13,
         "Guid": "c9e7cd59-6d07-4d9e-a87b-e8d595a8d43a"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgChoiceGroup, Assembly-CSharp",
+        "showFavorTitle": false,
+        "showFavorLockTips": false,
         "dynamicType": 5,
         "selectTimes": {
           "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Int32, mscorlib]], Assembly-CSharp",
-          "_value": 3
+          "_value": 3,
+          "Override": false,
+          "OverrideValue": false
         },
         "selectTagCounts": null,
         "parentTagNew": {
@@ -1053,8 +1092,8 @@
             {
               "$type": "miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp",
               "condition": null,
-              "iconId": 0,
               "style": 0,
+              "newIconId": 0,
               "choiceContent": {
                 "$type": "miHoYo.HYG.Performance.ChoiceContent, Assembly-CSharp",
                 "useContentSelector": false,
@@ -1062,7 +1101,10 @@
                 "content_l10n": {
                   "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                   "textId": "Performance_10000003013_44_textmap_23",
-                  "value": null
+                  "value": null,
+                  "duration": null,
+                  "durationMap": null,
+                  "chatType": 0
                 },
                 "contentSelector": {
                   "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.StringSelectorItem, Assembly-CSharp]], mscorlib",
@@ -1079,16 +1121,16 @@
         "textGroupId": "10000003013_30",
         "textMaxIndex": 0,
         "choiceMaxIndex": 2,
-        "_dynamicOut": 70,
+        "_dynamicOut": 55,
         "_branches": {
           "$type": "System.Int32[], mscorlib",
           "$values": [
-            29
+            27
           ]
         },
         "nodeId": 44,
-        "index": 26,
-        "parentIndex": 28,
+        "index": 24,
+        "parentIndex": 26,
         "Guid": "cb143e05-173a-4d17-ace8-0ce934c454b7"
       },
       {
@@ -1104,10 +1146,10 @@
         },
         "banPT": false,
         "positionInfo": null,
-        "_output": 26,
+        "_output": 24,
         "nodeId": 49,
-        "index": 27,
-        "parentIndex": 46,
+        "index": 25,
+        "parentIndex": 41,
         "Guid": "d2565782-7d98-49ca-b2c3-1a04cace7965"
       },
       {
@@ -1123,10 +1165,10 @@
         },
         "banPT": false,
         "positionInfo": null,
-        "_output": 26,
+        "_output": 24,
         "nodeId": 51,
-        "index": 28,
-        "parentIndex": 46,
+        "index": 26,
+        "parentIndex": 41,
         "Guid": "f603171b-f1c6-4e2e-a911-f750edb00c32"
       },
       {
@@ -1144,8 +1186,8 @@
         "positionInfo": null,
         "_output": -1,
         "nodeId": 55,
-        "index": 29,
-        "parentIndex": 102,
+        "index": 27,
+        "parentIndex": 80,
         "Guid": "0fcc98e0-a84b-49e2-b953-525110bdcad5"
       },
       {
@@ -1163,58 +1205,9 @@
         "positionInfo": null,
         "_output": -1,
         "nodeId": 56,
-        "index": 30,
-        "parentIndex": 47,
+        "index": 28,
+        "parentIndex": 42,
         "Guid": "1144900f-4eff-4175-9e5a-7c04861ed598"
-      },
-      {
-        "$type": "miHoYo.HYG.Performance.CfgBranch, Assembly-CSharp",
-        "condition": {
-          "$type": "miHoYo.HYG.DataSharing.ConfigVarCompareInt32, Assembly-CSharp",
-          "_lhs": {
-            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMemoryIntValue, Assembly-CSharp",
-            "memoryType": 2,
-            "memoryKey": 562949953421825,
-            "callerConfigId": null,
-            "GetCurrSceneNpcMemory": true
-          },
-          "_operatorType": 0,
-          "_rhs": {
-            "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Int32, mscorlib]], Assembly-CSharp",
-            "_value": 0
-          }
-        },
-        "_successOut": 71,
-        "_failOut": 72,
-        "nodeId": 57,
-        "index": 31,
-        "parentIndex": 0,
-        "Guid": "a9d6b8a9-bf32-4cbf-aab7-5e8b10ac4c44"
-      },
-      {
-        "$type": "miHoYo.HYG.Performance.CfgPerformAction, Assembly-CSharp",
-        "action": {
-          "$type": "miHoYo.HYG.Performance.TriggerNpcCancelVisiting, Assembly-CSharp"
-        },
-        "infos": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp]], mscorlib",
-          "$values": [
-            {
-              "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
-              "content": "默认"
-            }
-          ]
-        },
-        "_branches": {
-          "$type": "System.Int32[], mscorlib",
-          "$values": [
-            -1
-          ]
-        },
-        "nodeId": 58,
-        "index": 32,
-        "parentIndex": 75,
-        "Guid": "52026894-005a-4c85-bf74-2b5d00af99eb"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgNextSelector, Assembly-CSharp",
@@ -1263,25 +1256,27 @@
         "_branches": {
           "$type": "System.Int32[], mscorlib",
           "$values": [
-            12,
-            34
+            10,
+            30
           ]
         },
         "nodeId": 61,
-        "index": 33,
-        "parentIndex": 0,
+        "index": 29,
+        "parentIndex": 94,
         "Guid": "1b77c7d8-4376-4694-b94a-c343e948419a"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgPerformJumper, Assembly-CSharp",
         "useStaticId": true,
+        "useConfigVarId": false,
         "performId": 1000000020,
+        "configVarId": null,
         "speakerKey": null,
         "topicIndex": 0,
         "_output": -1,
         "nodeId": 62,
-        "index": 34,
-        "parentIndex": 33,
+        "index": 30,
+        "parentIndex": 29,
         "Guid": "b77f1613-ba7d-4c4c-a77a-a45e3b07b98d"
       },
       {
@@ -1290,39 +1285,26 @@
           "$type": "miHoYo.HYG.DataSharing.ConfigVarCompareUInt32, Assembly-CSharp",
           "_lhs": {
             "$type": "miHoYo.HYG.DataSharing.ConfigVarGetVisitRewardConfigId, Assembly-CSharp",
-            "_npcConfigId": {
-              "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPerformanceTriggerConfigId, Assembly-CSharp"
-            },
-            "_type": 2
+            "_type": 2,
+            "Override": false,
+            "OverrideValue": false
           },
           "_operatorType": 0,
           "_rhs": {
             "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.UInt32, mscorlib]], Assembly-CSharp",
-            "_value": 0
-          }
-        },
-        "_successOut": 42,
-        "_failOut": 36,
-        "nodeId": 63,
-        "index": 35,
-        "parentIndex": 9,
-        "Guid": "1ea3f8a8-c639-4118-8a31-86a07935f0c4"
-      },
-      {
-        "$type": "miHoYo.HYG.Performance.CfgBranch, Assembly-CSharp",
-        "condition": {
-          "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckVisitRewardsCanSendToBag, Assembly-CSharp",
-          "_npcConfigId": {
-            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPerformanceTriggerConfigId, Assembly-CSharp"
+            "_value": 0,
+            "Override": false,
+            "OverrideValue": false
           },
-          "_type": 2
+          "Override": false,
+          "OverrideValue": false
         },
-        "_successOut": 16,
-        "_failOut": 13,
-        "nodeId": 64,
-        "index": 36,
-        "parentIndex": 35,
-        "Guid": "5eed2c11-6a27-47d9-889a-08cc9574f9ac"
+        "_successOut": 37,
+        "_failOut": 14,
+        "nodeId": 63,
+        "index": 31,
+        "parentIndex": 8,
+        "Guid": "1ea3f8a8-c639-4118-8a31-86a07935f0c4"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgPerformAction, Assembly-CSharp",
@@ -1346,13 +1328,13 @@
         "_branches": {
           "$type": "System.Int32[], mscorlib",
           "$values": [
-            68,
+            53,
             -1
           ]
         },
         "nodeId": 66,
-        "index": 37,
-        "parentIndex": 18,
+        "index": 32,
+        "parentIndex": 16,
         "Guid": "1f24f9e8-468c-405b-8060-c83b770c0943"
       },
       {
@@ -1379,10 +1361,10 @@
           "z": 1.0
         },
         "initVisible": true,
-        "_output": 39,
+        "_output": 34,
         "nodeId": 68,
-        "index": 38,
-        "parentIndex": 16,
+        "index": 33,
+        "parentIndex": 14,
         "Guid": "477c5ecc-0dc0-4bbd-932c-8c7e6d222814"
       },
       {
@@ -1402,23 +1384,25 @@
           "$values": [
             {
               "$type": "miHoYo.HYG.DataSharing.ConfigVarEditorGuidToGuid, Assembly-CSharp",
-              "editorGuidValue": 12582916
+              "editorGuidValue": 12582916,
+              "Override": false,
+              "OverrideValue": false
             }
           ]
         },
-        "_output": 40,
+        "_output": 35,
         "nodeId": 69,
-        "index": 39,
-        "parentIndex": 38,
+        "index": 34,
+        "parentIndex": 33,
         "Guid": "b7110aa2-fa24-419f-977a-8bd61a2fe8ed"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgRemoveEntity, Assembly-CSharp",
         "editorGuidValue": 12582916,
-        "_output": 41,
+        "_output": 36,
         "nodeId": 70,
-        "index": 40,
-        "parentIndex": 39,
+        "index": 35,
+        "parentIndex": 34,
         "Guid": "c9826ab7-430d-4e4f-a0d0-c291a2d4cf65"
       },
       {
@@ -1443,28 +1427,27 @@
         "_branches": {
           "$type": "System.Int32[], mscorlib",
           "$values": [
-            67,
+            52,
             -1
           ]
         },
         "nodeId": 71,
-        "index": 41,
-        "parentIndex": 40,
+        "index": 36,
+        "parentIndex": 35,
         "Guid": "0460e531-0b2e-46fe-acc9-729900023c22"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgBranch, Assembly-CSharp",
         "condition": {
           "$type": "miHoYo.HYG.DataSharing.ConfigVarGetIsFoodTakenOfNpcVisitAffair, Assembly-CSharp",
-          "_npcConfigId": {
-            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPerformanceTriggerConfigId, Assembly-CSharp"
-          }
+          "Override": false,
+          "OverrideValue": false
         },
-        "_successOut": 44,
-        "_failOut": 43,
+        "_successOut": 39,
+        "_failOut": 38,
         "nodeId": 72,
-        "index": 42,
-        "parentIndex": 35,
+        "index": 37,
+        "parentIndex": 31,
         "Guid": "effe90ec-01e1-4e98-82da-0a9b9c54df57"
       },
       {
@@ -1473,21 +1456,24 @@
           "$type": "miHoYo.HYG.DataSharing.ConfigVarComparePlayerHasItem, Assembly-CSharp",
           "_itemConfigId": {
             "$type": "miHoYo.HYG.DataSharing.ConfigVarGetFoodOfNpcVisitAffair, Assembly-CSharp",
-            "_npcConfigId": {
-              "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPerformanceTriggerConfigId, Assembly-CSharp"
-            }
+            "Override": false,
+            "OverrideValue": false
           },
           "_compareValue": {
             "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedInt64, Assembly-CSharp",
-            "_value": 1
+            "_value": 1,
+            "Override": false,
+            "OverrideValue": false
           },
-          "_operatorType": 5
+          "_operatorType": 5,
+          "Override": false,
+          "OverrideValue": false
         },
-        "_successOut": 23,
-        "_failOut": 22,
+        "_successOut": 21,
+        "_failOut": 20,
         "nodeId": 73,
-        "index": 43,
-        "parentIndex": 42,
+        "index": 38,
+        "parentIndex": 37,
         "Guid": "3f039683-f569-40d6-97fb-c9640469e0bc"
       },
       {
@@ -1555,14 +1541,14 @@
         "_branches": {
           "$type": "System.Int32[], mscorlib",
           "$values": [
-            19,
-            20,
-            21
+            17,
+            18,
+            19
           ]
         },
         "nodeId": 74,
-        "index": 44,
-        "parentIndex": 42,
+        "index": 39,
+        "parentIndex": 37,
         "Guid": "d949373d-fc47-4030-9acf-f053a9eda7bc"
       },
       {
@@ -1586,13 +1572,13 @@
         "_branches": {
           "$type": "System.Int32[], mscorlib",
           "$values": [
-            69,
+            54,
             -1
           ]
         },
         "nodeId": 82,
-        "index": 45,
-        "parentIndex": 92,
+        "index": 40,
+        "parentIndex": 73,
         "Guid": "ddf8a121-6adf-49e7-927f-c16b11769bdd"
       },
       {
@@ -1601,22 +1587,25 @@
           "$type": "miHoYo.HYG.DataSharing.ConfigVarCompareUInt32, Assembly-CSharp",
           "_lhs": {
             "$type": "miHoYo.HYG.DataSharing.ConfigVarGetVisitRewardConfigId, Assembly-CSharp",
-            "_npcConfigId": {
-              "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPerformanceTriggerConfigId, Assembly-CSharp"
-            },
-            "_type": 3
+            "_type": 3,
+            "Override": false,
+            "OverrideValue": false
           },
           "_operatorType": 0,
           "_rhs": {
             "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.UInt32, mscorlib]], Assembly-CSharp",
-            "_value": 0
-          }
+            "_value": 0,
+            "Override": false,
+            "OverrideValue": false
+          },
+          "Override": false,
+          "OverrideValue": false
         },
-        "_successOut": 27,
-        "_failOut": 28,
+        "_successOut": 25,
+        "_failOut": 26,
         "nodeId": 83,
-        "index": 46,
-        "parentIndex": 103,
+        "index": 41,
+        "parentIndex": 81,
         "Guid": "fd554d65-e73c-46b7-b428-8c3398f7bef1"
       },
       {
@@ -1629,7 +1618,9 @@
             "name": "NpcEvent_小游戏结果Int值（表演内）",
             "valueType": 1,
             "temp": true
-          }
+          },
+          "Override": false,
+          "OverrideValue": false
         },
         "results": {
           "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
@@ -1638,17 +1629,17 @@
             2
           ]
         },
-        "_defaultOut": 30,
+        "_defaultOut": 28,
         "_branches": {
           "$type": "System.Int32[], mscorlib",
           "$values": [
-            62,
-            61
+            50,
+            49
           ]
         },
         "nodeId": 86,
-        "index": 47,
-        "parentIndex": 70,
+        "index": 42,
+        "parentIndex": 55,
         "Guid": "346ae2e0-5c34-4683-b7bd-98d1cd70934a"
       },
       {
@@ -1666,8 +1657,8 @@
         "positionInfo": null,
         "_output": -1,
         "nodeId": 89,
-        "index": 48,
-        "parentIndex": 62,
+        "index": 43,
+        "parentIndex": 50,
         "Guid": "303960b0-16b9-4fdc-8f5c-875e7ec15c4e"
       },
       {
@@ -1683,10 +1674,10 @@
         },
         "banPT": false,
         "positionInfo": null,
-        "_output": 52,
+        "_output": 127,
         "nodeId": 90,
-        "index": 49,
-        "parentIndex": 62,
+        "index": 44,
+        "parentIndex": 50,
         "Guid": "650d3238-5ccf-47f4-9fc7-70da31b08199"
       },
       {
@@ -1704,8 +1695,8 @@
         "positionInfo": null,
         "_output": -1,
         "nodeId": 92,
-        "index": 50,
-        "parentIndex": 61,
+        "index": 45,
+        "parentIndex": 49,
         "Guid": "ffb11179-90b0-4c3b-b48f-57af09374112"
       },
       {
@@ -1723,109 +1714,9 @@
         "positionInfo": null,
         "_output": -1,
         "nodeId": 93,
-        "index": 51,
-        "parentIndex": 61,
-        "Guid": "6e9eafc2-979e-4989-8311-2e7ae39feb2e"
-      },
-      {
-        "$type": "miHoYo.HYG.Performance.CfgBranch, Assembly-CSharp",
-        "condition": {
-          "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckVisitRewardsCanSendToBag, Assembly-CSharp",
-          "_npcConfigId": {
-            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPerformanceTriggerConfigId, Assembly-CSharp"
-          },
-          "_type": 3
-        },
-        "_successOut": 53,
-        "_failOut": 56,
-        "nodeId": 94,
-        "index": 52,
+        "index": 46,
         "parentIndex": 49,
-        "Guid": "a3c32bec-2548-4bf0-918c-e14490167822"
-      },
-      {
-        "$type": "miHoYo.HYG.Performance.CfgLocalEntity, Assembly-CSharp",
-        "useConfigVarId": true,
-        "configId": 10190,
-        "configVarId": {
-          "$type": "miHoYo.HYG.DataSharing.ConfigVarGetVisitRewardConfigId, Assembly-CSharp",
-          "_npcConfigId": {
-            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPerformanceTriggerConfigId, Assembly-CSharp"
-          },
-          "_type": 3
-        },
-        "editorGuid": 5242882,
-        "useDefaultEIC": false,
-        "useDropType": true,
-        "position": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        },
-        "euler": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        },
-        "scaler": {
-          "x": 1.0,
-          "y": 1.0,
-          "z": 1.0
-        },
-        "initVisible": true,
-        "_output": 54,
-        "nodeId": 95,
-        "index": 53,
-        "parentIndex": 52,
-        "Guid": "38f0f4f6-c7e6-4912-907c-48ee52c6641f"
-      },
-      {
-        "$type": "miHoYo.HYG.Performance.CfgExecuteCmdWait, Assembly-CSharp",
-        "isAsync": true,
-        "useCmdCfgId": true,
-        "cmdCfgId": 49,
-        "actorList": {
-          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-          "$values": [
-            "PerformTrigger",
-            "Player"
-          ]
-        },
-        "itemList": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.UInt64, mscorlib]], Assembly-CSharp]], mscorlib",
-          "$values": [
-            {
-              "$type": "miHoYo.HYG.DataSharing.ConfigVarEditorGuidToGuid, Assembly-CSharp",
-              "editorGuidValue": 5242882
-            }
-          ]
-        },
-        "_output": 55,
-        "nodeId": 96,
-        "index": 54,
-        "parentIndex": 53,
-        "Guid": "8c1178fc-f040-4672-bbc7-45cf6f30470f"
-      },
-      {
-        "$type": "miHoYo.HYG.Performance.CfgRemoveEntity, Assembly-CSharp",
-        "editorGuidValue": 5242882,
-        "_output": 57,
-        "nodeId": 97,
-        "index": 55,
-        "parentIndex": 54,
-        "Guid": "e6b10e5a-4003-4b16-bf29-b501d2368da2"
-      },
-      {
-        "$type": "miHoYo.HYG.Performance.CfgPerformJumper, Assembly-CSharp",
-        "useStaticId": true,
-        "performId": 1000003000,
-        "speakerKey": null,
-        "topicIndex": 0,
-        "_output": 57,
-        "nodeId": 98,
-        "index": 56,
-        "parentIndex": 52,
-        "Guid": "edf806b3-1815-4c62-b9ac-97795bad48e8"
+        "Guid": "6e9eafc2-979e-4989-8311-2e7ae39feb2e"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgPerformAction, Assembly-CSharp",
@@ -1849,13 +1740,13 @@
         "_branches": {
           "$type": "System.Int32[], mscorlib",
           "$values": [
-            66,
+            51,
             -1
           ]
         },
         "nodeId": 99,
-        "index": 57,
-        "parentIndex": 56,
+        "index": 47,
+        "parentIndex": 128,
         "Guid": "2645e343-d248-4bfc-acf5-6f90c0f2e301"
       },
       {
@@ -1873,45 +1764,9 @@
         "positionInfo": null,
         "_output": -1,
         "nodeId": 100,
-        "index": 58,
-        "parentIndex": 66,
+        "index": 48,
+        "parentIndex": 51,
         "Guid": "73c16e03-eb43-47cb-a58b-58bd15edd01b"
-      },
-      {
-        "$type": "miHoYo.HYG.Performance.CfgSaveMemory, Assembly-CSharp",
-        "memoryStrKey": "Global/FavorEvent/NpcAffair_13_Exit_Int",
-        "memoryKey": 562949953421824,
-        "isNpc": false,
-        "useDynamicId": false,
-        "dynamicId": null,
-        "memoryTime": 0,
-        "operateType": 0,
-        "useConfigVarAsNewValue": false,
-        "newValue": 1,
-        "configVarValue": null,
-        "_output": -1,
-        "nodeId": 108,
-        "index": 59,
-        "parentIndex": 99,
-        "Guid": "241ee4a0-2e20-4b53-b549-cd5135ead634"
-      },
-      {
-        "$type": "miHoYo.HYG.Performance.CfgSaveMemory, Assembly-CSharp",
-        "memoryStrKey": "Global/FavorEvent/NpcAffair_13_Enter_Int",
-        "memoryKey": 562949953421825,
-        "isNpc": false,
-        "useDynamicId": false,
-        "dynamicId": null,
-        "memoryTime": 0,
-        "operateType": 0,
-        "useConfigVarAsNewValue": false,
-        "newValue": 1,
-        "configVarValue": null,
-        "_output": -1,
-        "nodeId": 109,
-        "index": 60,
-        "parentIndex": 11,
-        "Guid": "94312366-d9ae-43d4-965b-71eeb26fc6e7"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgBranch, Assembly-CSharp",
@@ -1919,22 +1774,25 @@
           "$type": "miHoYo.HYG.DataSharing.ConfigVarCompareUInt32, Assembly-CSharp",
           "_lhs": {
             "$type": "miHoYo.HYG.DataSharing.ConfigVarGetVisitRewardConfigId, Assembly-CSharp",
-            "_npcConfigId": {
-              "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPerformanceTriggerConfigId, Assembly-CSharp"
-            },
-            "_type": 3
+            "_type": 3,
+            "Override": false,
+            "OverrideValue": false
           },
           "_operatorType": 0,
           "_rhs": {
             "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.UInt32, mscorlib]], Assembly-CSharp",
-            "_value": 0
-          }
+            "_value": 0,
+            "Override": false,
+            "OverrideValue": false
+          },
+          "Override": false,
+          "OverrideValue": false
         },
-        "_successOut": 50,
-        "_failOut": 51,
+        "_successOut": 45,
+        "_failOut": 46,
         "nodeId": 110,
-        "index": 61,
-        "parentIndex": 47,
+        "index": 49,
+        "parentIndex": 42,
         "Guid": "ed20235f-ce97-493b-91b1-bfd934396b5d"
       },
       {
@@ -1943,101 +1801,26 @@
           "$type": "miHoYo.HYG.DataSharing.ConfigVarCompareUInt32, Assembly-CSharp",
           "_lhs": {
             "$type": "miHoYo.HYG.DataSharing.ConfigVarGetVisitRewardConfigId, Assembly-CSharp",
-            "_npcConfigId": {
-              "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPerformanceTriggerConfigId, Assembly-CSharp"
-            },
-            "_type": 3
+            "_type": 3,
+            "Override": false,
+            "OverrideValue": false
           },
           "_operatorType": 0,
           "_rhs": {
             "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.UInt32, mscorlib]], Assembly-CSharp",
-            "_value": 0
-          }
+            "_value": 0,
+            "Override": false,
+            "OverrideValue": false
+          },
+          "Override": false,
+          "OverrideValue": false
         },
-        "_successOut": 48,
-        "_failOut": 49,
+        "_successOut": 43,
+        "_failOut": 44,
         "nodeId": 111,
-        "index": 62,
-        "parentIndex": 47,
+        "index": 50,
+        "parentIndex": 42,
         "Guid": "46a3e520-9e1b-4a3f-8386-80c6fd5f75fc"
-      },
-      {
-        "$type": "miHoYo.HYG.Performance.CfgPerformAction, Assembly-CSharp",
-        "action": {
-          "$type": "miHoYo.HYG.Performance.AffairReport, Assembly-CSharp",
-          "action": 10000
-        },
-        "infos": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp]], mscorlib",
-          "$values": [
-            {
-              "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
-              "content": "默认"
-            }
-          ]
-        },
-        "_branches": {
-          "$type": "System.Int32[], mscorlib",
-          "$values": [
-            11
-          ]
-        },
-        "nodeId": 115,
-        "index": 63,
-        "parentIndex": 73,
-        "Guid": "15aa6b3a-7e9e-4e85-ae38-f7a72a9a82ce"
-      },
-      {
-        "$type": "miHoYo.HYG.Performance.CfgPerformAction, Assembly-CSharp",
-        "action": {
-          "$type": "miHoYo.HYG.Performance.AffairReport, Assembly-CSharp",
-          "action": 10001
-        },
-        "infos": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp]], mscorlib",
-          "$values": [
-            {
-              "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
-              "content": "默认"
-            }
-          ]
-        },
-        "_branches": {
-          "$type": "System.Int32[], mscorlib",
-          "$values": [
-            75
-          ]
-        },
-        "nodeId": 116,
-        "index": 64,
-        "parentIndex": 4,
-        "Guid": "8778a699-a17c-437c-b51d-756e9635ed76"
-      },
-      {
-        "$type": "miHoYo.HYG.Performance.CfgPerformAction, Assembly-CSharp",
-        "action": {
-          "$type": "miHoYo.HYG.Performance.AffairReport, Assembly-CSharp",
-          "action": 10006
-        },
-        "infos": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp]], mscorlib",
-          "$values": [
-            {
-              "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
-              "content": "默认"
-            }
-          ]
-        },
-        "_branches": {
-          "$type": "System.Int32[], mscorlib",
-          "$values": [
-            78
-          ]
-        },
-        "nodeId": 117,
-        "index": 65,
-        "parentIndex": 8,
-        "Guid": "09ac57f2-9f57-488f-a410-11b3c905ce63"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgPerformAction, Assembly-CSharp",
@@ -2057,12 +1840,12 @@
         "_branches": {
           "$type": "System.Int32[], mscorlib",
           "$values": [
-            58
+            48
           ]
         },
         "nodeId": 118,
-        "index": 66,
-        "parentIndex": 57,
+        "index": 51,
+        "parentIndex": 47,
         "Guid": "31fed388-55c7-4aca-a951-9b460f7bcd2e"
       },
       {
@@ -2087,8 +1870,8 @@
           ]
         },
         "nodeId": 119,
-        "index": 67,
-        "parentIndex": 41,
+        "index": 52,
+        "parentIndex": 36,
         "Guid": "b2611a9f-4086-47aa-8c08-e981007e1c7c"
       },
       {
@@ -2113,8 +1896,8 @@
           ]
         },
         "nodeId": 120,
-        "index": 68,
-        "parentIndex": 37,
+        "index": 53,
+        "parentIndex": 32,
         "Guid": "55548302-eb8b-4280-a6e9-5532346fa988"
       },
       {
@@ -2135,12 +1918,12 @@
         "_branches": {
           "$type": "System.Int32[], mscorlib",
           "$values": [
-            24
+            22
           ]
         },
         "nodeId": 121,
-        "index": 69,
-        "parentIndex": 45,
+        "index": 54,
+        "parentIndex": 40,
         "Guid": "e57bf9b1-db0c-424b-a13b-c9f55a8161d4"
       },
       {
@@ -2161,50 +1944,13 @@
         "_branches": {
           "$type": "System.Int32[], mscorlib",
           "$values": [
-            47
+            42
           ]
         },
         "nodeId": 122,
-        "index": 70,
-        "parentIndex": 107,
+        "index": 55,
+        "parentIndex": 85,
         "Guid": "3103cb28-4d62-4faf-baa0-027a6c172b7d"
-      },
-      {
-        "$type": "miHoYo.HYG.Performance.CfgPerformJumper, Assembly-CSharp",
-        "useStaticId": true,
-        "performId": 10000003009,
-        "speakerKey": null,
-        "topicIndex": 0,
-        "_output": 1,
-        "nodeId": 125,
-        "index": 71,
-        "parentIndex": 31,
-        "Guid": "ac923f99-ba7c-4b60-af10-2e1f96478f2f"
-      },
-      {
-        "$type": "miHoYo.HYG.Performance.CfgPerformJumper, Assembly-CSharp",
-        "useStaticId": true,
-        "performId": 10000003009,
-        "speakerKey": null,
-        "topicIndex": 0,
-        "_output": 7,
-        "nodeId": 126,
-        "index": 72,
-        "parentIndex": 31,
-        "Guid": "5e7072e8-3648-4e12-887d-ba2771754c39"
-      },
-      {
-        "$type": "miHoYo.HYG.Performance.CfgBlackScreen, Assembly-CSharp",
-        "fadeIn": true,
-        "fadeInTime": 0.3,
-        "fadeOut": false,
-        "fadeOutTime": 0.0,
-        "duration": 0.0,
-        "_output": 63,
-        "nodeId": 129,
-        "index": 73,
-        "parentIndex": 98,
-        "Guid": "816eeefe-e6e0-47af-8e94-09061189b519"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgPerformAction, Assembly-CSharp",
@@ -2213,9 +1959,11 @@
           "npcData": {
             "$type": "GameModules.CompanionStar.Data.NpcStarLogEditorData, Assembly-CSharp",
             "npcId": {
-              "$type": "miHoYo.HYG.DataSharing.ConfigVarGetVisitingNpcConfigId, Assembly-CSharp"
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCurAffairNpcConfigIdForCurPerformance, Assembly-CSharp",
+              "Override": false,
+              "OverrideValue": false
             },
-            "sourceSystemType": 1,
+            "sourceSystemId": 1,
             "npcLogSystemEntry": 13,
             "conditions": {
               "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.UInt32, mscorlib]], Assembly-CSharp]], mscorlib",
@@ -2228,15 +1976,21 @@
                     "name": "NpcLog_条件1Uint值",
                     "valueType": 5,
                     "temp": true
-                  }
+                  },
+                  "Override": false,
+                  "OverrideValue": false
                 },
                 {
                   "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.UInt32, mscorlib]], Assembly-CSharp",
-                  "_value": 0
+                  "_value": 0,
+                  "Override": false,
+                  "OverrideValue": false
                 },
                 {
                   "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.UInt32, mscorlib]], Assembly-CSharp",
-                  "_value": 0
+                  "_value": 0,
+                  "Override": false,
+                  "OverrideValue": false
                 }
               ]
             },
@@ -2244,24 +1998,19 @@
               "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.UInt32, mscorlib]], Assembly-CSharp]], mscorlib",
               "$values": [
                 {
-                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMemoryUIntValue, Assembly-CSharp",
-                  "memoryType": 2,
-                  "memoryKey": 562949953421838,
-                  "callerConfigId": null,
-                  "GetCurrSceneNpcMemory": true
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetWantReward, Assembly-CSharp",
+                  "Override": false,
+                  "OverrideValue": false
                 },
                 {
-                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMemoryUIntValue, Assembly-CSharp",
-                  "memoryType": 2,
-                  "memoryKey": 562949953421839,
-                  "callerConfigId": null,
-                  "GetCurrSceneNpcMemory": true
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetWantGame, Assembly-CSharp",
+                  "Override": false,
+                  "OverrideValue": false
                 },
                 {
-                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetFoodOfNpcVisitAffair, Assembly-CSharp",
-                  "_npcConfigId": {
-                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetVisitingNpcConfigId, Assembly-CSharp"
-                  }
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetWantFood, Assembly-CSharp",
+                  "Override": false,
+                  "OverrideValue": false
                 }
               ]
             }
@@ -2283,73 +2032,14 @@
         "_branches": {
           "$type": "System.Int32[], mscorlib",
           "$values": [
-            99,
+            77,
             -1
           ]
         },
         "nodeId": 130,
-        "index": 74,
-        "parentIndex": 86,
+        "index": 56,
+        "parentIndex": 67,
         "Guid": "501129ad-8bab-4a46-9482-b75524109907"
-      },
-      {
-        "$type": "miHoYo.HYG.Performance.CfgPerformAction, Assembly-CSharp",
-        "action": {
-          "$type": "miHoYo.HYG.Performance.RecordNpcLog, Assembly-CSharp",
-          "npcData": {
-            "$type": "GameModules.CompanionStar.Data.NpcStarLogEditorData, Assembly-CSharp",
-            "npcId": {
-              "$type": "miHoYo.HYG.DataSharing.ConfigVarGetVisitingNpcConfigId, Assembly-CSharp"
-            },
-            "sourceSystemType": 1,
-            "npcLogSystemEntry": 13,
-            "conditions": {
-              "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.UInt32, mscorlib]], Assembly-CSharp]], mscorlib",
-              "$values": [
-                {
-                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.UInt32, mscorlib]], Assembly-CSharp",
-                  "_value": 1
-                },
-                {
-                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.UInt32, mscorlib]], Assembly-CSharp",
-                  "_value": 0
-                },
-                {
-                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.UInt32, mscorlib]], Assembly-CSharp",
-                  "_value": 0
-                }
-              ]
-            },
-            "effectParams": {
-              "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.UInt32, mscorlib]], Assembly-CSharp]], mscorlib",
-              "$values": []
-            }
-          }
-        },
-        "infos": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp]], mscorlib",
-          "$values": [
-            {
-              "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
-              "content": "成功"
-            },
-            {
-              "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
-              "content": "失败"
-            }
-          ]
-        },
-        "_branches": {
-          "$type": "System.Int32[], mscorlib",
-          "$values": [
-            32,
-            -1
-          ]
-        },
-        "nodeId": 131,
-        "index": 75,
-        "parentIndex": 64,
-        "Guid": "6162c36e-1b90-4a6a-8c8f-87bb1a70effd"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgBranch, Assembly-CSharp",
@@ -2357,37 +2047,39 @@
           "$type": "miHoYo.HYG.DataSharing.ConfigVarCompareUInt32, Assembly-CSharp",
           "_lhs": {
             "$type": "miHoYo.HYG.DataSharing.ConfigVarGetVisitRewardConfigId, Assembly-CSharp",
-            "_npcConfigId": {
-              "$type": "miHoYo.HYG.DataSharing.ConfigVarGetVisitingNpcConfigId, Assembly-CSharp"
-            },
-            "_type": 2
+            "_type": 2,
+            "Override": false,
+            "OverrideValue": false
           },
           "_operatorType": 0,
           "_rhs": {
             "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.UInt32, mscorlib]], Assembly-CSharp",
-            "_value": 0
-          }
+            "_value": 0,
+            "Override": false,
+            "OverrideValue": false
+          },
+          "Override": false,
+          "OverrideValue": false
         },
-        "_successOut": 77,
-        "_failOut": 85,
+        "_successOut": 58,
+        "_failOut": 66,
         "nodeId": 132,
-        "index": 76,
-        "parentIndex": 78,
+        "index": 57,
+        "parentIndex": 59,
         "Guid": "870d4e1e-7046-43e5-886e-c1a0da791602"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgBranch, Assembly-CSharp",
         "condition": {
           "$type": "miHoYo.HYG.DataSharing.ConfigVarGetIsFoodTakenOfNpcVisitAffair, Assembly-CSharp",
-          "_npcConfigId": {
-            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetVisitingNpcConfigId, Assembly-CSharp"
-          }
+          "Override": false,
+          "OverrideValue": false
         },
-        "_successOut": 81,
-        "_failOut": 86,
+        "_successOut": 62,
+        "_failOut": 67,
         "nodeId": 133,
-        "index": 77,
-        "parentIndex": 76,
+        "index": 58,
+        "parentIndex": 57,
         "Guid": "2ba5e28d-9fb7-4d0a-8c10-5c9fdbffce30"
       },
       {
@@ -2396,22 +2088,25 @@
           "$type": "miHoYo.HYG.DataSharing.ConfigVarCompareUInt32, Assembly-CSharp",
           "_lhs": {
             "$type": "miHoYo.HYG.DataSharing.ConfigVarGetVisitRewardConfigId, Assembly-CSharp",
-            "_npcConfigId": {
-              "$type": "miHoYo.HYG.DataSharing.ConfigVarGetVisitingNpcConfigId, Assembly-CSharp"
-            },
-            "_type": 3
+            "_type": 3,
+            "Override": false,
+            "OverrideValue": false
           },
           "_operatorType": 0,
           "_rhs": {
             "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.UInt32, mscorlib]], Assembly-CSharp",
-            "_value": 0
-          }
+            "_value": 0,
+            "Override": false,
+            "OverrideValue": false
+          },
+          "Override": false,
+          "OverrideValue": false
         },
-        "_successOut": 76,
-        "_failOut": 79,
+        "_successOut": 57,
+        "_failOut": 60,
         "nodeId": 134,
-        "index": 78,
-        "parentIndex": 65,
+        "index": 59,
+        "parentIndex": 120,
         "Guid": "4a1814f5-aa3f-4f5e-b8d8-7c039dcdff3a"
       },
       {
@@ -2420,37 +2115,39 @@
           "$type": "miHoYo.HYG.DataSharing.ConfigVarCompareUInt32, Assembly-CSharp",
           "_lhs": {
             "$type": "miHoYo.HYG.DataSharing.ConfigVarGetVisitRewardConfigId, Assembly-CSharp",
-            "_npcConfigId": {
-              "$type": "miHoYo.HYG.DataSharing.ConfigVarGetVisitingNpcConfigId, Assembly-CSharp"
-            },
-            "_type": 2
+            "_type": 2,
+            "Override": false,
+            "OverrideValue": false
           },
           "_operatorType": 0,
           "_rhs": {
             "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.UInt32, mscorlib]], Assembly-CSharp",
-            "_value": 0
-          }
+            "_value": 0,
+            "Override": false,
+            "OverrideValue": false
+          },
+          "Override": false,
+          "OverrideValue": false
         },
-        "_successOut": 80,
-        "_failOut": 82,
+        "_successOut": 61,
+        "_failOut": 63,
         "nodeId": 135,
-        "index": 79,
-        "parentIndex": 78,
+        "index": 60,
+        "parentIndex": 59,
         "Guid": "e4b1d5af-3fe3-437d-9e62-ba28e2e61073"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgBranch, Assembly-CSharp",
         "condition": {
           "$type": "miHoYo.HYG.DataSharing.ConfigVarGetIsFoodTakenOfNpcVisitAffair, Assembly-CSharp",
-          "_npcConfigId": {
-            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetVisitingNpcConfigId, Assembly-CSharp"
-          }
+          "Override": false,
+          "OverrideValue": false
         },
-        "_successOut": 83,
-        "_failOut": 84,
+        "_successOut": 64,
+        "_failOut": 65,
         "nodeId": 137,
-        "index": 80,
-        "parentIndex": 79,
+        "index": 61,
+        "parentIndex": 60,
         "Guid": "9ebcc5d6-575a-4b88-bb83-faa939de8502"
       },
       {
@@ -2464,13 +2161,15 @@
         },
         "configVarValue": {
           "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.UInt32, mscorlib]], Assembly-CSharp",
-          "_value": 2
+          "_value": 2,
+          "Override": false,
+          "OverrideValue": false
         },
-        "_output": 74,
+        "_output": 56,
         "_failedOut": -1,
         "nodeId": 139,
-        "index": 81,
-        "parentIndex": 77,
+        "index": 62,
+        "parentIndex": 58,
         "Guid": "2154b805-563b-4b58-b4a7-8213e96fa2a0"
       },
       {
@@ -2484,13 +2183,15 @@
         },
         "configVarValue": {
           "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.UInt32, mscorlib]], Assembly-CSharp",
-          "_value": 7
+          "_value": 7,
+          "Override": false,
+          "OverrideValue": false
         },
-        "_output": 74,
+        "_output": 56,
         "_failedOut": -1,
         "nodeId": 140,
-        "index": 82,
-        "parentIndex": 79,
+        "index": 63,
+        "parentIndex": 60,
         "Guid": "48f463b4-f3b1-4f31-b1ca-7bf226c37995"
       },
       {
@@ -2504,13 +2205,15 @@
         },
         "configVarValue": {
           "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.UInt32, mscorlib]], Assembly-CSharp",
-          "_value": 5
+          "_value": 5,
+          "Override": false,
+          "OverrideValue": false
         },
-        "_output": 74,
+        "_output": 56,
         "_failedOut": -1,
         "nodeId": 141,
-        "index": 83,
-        "parentIndex": 80,
+        "index": 64,
+        "parentIndex": 61,
         "Guid": "e1ed755c-bc01-44b7-a745-f046339d4854"
       },
       {
@@ -2524,13 +2227,15 @@
         },
         "configVarValue": {
           "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.UInt32, mscorlib]], Assembly-CSharp",
-          "_value": 6
+          "_value": 6,
+          "Override": false,
+          "OverrideValue": false
         },
-        "_output": 74,
+        "_output": 56,
         "_failedOut": -1,
         "nodeId": 142,
-        "index": 84,
-        "parentIndex": 80,
+        "index": 65,
+        "parentIndex": 61,
         "Guid": "89badb7b-0210-4670-99ce-462e4ddc7ffe"
       },
       {
@@ -2544,13 +2249,15 @@
         },
         "configVarValue": {
           "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.UInt32, mscorlib]], Assembly-CSharp",
-          "_value": 4
+          "_value": 4,
+          "Override": false,
+          "OverrideValue": false
         },
-        "_output": 74,
+        "_output": 56,
         "_failedOut": -1,
         "nodeId": 143,
-        "index": 85,
-        "parentIndex": 76,
+        "index": 66,
+        "parentIndex": 57,
         "Guid": "e2805c9b-af38-4827-b5de-36c4588363cf"
       },
       {
@@ -2564,13 +2271,15 @@
         },
         "configVarValue": {
           "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.UInt32, mscorlib]], Assembly-CSharp",
-          "_value": 3
+          "_value": 3,
+          "Override": false,
+          "OverrideValue": false
         },
-        "_output": 74,
+        "_output": 56,
         "_failedOut": -1,
         "nodeId": 144,
-        "index": 86,
-        "parentIndex": 77,
+        "index": 67,
+        "parentIndex": 58,
         "Guid": "7c9ecff3-0f0b-4686-9a96-5b3344cdb5d8"
       },
       {
@@ -2579,9 +2288,8 @@
         "configId": 10190,
         "configVarId": {
           "$type": "miHoYo.HYG.DataSharing.ConfigVarGetFoodOfNpcVisitAffair, Assembly-CSharp",
-          "_npcConfigId": {
-            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPerformanceTriggerConfigId, Assembly-CSharp"
-          }
+          "Override": false,
+          "OverrideValue": false
         },
         "editorGuid": 12582916,
         "useDefaultEIC": false,
@@ -2602,10 +2310,10 @@
           "z": 1.0
         },
         "initVisible": true,
-        "_output": 88,
+        "_output": 69,
         "nodeId": 149,
-        "index": 87,
-        "parentIndex": 15,
+        "index": 68,
+        "parentIndex": 13,
         "Guid": "bec12c3a-0f3a-4f48-8a41-18682b432a68"
       },
       {
@@ -2625,14 +2333,16 @@
           "$values": [
             {
               "$type": "miHoYo.HYG.DataSharing.ConfigVarEditorGuidToGuid, Assembly-CSharp",
-              "editorGuidValue": 12582916
+              "editorGuidValue": 12582916,
+              "Override": false,
+              "OverrideValue": false
             }
           ]
         },
-        "_output": 89,
+        "_output": 70,
         "nodeId": 150,
-        "index": 88,
-        "parentIndex": 87,
+        "index": 69,
+        "parentIndex": 68,
         "Guid": "6b867302-cf49-4fba-b0b5-2d34fbacfaa6"
       },
       {
@@ -2652,14 +2362,16 @@
           "$values": [
             {
               "$type": "miHoYo.HYG.DataSharing.ConfigVarEditorGuidToGuid, Assembly-CSharp",
-              "editorGuidValue": 12582916
+              "editorGuidValue": 12582916,
+              "Override": false,
+              "OverrideValue": false
             }
           ]
         },
-        "_output": 91,
+        "_output": 124,
         "nodeId": 151,
-        "index": 89,
-        "parentIndex": 88,
+        "index": 70,
+        "parentIndex": 69,
         "Guid": "ef3267d0-9ce8-423c-b3cd-c9aa2c43e3fb"
       },
       {
@@ -2670,7 +2382,13 @@
           "getAtlNameByConfigVar": false,
           "dynamicAtlName": null,
           "atlName": "Food_DrinkWithCup",
+          "atlTag": {
+            "$type": "miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp",
+            "TagId": 0
+          },
+          "useConfigVarTime": false,
           "loopTime": 0.0,
+          "configVarTime": null,
           "waitComplete": true
         },
         "infos": {
@@ -2689,13 +2407,13 @@
         "_branches": {
           "$type": "System.Int32[], mscorlib",
           "$values": [
-            92,
-            92
+            73,
+            73
           ]
         },
         "nodeId": 152,
-        "index": 90,
-        "parentIndex": 91,
+        "index": 71,
+        "parentIndex": 72,
         "Guid": "3fd4dec8-abc9-42e7-93c3-f6d8b5c6f5e0"
       },
       {
@@ -2713,19 +2431,20 @@
                   "$type": "miHoYo.HYG.DataSharing.ConfigVarConfigHasTag, Assembly-CSharp",
                   "_configId": {
                     "$type": "miHoYo.HYG.DataSharing.ConfigVarGetFoodOfNpcVisitAffair, Assembly-CSharp",
-                    "_npcConfigId": {
-                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPerformanceTriggerConfigId, Assembly-CSharp"
-                    }
+                    "Override": false,
+                    "OverrideValue": false
                   },
                   "_exactMatch": null,
                   "_tag": {
                     "$type": "miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp",
                     "TagId": 50038
-                  }
+                  },
+                  "Override": false,
+                  "OverrideValue": false
                 }
               },
               "isExclusive": true,
-              "exclusivePossibility": 1,
+              "exclusivePossibility": 100,
               "useConfigVarWeight": false,
               "weight": 1.0,
               "configVarWeight": null,
@@ -2739,23 +2458,24 @@
               "id": 0,
               "conditionWrapper": {
                 "$type": "miHoYo.HYG.SelectorCondition, Assembly-CSharp",
-                "desc": null,
+                "desc": "玻璃杯吃",
                 "condition": {
                   "$type": "miHoYo.HYG.DataSharing.ConfigVarConfigHasTag, Assembly-CSharp",
                   "_configId": {
                     "$type": "miHoYo.HYG.DataSharing.ConfigVarGetFoodOfNpcVisitAffair, Assembly-CSharp",
-                    "_npcConfigId": {
-                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPerformanceTriggerConfigId, Assembly-CSharp"
-                    }
+                    "Override": false,
+                    "OverrideValue": false
                   },
                   "_exactMatch": null,
                   "_tag": {
                     "$type": "miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp",
                     "TagId": 827785575
-                  }
+                  },
+                  "Override": false,
+                  "OverrideValue": false
                 }
               },
-              "isExclusive": false,
+              "isExclusive": true,
               "exclusivePossibility": 100,
               "useConfigVarWeight": true,
               "weight": 1.0,
@@ -2775,15 +2495,16 @@
                   "$type": "miHoYo.HYG.DataSharing.ConfigVarConfigHasTag, Assembly-CSharp",
                   "_configId": {
                     "$type": "miHoYo.HYG.DataSharing.ConfigVarGetFoodOfNpcVisitAffair, Assembly-CSharp",
-                    "_npcConfigId": {
-                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPerformanceTriggerConfigId, Assembly-CSharp"
-                    }
+                    "Override": false,
+                    "OverrideValue": false
                   },
                   "_exactMatch": null,
                   "_tag": {
                     "$type": "miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp",
                     "TagId": 50040
-                  }
+                  },
+                  "Override": false,
+                  "OverrideValue": false
                 }
               },
               "isExclusive": true,
@@ -2806,15 +2527,16 @@
                   "$type": "miHoYo.HYG.DataSharing.ConfigVarConfigHasTag, Assembly-CSharp",
                   "_configId": {
                     "$type": "miHoYo.HYG.DataSharing.ConfigVarGetFoodOfNpcVisitAffair, Assembly-CSharp",
-                    "_npcConfigId": {
-                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPerformanceTriggerConfigId, Assembly-CSharp"
-                    }
+                    "Override": false,
+                    "OverrideValue": false
                   },
                   "_exactMatch": null,
                   "_tag": {
                     "$type": "miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp",
                     "TagId": 50039
-                  }
+                  },
+                  "Override": false,
+                  "OverrideValue": false
                 }
               },
               "isExclusive": true,
@@ -2851,25 +2573,25 @@
         "_branches": {
           "$type": "System.Int32[], mscorlib",
           "$values": [
-            90,
-            90,
-            93,
-            94,
-            95
+            71,
+            71,
+            74,
+            75,
+            76
           ]
         },
         "nodeId": 153,
-        "index": 91,
-        "parentIndex": 89,
+        "index": 72,
+        "parentIndex": 124,
         "Guid": "755ec95c-1c05-41d4-87c0-40cbd1c0458d"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgRemoveEntity, Assembly-CSharp",
         "editorGuidValue": 12582916,
-        "_output": 45,
+        "_output": 40,
         "nodeId": 154,
-        "index": 92,
-        "parentIndex": 95,
+        "index": 73,
+        "parentIndex": 76,
         "Guid": "d4f30c51-039b-4d7b-a1fc-c2d296dc58b9"
       },
       {
@@ -2880,7 +2602,13 @@
           "getAtlNameByConfigVar": false,
           "dynamicAtlName": null,
           "atlName": "Food_EatWithBowl",
+          "atlTag": {
+            "$type": "miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp",
+            "TagId": 0
+          },
+          "useConfigVarTime": false,
           "loopTime": 0.0,
+          "configVarTime": null,
           "waitComplete": true
         },
         "infos": {
@@ -2899,13 +2627,13 @@
         "_branches": {
           "$type": "System.Int32[], mscorlib",
           "$values": [
-            92,
-            92
+            73,
+            73
           ]
         },
         "nodeId": 155,
-        "index": 93,
-        "parentIndex": 91,
+        "index": 74,
+        "parentIndex": 72,
         "Guid": "3ba48251-945c-4363-a195-4da3432d353d"
       },
       {
@@ -2916,7 +2644,13 @@
           "getAtlNameByConfigVar": false,
           "dynamicAtlName": null,
           "atlName": "Food_EatWithPlate",
+          "atlTag": {
+            "$type": "miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp",
+            "TagId": 0
+          },
+          "useConfigVarTime": false,
           "loopTime": 0.0,
+          "configVarTime": null,
           "waitComplete": true
         },
         "infos": {
@@ -2935,13 +2669,13 @@
         "_branches": {
           "$type": "System.Int32[], mscorlib",
           "$values": [
-            92,
-            92
+            73,
+            73
           ]
         },
         "nodeId": 156,
-        "index": 94,
-        "parentIndex": 91,
+        "index": 75,
+        "parentIndex": 72,
         "Guid": "5c99b29f-7047-4312-b0ed-c7b340e0d3b9"
       },
       {
@@ -2952,7 +2686,13 @@
           "getAtlNameByConfigVar": false,
           "dynamicAtlName": null,
           "atlName": "Food_EatFruit",
+          "atlTag": {
+            "$type": "miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp",
+            "TagId": 0
+          },
+          "useConfigVarTime": false,
           "loopTime": 0.0,
+          "configVarTime": null,
           "waitComplete": true
         },
         "infos": {
@@ -2971,123 +2711,14 @@
         "_branches": {
           "$type": "System.Int32[], mscorlib",
           "$values": [
-            92,
-            92
-          ]
-        },
-        "nodeId": 157,
-        "index": 95,
-        "parentIndex": 91,
-        "Guid": "25f1ab98-d9f3-46ec-aab6-5a67dfb35aad"
-      },
-      {
-        "$type": "miHoYo.HYG.Performance.CfgSaveMemory, Assembly-CSharp",
-        "memoryStrKey": "Global/FavorEvent/NpcAffair_13_RewardId_UInt",
-        "memoryKey": 562949953421838,
-        "isNpc": false,
-        "useDynamicId": false,
-        "dynamicId": null,
-        "memoryTime": 0,
-        "operateType": 0,
-        "useConfigVarAsNewValue": true,
-        "newValue": 0,
-        "configVarValue": {
-          "$type": "miHoYo.HYG.DataSharing.ConfigVarGetVisitRewardConfigId, Assembly-CSharp",
-          "_npcConfigId": {
-            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetVisitingNpcConfigId, Assembly-CSharp"
-          },
-          "_type": 1
-        },
-        "_output": 97,
-        "nodeId": 158,
-        "index": 96,
-        "parentIndex": 5,
-        "Guid": "dd8ffa3a-f2e1-4439-bf1a-1b622ba8ae54"
-      },
-      {
-        "$type": "miHoYo.HYG.Performance.CfgSaveMemory, Assembly-CSharp",
-        "memoryStrKey": "Global/FavorEvent/NpcAffair_13_GameId_UInt",
-        "memoryKey": 562949953421839,
-        "isNpc": false,
-        "useDynamicId": false,
-        "dynamicId": null,
-        "memoryTime": 0,
-        "operateType": 0,
-        "useConfigVarAsNewValue": true,
-        "newValue": 0,
-        "configVarValue": {
-          "$type": "miHoYo.HYG.DataSharing.ConfigVarGetVisitRewardConfigId, Assembly-CSharp",
-          "_npcConfigId": {
-            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetVisitingNpcConfigId, Assembly-CSharp"
-          },
-          "_type": 3
-        },
-        "_output": 98,
-        "nodeId": 159,
-        "index": 97,
-        "parentIndex": 96,
-        "Guid": "78a4cefd-9dcd-418a-92b7-bdbb24a5c04b"
-      },
-      {
-        "$type": "miHoYo.HYG.Performance.CfgPerformAction, Assembly-CSharp",
-        "action": {
-          "$type": "miHoYo.HYG.Performance.LogMessage, Assembly-CSharp",
-          "category": 44,
-          "kind": 0,
-          "format": "【NPC事件】拜访事件初始化的伴手礼为{0}，游戏礼物为{1}。传值分别为{2}，{3}",
-          "args": {
-            "$type": "miHoYo.HYG.DataSharing.IConfigVar[], Assembly-CSharp",
-            "$values": [
-              {
-                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMemoryUIntValue, Assembly-CSharp",
-                "memoryType": 2,
-                "memoryKey": 562949953421838,
-                "callerConfigId": null,
-                "GetCurrSceneNpcMemory": true
-              },
-              {
-                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMemoryUIntValue, Assembly-CSharp",
-                "memoryType": 2,
-                "memoryKey": 562949953421839,
-                "callerConfigId": null,
-                "GetCurrSceneNpcMemory": true
-              },
-              {
-                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetVisitRewardConfigId, Assembly-CSharp",
-                "_npcConfigId": {
-                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetVisitingNpcConfigId, Assembly-CSharp"
-                },
-                "_type": 1
-              },
-              {
-                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetVisitRewardConfigId, Assembly-CSharp",
-                "_npcConfigId": {
-                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetVisitingNpcConfigId, Assembly-CSharp"
-                },
-                "_type": 3
-              }
-            ]
-          }
-        },
-        "infos": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp]], mscorlib",
-          "$values": [
-            {
-              "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
-              "content": "默认"
-            }
-          ]
-        },
-        "_branches": {
-          "$type": "System.Int32[], mscorlib",
-          "$values": [
+            73,
             73
           ]
         },
-        "nodeId": 160,
-        "index": 98,
-        "parentIndex": 97,
-        "Guid": "40d19523-a4dc-458a-b735-265a142fb608"
+        "nodeId": 157,
+        "index": 76,
+        "parentIndex": 72,
+        "Guid": "25f1ab98-d9f3-46ec-aab6-5a67dfb35aad"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgPerformAction, Assembly-CSharp",
@@ -3100,18 +2731,14 @@
             "$type": "miHoYo.HYG.DataSharing.IConfigVar[], Assembly-CSharp",
             "$values": [
               {
-                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMemoryUIntValue, Assembly-CSharp",
-                "memoryType": 2,
-                "memoryKey": 562949953421838,
-                "callerConfigId": null,
-                "GetCurrSceneNpcMemory": true
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetWantReward, Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false
               },
               {
-                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMemoryUIntValue, Assembly-CSharp",
-                "memoryType": 2,
-                "memoryKey": 562949953421839,
-                "callerConfigId": null,
-                "GetCurrSceneNpcMemory": true
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetWantGame, Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false
               }
             ]
           }
@@ -3128,12 +2755,12 @@
         "_branches": {
           "$type": "System.Int32[], mscorlib",
           "$values": [
-            59
+            122
           ]
         },
         "nodeId": 161,
-        "index": 99,
-        "parentIndex": 74,
+        "index": 77,
+        "parentIndex": 56,
         "Guid": "b8de545e-aca5-4759-a086-7767ce1ee6e4"
       },
       {
@@ -3149,10 +2776,10 @@
         },
         "banPT": false,
         "positionInfo": null,
-        "_output": 102,
+        "_output": 80,
         "nodeId": 163,
-        "index": 100,
-        "parentIndex": 115,
+        "index": 78,
+        "parentIndex": 93,
         "Guid": "71dbd191-d58b-48c1-8fb5-f2590d8e5357"
       },
       {
@@ -3168,14 +2795,16 @@
         },
         "banPT": false,
         "positionInfo": null,
-        "_output": 102,
+        "_output": 80,
         "nodeId": 164,
-        "index": 101,
-        "parentIndex": 115,
+        "index": 79,
+        "parentIndex": 93,
         "Guid": "541efdce-d4e5-4bcc-bc64-8d9910ed32f5"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgChoiceGroup, Assembly-CSharp",
+        "showFavorTitle": false,
+        "showFavorLockTips": false,
         "dynamicType": 0,
         "selectTimes": null,
         "selectTagCounts": null,
@@ -3191,8 +2820,8 @@
             {
               "$type": "miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp",
               "condition": null,
-              "iconId": 0,
               "style": 0,
+              "newIconId": 0,
               "choiceContent": {
                 "$type": "miHoYo.HYG.Performance.ChoiceContent, Assembly-CSharp",
                 "useContentSelector": false,
@@ -3200,7 +2829,10 @@
                 "content_l10n": {
                   "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                   "textId": "Performance_10000003013_textmap_29",
-                  "value": null
+                  "value": null,
+                  "duration": null,
+                  "durationMap": null,
+                  "chatType": 0
                 },
                 "contentSelector": {
                   "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.StringSelectorItem, Assembly-CSharp]], mscorlib",
@@ -3215,8 +2847,8 @@
             {
               "$type": "miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp",
               "condition": null,
-              "iconId": 0,
               "style": 0,
+              "newIconId": 0,
               "choiceContent": {
                 "$type": "miHoYo.HYG.Performance.ChoiceContent, Assembly-CSharp",
                 "useContentSelector": false,
@@ -3224,7 +2856,10 @@
                 "content_l10n": {
                   "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                   "textId": "Performance_10000003013_textmap_30",
-                  "value": null
+                  "value": null,
+                  "duration": null,
+                  "durationMap": null,
+                  "chatType": 0
                 },
                 "contentSelector": {
                   "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.StringSelectorItem, Assembly-CSharp]], mscorlib",
@@ -3245,13 +2880,13 @@
         "_branches": {
           "$type": "System.Int32[], mscorlib",
           "$values": [
-            105,
-            29
+            83,
+            27
           ]
         },
         "nodeId": 165,
-        "index": 102,
-        "parentIndex": 101,
+        "index": 80,
+        "parentIndex": 79,
         "Guid": "7ad1856c-6262-4e35-ad35-7dd2cb3e3451"
       },
       {
@@ -3266,65 +2901,83 @@
                 "memoryType": 2,
                 "memoryKey": 562949953421870,
                 "callerConfigId": null,
-                "GetCurrSceneNpcMemory": true
+                "GetCurrSceneNpcMemory": true,
+                "Override": false,
+                "OverrideValue": false
               },
               {
                 "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMemoryBoolValue, Assembly-CSharp",
                 "memoryType": 2,
                 "memoryKey": 562949953421871,
                 "callerConfigId": null,
-                "GetCurrSceneNpcMemory": true
+                "GetCurrSceneNpcMemory": true,
+                "Override": false,
+                "OverrideValue": false
               },
               {
                 "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMemoryBoolValue, Assembly-CSharp",
                 "memoryType": 2,
                 "memoryKey": 562949953421872,
                 "callerConfigId": null,
-                "GetCurrSceneNpcMemory": true
+                "GetCurrSceneNpcMemory": true,
+                "Override": false,
+                "OverrideValue": false
               },
               {
                 "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMemoryBoolValue, Assembly-CSharp",
                 "memoryType": 2,
                 "memoryKey": 562949953421873,
                 "callerConfigId": null,
-                "GetCurrSceneNpcMemory": true
+                "GetCurrSceneNpcMemory": true,
+                "Override": false,
+                "OverrideValue": false
               },
               {
                 "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMemoryBoolValue, Assembly-CSharp",
                 "memoryType": 2,
                 "memoryKey": 562949953421874,
                 "callerConfigId": null,
-                "GetCurrSceneNpcMemory": true
+                "GetCurrSceneNpcMemory": true,
+                "Override": false,
+                "OverrideValue": false
               },
               {
                 "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMemoryBoolValue, Assembly-CSharp",
                 "memoryType": 2,
                 "memoryKey": 562949953421875,
                 "callerConfigId": null,
-                "GetCurrSceneNpcMemory": true
+                "GetCurrSceneNpcMemory": true,
+                "Override": false,
+                "OverrideValue": false
               },
               {
                 "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMemoryBoolValue, Assembly-CSharp",
                 "memoryType": 2,
                 "memoryKey": 562949953421876,
                 "callerConfigId": null,
-                "GetCurrSceneNpcMemory": true
+                "GetCurrSceneNpcMemory": true,
+                "Override": false,
+                "OverrideValue": false
               },
               {
                 "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMemoryBoolValue, Assembly-CSharp",
                 "memoryType": 2,
                 "memoryKey": 562949953421877,
                 "callerConfigId": null,
-                "GetCurrSceneNpcMemory": true
+                "GetCurrSceneNpcMemory": true,
+                "Override": false,
+                "OverrideValue": false
               }
             ]
-          }
+          },
+          "Override": false,
+          "OverrideValue": false
         },
-        "_successOut": 46,
-        "_failOut": 104,
+        "_successOut": 41,
+        "_failOut": 82,
         "nodeId": 166,
-        "index": 103,
-        "parentIndex": 9,
+        "index": 81,
+        "parentIndex": 8,
         "Guid": "631a12dc-368b-401f-8dae-8edf5ea64519"
       },
       {
@@ -3345,45 +2998,65 @@
               "$values": [
                 {
                   "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUInt32, Assembly-CSharp",
-                  "_value": 1
+                  "_value": 1,
+                  "Override": false,
+                  "OverrideValue": false
                 },
                 {
                   "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUInt32, Assembly-CSharp",
-                  "_value": 2
+                  "_value": 2,
+                  "Override": false,
+                  "OverrideValue": false
                 },
                 {
                   "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUInt32, Assembly-CSharp",
-                  "_value": 3
+                  "_value": 3,
+                  "Override": false,
+                  "OverrideValue": false
                 },
                 {
                   "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUInt32, Assembly-CSharp",
-                  "_value": 4
+                  "_value": 4,
+                  "Override": false,
+                  "OverrideValue": false
                 },
                 {
                   "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUInt32, Assembly-CSharp",
-                  "_value": 5
+                  "_value": 5,
+                  "Override": false,
+                  "OverrideValue": false
                 },
                 {
                   "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUInt32, Assembly-CSharp",
-                  "_value": 6
+                  "_value": 6,
+                  "Override": false,
+                  "OverrideValue": false
                 },
                 {
                   "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUInt32, Assembly-CSharp",
-                  "_value": 11
+                  "_value": 11,
+                  "Override": false,
+                  "OverrideValue": false
                 },
                 {
                   "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUInt32, Assembly-CSharp",
-                  "_value": 16
+                  "_value": 16,
+                  "Override": false,
+                  "OverrideValue": false
                 }
               ]
-            }
-          }
+            },
+            "Override": false,
+            "OverrideValue": false
+          },
+          "Override": false,
+          "OverrideValue": false
         },
-        "_output": 115,
+        "_output": 93,
         "_failedOut": -1,
         "nodeId": 167,
-        "index": 104,
-        "parentIndex": 103,
+        "index": 82,
+        "parentIndex": 81,
         "Guid": "3c954713-419d-4402-a326-5316ee649ea0"
       },
       {
@@ -3396,7 +3069,9 @@
             "name": "NpcEvent_小游戏抽取ID值",
             "valueType": 5,
             "temp": true
-          }
+          },
+          "Override": false,
+          "OverrideValue": false
         },
         "results": {
           "$type": "System.Collections.Generic.List`1[[System.UInt32, mscorlib]], mscorlib",
@@ -3415,31 +3090,33 @@
         "_branches": {
           "$type": "System.Int32[], mscorlib",
           "$values": [
-            106,
-            108,
-            109,
-            110,
-            111,
-            112,
-            113,
-            114
+            84,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92
           ]
         },
         "nodeId": 168,
-        "index": 105,
-        "parentIndex": 102,
+        "index": 83,
+        "parentIndex": 80,
         "Guid": "f020b2ef-3bcc-40df-8612-e1117cc95a1a"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgPerformJumper, Assembly-CSharp",
         "useStaticId": true,
+        "useConfigVarId": false,
         "performId": 1000003051,
+        "configVarId": null,
         "speakerKey": null,
         "topicIndex": 0,
-        "_output": 107,
+        "_output": 85,
         "nodeId": 169,
-        "index": 106,
-        "parentIndex": 105,
+        "index": 84,
+        "parentIndex": 83,
         "Guid": "4220a38a-2130-430a-bab3-cb470e594cac"
       },
       {
@@ -3448,102 +3125,122 @@
           "$type": "miHoYo.HYG.DataSharing.ConfigVarEqualToInt32, Assembly-CSharp",
           "_lhs": {
             "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Int32, mscorlib]], Assembly-CSharp",
-            "_value": 0
+            "_value": 0,
+            "Override": false,
+            "OverrideValue": false
           },
           "_rhs": {
             "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Int32, mscorlib]], Assembly-CSharp",
-            "_value": 0
-          }
+            "_value": 0,
+            "Override": false,
+            "OverrideValue": false
+          },
+          "Override": false,
+          "OverrideValue": false
         },
-        "_successOut": 70,
+        "_successOut": 55,
         "_failOut": -1,
         "nodeId": 170,
-        "index": 107,
-        "parentIndex": 114,
+        "index": 85,
+        "parentIndex": 92,
         "Guid": "f73edce0-2766-48ba-a15f-9cbecb223cf5"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgPerformJumper, Assembly-CSharp",
         "useStaticId": true,
+        "useConfigVarId": false,
         "performId": 1000003052,
+        "configVarId": null,
         "speakerKey": null,
         "topicIndex": 0,
-        "_output": 107,
+        "_output": 85,
         "nodeId": 171,
-        "index": 108,
-        "parentIndex": 105,
+        "index": 86,
+        "parentIndex": 83,
         "Guid": "ea8840b2-1bdb-4215-b62c-f1a22dbe007a"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgPerformJumper, Assembly-CSharp",
         "useStaticId": true,
+        "useConfigVarId": false,
         "performId": 1000003053,
+        "configVarId": null,
         "speakerKey": null,
         "topicIndex": 0,
-        "_output": 107,
+        "_output": 85,
         "nodeId": 172,
-        "index": 109,
-        "parentIndex": 105,
+        "index": 87,
+        "parentIndex": 83,
         "Guid": "16fa3243-a545-4f57-bde0-fe8f5ce3fc94"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgPerformJumper, Assembly-CSharp",
         "useStaticId": true,
+        "useConfigVarId": false,
         "performId": 1000003054,
+        "configVarId": null,
         "speakerKey": null,
         "topicIndex": 0,
-        "_output": 107,
+        "_output": 85,
         "nodeId": 173,
-        "index": 110,
-        "parentIndex": 105,
+        "index": 88,
+        "parentIndex": 83,
         "Guid": "6477fff7-986e-4cab-b717-b381265ddc0d"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgPerformJumper, Assembly-CSharp",
         "useStaticId": true,
+        "useConfigVarId": false,
         "performId": 1000003055,
+        "configVarId": null,
         "speakerKey": "PerformTrigger",
         "topicIndex": 1000003055,
-        "_output": 107,
+        "_output": 85,
         "nodeId": 174,
-        "index": 111,
-        "parentIndex": 105,
+        "index": 89,
+        "parentIndex": 83,
         "Guid": "e4026fac-a57a-4237-a863-250d56c0658d"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgPerformJumper, Assembly-CSharp",
         "useStaticId": true,
+        "useConfigVarId": false,
         "performId": 1000003056,
+        "configVarId": null,
         "speakerKey": null,
         "topicIndex": 0,
-        "_output": 107,
+        "_output": 85,
         "nodeId": 175,
-        "index": 112,
-        "parentIndex": 105,
+        "index": 90,
+        "parentIndex": 83,
         "Guid": "60c1e100-097e-41f1-a09f-f24f0ce9b98d"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgPerformJumper, Assembly-CSharp",
         "useStaticId": true,
+        "useConfigVarId": false,
         "performId": 1000003061,
+        "configVarId": null,
         "speakerKey": null,
         "topicIndex": 0,
-        "_output": 107,
+        "_output": 85,
         "nodeId": 176,
-        "index": 113,
-        "parentIndex": 105,
+        "index": 91,
+        "parentIndex": 83,
         "Guid": "088b51e2-5512-41e0-940d-414c8d2a4d0a"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgPerformJumper, Assembly-CSharp",
         "useStaticId": true,
+        "useConfigVarId": false,
         "performId": 1000003066,
+        "configVarId": null,
         "speakerKey": null,
         "topicIndex": 0,
-        "_output": 107,
+        "_output": 85,
         "nodeId": 177,
-        "index": 114,
-        "parentIndex": 105,
+        "index": 92,
+        "parentIndex": 83,
         "Guid": "86e1bd99-9e8a-4f26-8189-07c5e5095230"
       },
       {
@@ -3552,34 +3249,1215 @@
           "$type": "miHoYo.HYG.DataSharing.ConfigVarCompareUInt32, Assembly-CSharp",
           "_lhs": {
             "$type": "miHoYo.HYG.DataSharing.ConfigVarGetVisitRewardConfigId, Assembly-CSharp",
-            "_npcConfigId": {
-              "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPerformanceTriggerConfigId, Assembly-CSharp"
-            },
-            "_type": 3
+            "_type": 3,
+            "Override": false,
+            "OverrideValue": false
           },
           "_operatorType": 0,
           "_rhs": {
             "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.UInt32, mscorlib]], Assembly-CSharp",
-            "_value": 0
+            "_value": 0,
+            "Override": false,
+            "OverrideValue": false
+          },
+          "Override": false,
+          "OverrideValue": false
+        },
+        "_successOut": 79,
+        "_failOut": 78,
+        "nodeId": 178,
+        "index": 93,
+        "parentIndex": 82,
+        "Guid": "92305c66-63bd-40d9-9a84-50a443239666"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgSwitchUInt, Assembly-CSharp",
+        "value": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarGetNpcAffairStep, Assembly-CSharp",
+          "_npcId": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCurAffairNpcConfigIdForCurPerformance, Assembly-CSharp",
+            "Override": false,
+            "OverrideValue": false
+          },
+          "_eventId": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.UInt32, mscorlib]], Assembly-CSharp",
+            "_value": 13,
+            "Override": false,
+            "OverrideValue": false
+          },
+          "Override": false,
+          "OverrideValue": false
+        },
+        "results": {
+          "$type": "System.Collections.Generic.List`1[[System.UInt32, mscorlib]], mscorlib",
+          "$values": [
+            2,
+            4,
+            6
+          ]
+        },
+        "_defaultOut": 29,
+        "_branches": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            121,
+            106,
+            112
+          ]
+        },
+        "nodeId": 180,
+        "index": 94,
+        "parentIndex": -1,
+        "Guid": "8dff6e35-9dc9-4a5d-b4ac-d220c8d12add"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgNextSelector, Assembly-CSharp",
+        "selectors": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.SelectorItem, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.SelectorItem, Assembly-CSharp",
+              "id": 0,
+              "conditionWrapper": {
+                "$type": "miHoYo.HYG.SelectorCondition, Assembly-CSharp",
+                "desc": null,
+                "condition": null
+              },
+              "isExclusive": false,
+              "exclusivePossibility": 100,
+              "useConfigVarWeight": false,
+              "weight": 1.0,
+              "configVarWeight": null,
+              "record": false,
+              "memoryStrKey": null,
+              "memoryKey": 0,
+              "deltaWeight": 0.0
+            },
+            {
+              "$type": "miHoYo.HYG.SelectorItem, Assembly-CSharp",
+              "id": 0,
+              "conditionWrapper": {
+                "$type": "miHoYo.HYG.SelectorCondition, Assembly-CSharp",
+                "desc": null,
+                "condition": null
+              },
+              "isExclusive": false,
+              "exclusivePossibility": 100,
+              "useConfigVarWeight": false,
+              "weight": 1.0,
+              "configVarWeight": null,
+              "record": false,
+              "memoryStrKey": null,
+              "memoryKey": 0,
+              "deltaWeight": 0.0
+            }
+          ]
+        },
+        "needCache": false,
+        "_branches": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            101,
+            96
+          ]
+        },
+        "nodeId": 181,
+        "index": 95,
+        "parentIndex": 121,
+        "Guid": "0e4dacc7-aedb-486d-99c3-ce67fd8e7c22"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgDialogGroup, Assembly-CSharp",
+        "desc": null,
+        "textMaxIndex": 0,
+        "textGroupId": "10000003013_45",
+        "useFixedDialogGroup": false,
+        "fixedDialogGroupId": 0,
+        "dialogs": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "banPT": false,
+        "positionInfo": null,
+        "_output": 97,
+        "nodeId": 182,
+        "index": 96,
+        "parentIndex": 95,
+        "Guid": "44f50d81-134f-4cd4-ad52-e2a83cf9267a"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgChoiceGroup, Assembly-CSharp",
+        "showFavorTitle": false,
+        "showFavorLockTips": false,
+        "dynamicType": 0,
+        "selectTimes": null,
+        "selectTagCounts": null,
+        "parentTagNew": {
+          "$type": "miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp",
+          "TagId": 0
+        },
+        "avoidTagsNew": null,
+        "additionTagsNew": null,
+        "infos": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp",
+              "condition": null,
+              "style": 0,
+              "newIconId": 0,
+              "choiceContent": {
+                "$type": "miHoYo.HYG.Performance.ChoiceContent, Assembly-CSharp",
+                "useContentSelector": false,
+                "content": null,
+                "content_l10n": {
+                  "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                  "textId": "Performance_10000003013_textmap_31",
+                  "value": null,
+                  "duration": null,
+                  "durationMap": null,
+                  "chatType": 0
+                },
+                "contentSelector": {
+                  "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.StringSelectorItem, Assembly-CSharp]], mscorlib",
+                  "$values": []
+                },
+                "desc": null,
+                "textId": 0,
+                "textGuid": 0
+              },
+              "choiceId": 1
+            },
+            {
+              "$type": "miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp",
+              "condition": null,
+              "style": 0,
+              "newIconId": 0,
+              "choiceContent": {
+                "$type": "miHoYo.HYG.Performance.ChoiceContent, Assembly-CSharp",
+                "useContentSelector": false,
+                "content": null,
+                "content_l10n": {
+                  "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                  "textId": "Performance_10000003013_textmap_32",
+                  "value": null,
+                  "duration": null,
+                  "durationMap": null,
+                  "chatType": 0
+                },
+                "contentSelector": {
+                  "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.StringSelectorItem, Assembly-CSharp]], mscorlib",
+                  "$values": []
+                },
+                "desc": null,
+                "textId": 0,
+                "textGuid": 0
+              },
+              "choiceId": 2
+            },
+            {
+              "$type": "miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp",
+              "condition": null,
+              "style": 0,
+              "newIconId": 0,
+              "choiceContent": {
+                "$type": "miHoYo.HYG.Performance.ChoiceContent, Assembly-CSharp",
+                "useContentSelector": false,
+                "content": null,
+                "content_l10n": {
+                  "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                  "textId": "Performance_10000003013_textmap_33",
+                  "value": null,
+                  "duration": null,
+                  "durationMap": null,
+                  "chatType": 0
+                },
+                "contentSelector": {
+                  "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.StringSelectorItem, Assembly-CSharp]], mscorlib",
+                  "$values": []
+                },
+                "desc": null,
+                "textId": 0,
+                "textGuid": 0
+              },
+              "choiceId": 3
+            }
+          ]
+        },
+        "textGroupId": "10000003013_46",
+        "textMaxIndex": 0,
+        "choiceMaxIndex": 3,
+        "_dynamicOut": -1,
+        "_branches": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            98,
+            99,
+            100
+          ]
+        },
+        "nodeId": 183,
+        "index": 97,
+        "parentIndex": 101,
+        "Guid": "bfc3592d-24eb-430a-870b-1ee00a22b025"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgDialogGroup, Assembly-CSharp",
+        "desc": null,
+        "textMaxIndex": 0,
+        "textGroupId": "10000003013_47",
+        "useFixedDialogGroup": false,
+        "fixedDialogGroupId": 0,
+        "dialogs": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "banPT": false,
+        "positionInfo": null,
+        "_output": 129,
+        "nodeId": 184,
+        "index": 98,
+        "parentIndex": 97,
+        "Guid": "d6a3eead-2e6b-4a10-8340-685a4f37cbbe"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgDialogGroup, Assembly-CSharp",
+        "desc": null,
+        "textMaxIndex": 0,
+        "textGroupId": "10000003013_48",
+        "useFixedDialogGroup": false,
+        "fixedDialogGroupId": 0,
+        "dialogs": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "banPT": false,
+        "positionInfo": null,
+        "_output": 129,
+        "nodeId": 186,
+        "index": 99,
+        "parentIndex": 97,
+        "Guid": "4063c2d7-08ef-4e60-bd1c-5e7d1f3cef05"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgDialogGroup, Assembly-CSharp",
+        "desc": null,
+        "textMaxIndex": 0,
+        "textGroupId": "10000003013_49",
+        "useFixedDialogGroup": false,
+        "fixedDialogGroupId": 0,
+        "dialogs": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "banPT": false,
+        "positionInfo": null,
+        "_output": 129,
+        "nodeId": 187,
+        "index": 100,
+        "parentIndex": 97,
+        "Guid": "61d9f369-9206-4f50-a5c7-16a700ccc772"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgDialogGroup, Assembly-CSharp",
+        "desc": null,
+        "textMaxIndex": 0,
+        "textGroupId": "10000003013_50",
+        "useFixedDialogGroup": false,
+        "fixedDialogGroupId": 0,
+        "dialogs": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "banPT": false,
+        "positionInfo": null,
+        "_output": 97,
+        "nodeId": 188,
+        "index": 101,
+        "parentIndex": 95,
+        "Guid": "803682f6-8db1-49c9-b45d-11b3cb63f0a2"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgPerformAction, Assembly-CSharp",
+        "action": {
+          "$type": "miHoYo.HYG.Performance.VisitingTakeRewardReq, Assembly-CSharp",
+          "type": 1
+        },
+        "infos": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
+              "content": "成功"
+            },
+            {
+              "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
+              "content": "失败"
+            }
+          ]
+        },
+        "_branches": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            103,
+            -1
+          ]
+        },
+        "nodeId": 189,
+        "index": 102,
+        "parentIndex": 104,
+        "Guid": "80988fbe-97c0-4a9b-b3a5-01b5bbb9e223"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgPerformAction, Assembly-CSharp",
+        "action": {
+          "$type": "miHoYo.HYG.Performance.ClientUpdateNpcAffairStep, Assembly-CSharp",
+          "affairId": 13,
+          "stepIdVar": null,
+          "fixedStepId": 3
+        },
+        "infos": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
+              "content": "成功"
+            },
+            {
+              "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
+              "content": "失败"
+            }
+          ]
+        },
+        "_branches": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            105,
+            -1
+          ]
+        },
+        "nodeId": 190,
+        "index": 103,
+        "parentIndex": 102,
+        "Guid": "0e23bf75-057d-49e1-a9fe-90a33f7022f0"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgRemoveEntity, Assembly-CSharp",
+        "editorGuidValue": 5242882,
+        "_output": 102,
+        "nodeId": 193,
+        "index": 104,
+        "parentIndex": 131,
+        "Guid": "8134d0ed-6927-44dc-b982-58a709d8500b"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgDialogGroup, Assembly-CSharp",
+        "desc": null,
+        "textMaxIndex": 0,
+        "textGroupId": "10000003013_51",
+        "useFixedDialogGroup": false,
+        "fixedDialogGroupId": 0,
+        "dialogs": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "banPT": false,
+        "positionInfo": null,
+        "_output": -1,
+        "nodeId": 195,
+        "index": 105,
+        "parentIndex": 103,
+        "Guid": "4ac60759-58ca-413f-b170-decb6a86f8a2"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgPerformAction, Assembly-CSharp",
+        "action": {
+          "$type": "miHoYo.HYG.Performance.AffairReport, Assembly-CSharp",
+          "action": 10007
+        },
+        "infos": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
+              "content": "默认"
+            }
+          ]
+        },
+        "_branches": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            107
+          ]
+        },
+        "nodeId": 196,
+        "index": 106,
+        "parentIndex": 94,
+        "Guid": "96fe65fc-d3c4-4336-a762-690b5530e28d"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgDialogGroup, Assembly-CSharp",
+        "desc": null,
+        "textMaxIndex": 0,
+        "textGroupId": "10000003013_52",
+        "useFixedDialogGroup": false,
+        "fixedDialogGroupId": 0,
+        "dialogs": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "banPT": false,
+        "positionInfo": null,
+        "_output": 108,
+        "nodeId": 197,
+        "index": 107,
+        "parentIndex": 106,
+        "Guid": "37950a0c-479a-4257-8a2f-445ed3bd62c9"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgChoiceGroup, Assembly-CSharp",
+        "showFavorTitle": false,
+        "showFavorLockTips": false,
+        "dynamicType": 0,
+        "selectTimes": null,
+        "selectTagCounts": null,
+        "parentTagNew": {
+          "$type": "miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp",
+          "TagId": 0
+        },
+        "avoidTagsNew": null,
+        "additionTagsNew": null,
+        "infos": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp",
+              "condition": null,
+              "style": 0,
+              "newIconId": 0,
+              "choiceContent": {
+                "$type": "miHoYo.HYG.Performance.ChoiceContent, Assembly-CSharp",
+                "useContentSelector": false,
+                "content": null,
+                "content_l10n": {
+                  "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                  "textId": "Performance_10000003013_textmap_34",
+                  "value": null,
+                  "duration": null,
+                  "durationMap": null,
+                  "chatType": 0
+                },
+                "contentSelector": {
+                  "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.StringSelectorItem, Assembly-CSharp]], mscorlib",
+                  "$values": []
+                },
+                "desc": null,
+                "textId": 0,
+                "textGuid": 0
+              },
+              "choiceId": 1
+            },
+            {
+              "$type": "miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp",
+              "condition": null,
+              "style": 0,
+              "newIconId": 0,
+              "choiceContent": {
+                "$type": "miHoYo.HYG.Performance.ChoiceContent, Assembly-CSharp",
+                "useContentSelector": false,
+                "content": null,
+                "content_l10n": {
+                  "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                  "textId": "Performance_10000003013_textmap_35",
+                  "value": null,
+                  "duration": null,
+                  "durationMap": null,
+                  "chatType": 0
+                },
+                "contentSelector": {
+                  "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.StringSelectorItem, Assembly-CSharp]], mscorlib",
+                  "$values": []
+                },
+                "desc": null,
+                "textId": 0,
+                "textGuid": 0
+              },
+              "choiceId": 2
+            }
+          ]
+        },
+        "textGroupId": "10000003013_53",
+        "textMaxIndex": 0,
+        "choiceMaxIndex": 2,
+        "_dynamicOut": -1,
+        "_branches": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            109,
+            111
+          ]
+        },
+        "nodeId": 198,
+        "index": 108,
+        "parentIndex": 107,
+        "Guid": "282f377b-85c1-4732-a817-d0f8b12ef7ae"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgDialogGroup, Assembly-CSharp",
+        "desc": null,
+        "textMaxIndex": 0,
+        "textGroupId": "10000003013_54",
+        "useFixedDialogGroup": false,
+        "fixedDialogGroupId": 0,
+        "dialogs": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "banPT": false,
+        "positionInfo": null,
+        "_output": 110,
+        "nodeId": 199,
+        "index": 109,
+        "parentIndex": 108,
+        "Guid": "dc0941f1-fabc-43a7-81f6-009057d13421"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgPerformAction, Assembly-CSharp",
+        "action": {
+          "$type": "miHoYo.HYG.Performance.ClientUpdateNpcAffairStep, Assembly-CSharp",
+          "affairId": 13,
+          "stepIdVar": null,
+          "fixedStepId": 5
+        },
+        "infos": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
+              "content": "成功"
+            },
+            {
+              "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
+              "content": "失败"
+            }
+          ]
+        },
+        "_branches": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            -1,
+            -1
+          ]
+        },
+        "nodeId": 200,
+        "index": 110,
+        "parentIndex": 109,
+        "Guid": "dae19c28-5ed4-4af1-b531-213d145cafd8"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgDialogGroup, Assembly-CSharp",
+        "desc": null,
+        "textMaxIndex": 0,
+        "textGroupId": "10000003013_55",
+        "useFixedDialogGroup": false,
+        "fixedDialogGroupId": 0,
+        "dialogs": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "banPT": false,
+        "positionInfo": null,
+        "_output": 120,
+        "nodeId": 201,
+        "index": 111,
+        "parentIndex": 108,
+        "Guid": "4fa2e98d-65f0-4862-8a41-a6010f543096"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgPerformAction, Assembly-CSharp",
+        "action": {
+          "$type": "miHoYo.HYG.Performance.AffairReport, Assembly-CSharp",
+          "action": 10008
+        },
+        "infos": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
+              "content": "默认"
+            }
+          ]
+        },
+        "_branches": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            113
+          ]
+        },
+        "nodeId": 202,
+        "index": 112,
+        "parentIndex": 94,
+        "Guid": "5b164e28-7d0f-4f9f-8aff-c5645485d081"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgDialogGroup, Assembly-CSharp",
+        "desc": null,
+        "textMaxIndex": 0,
+        "textGroupId": "10000003013_56",
+        "useFixedDialogGroup": false,
+        "fixedDialogGroupId": 0,
+        "dialogs": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "banPT": false,
+        "positionInfo": null,
+        "_output": 114,
+        "nodeId": 203,
+        "index": 113,
+        "parentIndex": 112,
+        "Guid": "1d75ee21-e1dc-462d-a4e7-e130133318a6"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgChoiceGroup, Assembly-CSharp",
+        "showFavorTitle": false,
+        "showFavorLockTips": false,
+        "dynamicType": 0,
+        "selectTimes": null,
+        "selectTagCounts": null,
+        "parentTagNew": {
+          "$type": "miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp",
+          "TagId": 0
+        },
+        "avoidTagsNew": null,
+        "additionTagsNew": null,
+        "infos": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp",
+              "condition": null,
+              "style": 0,
+              "newIconId": 0,
+              "choiceContent": {
+                "$type": "miHoYo.HYG.Performance.ChoiceContent, Assembly-CSharp",
+                "useContentSelector": false,
+                "content": null,
+                "content_l10n": {
+                  "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                  "textId": "Performance_10000003013_textmap_36",
+                  "value": null,
+                  "duration": null,
+                  "durationMap": null,
+                  "chatType": 0
+                },
+                "contentSelector": {
+                  "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.StringSelectorItem, Assembly-CSharp]], mscorlib",
+                  "$values": []
+                },
+                "desc": null,
+                "textId": 0,
+                "textGuid": 0
+              },
+              "choiceId": 1
+            },
+            {
+              "$type": "miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp",
+              "condition": null,
+              "style": 0,
+              "newIconId": 0,
+              "choiceContent": {
+                "$type": "miHoYo.HYG.Performance.ChoiceContent, Assembly-CSharp",
+                "useContentSelector": false,
+                "content": null,
+                "content_l10n": {
+                  "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                  "textId": "Performance_10000003013_textmap_37",
+                  "value": null,
+                  "duration": null,
+                  "durationMap": null,
+                  "chatType": 0
+                },
+                "contentSelector": {
+                  "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.StringSelectorItem, Assembly-CSharp]], mscorlib",
+                  "$values": []
+                },
+                "desc": null,
+                "textId": 0,
+                "textGuid": 0
+              },
+              "choiceId": 2
+            }
+          ]
+        },
+        "textGroupId": "10000003013_57",
+        "textMaxIndex": 0,
+        "choiceMaxIndex": 2,
+        "_dynamicOut": -1,
+        "_branches": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            115,
+            116
+          ]
+        },
+        "nodeId": 204,
+        "index": 114,
+        "parentIndex": 113,
+        "Guid": "e504ea3f-36bb-4b82-82a8-5482a88ff3f8"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgDialogGroup, Assembly-CSharp",
+        "desc": null,
+        "textMaxIndex": 0,
+        "textGroupId": "10000003013_58",
+        "useFixedDialogGroup": false,
+        "fixedDialogGroupId": 0,
+        "dialogs": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "banPT": false,
+        "positionInfo": null,
+        "_output": 120,
+        "nodeId": 205,
+        "index": 115,
+        "parentIndex": 114,
+        "Guid": "7e1ec5c4-5041-4402-a876-1095942dfb0b"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgDialogGroup, Assembly-CSharp",
+        "desc": null,
+        "textMaxIndex": 0,
+        "textGroupId": "10000003013_59",
+        "useFixedDialogGroup": false,
+        "fixedDialogGroupId": 0,
+        "dialogs": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "banPT": false,
+        "positionInfo": null,
+        "_output": 120,
+        "nodeId": 206,
+        "index": 116,
+        "parentIndex": 114,
+        "Guid": "26408d79-ec4b-4823-97b4-d9db947df305"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgPerformAction, Assembly-CSharp",
+        "action": {
+          "$type": "miHoYo.HYG.Performance.ClientUpdateNpcAffairStep, Assembly-CSharp",
+          "affairId": 13,
+          "stepIdVar": null,
+          "fixedStepId": 7
+        },
+        "infos": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
+              "content": "成功"
+            },
+            {
+              "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
+              "content": "失败"
+            }
+          ]
+        },
+        "_branches": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            -1,
+            -1
+          ]
+        },
+        "nodeId": 207,
+        "index": 117,
+        "parentIndex": 123,
+        "Guid": "0b50d196-2b30-434d-b072-b3184bcacf9f"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgPerformAction, Assembly-CSharp",
+        "action": {
+          "$type": "miHoYo.HYG.Performance.CameraShot, Assembly-CSharp",
+          "targetActorName": "PerformTrigger",
+          "shotType": 0,
+          "blendDefinition": {
+            "$type": "Cinemachine.CinemachineBlendDefinition, Cinemachine",
+            "m_Style": 1,
+            "m_Time": 1.0,
+            "m_CustomCurve": null
+          },
+          "useOverrideConfig": false,
+          "overrideConfig": {
+            "$type": "miHoYo.HYG.HYGCamera.SphericalCameraConfig, Assembly-CSharp",
+            "shouldSetFollowOffset": false,
+            "followOffset": 0.0,
+            "shouldSetLookAtOffset": false,
+            "lookAtOffset": 0.0,
+            "shouldSetDistance": false,
+            "distance": 0.0,
+            "shouldSetAngleX": false,
+            "angleX": 0.0,
+            "shouldSetAngleY": false,
+            "angleY": 0.0,
+            "shouldSetScreenRatio": false,
+            "screenRatio": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "distanceRatio": 0.0,
+            "shouldSetDistanceRatio": false
           }
         },
-        "_successOut": 101,
-        "_failOut": 100,
-        "nodeId": 178,
-        "index": 115,
-        "parentIndex": 104,
-        "Guid": "92305c66-63bd-40d9-9a84-50a443239666"
+        "infos": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
+              "content": "默认"
+            }
+          ]
+        },
+        "_branches": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            -1
+          ]
+        },
+        "nodeId": 208,
+        "index": 118,
+        "parentIndex": -1,
+        "Guid": "ce8f9357-ac48-45f3-ab9c-824e34ddbb10"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgPerformAction, Assembly-CSharp",
+        "action": {
+          "$type": "miHoYo.HYG.Performance.CameraShot, Assembly-CSharp",
+          "targetActorName": "PerformTrigger",
+          "shotType": 0,
+          "blendDefinition": {
+            "$type": "Cinemachine.CinemachineBlendDefinition, Cinemachine",
+            "m_Style": 1,
+            "m_Time": 1.0,
+            "m_CustomCurve": null
+          },
+          "useOverrideConfig": false,
+          "overrideConfig": {
+            "$type": "miHoYo.HYG.HYGCamera.SphericalCameraConfig, Assembly-CSharp",
+            "shouldSetFollowOffset": false,
+            "followOffset": 0.0,
+            "shouldSetLookAtOffset": false,
+            "lookAtOffset": 0.0,
+            "shouldSetDistance": false,
+            "distance": 0.0,
+            "shouldSetAngleX": false,
+            "angleX": 0.0,
+            "shouldSetAngleY": false,
+            "angleY": 0.0,
+            "shouldSetScreenRatio": false,
+            "screenRatio": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "distanceRatio": 0.0,
+            "shouldSetDistanceRatio": false
+          }
+        },
+        "infos": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
+              "content": "默认"
+            }
+          ]
+        },
+        "_branches": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            -1
+          ]
+        },
+        "nodeId": 209,
+        "index": 119,
+        "parentIndex": -1,
+        "Guid": "b2fe7fcf-6343-4c56-b18a-2ea9b8f74507"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgPerformAction, Assembly-CSharp",
+        "action": {
+          "$type": "miHoYo.HYG.Performance.CloseDialog, Assembly-CSharp"
+        },
+        "infos": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
+              "content": "默认"
+            }
+          ]
+        },
+        "_branches": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            59
+          ]
+        },
+        "nodeId": 211,
+        "index": 120,
+        "parentIndex": 116,
+        "Guid": "8a1243ab-649b-416d-af81-e5f85d56f013"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgPerformJumper, Assembly-CSharp",
+        "useStaticId": true,
+        "useConfigVarId": false,
+        "performId": 10000003011,
+        "configVarId": null,
+        "speakerKey": null,
+        "topicIndex": 0,
+        "_output": 95,
+        "nodeId": 212,
+        "index": 121,
+        "parentIndex": 94,
+        "Guid": "00710aba-35d6-4a73-88d8-880723973b09"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgBlackScreen, Assembly-CSharp",
+        "fadeIn": true,
+        "fadeInTime": 0.5,
+        "fadeOut": false,
+        "fadeOutTime": 0.5,
+        "duration": 1.0,
+        "_output": 125,
+        "nodeId": 213,
+        "index": 122,
+        "parentIndex": 77,
+        "Guid": "4eb1b2dd-4911-4e91-a1c2-7618e471d902"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgBlackScreen, Assembly-CSharp",
+        "fadeIn": false,
+        "fadeInTime": 0.5,
+        "fadeOut": true,
+        "fadeOutTime": 0.5,
+        "duration": 1.0,
+        "_output": 117,
+        "nodeId": 214,
+        "index": 123,
+        "parentIndex": 125,
+        "Guid": "93a85caf-f655-4a93-ba6e-8e273bd00ba4"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgPerformAction, Assembly-CSharp",
+        "action": {
+          "$type": "miHoYo.HYG.Performance.ExitGiftLoopAnimation, Assembly-CSharp",
+          "guid": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPerformanceTrigger, Assembly-CSharp",
+            "Override": false,
+            "OverrideValue": false
+          }
+        },
+        "infos": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
+              "content": "退出loop动画"
+            }
+          ]
+        },
+        "_branches": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            72
+          ]
+        },
+        "nodeId": 216,
+        "index": 124,
+        "parentIndex": 70,
+        "Guid": "f47ac34b-6275-4ce7-8260-bf802b296b12"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgPerformAction, Assembly-CSharp",
+        "action": {
+          "$type": "miHoYo.HYG.Performance.SetActorPos, Assembly-CSharp",
+          "actorName": "PerformTrigger",
+          "position": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[UnityEngine.Vector3, UnityEngine.CoreModule]], Assembly-CSharp",
+            "_value": {
+              "x": 0.0,
+              "y": -5.0,
+              "z": 0.0
+            },
+            "Override": false,
+            "OverrideValue": false
+          },
+          "rotation": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[UnityEngine.Vector3, UnityEngine.CoreModule]], Assembly-CSharp",
+            "_value": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Override": false,
+            "OverrideValue": false
+          }
+        },
+        "infos": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
+              "content": "默认"
+            }
+          ]
+        },
+        "_branches": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            123
+          ]
+        },
+        "nodeId": 217,
+        "index": 125,
+        "parentIndex": 122,
+        "Guid": "da4a4122-4b19-4240-950e-51a17c0437b4"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgPerformWatcher, Assembly-CSharp",
+        "key": {
+          "$type": "miHoYo.HYG.WatcherKey, Assembly-CSharp",
+          "key": 234,
+          "name": "NpcEvent_送礼演出道具ID",
+          "valueType": 5,
+          "temp": true
+        },
+        "configVarValue": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarGetVisitRewardConfigId, Assembly-CSharp",
+          "_type": 3,
+          "Override": false,
+          "OverrideValue": false
+        },
+        "_output": 128,
+        "_failedOut": -1,
+        "nodeId": 221,
+        "index": 126,
+        "parentIndex": 127,
+        "Guid": "15a1c6d6-9e0f-464e-8a79-db2b3ffde375"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgPerformWatcher, Assembly-CSharp",
+        "key": {
+          "$type": "miHoYo.HYG.WatcherKey, Assembly-CSharp",
+          "key": 235,
+          "name": "NpcEvent_送礼演出类型ID",
+          "valueType": 5,
+          "temp": true
+        },
+        "configVarValue": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUInt32, Assembly-CSharp",
+          "_value": 2,
+          "Override": false,
+          "OverrideValue": false
+        },
+        "_output": 126,
+        "_failedOut": -1,
+        "nodeId": 222,
+        "index": 127,
+        "parentIndex": 44,
+        "Guid": "d6f95470-69de-412e-a695-f76fdbd9edc4"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgPerformJumper, Assembly-CSharp",
+        "useStaticId": true,
+        "useConfigVarId": false,
+        "performId": 10000003000,
+        "configVarId": null,
+        "speakerKey": null,
+        "topicIndex": 0,
+        "_output": 47,
+        "nodeId": 223,
+        "index": 128,
+        "parentIndex": 126,
+        "Guid": "4df8dda8-04fb-427c-8c35-ab1b694597fb"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgPerformWatcher, Assembly-CSharp",
+        "key": {
+          "$type": "miHoYo.HYG.WatcherKey, Assembly-CSharp",
+          "key": 235,
+          "name": "NpcEvent_送礼演出类型ID",
+          "valueType": 5,
+          "temp": true
+        },
+        "configVarValue": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUInt32, Assembly-CSharp",
+          "_value": 2,
+          "Override": false,
+          "OverrideValue": false
+        },
+        "_output": 130,
+        "_failedOut": -1,
+        "nodeId": 224,
+        "index": 129,
+        "parentIndex": 100,
+        "Guid": "e7964f2a-fdfa-48a9-ad0a-cafdb2fdc855"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgPerformWatcher, Assembly-CSharp",
+        "key": {
+          "$type": "miHoYo.HYG.WatcherKey, Assembly-CSharp",
+          "key": 234,
+          "name": "NpcEvent_送礼演出道具ID",
+          "valueType": 5,
+          "temp": true
+        },
+        "configVarValue": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarGetVisitRewardConfigId, Assembly-CSharp",
+          "_type": 1,
+          "Override": false,
+          "OverrideValue": false
+        },
+        "_output": 131,
+        "_failedOut": -1,
+        "nodeId": 225,
+        "index": 130,
+        "parentIndex": 129,
+        "Guid": "44e5b184-8f74-4bd8-9e3b-8195e79b16b5"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgPerformJumper, Assembly-CSharp",
+        "useStaticId": true,
+        "useConfigVarId": false,
+        "performId": 10000003000,
+        "configVarId": null,
+        "speakerKey": null,
+        "topicIndex": 0,
+        "_output": 104,
+        "nodeId": 226,
+        "index": 131,
+        "parentIndex": 130,
+        "Guid": "b5ef4ca9-d92a-4942-9c43-2600a8c746a7"
       }
     ]
   },
   "containers": null,
-  "rootIndex": 0,
-  "nodesHash": -472733593,
+  "rootIndex": 94,
+  "nodesHash": 1637002622,
   "editorData": {
     "$type": "miHoYo.HYG.JsonGraph.GraphEditorData, Assembly-CSharp",
     "danglingIndexes": {
       "$type": "System.Int32[], mscorlib",
-      "$values": []
+      "$values": [
+        0,
+        6,
+        11,
+        118,
+        119
+      ]
     },
     "nodeInfos": {
       "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp]], mscorlib",
@@ -3587,30 +4465,19 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": -2432.0,
-            "y": 1008.0
-          },
-          "guid": "f293759f-4f2f-437a-8f31-6e032b6287cf",
-          "comment": "判断当前对话的是站在屋内的NPC还是隔着门对话",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": -1152.0,
-            "y": 1472.0
+            "x": 1040.0,
+            "y": 1632.0
           },
           "guid": "0dc4909f-d241-41c7-ad47-82d7d96ef670",
-          "comment": "1.敲门声咚咚咚",
+          "comment": "1.咚咚咚敲门",
           "locked": false,
           "collapse": false
         },
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": -448.0,
-            "y": 1504.0
+            "x": 1760.0,
+            "y": 1616.0
           },
           "guid": "61749524-0fc6-4885-a65d-b92f5ca52d51",
           "comment": "2.玩家询问是谁",
@@ -3620,8 +4487,8 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": 256.0,
-            "y": 1568.0
+            "x": 2432.0,
+            "y": 1680.0
           },
           "guid": "318368d4-d6b5-4ef4-af5f-821de867fa75",
           "comment": "3.NPC询问是否可以进来",
@@ -3631,8 +4498,8 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": 1664.0,
-            "y": 1920.0
+            "x": 3776.0,
+            "y": 1808.0
           },
           "guid": "2b600312-55be-43e9-a115-464327843d66",
           "comment": "4.拒绝本次事件",
@@ -3642,8 +4509,8 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": 928.0,
-            "y": 1568.0
+            "x": 3072.0,
+            "y": 1680.0
           },
           "guid": "db817afc-a5f3-41c6-99cd-dcdbcbf7c795",
           "comment": "5.允许或拒绝",
@@ -3653,8 +4520,8 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": -544.0,
-            "y": 2512.0
+            "x": 1680.0,
+            "y": 2160.0
           },
           "guid": "c8d2dc23-2cb2-4b21-af49-a41f71581549",
           "comment": "6.玩家是否确认出门",
@@ -3664,8 +4531,8 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": -1184.0,
-            "y": 2512.0
+            "x": 1040.0,
+            "y": 2160.0
           },
           "guid": "22d17e4b-9385-4ede-a798-c8b86e986d90",
           "comment": "7.询问玩家是不是要出门",
@@ -3675,8 +4542,8 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": 128.0,
-            "y": 2576.0
+            "x": 2352.0,
+            "y": 2224.0
           },
           "guid": "99a87b66-0786-4c5f-9e2b-8e130ca27000",
           "comment": "8.确定要出门",
@@ -3697,22 +4564,11 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": 128.0,
-            "y": 2864.0
+            "x": 2352.0,
+            "y": 2512.0
           },
           "guid": "1c1f7c4d-0b64-41b7-aeb9-4e2fb4105874",
           "comment": "10.误触，并不出门",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 4128.0,
-            "y": 1440.0
-          },
-          "guid": "faf5f9b6-d53f-4cda-99ed-4b869135249b",
-          "comment": "NPC进门",
           "locked": false,
           "collapse": false
         },
@@ -3730,8 +4586,8 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": 1088.0,
-            "y": 512.0
+            "x": 1072.0,
+            "y": 768.0
           },
           "guid": "e0ab4be8-29da-444a-bb4e-83fee46e2ec3",
           "comment": "12.说自己想吃xxx还带了东西但是玩家背包放不下，希望清理一下",
@@ -3741,8 +4597,8 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": 1760.0,
-            "y": 496.0
+            "x": 1744.0,
+            "y": 752.0
           },
           "guid": "015b24dc-fb08-4a1b-965d-0517e5817cf3",
           "comment": "13.寒暄线路1选项",
@@ -3774,8 +4630,8 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": 2400.0,
-            "y": 624.0
+            "x": 2384.0,
+            "y": 880.0
           },
           "guid": "decbe128-1662-4df0-a757-1bee9c7aab37",
           "comment": "16.玩家选择去清理，不发放",
@@ -3785,8 +4641,8 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": 2400.0,
-            "y": 928.0
+            "x": 2384.0,
+            "y": 1184.0
           },
           "guid": "e1007ba6-6c3f-451d-a331-413316fef5d9",
           "comment": "17.玩家表示自己有食材，走飞件",
@@ -3928,28 +4784,6 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": -1984.0,
-            "y": 1568.0
-          },
-          "guid": "a9d6b8a9-bf32-4cbf-aab7-5e8b10ac4c44",
-          "comment": "交互对象是门，判断NPC是否已经进屋",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 3040.0,
-            "y": 1952.0
-          },
-          "guid": "52026894-005a-4c85-bf74-2b5d00af99eb",
-          "comment": "取消拜访事件",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
             "x": -1904.0,
             "y": 448.0
           },
@@ -3983,19 +4817,8 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": 624.0,
-            "y": 256.0
-          },
-          "guid": "5eed2c11-6a27-47d9-889a-08cc9574f9ac",
-          "comment": "判断食材包能否进背包",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 3136.0,
-            "y": 912.0
+            "x": 3120.0,
+            "y": 1168.0
           },
           "guid": "1f24f9e8-468c-405b-8060-c83b770c0943",
           "comment": "发放食材包，走飞件",
@@ -4159,63 +4982,8 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": 3056.0,
+            "x": 4384.0,
             "y": -2224.0
-          },
-          "guid": "a3c32bec-2548-4bf0-918c-e14490167822",
-          "comment": "发放奖品，判断背包状况",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 3472.0,
-            "y": -2528.0
-          },
-          "guid": "38f0f4f6-c7e6-4912-907c-48ee52c6641f",
-          "comment": "可进入背包",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 4016.0,
-            "y": -2560.0
-          },
-          "guid": "8c1178fc-f040-4672-bbc7-45cf6f30470f",
-          "comment": "赠送",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 4432.0,
-            "y": -2544.0
-          },
-          "guid": "e6b10e5a-4003-4b16-bf29-b501d2368da2",
-          "comment": "赠送",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 3488.0,
-            "y": -2064.0
-          },
-          "guid": "edf806b3-1815-4c62-b9ac-97795bad48e8",
-          "comment": "飞件",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 4960.0,
-            "y": -2048.0
           },
           "guid": "2645e343-d248-4bfc-acf5-6f90c0f2e301",
           "comment": "发放游戏赠礼",
@@ -4225,33 +4993,11 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": 5600.0,
-            "y": -2032.0
+            "x": 5024.0,
+            "y": -2208.0
           },
           "guid": "73c16e03-eb43-47cb-a58b-58bd15edd01b",
           "comment": "41.发放完游戏赠礼后结语",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 4576.0,
-            "y": 2816.0
-          },
-          "guid": "241ee4a0-2e20-4b53-b549-cd5135ead634",
-          "comment": "玩家确认主动出门",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 4512.0,
-            "y": 1408.0
-          },
-          "guid": "94312366-d9ae-43d4-965b-71eeb26fc6e7",
-          "comment": "设置NPC已经进门",
           "locked": false,
           "collapse": false
         },
@@ -4280,41 +5026,8 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": 3776.0,
-            "y": 1424.0
-          },
-          "guid": "15aa6b3a-7e9e-4e85-ae38-f7a72a9a82ce",
-          "comment": "埋点",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 2304.0,
-            "y": 1952.0
-          },
-          "guid": "8778a699-a17c-437c-b51d-756e9635ed76",
-          "comment": "埋点",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 1216.0,
-            "y": 2560.0
-          },
-          "guid": "09ac57f2-9f57-488f-a410-11b3c905ce63",
-          "comment": "埋点",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 5280.0,
-            "y": -2032.0
+            "x": 4704.0,
+            "y": -2208.0
           },
           "guid": "31fed388-55c7-4aca-a951-9b460f7bcd2e",
           "comment": "埋点",
@@ -4335,8 +5048,8 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": 3472.0,
-            "y": 912.0
+            "x": 3456.0,
+            "y": 1168.0
           },
           "guid": "55548302-eb8b-4280-a6e9-5532346fa988",
           "comment": "埋点",
@@ -4368,41 +5081,8 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": -1536.0,
-            "y": 1472.0
-          },
-          "guid": "ac923f99-ba7c-4b60-af10-2e1f96478f2f",
-          "comment": "跳转到PT",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": -1536.0,
-            "y": 2512.0
-          },
-          "guid": "5e7072e8-3648-4e12-887d-ba2771754c39",
-          "comment": "跳转到PT",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 3104.0,
-            "y": 1424.0
-          },
-          "guid": "816eeefe-e6e0-47af-8e94-09061189b519",
-          "comment": "",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 3856.0,
-            "y": 2656.0
+            "x": 3568.0,
+            "y": 5520.0
           },
           "guid": "501129ad-8bab-4a46-9482-b75524109907",
           "comment": "记录Log",
@@ -4412,19 +5092,8 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": 2688.0,
-            "y": 1952.0
-          },
-          "guid": "6162c36e-1b90-4a6a-8c8f-87bb1a70effd",
-          "comment": "记录Log",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 2144.0,
-            "y": 2640.0
+            "x": 1840.0,
+            "y": 5488.0
           },
           "guid": "870d4e1e-7046-43e5-886e-c1a0da791602",
           "comment": "判断是否已经发放原料包",
@@ -4434,8 +5103,8 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": 2688.0,
-            "y": 2656.0
+            "x": 2384.0,
+            "y": 5520.0
           },
           "guid": "2ba5e28d-9fb7-4d0a-8c10-5c9fdbffce30",
           "comment": "判断是否已经吃过菜",
@@ -4445,8 +5114,8 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": 1664.0,
-            "y": 2624.0
+            "x": 1360.0,
+            "y": 5488.0
           },
           "guid": "4a1814f5-aa3f-4f5e-b8d8-7c039dcdff3a",
           "comment": "判断是否已经发放过游戏奖励",
@@ -4456,8 +5125,8 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": 2160.0,
-            "y": 4000.0
+            "x": 1888.0,
+            "y": 6960.0
           },
           "guid": "e4b1d5af-3fe3-437d-9e62-ba28e2e61073",
           "comment": "判断是否已经发放原料包",
@@ -4467,8 +5136,8 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": 2720.0,
-            "y": 4016.0
+            "x": 2448.0,
+            "y": 6992.0
           },
           "guid": "9ebcc5d6-575a-4b88-bb83-faa939de8502",
           "comment": "判断是否已经吃过菜",
@@ -4478,8 +5147,8 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": 3184.0,
-            "y": 2672.0
+            "x": 2896.0,
+            "y": 5520.0
           },
           "guid": "2154b805-563b-4b58-b4a7-8213e96fa2a0",
           "comment": "情况2：啥都干了\n（Log使用）",
@@ -4489,8 +5158,8 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": 3184.0,
-            "y": 4896.0
+            "x": 2912.0,
+            "y": 7856.0
           },
           "guid": "48f463b4-f3b1-4f31-b1ca-7bf226c37995",
           "comment": "情况7：啥也没干\n（Log使用）",
@@ -4500,8 +5169,8 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": 3184.0,
-            "y": 4032.0
+            "x": 2912.0,
+            "y": 6992.0
           },
           "guid": "e1ed755c-bc01-44b7-a745-f046339d4854",
           "comment": "情况5：吃了饭\n（Log使用）",
@@ -4511,8 +5180,8 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": 3184.0,
-            "y": 4464.0
+            "x": 2912.0,
+            "y": 7440.0
           },
           "guid": "89badb7b-0210-4670-99ce-462e4ddc7ffe",
           "comment": "情况6：白拿材料没做饭\n（Log使用）",
@@ -4522,8 +5191,8 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": 3184.0,
-            "y": 3584.0
+            "x": 2912.0,
+            "y": 6544.0
           },
           "guid": "e2805c9b-af38-4827-b5de-36c4588363cf",
           "comment": "情况4：只有游戏奖励\n（Log使用）",
@@ -4533,8 +5202,8 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": 3184.0,
-            "y": 3120.0
+            "x": 2912.0,
+            "y": 6096.0
           },
           "guid": "7c9ecff3-0f0b-4686-9a96-5b3344cdb5d8",
           "comment": "情况3：游戏奖励+白嫖\n（Log使用）",
@@ -4643,41 +5312,8 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": 1632.0,
-            "y": 1456.0
-          },
-          "guid": "dd8ffa3a-f2e1-4439-bf1a-1b622ba8ae54",
-          "comment": "伴手礼记录",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 2160.0,
-            "y": 1456.0
-          },
-          "guid": "78a4cefd-9dcd-418a-92b7-bdbb24a5c04b",
-          "comment": "游戏赠礼记录",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 2720.0,
-            "y": 1264.0
-          },
-          "guid": "40d19523-a4dc-458a-b735-265a142fb608",
-          "comment": "",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 4224.0,
-            "y": 2800.0
+            "x": 3920.0,
+            "y": 5648.0
           },
           "guid": "b8de545e-aca5-4759-a086-7767ce1ee6e4",
           "comment": "",
@@ -4859,6 +5495,424 @@
           "comment": "判断是否已经发放过游戏奖励",
           "locked": false,
           "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -2736.0,
+            "y": 3648.0
+          },
+          "guid": "8dff6e35-9dc9-4a5d-b4ac-d220c8d12add",
+          "comment": "判断Step",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -1600.0,
+            "y": 3328.0
+          },
+          "guid": "0e4dacc7-aedb-486d-99c3-ce67fd8e7c22",
+          "comment": "step2：进门赠礼随机对话",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -1008.0,
+            "y": 3584.0
+          },
+          "guid": "44f50d81-134f-4cd4-ad52-e2a83cf9267a",
+          "comment": "45.进门随机寒暄2",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -192.0,
+            "y": 3392.0
+          },
+          "guid": "bfc3592d-24eb-430a-870b-1ee00a22b025",
+          "comment": "46.玩家选项",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 528.0,
+            "y": 3440.0
+          },
+          "guid": "d6a3eead-2e6b-4a10-8340-685a4f37cbbe",
+          "comment": "47.回答1",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 528.0,
+            "y": 3664.0
+          },
+          "guid": "4063c2d7-08ef-4e60-bd1c-5e7d1f3cef05",
+          "comment": "48.回答2",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 528.0,
+            "y": 3904.0
+          },
+          "guid": "61d9f369-9206-4f50-a5c7-16a700ccc772",
+          "comment": "49.回答3",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -1008.0,
+            "y": 3344.0
+          },
+          "guid": "803682f6-8db1-49c9-b45d-11b3cb63f0a2",
+          "comment": "50、进门随机寒暄1",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 3184.0,
+            "y": 3680.0
+          },
+          "guid": "80988fbe-97c0-4a9b-b3a5-01b5bbb9e223",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 3536.0,
+            "y": 3680.0
+          },
+          "guid": "0e23bf75-057d-49e1-a9fe-90a33f7022f0",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 2544.0,
+            "y": 3712.0
+          },
+          "guid": "8134d0ed-6927-44dc-b982-58a709d8500b",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 3968.0,
+            "y": 3712.0
+          },
+          "guid": "4ac60759-58ca-413f-b170-decb6a86f8a2",
+          "comment": "51.表示自己随便看看",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -1984.0,
+            "y": 4336.0
+          },
+          "guid": "96fe65fc-d3c4-4336-a762-690b5530e28d",
+          "comment": "埋点",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -1552.0,
+            "y": 4512.0
+          },
+          "guid": "37950a0c-479a-4257-8a2f-445ed3bd62c9",
+          "comment": "52.阶段4：120s想走可挽回",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -384.0,
+            "y": 4496.0
+          },
+          "guid": "282f377b-85c1-4732-a817-d0f8b12ef7ae",
+          "comment": "53.允许或者挽留",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 384.0,
+            "y": 4528.0
+          },
+          "guid": "dc0941f1-fabc-43a7-81f6-009057d13421",
+          "comment": "54.答应留下",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 1088.0,
+            "y": 4496.0
+          },
+          "guid": "dae19c28-5ed4-4af1-b531-213d145cafd8",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 384.0,
+            "y": 4832.0
+          },
+          "guid": "4fa2e98d-65f0-4862-8a41-a6010f543096",
+          "comment": "55.接受离开",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -1984.0,
+            "y": 5248.0
+          },
+          "guid": "5b164e28-7d0f-4f9f-8aff-c5645485d081",
+          "comment": "埋点",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -1568.0,
+            "y": 5312.0
+          },
+          "guid": "1d75ee21-e1dc-462d-a4e7-e130133318a6",
+          "comment": "56.阶段6：300s想走不可挽留",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -384.0,
+            "y": 5408.0
+          },
+          "guid": "e504ea3f-36bb-4b82-82a8-5482a88ff3f8",
+          "comment": "57.两种说法",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 288.0,
+            "y": 5408.0
+          },
+          "guid": "7e1ec5c4-5041-4402-a876-1095942dfb0b",
+          "comment": "58.说法1回复",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 288.0,
+            "y": 5760.0
+          },
+          "guid": "26408d79-ec4b-4823-97b4-d9db947df305",
+          "comment": "59.说法2回复",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 5936.0,
+            "y": 5728.0
+          },
+          "guid": "0b50d196-2b30-434d-b072-b3184bcacf9f",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -880.0,
+            "y": 4176.0
+          },
+          "guid": "ce8f9357-ac48-45f3-ab9c-824e34ddbb10",
+          "comment": "设置机位",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -896.0,
+            "y": 4864.0
+          },
+          "guid": "b2fe7fcf-6343-4c56-b18a-2ea9b8f74507",
+          "comment": "设置机位",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 1024.0,
+            "y": 5392.0
+          },
+          "guid": "8a1243ab-649b-416d-af81-e5f85d56f013",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -1952.0,
+            "y": 3344.0
+          },
+          "guid": "00710aba-35d6-4a73-88d8-880723973b09",
+          "comment": "跳转到PT",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 4256.0,
+            "y": 5776.0
+          },
+          "guid": "4eb1b2dd-4911-4e91-a1c2-7618e471d902",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 5280.0,
+            "y": 5776.0
+          },
+          "guid": "93a85caf-f655-4a93-ba6e-8e273bd00ba4",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 4352.0,
+            "y": -1152.0
+          },
+          "guid": "f47ac34b-6275-4ce7-8260-bf802b296b12",
+          "comment": "打断双手动作",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 4880.0,
+            "y": 5760.0
+          },
+          "guid": "da4a4122-4b19-4240-950e-51a17c0437b4",
+          "comment": null,
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 3552.0,
+            "y": -2240.0
+          },
+          "guid": "15a1c6d6-9e0f-464e-8a79-db2b3ffde375",
+          "comment": null,
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 3040.0,
+            "y": -2240.0
+          },
+          "guid": "d6f95470-69de-412e-a695-f76fdbd9edc4",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 4064.0,
+            "y": -2240.0
+          },
+          "guid": "4df8dda8-04fb-427c-8c35-ab1b694597fb",
+          "comment": null,
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 1200.0,
+            "y": 3680.0
+          },
+          "guid": "e7964f2a-fdfa-48a9-ad0a-cafdb2fdc855",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 1712.0,
+            "y": 3680.0
+          },
+          "guid": "44e5b184-8f74-4bd8-9e3b-8195e79b16b5",
+          "comment": null,
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 2224.0,
+            "y": 3680.0
+          },
+          "guid": "b5ef4ca9-d92a-4942-9c43-2600a8c746a7",
+          "comment": null,
+          "locked": false,
+          "collapse": false
         }
       ]
     },
@@ -4866,7 +5920,5 @@
   },
   "path": "Assets/MoleRes/Rel/SRes/Data/Json/Performance/10000003013.json",
   "errors": null,
-  "nodeErrors": {
-    "$type": "System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.String, mscorlib]], mscorlib"
-  }
+  "nodeErrors": null
 }

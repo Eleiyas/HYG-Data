@@ -1,12 +1,26 @@
 {
   "$type": "miHoYo.HYG.Tutorial.TutorialGraph, Assembly-CSharp",
   "id": 95,
-  "name": "星球树升级",
-  "desc": null,
-  "type": 1,
-  "sortIndex": 95,
-  "triggerType": 1,
-  "trackingPoint": 0,
+  "name": "背包穿脱1-玩家",
+  "desc": "原换装app3件新衣后，换气泡提示",
+  "type": 3,
+  "sortIndex": 66,
+  "triggerType": 2,
+  "trackingPoints": {
+    "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialTrackingPointEntry, Assembly-CSharp]], mscorlib",
+    "$values": [
+      {
+        "$type": "miHoYo.HYG.Tutorial.TutorialTrackingPointEntry, Assembly-CSharp",
+        "trackingPointId": 3591059349,
+        "pendingTriggerFrames": 0,
+        "delayTriggerFrames": 3,
+        "trackingData": {
+          "$type": "miHoYo.HYG.Tutorial.TutorialTrackingPointDataForUIKKey, Assembly-CSharp",
+          "uiKey": 1535440418
+        }
+      }
+    ]
+  },
   "forceQuitProcess": {
     "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialForceQuitProcessBase, Assembly-CSharp]], mscorlib",
     "$values": [
@@ -27,19 +41,17 @@
     "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.Config.GraphDynamicUIKeyBase, Assembly-CSharp]], mscorlib",
     "$values": [
       {
-        "$type": "miHoYo.HYG.Tutorial.Config.InteractionUIKey, Assembly-CSharp",
-        "interact": 30,
-        "uiKey": 3450708673
+        "$type": "miHoYo.HYG.Tutorial.Config.PacketDynamicUIKeyByTag, Assembly-CSharp",
+        "param": {
+          "$type": "miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp",
+          "TagId": 40001
+        },
+        "uiKey": 3790671093
       },
       {
-        "$type": "miHoYo.HYG.Tutorial.Config.PlanetTreeLvDynamicUIKey, Assembly-CSharp",
-        "param": 2,
-        "uiKey": 1534296265
-      },
-      {
-        "$type": "miHoYo.HYG.Tutorial.Config.PlanetTreeNodeDynamicUIKey, Assembly-CSharp",
-        "param": 1,
-        "uiKey": 3333289595
+        "$type": "miHoYo.HYG.Tutorial.Config.PacketOptionDynamicUIKey, Assembly-CSharp",
+        "param": 10,
+        "uiKey": 2670560754
       }
     ]
   },
@@ -50,7 +62,10 @@
       "sceneType": 2
     },
     "netFilter": {
-      "$type": "miHoYo.HYG.Tutorial.TutorialTriggerOfflineFilter, Assembly-CSharp"
+      "$type": "miHoYo.HYG.Tutorial.TutorialTriggerOfflineAndOnlineFilter, Assembly-CSharp"
+    },
+    "networkRoleFilter": {
+      "$type": "miHoYo.HYG.Tutorial.TutorialTriggerNetworkRoleFilter, Assembly-CSharp"
     },
     "taskFilter": {
       "$type": "miHoYo.HYG.Tutorial.TutorialTaskFilterById_And, Assembly-CSharp",
@@ -58,6 +73,9 @@
         "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialTaskFilterData, Assembly-CSharp]], mscorlib",
         "$values": []
       }
+    },
+    "tutorialCompleteFilter": {
+      "$type": "miHoYo.HYG.Tutorial.TutorialTriggerNoTutorialCompleteFilter, Assembly-CSharp"
     }
   },
   "finishConditions": {
@@ -85,46 +103,52 @@
           "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
           "$values": [
             {
-              "$type": "miHoYo.HYG.Tutorial.QueryConditionLogicNot, Assembly-CSharp",
-              "condition": {
-                "$type": "miHoYo.HYG.Tutorial.TutorialQueryIsInPerformance, Assembly-CSharp"
-              }
-            },
-            {
               "$type": "miHoYo.HYG.Tutorial.TutorialQueryPage, Assembly-CSharp",
-              "pageHash": 2788530902,
+              "pageHash": 454202711,
               "checkAnimation": false
             },
             {
-              "$type": "miHoYo.HYG.Tutorial.TutorialQueryItemInteractionUIExistCondition, Assembly-CSharp",
-              "idSelector": {
-                "$type": "miHoYo.HYG.Tutorial.TutorialIdSelector, Assembly-CSharp",
-                "id": 20070
+              "$type": "miHoYo.HYG.Tutorial.TutorialQueryUIObject, Assembly-CSharp",
+              "tutorialKey": 1535440418,
+              "state": 1
+            },
+            {
+              "$type": "miHoYo.HYG.Tutorial.TutorialQueryUIObject, Assembly-CSharp",
+              "tutorialKey": 2999523344,
+              "state": 0
+            },
+            {
+              "$type": "miHoYo.HYG.Tutorial.TutorialQueryPlayerBagTag, Assembly-CSharp",
+              "newTag": {
+                "$type": "miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp",
+                "TagId": 40001
               },
-              "interactShowType": 30
+              "packetType": 0,
+              "count": 1
+            },
+            {
+              "$type": "miHoYo.HYG.Tutorial.QueryConditionLogicNot, Assembly-CSharp",
+              "condition": {
+                "$type": "miHoYo.HYG.Tutorial.TutorialQueryPage, Assembly-CSharp",
+                "pageHash": 136645977,
+                "checkAnimation": false
+              }
             }
           ]
         },
-        "_output": 2,
+        "_output": 1,
         "index": 0,
         "parentIndex": -1,
-        "Guid": "d0e7e4f5-6112-46ff-ad61-10205dbbac5e"
-      },
-      {
-        "$type": "miHoYo.HYG.Tutorial.CfgTutorialSetComplete, Assembly-CSharp",
-        "_output": -1,
-        "index": 1,
-        "parentIndex": 16,
-        "Guid": "66b75a9b-c0d8-4290-b24e-df7fff161016"
+        "Guid": "51f2a0d4-a5fe-4b92-aacd-9bf07ab6ce50"
       },
       {
         "$type": "miHoYo.HYG.Tutorial.CfgTutorialControlMode, Assembly-CSharp",
-        "_keymouse": 11,
+        "_keymouse": 16,
         "_gamepad": -1,
-        "_touch": 13,
-        "index": 2,
+        "_touch": 17,
+        "index": 1,
         "parentIndex": 0,
-        "Guid": "41dc8907-7274-438f-88f1-bce9e8566e72"
+        "Guid": "17f13198-8bfc-468a-949b-906ccea2f18e"
       },
       {
         "$type": "miHoYo.HYG.Tutorial.CfgForceTutorial, Assembly-CSharp",
@@ -132,1049 +156,36 @@
           "$type": "miHoYo.HYG.Tutorial.ForceTutorialData, Assembly-CSharp",
           "showCompeteAni": false,
           "showTip": true,
+          "showHeadIcon": false,
+          "icon": null,
           "tip": {
             "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
             "effects": {
               "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Localization.TextMapContentEffect, Assembly-CSharp]], mscorlib",
               "$values": []
             },
-            "textId": "PlanetTree_01"
+            "textId": "ClothBag_1"
           },
           "dir": 7,
-          "blockScroll": false,
-          "blockClick": true,
-          "hideBg": false,
-          "digAHole": false,
-          "tutorialKey": 3202385298,
-          "framePosOffset": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "frameSizeOffset": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "checkFocusStable": false,
-          "focusStableData": {
-            "$type": "miHoYo.HYG.Tutorial.FocusStableData, Assembly-CSharp",
-            "stableNeedFrameCount": 1,
-            "checkPosition": true,
-            "positionMinDiff": -1.0,
-            "checkScale": false,
-            "scaleMinDiff": -1.0,
-            "checkRotation": false,
-            "rotationMinDiff": -1.0
-          },
-          "isShowGesture": false,
-          "gesture": {
-            "$type": "miHoYo.HYG.Tutorial.TutorialGesture, Assembly-CSharp",
-            "tutorialKey": 0,
-            "useBigFinger": false,
-            "flipFinger": false,
-            "type": 0,
-            "offset": {
-              "x": 0.0,
-              "y": 0.0,
-              "z": 0.0
-            }
-          },
-          "penetrateActions": {
-            "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-            "$values": [
-              "ShowMouse"
-            ]
-          }
-        },
-        "_output": 4,
-        "FinishConditions": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
-          "$values": [
-            {
-              "$type": "miHoYo.HYG.Tutorial.TimeElapsedCondition, Assembly-CSharp",
-              "timeInSeconds": 1.5
-            },
-            {
-              "$type": "miHoYo.HYG.Tutorial.CheckAnyInput, Assembly-CSharp"
-            }
-          ]
-        },
-        "FailedCondition": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
-          "$values": [
-            {
-              "$type": "miHoYo.HYG.Tutorial.QueryConditionLogicNot, Assembly-CSharp",
-              "condition": {
-                "$type": "miHoYo.HYG.Tutorial.TutorialQueryPage, Assembly-CSharp",
-                "pageHash": 3412439639,
-                "checkAnimation": false
-              }
-            }
-          ]
-        },
-        "forceQuitProcess": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialForceQuitProcessBase, Assembly-CSharp]], mscorlib",
-          "$values": []
-        },
-        "index": 3,
-        "parentIndex": -1,
-        "Guid": "d53aec9c-30d8-4750-b5a5-78b1484570ed"
-      },
-      {
-        "$type": "miHoYo.HYG.Tutorial.CfgForceTutorial, Assembly-CSharp",
-        "data": {
-          "$type": "miHoYo.HYG.Tutorial.ForceTutorialData, Assembly-CSharp",
-          "showCompeteAni": false,
-          "showTip": true,
-          "tip": {
-            "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
-            "effects": {
-              "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Localization.TextMapContentEffect, Assembly-CSharp]], mscorlib",
-              "$values": []
-            },
-            "textId": "PlanetTree_02"
-          },
-          "dir": 7,
-          "blockScroll": true,
-          "blockClick": true,
-          "hideBg": false,
-          "digAHole": false,
-          "tutorialKey": 2072283850,
-          "framePosOffset": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "frameSizeOffset": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "checkFocusStable": false,
-          "focusStableData": {
-            "$type": "miHoYo.HYG.Tutorial.FocusStableData, Assembly-CSharp",
-            "stableNeedFrameCount": 1,
-            "checkPosition": true,
-            "positionMinDiff": -1.0,
-            "checkScale": false,
-            "scaleMinDiff": -1.0,
-            "checkRotation": false,
-            "rotationMinDiff": -1.0
-          },
-          "isShowGesture": false,
-          "gesture": {
-            "$type": "miHoYo.HYG.Tutorial.TutorialGesture, Assembly-CSharp",
-            "tutorialKey": 0,
-            "useBigFinger": false,
-            "flipFinger": false,
-            "type": 0,
-            "offset": {
-              "x": 0.0,
-              "y": 0.0,
-              "z": 0.0
-            }
-          },
-          "penetrateActions": {
-            "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-            "$values": [
-              "ShowMouse"
-            ]
-          }
-        },
-        "_output": 5,
-        "FinishConditions": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
-          "$values": [
-            {
-              "$type": "miHoYo.HYG.Tutorial.TimeElapsedCondition, Assembly-CSharp",
-              "timeInSeconds": 1.5
-            },
-            {
-              "$type": "miHoYo.HYG.Tutorial.CheckAnyInput, Assembly-CSharp"
-            }
-          ]
-        },
-        "FailedCondition": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
-          "$values": [
-            {
-              "$type": "miHoYo.HYG.Tutorial.QueryConditionLogicNot, Assembly-CSharp",
-              "condition": {
-                "$type": "miHoYo.HYG.Tutorial.TutorialQueryPage, Assembly-CSharp",
-                "pageHash": 3412439639,
-                "checkAnimation": false
-              }
-            }
-          ]
-        },
-        "forceQuitProcess": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialForceQuitProcessBase, Assembly-CSharp]], mscorlib",
-          "$values": []
-        },
-        "index": 4,
-        "parentIndex": 3,
-        "Guid": "d7fc5d4d-2b29-4acd-9f70-18216cc10521"
-      },
-      {
-        "$type": "miHoYo.HYG.Tutorial.CfgForceTutorial, Assembly-CSharp",
-        "data": {
-          "$type": "miHoYo.HYG.Tutorial.ForceTutorialData, Assembly-CSharp",
-          "showCompeteAni": false,
-          "showTip": true,
-          "tip": {
-            "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
-            "effects": {
-              "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Localization.TextMapContentEffect, Assembly-CSharp]], mscorlib",
-              "$values": []
-            },
-            "textId": "PlanetTree_03"
-          },
-          "dir": 7,
-          "blockScroll": true,
-          "blockClick": false,
-          "hideBg": false,
-          "digAHole": false,
-          "tutorialKey": 2419236131,
-          "framePosOffset": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "frameSizeOffset": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "checkFocusStable": false,
-          "focusStableData": {
-            "$type": "miHoYo.HYG.Tutorial.FocusStableData, Assembly-CSharp",
-            "stableNeedFrameCount": 1,
-            "checkPosition": true,
-            "positionMinDiff": -1.0,
-            "checkScale": false,
-            "scaleMinDiff": -1.0,
-            "checkRotation": false,
-            "rotationMinDiff": -1.0
-          },
-          "isShowGesture": false,
-          "gesture": {
-            "$type": "miHoYo.HYG.Tutorial.TutorialGesture, Assembly-CSharp",
-            "tutorialKey": 0,
-            "useBigFinger": false,
-            "flipFinger": false,
-            "type": 0,
-            "offset": {
-              "x": 0.0,
-              "y": 0.0,
-              "z": 0.0
-            }
-          },
-          "penetrateActions": {
-            "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-            "$values": [
-              "ShowMouse"
-            ]
-          }
-        },
-        "_output": 6,
-        "FinishConditions": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
-          "$values": [
-            {
-              "$type": "miHoYo.HYG.Tutorial.TutorialFinishButtonClickCondition, Assembly-CSharp",
-              "uiElementKey": 2419236131,
-              "findCompInChild": false
-            }
-          ]
-        },
-        "FailedCondition": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
-          "$values": [
-            {
-              "$type": "miHoYo.HYG.Tutorial.QueryConditionLogicNot, Assembly-CSharp",
-              "condition": {
-                "$type": "miHoYo.HYG.Tutorial.TutorialQueryPage, Assembly-CSharp",
-                "pageHash": 3412439639,
-                "checkAnimation": false
-              }
-            }
-          ]
-        },
-        "forceQuitProcess": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialForceQuitProcessBase, Assembly-CSharp]], mscorlib",
-          "$values": []
-        },
-        "index": 5,
-        "parentIndex": 4,
-        "Guid": "4b6154d2-1aa1-43c0-a3a9-c1a8b8d3c4be"
-      },
-      {
-        "$type": "miHoYo.HYG.Tutorial.CfgForceTutorial, Assembly-CSharp",
-        "data": {
-          "$type": "miHoYo.HYG.Tutorial.ForceTutorialData, Assembly-CSharp",
-          "showCompeteAni": true,
-          "showTip": true,
-          "tip": {
-            "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
-            "effects": {
-              "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Localization.TextMapContentEffect, Assembly-CSharp]], mscorlib",
-              "$values": []
-            },
-            "textId": "PlanetTree_04"
-          },
-          "dir": 7,
-          "blockScroll": false,
-          "blockClick": false,
-          "hideBg": false,
-          "digAHole": false,
-          "tutorialKey": 238331750,
-          "framePosOffset": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "frameSizeOffset": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "checkFocusStable": false,
-          "focusStableData": {
-            "$type": "miHoYo.HYG.Tutorial.FocusStableData, Assembly-CSharp",
-            "stableNeedFrameCount": 1,
-            "checkPosition": true,
-            "positionMinDiff": -1.0,
-            "checkScale": false,
-            "scaleMinDiff": -1.0,
-            "checkRotation": false,
-            "rotationMinDiff": -1.0
-          },
-          "isShowGesture": false,
-          "gesture": {
-            "$type": "miHoYo.HYG.Tutorial.TutorialGesture, Assembly-CSharp",
-            "tutorialKey": 0,
-            "useBigFinger": false,
-            "flipFinger": false,
-            "type": 0,
-            "offset": {
-              "x": 0.0,
-              "y": 0.0,
-              "z": 0.0
-            }
-          },
-          "penetrateActions": {
-            "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-            "$values": [
-              "ShowMouse"
-            ]
-          }
-        },
-        "_output": -1,
-        "FinishConditions": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
-          "$values": [
-            {
-              "$type": "miHoYo.HYG.Tutorial.TimeElapsedCondition, Assembly-CSharp",
-              "timeInSeconds": 1.5
-            },
-            {
-              "$type": "miHoYo.HYG.Tutorial.CheckAnyInput, Assembly-CSharp"
-            }
-          ]
-        },
-        "FailedCondition": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
-          "$values": [
-            {
-              "$type": "miHoYo.HYG.Tutorial.QueryConditionLogicNot, Assembly-CSharp",
-              "condition": {
-                "$type": "miHoYo.HYG.Tutorial.TutorialQueryPage, Assembly-CSharp",
-                "pageHash": 3412439639,
-                "checkAnimation": false
-              }
-            }
-          ]
-        },
-        "forceQuitProcess": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialForceQuitProcessBase, Assembly-CSharp]], mscorlib",
-          "$values": [
-            {
-              "$type": "miHoYo.HYG.Tutorial.TutorialForceQuitSaveTutorial, Assembly-CSharp"
-            }
-          ]
-        },
-        "index": 6,
-        "parentIndex": 5,
-        "Guid": "15f6f869-5179-4b22-8b10-952b37c52708"
-      },
-      {
-        "$type": "miHoYo.HYG.Tutorial.CfgWeakTutorial, Assembly-CSharp",
-        "data": {
-          "$type": "miHoYo.HYG.Tutorial.WeakTutorialData, Assembly-CSharp",
-          "showCompeteAni": false,
-          "type": 0,
-          "tip": null,
-          "gestureData": {
-            "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialShortcutDataBase, Assembly-CSharp]], mscorlib",
-            "$values": []
-          },
-          "shortcutCondition": null,
-          "lockInputWhenEnd": false,
-          "showWeakFocus": true,
-          "weakFocus": {
-            "$type": "miHoYo.HYG.Tutorial.TutorialTipWeakFocus, Assembly-CSharp",
-            "showTip": true,
-            "tip": {
-              "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
-              "effects": {
-                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Localization.TextMapContentEffect, Assembly-CSharp]], mscorlib",
-                "$values": []
-              },
-              "textId": "PlanetTree_03"
-            },
-            "dir": 7,
-            "tutorialKey": 2419236131,
-            "framePosOffset": {
-              "x": 0.0,
-              "y": 0.0
-            },
-            "frameSizeOffset": {
-              "x": 0.0,
-              "y": 0.0
-            },
-            "checkFocusStable": false,
-            "focusStableData": {
-              "$type": "miHoYo.HYG.Tutorial.FocusStableData, Assembly-CSharp",
-              "stableNeedFrameCount": 1,
-              "checkPosition": true,
-              "positionMinDiff": -1.0,
-              "checkScale": false,
-              "scaleMinDiff": -1.0,
-              "checkRotation": false,
-              "rotationMinDiff": -1.0
-            },
-            "isShowGesture": false,
-            "gesture": {
-              "$type": "miHoYo.HYG.Tutorial.TutorialGesture, Assembly-CSharp",
-              "tutorialKey": 0,
-              "useBigFinger": false,
-              "flipFinger": false,
-              "type": 0,
-              "offset": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-              }
-            }
-          },
-          "showTracking": false,
-          "removeTrackingWhenNodeEnd": false,
-          "trackingData": null,
-          "showGraphic": false,
-          "graphicalData": null,
-          "showErrorTip": false,
-          "errorTipData": {
-            "$type": "miHoYo.HYG.Tutorial.ErrorTipData, Assembly-CSharp",
-            "condition": {
-              "$type": "miHoYo.HYG.Tutorial.TutorialErrorTipCondition, Assembly-CSharp",
-              "triggerConditions": {
-                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
-                "$values": []
-              },
-              "stateConditions": {
-                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
-                "$values": []
-              }
-            },
-            "content": null,
-            "duration": 1.0
-          },
-          "usePenetrate": false,
-          "penetrateActions": {
-            "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-            "$values": []
-          },
-          "allUILayerUpData": null
-        },
-        "_output": -1,
-        "FinishConditions": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
-          "$values": [
-            {
-              "$type": "miHoYo.HYG.Tutorial.TutorialFinishButtonClickCondition, Assembly-CSharp",
-              "uiElementKey": 2419236131,
-              "findCompInChild": false
-            }
-          ]
-        },
-        "FailedCondition": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
-          "$values": [
-            {
-              "$type": "miHoYo.HYG.Tutorial.QueryConditionLogicNot, Assembly-CSharp",
-              "condition": {
-                "$type": "miHoYo.HYG.Tutorial.TutorialQueryPage, Assembly-CSharp",
-                "pageHash": 3412439639,
-                "checkAnimation": false
-              }
-            }
-          ]
-        },
-        "forceQuitProcess": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialForceQuitProcessBase, Assembly-CSharp]], mscorlib",
-          "$values": []
-        },
-        "index": 7,
-        "parentIndex": -1,
-        "Guid": "223f6d9e-d237-4708-b490-9043a9689fb2"
-      },
-      {
-        "$type": "miHoYo.HYG.Tutorial.CfgWeakTutorial, Assembly-CSharp",
-        "data": {
-          "$type": "miHoYo.HYG.Tutorial.WeakTutorialData, Assembly-CSharp",
-          "showCompeteAni": false,
-          "type": 0,
-          "tip": null,
-          "gestureData": {
-            "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialShortcutDataBase, Assembly-CSharp]], mscorlib",
-            "$values": []
-          },
-          "shortcutCondition": null,
-          "lockInputWhenEnd": false,
-          "showWeakFocus": true,
-          "weakFocus": {
-            "$type": "miHoYo.HYG.Tutorial.TutorialTipWeakFocus, Assembly-CSharp",
-            "showTip": true,
-            "tip": {
-              "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
-              "effects": {
-                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Localization.TextMapContentEffect, Assembly-CSharp]], mscorlib",
-                "$values": []
-              },
-              "textId": "PlanetTree_02"
-            },
-            "dir": 7,
-            "tutorialKey": 2072283850,
-            "framePosOffset": {
-              "x": 0.0,
-              "y": 0.0
-            },
-            "frameSizeOffset": {
-              "x": 0.0,
-              "y": 0.0
-            },
-            "checkFocusStable": false,
-            "focusStableData": {
-              "$type": "miHoYo.HYG.Tutorial.FocusStableData, Assembly-CSharp",
-              "stableNeedFrameCount": 1,
-              "checkPosition": true,
-              "positionMinDiff": -1.0,
-              "checkScale": false,
-              "scaleMinDiff": -1.0,
-              "checkRotation": false,
-              "rotationMinDiff": -1.0
-            },
-            "isShowGesture": false,
-            "gesture": {
-              "$type": "miHoYo.HYG.Tutorial.TutorialGesture, Assembly-CSharp",
-              "tutorialKey": 0,
-              "useBigFinger": false,
-              "flipFinger": false,
-              "type": 0,
-              "offset": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-              }
-            }
-          },
-          "showTracking": false,
-          "removeTrackingWhenNodeEnd": false,
-          "trackingData": null,
-          "showGraphic": false,
-          "graphicalData": null,
-          "showErrorTip": false,
-          "errorTipData": {
-            "$type": "miHoYo.HYG.Tutorial.ErrorTipData, Assembly-CSharp",
-            "condition": {
-              "$type": "miHoYo.HYG.Tutorial.TutorialErrorTipCondition, Assembly-CSharp",
-              "triggerConditions": {
-                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
-                "$values": []
-              },
-              "stateConditions": {
-                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
-                "$values": []
-              }
-            },
-            "content": null,
-            "duration": 1.0
-          },
-          "usePenetrate": false,
-          "penetrateActions": {
-            "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-            "$values": [
-              "ShowMouse"
-            ]
-          },
-          "allUILayerUpData": null
-        },
-        "_output": -1,
-        "FinishConditions": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
-          "$values": [
-            {
-              "$type": "miHoYo.HYG.Tutorial.TimeElapsedCondition, Assembly-CSharp",
-              "timeInSeconds": 1.5
-            },
-            {
-              "$type": "miHoYo.HYG.Tutorial.KeyPressedCondition, Assembly-CSharp",
-              "action": "MouseRight",
-              "eventType": 1
-            }
-          ]
-        },
-        "FailedCondition": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
-          "$values": [
-            {
-              "$type": "miHoYo.HYG.Tutorial.QueryConditionLogicNot, Assembly-CSharp",
-              "condition": {
-                "$type": "miHoYo.HYG.Tutorial.TutorialQueryPage, Assembly-CSharp",
-                "pageHash": 3412439639,
-                "checkAnimation": false
-              }
-            }
-          ]
-        },
-        "forceQuitProcess": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialForceQuitProcessBase, Assembly-CSharp]], mscorlib",
-          "$values": []
-        },
-        "index": 8,
-        "parentIndex": -1,
-        "Guid": "6b0227c5-4b81-431f-9d79-3213cc54ff0b"
-      },
-      {
-        "$type": "miHoYo.HYG.Tutorial.CfgForceTutorial, Assembly-CSharp",
-        "data": {
-          "$type": "miHoYo.HYG.Tutorial.ForceTutorialData, Assembly-CSharp",
-          "showCompeteAni": false,
-          "showTip": true,
-          "tip": {
-            "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
-            "effects": {
-              "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Localization.TextMapContentEffect, Assembly-CSharp]], mscorlib",
-              "$values": []
-            },
-            "textId": "PlanetTree_Grow_02"
-          },
-          "dir": 2,
-          "blockScroll": false,
-          "blockClick": false,
-          "hideBg": false,
-          "digAHole": false,
-          "tutorialKey": 1534296265,
-          "framePosOffset": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "frameSizeOffset": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "checkFocusStable": false,
-          "focusStableData": {
-            "$type": "miHoYo.HYG.Tutorial.FocusStableData, Assembly-CSharp",
-            "stableNeedFrameCount": 1,
-            "checkPosition": true,
-            "positionMinDiff": -1.0,
-            "checkScale": false,
-            "scaleMinDiff": -1.0,
-            "checkRotation": false,
-            "rotationMinDiff": -1.0
-          },
-          "isShowGesture": false,
-          "gesture": {
-            "$type": "miHoYo.HYG.Tutorial.TutorialGesture, Assembly-CSharp",
-            "tutorialKey": 0,
-            "useBigFinger": false,
-            "flipFinger": false,
-            "type": 0,
-            "offset": {
-              "x": 0.0,
-              "y": 0.0,
-              "z": 0.0
-            }
-          },
-          "penetrateActions": {
-            "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-            "$values": []
-          }
-        },
-        "_output": 15,
-        "FinishConditions": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
-          "$values": [
-            {
-              "$type": "miHoYo.HYG.Tutorial.TutorialFinishButtonClickCondition, Assembly-CSharp",
-              "uiElementKey": 1534296265,
-              "findCompInChild": false
-            },
-            {
-              "$type": "miHoYo.HYG.Tutorial.TutorialConditionTriggered, Assembly-CSharp",
-              "conditions": {
-                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
-                "$values": [
-                  {
-                    "$type": "miHoYo.HYG.Tutorial.TutorialQueryUIObject, Assembly-CSharp",
-                    "tutorialKey": 4071655293,
-                    "state": 1
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        "FailedCondition": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
-          "$values": [
-            {
-              "$type": "miHoYo.HYG.Tutorial.TutorialQueryUIObject, Assembly-CSharp",
-              "tutorialKey": 1534296265,
-              "state": 0
-            }
-          ]
-        },
-        "forceQuitProcess": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialForceQuitProcessBase, Assembly-CSharp]], mscorlib",
-          "$values": []
-        },
-        "index": 9,
-        "parentIndex": 12,
-        "Guid": "816fcf92-5a36-49ab-84c1-9a9ba2985721"
-      },
-      {
-        "$type": "miHoYo.HYG.Tutorial.CfgWeakTutorial, Assembly-CSharp",
-        "data": {
-          "$type": "miHoYo.HYG.Tutorial.WeakTutorialData, Assembly-CSharp",
-          "showCompeteAni": true,
-          "type": 0,
-          "tip": null,
-          "gestureData": {
-            "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialShortcutDataBase, Assembly-CSharp]], mscorlib",
-            "$values": []
-          },
-          "shortcutCondition": null,
-          "lockInputWhenEnd": false,
-          "showWeakFocus": true,
-          "weakFocus": {
-            "$type": "miHoYo.HYG.Tutorial.TutorialTipWeakFocus, Assembly-CSharp",
-            "showTip": true,
-            "tip": {
-              "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
-              "effects": {
-                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Localization.TextMapContentEffect, Assembly-CSharp]], mscorlib",
-                "$values": []
-              },
-              "textId": "PlanetTree_06"
-            },
-            "dir": 0,
-            "tutorialKey": 198731450,
-            "framePosOffset": {
-              "x": 0.0,
-              "y": 0.0
-            },
-            "frameSizeOffset": {
-              "x": 0.0,
-              "y": 0.0
-            },
-            "checkFocusStable": false,
-            "focusStableData": {
-              "$type": "miHoYo.HYG.Tutorial.FocusStableData, Assembly-CSharp",
-              "stableNeedFrameCount": 1,
-              "checkPosition": true,
-              "positionMinDiff": -1.0,
-              "checkScale": false,
-              "scaleMinDiff": -1.0,
-              "checkRotation": false,
-              "rotationMinDiff": -1.0
-            },
-            "isShowGesture": false,
-            "gesture": {
-              "$type": "miHoYo.HYG.Tutorial.TutorialGesture, Assembly-CSharp",
-              "tutorialKey": 0,
-              "useBigFinger": false,
-              "flipFinger": false,
-              "type": 0,
-              "offset": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-              }
-            }
-          },
-          "showTracking": false,
-          "removeTrackingWhenNodeEnd": false,
-          "trackingData": null,
-          "showGraphic": false,
-          "graphicalData": null,
-          "showErrorTip": false,
-          "errorTipData": {
-            "$type": "miHoYo.HYG.Tutorial.ErrorTipData, Assembly-CSharp",
-            "condition": {
-              "$type": "miHoYo.HYG.Tutorial.TutorialErrorTipCondition, Assembly-CSharp",
-              "triggerConditions": {
-                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
-                "$values": []
-              },
-              "stateConditions": {
-                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
-                "$values": []
-              }
-            },
-            "content": null,
-            "duration": 1.0
-          },
-          "usePenetrate": false,
-          "penetrateActions": null,
-          "allUILayerUpData": null
-        },
-        "_output": -1,
-        "FinishConditions": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
-          "$values": [
-            {
-              "$type": "miHoYo.HYG.Tutorial.OrCondition, Assembly-CSharp",
-              "conditions": {
-                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
-                "$values": [
-                  {
-                    "$type": "miHoYo.HYG.Tutorial.AndCondition, Assembly-CSharp",
-                    "conditions": {
-                      "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
-                      "$values": [
-                        {
-                          "$type": "miHoYo.HYG.Tutorial.TimeElapsedCondition, Assembly-CSharp",
-                          "timeInSeconds": 1.5
-                        },
-                        {
-                          "$type": "miHoYo.HYG.Tutorial.CheckAnyInput, Assembly-CSharp"
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    "$type": "miHoYo.HYG.Tutorial.TutorialFinishButtonClickCondition, Assembly-CSharp",
-                    "uiElementKey": 198731450,
-                    "findCompInChild": false
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        "FailedCondition": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
-          "$values": [
-            {
-              "$type": "miHoYo.HYG.Tutorial.TutorialQueryUIObject, Assembly-CSharp",
-              "tutorialKey": 198731450,
-              "state": 0
-            }
-          ]
-        },
-        "forceQuitProcess": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialForceQuitProcessBase, Assembly-CSharp]], mscorlib",
-          "$values": [
-            {
-              "$type": "miHoYo.HYG.Tutorial.TutorialForceQuitSaveTutorial, Assembly-CSharp"
-            }
-          ]
-        },
-        "index": 10,
-        "parentIndex": -1,
-        "Guid": "645ffaf4-cf47-49b7-bb23-a2410c46e7f3"
-      },
-      {
-        "$type": "miHoYo.HYG.Tutorial.CfgWeakTutorial, Assembly-CSharp",
-        "data": {
-          "$type": "miHoYo.HYG.Tutorial.WeakTutorialData, Assembly-CSharp",
-          "showCompeteAni": false,
-          "type": 2,
-          "tip": {
-            "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
-            "effects": {
-              "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Localization.TextMapContentEffect, Assembly-CSharp]], mscorlib",
-              "$values": []
-            },
-            "textId": "PlanetTree_Grow_04"
-          },
-          "gestureData": {
-            "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialShortcutDataBase, Assembly-CSharp]], mscorlib",
-            "$values": [
-              {
-                "$type": "miHoYo.HYG.Tutorial.TutorialTipKeyMouseShortcut, Assembly-CSharp",
-                "key": 102
-              }
-            ]
-          },
-          "shortcutCondition": {
-            "$type": "miHoYo.HYG.Tutorial.TutorialTipShortcutAnimationCondition, Assembly-CSharp",
-            "conditions": {
-              "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
-              "$values": []
-            }
-          },
-          "lockInputWhenEnd": false,
-          "showWeakFocus": true,
-          "weakFocus": {
-            "$type": "miHoYo.HYG.Tutorial.TutorialTipWeakFocus, Assembly-CSharp",
-            "showTip": false,
+          "showSubTip": false,
+          "subTipData": {
+            "$type": "miHoYo.HYG.Tutorial.TutorialSubTipData, Assembly-CSharp",
             "tip": {
               "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
               "effects": null,
               "textId": null
             },
-            "dir": 0,
-            "tutorialKey": 3450708673,
-            "framePosOffset": {
-              "x": 0.0,
-              "y": 0.0
-            },
-            "frameSizeOffset": {
-              "x": 0.0,
-              "y": 0.0
-            },
-            "checkFocusStable": false,
-            "focusStableData": {
-              "$type": "miHoYo.HYG.Tutorial.FocusStableData, Assembly-CSharp",
-              "stableNeedFrameCount": 1,
-              "checkPosition": true,
-              "positionMinDiff": -1.0,
-              "checkScale": false,
-              "scaleMinDiff": -1.0,
-              "checkRotation": false,
-              "rotationMinDiff": -1.0
-            },
-            "isShowGesture": false,
-            "gesture": {
-              "$type": "miHoYo.HYG.Tutorial.TutorialGesture, Assembly-CSharp",
-              "tutorialKey": 0,
-              "useBigFinger": false,
-              "flipFinger": false,
-              "type": 0,
-              "offset": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-              }
-            }
+            "orientation": 0
           },
-          "showTracking": false,
-          "removeTrackingWhenNodeEnd": false,
-          "trackingData": null,
-          "showGraphic": false,
-          "graphicalData": null,
-          "showErrorTip": false,
-          "errorTipData": {
-            "$type": "miHoYo.HYG.Tutorial.ErrorTipData, Assembly-CSharp",
-            "condition": {
-              "$type": "miHoYo.HYG.Tutorial.TutorialErrorTipCondition, Assembly-CSharp",
-              "triggerConditions": {
-                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
-                "$values": []
-              },
-              "stateConditions": {
-                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
-                "$values": []
-              }
-            },
-            "content": null,
-            "duration": 1.0
-          },
-          "usePenetrate": false,
-          "penetrateActions": null,
-          "allUILayerUpData": null
-        },
-        "_output": 12,
-        "FinishConditions": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
-          "$values": [
-            {
-              "$type": "miHoYo.HYG.Tutorial.PageEnableCondition, Assembly-CSharp",
-              "pageHash": 3412439639,
-              "checkAnimation": false
-            }
-          ]
-        },
-        "FailedCondition": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
-          "$values": [
-            {
-              "$type": "miHoYo.HYG.Tutorial.QueryConditionLogicAnd, Assembly-CSharp",
-              "conditions": {
-                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
-                "$values": [
-                  {
-                    "$type": "miHoYo.HYG.Tutorial.QueryConditionLogicNot, Assembly-CSharp",
-                    "condition": {
-                      "$type": "miHoYo.HYG.Tutorial.TutorialQueryPage, Assembly-CSharp",
-                      "pageHash": 2788530902,
-                      "checkAnimation": false
-                    }
-                  },
-                  {
-                    "$type": "miHoYo.HYG.Tutorial.QueryConditionLogicNot, Assembly-CSharp",
-                    "condition": {
-                      "$type": "miHoYo.HYG.Tutorial.TutorialQueryPage, Assembly-CSharp",
-                      "pageHash": 3412439639,
-                      "checkAnimation": false
-                    }
-                  }
-                ]
-              }
-            },
-            {
-              "$type": "miHoYo.HYG.Tutorial.QueryConditionLogicNot, Assembly-CSharp",
-              "condition": {
-                "$type": "miHoYo.HYG.Tutorial.TutorialQueryEntity, Assembly-CSharp",
-                "ids": {
-                  "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialIdSelector, Assembly-CSharp]], mscorlib",
-                  "$values": [
-                    {
-                      "$type": "miHoYo.HYG.Tutorial.TutorialIdSelector, Assembly-CSharp",
-                      "id": 20070
-                    }
-                  ]
-                },
-                "range": 1.0,
-                "count": 1
-              }
-            }
-          ]
-        },
-        "forceQuitProcess": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialForceQuitProcessBase, Assembly-CSharp]], mscorlib",
-          "$values": []
-        },
-        "index": 11,
-        "parentIndex": 2,
-        "Guid": "9255f68c-aeaa-4bb6-b2c6-65afd061792b"
-      },
-      {
-        "$type": "miHoYo.HYG.Tutorial.CfgForceTutorial, Assembly-CSharp",
-        "data": {
-          "$type": "miHoYo.HYG.Tutorial.ForceTutorialData, Assembly-CSharp",
-          "showCompeteAni": false,
-          "showTip": true,
-          "tip": {
-            "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
-            "effects": {
-              "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Localization.TextMapContentEffect, Assembly-CSharp]], mscorlib",
-              "$values": []
-            },
-            "textId": "PlanetTree_Grow_01"
-          },
-          "dir": 7,
           "blockScroll": true,
           "blockClick": true,
-          "hideBg": false,
+          "hideBg": true,
           "digAHole": false,
-          "tutorialKey": 351496783,
+          "tutorialKey": 3790671093,
+          "allUILayerUpData": {
+            "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.UILayerUpData, Assembly-CSharp]], mscorlib",
+            "$values": []
+          },
           "framePosOffset": {
             "x": 0.0,
             "y": 0.0
@@ -1217,219 +228,107 @@
           "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
           "$values": [
             {
-              "$type": "miHoYo.HYG.Tutorial.TimeElapsedCondition, Assembly-CSharp",
-              "timeInSeconds": 1.5
-            },
-            {
-              "$type": "miHoYo.HYG.Tutorial.CheckAnyInput, Assembly-CSharp"
-            }
-          ]
-        },
-        "FailedCondition": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
-          "$values": [
-            {
-              "$type": "miHoYo.HYG.Tutorial.QueryConditionLogicNot, Assembly-CSharp",
-              "condition": {
-                "$type": "miHoYo.HYG.Tutorial.TutorialQueryPage, Assembly-CSharp",
-                "pageHash": 3412439639,
-                "checkAnimation": false
-              }
-            }
-          ]
-        },
-        "forceQuitProcess": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialForceQuitProcessBase, Assembly-CSharp]], mscorlib",
-          "$values": []
-        },
-        "index": 12,
-        "parentIndex": 13,
-        "Guid": "40f5351c-fbd0-4f7d-b628-a4d0ae183277"
-      },
-      {
-        "$type": "miHoYo.HYG.Tutorial.CfgWeakTutorial, Assembly-CSharp",
-        "data": {
-          "$type": "miHoYo.HYG.Tutorial.WeakTutorialData, Assembly-CSharp",
-          "showCompeteAni": false,
-          "type": 2,
-          "tip": {
-            "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
-            "effects": {
-              "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Localization.TextMapContentEffect, Assembly-CSharp]], mscorlib",
-              "$values": []
-            },
-            "textId": "PlanetTree_Grow_04_phone"
-          },
-          "gestureData": {
-            "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialShortcutDataBase, Assembly-CSharp]], mscorlib",
-            "$values": []
-          },
-          "shortcutCondition": {
-            "$type": "miHoYo.HYG.Tutorial.TutorialTipShortcutAnimationCondition, Assembly-CSharp",
-            "conditions": {
-              "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
-              "$values": []
-            }
-          },
-          "lockInputWhenEnd": false,
-          "showWeakFocus": true,
-          "weakFocus": {
-            "$type": "miHoYo.HYG.Tutorial.TutorialTipWeakFocus, Assembly-CSharp",
-            "showTip": false,
-            "tip": {
-              "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
-              "effects": {
-                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Localization.TextMapContentEffect, Assembly-CSharp]], mscorlib",
-                "$values": []
-              },
-              "textId": "PlanetTree_Grow_04_phone"
-            },
-            "dir": 0,
-            "tutorialKey": 3450708673,
-            "framePosOffset": {
-              "x": 0.0,
-              "y": 0.0
-            },
-            "frameSizeOffset": {
-              "x": 0.0,
-              "y": 0.0
-            },
-            "checkFocusStable": false,
-            "focusStableData": {
-              "$type": "miHoYo.HYG.Tutorial.FocusStableData, Assembly-CSharp",
-              "stableNeedFrameCount": 1,
-              "checkPosition": true,
-              "positionMinDiff": -1.0,
-              "checkScale": false,
-              "scaleMinDiff": -1.0,
-              "checkRotation": false,
-              "rotationMinDiff": -1.0
-            },
-            "isShowGesture": false,
-            "gesture": {
-              "$type": "miHoYo.HYG.Tutorial.TutorialGesture, Assembly-CSharp",
-              "tutorialKey": 0,
-              "useBigFinger": false,
-              "flipFinger": false,
-              "type": 0,
-              "offset": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-              }
-            }
-          },
-          "showTracking": false,
-          "removeTrackingWhenNodeEnd": false,
-          "trackingData": null,
-          "showGraphic": false,
-          "graphicalData": null,
-          "showErrorTip": false,
-          "errorTipData": {
-            "$type": "miHoYo.HYG.Tutorial.ErrorTipData, Assembly-CSharp",
-            "condition": {
-              "$type": "miHoYo.HYG.Tutorial.TutorialErrorTipCondition, Assembly-CSharp",
-              "triggerConditions": {
-                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
-                "$values": []
-              },
-              "stateConditions": {
-                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
-                "$values": []
-              }
-            },
-            "content": null,
-            "duration": 1.0
-          },
-          "usePenetrate": false,
-          "penetrateActions": null,
-          "allUILayerUpData": null
-        },
-        "_output": 12,
-        "FinishConditions": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
-          "$values": [
-            {
-              "$type": "miHoYo.HYG.Tutorial.PageEnableCondition, Assembly-CSharp",
-              "pageHash": 3412439639,
-              "checkAnimation": false
-            }
-          ]
-        },
-        "FailedCondition": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
-          "$values": [
-            {
-              "$type": "miHoYo.HYG.Tutorial.QueryConditionLogicAnd, Assembly-CSharp",
+              "$type": "miHoYo.HYG.Tutorial.OrCondition, Assembly-CSharp",
               "conditions": {
-                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
+                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
                 "$values": [
                   {
-                    "$type": "miHoYo.HYG.Tutorial.QueryConditionLogicNot, Assembly-CSharp",
-                    "condition": {
-                      "$type": "miHoYo.HYG.Tutorial.TutorialQueryPage, Assembly-CSharp",
-                      "pageHash": 2788530902,
-                      "checkAnimation": false
+                    "$type": "miHoYo.HYG.Tutorial.AndCondition, Assembly-CSharp",
+                    "conditions": {
+                      "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "miHoYo.HYG.Tutorial.TimeElapsedCondition, Assembly-CSharp",
+                          "timeInSeconds": 1.0
+                        },
+                        {
+                          "$type": "miHoYo.HYG.Tutorial.DelayCondition, Assembly-CSharp",
+                          "dalayTime": 0.2,
+                          "conditions": {
+                            "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
+                            "$values": [
+                              {
+                                "$type": "miHoYo.HYG.Tutorial.OrCondition, Assembly-CSharp",
+                                "conditions": {
+                                  "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
+                                  "$values": [
+                                    {
+                                      "$type": "miHoYo.HYG.Tutorial.KeyPressedCondition, Assembly-CSharp",
+                                      "action": "MouseLeft",
+                                      "eventType": 0
+                                    },
+                                    {
+                                      "$type": "miHoYo.HYG.Tutorial.KeyPressedCondition, Assembly-CSharp",
+                                      "action": "DialogSpeedUp",
+                                      "eventType": 0
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
                     }
                   },
                   {
-                    "$type": "miHoYo.HYG.Tutorial.QueryConditionLogicNot, Assembly-CSharp",
-                    "condition": {
-                      "$type": "miHoYo.HYG.Tutorial.TutorialQueryPage, Assembly-CSharp",
-                      "pageHash": 3412439639,
-                      "checkAnimation": false
-                    }
+                    "$type": "miHoYo.HYG.Tutorial.TutorialFinishButtonClickCondition, Assembly-CSharp",
+                    "uiElementKey": 3790671093,
+                    "findCompInChild": false
                   }
                 ]
               }
-            },
-            {
-              "$type": "miHoYo.HYG.Tutorial.QueryConditionLogicNot, Assembly-CSharp",
-              "condition": {
-                "$type": "miHoYo.HYG.Tutorial.TutorialQueryEntity, Assembly-CSharp",
-                "ids": {
-                  "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialIdSelector, Assembly-CSharp]], mscorlib",
-                  "$values": [
-                    {
-                      "$type": "miHoYo.HYG.Tutorial.TutorialIdSelector, Assembly-CSharp",
-                      "id": 20070
-                    }
-                  ]
-                },
-                "range": 1.0,
-                "count": 1
-              }
             }
           ]
+        },
+        "FailedCondition": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
+          "$values": []
         },
         "forceQuitProcess": {
           "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialForceQuitProcessBase, Assembly-CSharp]], mscorlib",
           "$values": []
         },
-        "index": 13,
-        "parentIndex": 2,
-        "Guid": "b1a101ab-71b3-44d4-a422-bff306655c97"
+        "index": 2,
+        "parentIndex": 14,
+        "Guid": "1bd7512d-297f-4edc-adb0-5f5134dc7fba"
       },
       {
         "$type": "miHoYo.HYG.Tutorial.CfgForceTutorial, Assembly-CSharp",
         "data": {
           "$type": "miHoYo.HYG.Tutorial.ForceTutorialData, Assembly-CSharp",
-          "showCompeteAni": true,
+          "showCompeteAni": false,
           "showTip": true,
+          "showHeadIcon": false,
+          "icon": null,
           "tip": {
             "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
             "effects": {
               "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Localization.TextMapContentEffect, Assembly-CSharp]], mscorlib",
               "$values": []
             },
-            "textId": "PlanetTree_Grow_03"
+            "textId": "ClothBag_1_phone"
           },
           "dir": 7,
-          "blockScroll": false,
-          "blockClick": false,
-          "hideBg": false,
+          "showSubTip": false,
+          "subTipData": {
+            "$type": "miHoYo.HYG.Tutorial.TutorialSubTipData, Assembly-CSharp",
+            "tip": {
+              "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
+              "effects": null,
+              "textId": null
+            },
+            "orientation": 0
+          },
+          "blockScroll": true,
+          "blockClick": true,
+          "hideBg": true,
           "digAHole": false,
-          "tutorialKey": 3333289595,
+          "tutorialKey": 3790671093,
+          "allUILayerUpData": {
+            "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.UILayerUpData, Assembly-CSharp]], mscorlib",
+            "$values": []
+          },
           "framePosOffset": {
             "x": 0.0,
             "y": 0.0
@@ -1467,34 +366,506 @@
             "$values": []
           }
         },
-        "_output": 16,
+        "_output": 11,
+        "FinishConditions": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Tutorial.OrCondition, Assembly-CSharp",
+              "conditions": {
+                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.Tutorial.AndCondition, Assembly-CSharp",
+                    "conditions": {
+                      "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "miHoYo.HYG.Tutorial.TimeElapsedCondition, Assembly-CSharp",
+                          "timeInSeconds": 1.0
+                        },
+                        {
+                          "$type": "miHoYo.HYG.Tutorial.DelayCondition, Assembly-CSharp",
+                          "dalayTime": 0.2,
+                          "conditions": {
+                            "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
+                            "$values": [
+                              {
+                                "$type": "miHoYo.HYG.Tutorial.CheckAnyInput, Assembly-CSharp"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "$type": "miHoYo.HYG.Tutorial.TutorialFinishButtonClickCondition, Assembly-CSharp",
+                    "uiElementKey": 3790671093,
+                    "findCompInChild": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "FailedCondition": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "forceQuitProcess": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialForceQuitProcessBase, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "index": 3,
+        "parentIndex": 15,
+        "Guid": "36d3a22f-5862-4e20-befd-37e9495d7264"
+      },
+      {
+        "$type": "miHoYo.HYG.Tutorial.CfgForceTutorial, Assembly-CSharp",
+        "data": {
+          "$type": "miHoYo.HYG.Tutorial.ForceTutorialData, Assembly-CSharp",
+          "showCompeteAni": false,
+          "showTip": true,
+          "showHeadIcon": false,
+          "icon": null,
+          "tip": {
+            "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
+            "effects": {
+              "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Localization.TextMapContentEffect, Assembly-CSharp]], mscorlib",
+              "$values": []
+            },
+            "textId": "ClothBag_2"
+          },
+          "dir": 2,
+          "showSubTip": false,
+          "subTipData": {
+            "$type": "miHoYo.HYG.Tutorial.TutorialSubTipData, Assembly-CSharp",
+            "tip": {
+              "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
+              "effects": null,
+              "textId": null
+            },
+            "orientation": 0
+          },
+          "blockScroll": true,
+          "blockClick": false,
+          "hideBg": false,
+          "digAHole": false,
+          "tutorialKey": 1535440418,
+          "allUILayerUpData": {
+            "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.UILayerUpData, Assembly-CSharp]], mscorlib",
+            "$values": []
+          },
+          "framePosOffset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "frameSizeOffset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "checkFocusStable": false,
+          "focusStableData": {
+            "$type": "miHoYo.HYG.Tutorial.FocusStableData, Assembly-CSharp",
+            "stableNeedFrameCount": 1,
+            "checkPosition": true,
+            "positionMinDiff": -1.0,
+            "checkScale": false,
+            "scaleMinDiff": -1.0,
+            "checkRotation": false,
+            "rotationMinDiff": -1.0
+          },
+          "isShowGesture": false,
+          "gesture": {
+            "$type": "miHoYo.HYG.Tutorial.TutorialGesture, Assembly-CSharp",
+            "tutorialKey": 0,
+            "useBigFinger": false,
+            "flipFinger": false,
+            "type": 0,
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            }
+          },
+          "penetrateActions": {
+            "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+            "$values": []
+          }
+        },
+        "_output": -1,
         "FinishConditions": {
           "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
           "$values": [
             {
               "$type": "miHoYo.HYG.Tutorial.TutorialFinishButtonClickCondition, Assembly-CSharp",
-              "uiElementKey": 3333289595,
+              "uiElementKey": 1535440418,
               "findCompInChild": false
             }
           ]
         },
         "FailedCondition": {
           "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
-          "$values": [
-            {
-              "$type": "miHoYo.HYG.Tutorial.TutorialQueryUIObject, Assembly-CSharp",
-              "tutorialKey": 3333289595,
-              "state": 0
-            }
-          ]
+          "$values": []
         },
         "forceQuitProcess": {
           "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialForceQuitProcessBase, Assembly-CSharp]], mscorlib",
           "$values": []
         },
-        "index": 14,
+        "index": 4,
+        "parentIndex": 14,
+        "Guid": "275a95e4-bd0b-482e-b668-d9733647416c"
+      },
+      {
+        "$type": "miHoYo.HYG.Tutorial.CfgForceTutorial, Assembly-CSharp",
+        "data": {
+          "$type": "miHoYo.HYG.Tutorial.ForceTutorialData, Assembly-CSharp",
+          "showCompeteAni": false,
+          "showTip": true,
+          "showHeadIcon": false,
+          "icon": null,
+          "tip": {
+            "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
+            "effects": {
+              "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Localization.TextMapContentEffect, Assembly-CSharp]], mscorlib",
+              "$values": []
+            },
+            "textId": "ClothBag_2"
+          },
+          "dir": 2,
+          "showSubTip": false,
+          "subTipData": {
+            "$type": "miHoYo.HYG.Tutorial.TutorialSubTipData, Assembly-CSharp",
+            "tip": {
+              "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
+              "effects": null,
+              "textId": null
+            },
+            "orientation": 0
+          },
+          "blockScroll": true,
+          "blockClick": false,
+          "hideBg": false,
+          "digAHole": false,
+          "tutorialKey": 1535440418,
+          "allUILayerUpData": {
+            "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.UILayerUpData, Assembly-CSharp]], mscorlib",
+            "$values": []
+          },
+          "framePosOffset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "frameSizeOffset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "checkFocusStable": false,
+          "focusStableData": {
+            "$type": "miHoYo.HYG.Tutorial.FocusStableData, Assembly-CSharp",
+            "stableNeedFrameCount": 1,
+            "checkPosition": true,
+            "positionMinDiff": -1.0,
+            "checkScale": false,
+            "scaleMinDiff": -1.0,
+            "checkRotation": false,
+            "rotationMinDiff": -1.0
+          },
+          "isShowGesture": false,
+          "gesture": {
+            "$type": "miHoYo.HYG.Tutorial.TutorialGesture, Assembly-CSharp",
+            "tutorialKey": 0,
+            "useBigFinger": false,
+            "flipFinger": false,
+            "type": 0,
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            }
+          },
+          "penetrateActions": {
+            "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+            "$values": []
+          }
+        },
+        "_output": -1,
+        "FinishConditions": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Tutorial.TutorialFinishButtonClickCondition, Assembly-CSharp",
+              "uiElementKey": 1535440418,
+              "findCompInChild": false
+            }
+          ]
+        },
+        "FailedCondition": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "forceQuitProcess": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialForceQuitProcessBase, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "index": 5,
         "parentIndex": 15,
-        "Guid": "5c9b68a9-8e56-4027-a4b5-40f8d6d58555"
+        "Guid": "d3527925-848d-4b42-b883-48193fd70764"
+      },
+      {
+        "$type": "miHoYo.HYG.Tutorial.CfgForceTutorial, Assembly-CSharp",
+        "data": {
+          "$type": "miHoYo.HYG.Tutorial.ForceTutorialData, Assembly-CSharp",
+          "showCompeteAni": true,
+          "showTip": true,
+          "showHeadIcon": false,
+          "icon": null,
+          "tip": {
+            "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
+            "effects": {
+              "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Localization.TextMapContentEffect, Assembly-CSharp]], mscorlib",
+              "$values": []
+            },
+            "textId": "ClothBag_3"
+          },
+          "dir": 0,
+          "showSubTip": false,
+          "subTipData": {
+            "$type": "miHoYo.HYG.Tutorial.TutorialSubTipData, Assembly-CSharp",
+            "tip": {
+              "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
+              "effects": null,
+              "textId": null
+            },
+            "orientation": 0
+          },
+          "blockScroll": true,
+          "blockClick": false,
+          "hideBg": true,
+          "digAHole": false,
+          "tutorialKey": 2999523344,
+          "allUILayerUpData": {
+            "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.UILayerUpData, Assembly-CSharp]], mscorlib",
+            "$values": []
+          },
+          "framePosOffset": {
+            "x": 0.0,
+            "y": 0.02
+          },
+          "frameSizeOffset": {
+            "x": -0.1,
+            "y": -0.28
+          },
+          "checkFocusStable": false,
+          "focusStableData": {
+            "$type": "miHoYo.HYG.Tutorial.FocusStableData, Assembly-CSharp",
+            "stableNeedFrameCount": 1,
+            "checkPosition": true,
+            "positionMinDiff": -1.0,
+            "checkScale": false,
+            "scaleMinDiff": -1.0,
+            "checkRotation": false,
+            "rotationMinDiff": -1.0
+          },
+          "isShowGesture": false,
+          "gesture": {
+            "$type": "miHoYo.HYG.Tutorial.TutorialGesture, Assembly-CSharp",
+            "tutorialKey": 0,
+            "useBigFinger": false,
+            "flipFinger": false,
+            "type": 0,
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            }
+          },
+          "penetrateActions": {
+            "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+            "$values": []
+          }
+        },
+        "_output": 8,
+        "FinishConditions": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Tutorial.TimeElapsedCondition, Assembly-CSharp",
+              "timeInSeconds": 1.0
+            },
+            {
+              "$type": "miHoYo.HYG.Tutorial.DelayCondition, Assembly-CSharp",
+              "dalayTime": 0.2,
+              "conditions": {
+                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.Tutorial.OrCondition, Assembly-CSharp",
+                    "conditions": {
+                      "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "miHoYo.HYG.Tutorial.KeyPressedCondition, Assembly-CSharp",
+                          "action": "MouseLeft",
+                          "eventType": 0
+                        },
+                        {
+                          "$type": "miHoYo.HYG.Tutorial.KeyPressedCondition, Assembly-CSharp",
+                          "action": "DialogSpeedUp",
+                          "eventType": 0
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "FailedCondition": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "forceQuitProcess": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialForceQuitProcessBase, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "index": 6,
+        "parentIndex": 18,
+        "Guid": "221ed4ee-1e22-4c66-ae44-b7e87c2cc4db"
+      },
+      {
+        "$type": "miHoYo.HYG.Tutorial.CfgForceTutorial, Assembly-CSharp",
+        "data": {
+          "$type": "miHoYo.HYG.Tutorial.ForceTutorialData, Assembly-CSharp",
+          "showCompeteAni": true,
+          "showTip": true,
+          "showHeadIcon": false,
+          "icon": null,
+          "tip": {
+            "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
+            "effects": {
+              "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Localization.TextMapContentEffect, Assembly-CSharp]], mscorlib",
+              "$values": []
+            },
+            "textId": "ClothBag_3"
+          },
+          "dir": 0,
+          "showSubTip": false,
+          "subTipData": {
+            "$type": "miHoYo.HYG.Tutorial.TutorialSubTipData, Assembly-CSharp",
+            "tip": {
+              "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
+              "effects": null,
+              "textId": null
+            },
+            "orientation": 0
+          },
+          "blockScroll": true,
+          "blockClick": false,
+          "hideBg": true,
+          "digAHole": false,
+          "tutorialKey": 2999523344,
+          "allUILayerUpData": {
+            "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.UILayerUpData, Assembly-CSharp]], mscorlib",
+            "$values": []
+          },
+          "framePosOffset": {
+            "x": 0.0,
+            "y": 0.02
+          },
+          "frameSizeOffset": {
+            "x": -0.1,
+            "y": -0.28
+          },
+          "checkFocusStable": false,
+          "focusStableData": {
+            "$type": "miHoYo.HYG.Tutorial.FocusStableData, Assembly-CSharp",
+            "stableNeedFrameCount": 1,
+            "checkPosition": true,
+            "positionMinDiff": -1.0,
+            "checkScale": false,
+            "scaleMinDiff": -1.0,
+            "checkRotation": false,
+            "rotationMinDiff": -1.0
+          },
+          "isShowGesture": false,
+          "gesture": {
+            "$type": "miHoYo.HYG.Tutorial.TutorialGesture, Assembly-CSharp",
+            "tutorialKey": 0,
+            "useBigFinger": false,
+            "flipFinger": false,
+            "type": 0,
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            }
+          },
+          "penetrateActions": {
+            "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+            "$values": []
+          }
+        },
+        "_output": 8,
+        "FinishConditions": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Tutorial.TimeElapsedCondition, Assembly-CSharp",
+              "timeInSeconds": 1.0
+            },
+            {
+              "$type": "miHoYo.HYG.Tutorial.DelayCondition, Assembly-CSharp",
+              "dalayTime": 0.2,
+              "conditions": {
+                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.Tutorial.CheckAnyInput, Assembly-CSharp"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "FailedCondition": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "forceQuitProcess": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialForceQuitProcessBase, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "index": 7,
+        "parentIndex": 20,
+        "Guid": "4e547604-9047-4873-a55a-ca5c728c81f0"
+      },
+      {
+        "$type": "miHoYo.HYG.Tutorial.CfgTutorialSetComplete, Assembly-CSharp",
+        "_output": -1,
+        "index": 8,
+        "parentIndex": 7,
+        "Guid": "fd73dd36-e254-407c-a53f-201596a25f0f"
+      },
+      {
+        "$type": "miHoYo.HYG.Tutorial.CfgTutorialConditionSelector, Assembly-CSharp",
+        "conditions": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Tutorial.TutorialQueryUIObject, Assembly-CSharp",
+              "tutorialKey": 2670560754,
+              "state": 0
+            }
+          ]
+        },
+        "_trueOutput": 4,
+        "_falseOutput": 10,
+        "index": 9,
+        "parentIndex": 2,
+        "Guid": "34a02931-0cb5-4c27-9673-5da868d4db2c"
       },
       {
         "$type": "miHoYo.HYG.Tutorial.CfgWeakTutorial, Assembly-CSharp",
@@ -1502,24 +873,28 @@
           "$type": "miHoYo.HYG.Tutorial.WeakTutorialData, Assembly-CSharp",
           "showCompeteAni": false,
           "type": 0,
-          "tip": {
-            "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
-            "effects": {
-              "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Localization.TextMapContentEffect, Assembly-CSharp]], mscorlib",
-              "$values": []
-            },
-            "textId": "Tutorial_ShkeTree_1_Search"
-          },
+          "tip": null,
           "gestureData": {
             "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialShortcutDataBase, Assembly-CSharp]], mscorlib",
             "$values": []
           },
           "shortcutCondition": null,
+          "showSubTip": false,
+          "subTipData": {
+            "$type": "miHoYo.HYG.Tutorial.TutorialSubTipData, Assembly-CSharp",
+            "tip": {
+              "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
+              "effects": null,
+              "textId": null
+            },
+            "orientation": 0
+          },
           "lockInputWhenEnd": false,
           "showWeakFocus": false,
           "weakFocus": null,
           "showTracking": false,
           "removeTrackingWhenNodeEnd": false,
+          "isOpenOwnerLock": true,
           "trackingData": null,
           "showGraphic": false,
           "graphicalData": null,
@@ -1544,7 +919,7 @@
           "penetrateActions": null,
           "allUILayerUpData": null
         },
-        "_output": 14,
+        "_output": 4,
         "FinishConditions": {
           "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
           "$values": [
@@ -1555,11 +930,216 @@
                 "$values": [
                   {
                     "$type": "miHoYo.HYG.Tutorial.TutorialQueryUIObject, Assembly-CSharp",
-                    "tutorialKey": 4071655293,
+                    "tutorialKey": 2670560754,
                     "state": 0
                   }
                 ]
               }
+            }
+          ]
+        },
+        "FailedCondition": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Tutorial.TutorialQueryUIObject, Assembly-CSharp",
+              "tutorialKey": 2035064151,
+              "state": 0
+            }
+          ]
+        },
+        "forceQuitProcess": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialForceQuitProcessBase, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "index": 10,
+        "parentIndex": 9,
+        "Guid": "4ba2013c-63c4-4904-80ac-455ca890e859"
+      },
+      {
+        "$type": "miHoYo.HYG.Tutorial.CfgTutorialConditionSelector, Assembly-CSharp",
+        "conditions": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Tutorial.TutorialQueryUIObject, Assembly-CSharp",
+              "tutorialKey": 2670560754,
+              "state": 0
+            }
+          ]
+        },
+        "_trueOutput": 5,
+        "_falseOutput": 12,
+        "index": 11,
+        "parentIndex": 3,
+        "Guid": "87544bf7-992d-4822-a9b5-7f7c7fef19b5"
+      },
+      {
+        "$type": "miHoYo.HYG.Tutorial.CfgWeakTutorial, Assembly-CSharp",
+        "data": {
+          "$type": "miHoYo.HYG.Tutorial.WeakTutorialData, Assembly-CSharp",
+          "showCompeteAni": false,
+          "type": 0,
+          "tip": null,
+          "gestureData": {
+            "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialShortcutDataBase, Assembly-CSharp]], mscorlib",
+            "$values": []
+          },
+          "shortcutCondition": null,
+          "showSubTip": false,
+          "subTipData": {
+            "$type": "miHoYo.HYG.Tutorial.TutorialSubTipData, Assembly-CSharp",
+            "tip": {
+              "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
+              "effects": null,
+              "textId": null
+            },
+            "orientation": 0
+          },
+          "lockInputWhenEnd": false,
+          "showWeakFocus": false,
+          "weakFocus": null,
+          "showTracking": false,
+          "removeTrackingWhenNodeEnd": false,
+          "isOpenOwnerLock": true,
+          "trackingData": null,
+          "showGraphic": false,
+          "graphicalData": null,
+          "showErrorTip": false,
+          "errorTipData": {
+            "$type": "miHoYo.HYG.Tutorial.ErrorTipData, Assembly-CSharp",
+            "condition": {
+              "$type": "miHoYo.HYG.Tutorial.TutorialErrorTipCondition, Assembly-CSharp",
+              "triggerConditions": {
+                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
+                "$values": []
+              },
+              "stateConditions": {
+                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
+                "$values": []
+              }
+            },
+            "content": null,
+            "duration": 1.0
+          },
+          "usePenetrate": false,
+          "penetrateActions": null,
+          "allUILayerUpData": null
+        },
+        "_output": 5,
+        "FinishConditions": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Tutorial.TutorialConditionTriggered, Assembly-CSharp",
+              "conditions": {
+                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.Tutorial.TutorialQueryUIObject, Assembly-CSharp",
+                    "tutorialKey": 2670560754,
+                    "state": 0
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "FailedCondition": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Tutorial.TutorialQueryUIObject, Assembly-CSharp",
+              "tutorialKey": 2035064151,
+              "state": 0
+            }
+          ]
+        },
+        "forceQuitProcess": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialForceQuitProcessBase, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "index": 12,
+        "parentIndex": 11,
+        "Guid": "3a2bdbca-1496-46a4-a7ec-3038a78eb581"
+      },
+      {
+        "$type": "miHoYo.HYG.Tutorial.CfgForceTutorial, Assembly-CSharp",
+        "data": {
+          "$type": "miHoYo.HYG.Tutorial.ForceTutorialData, Assembly-CSharp",
+          "showCompeteAni": false,
+          "showTip": false,
+          "showHeadIcon": false,
+          "icon": null,
+          "tip": {
+            "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
+            "effects": null,
+            "textId": null
+          },
+          "dir": 0,
+          "showSubTip": false,
+          "subTipData": {
+            "$type": "miHoYo.HYG.Tutorial.TutorialSubTipData, Assembly-CSharp",
+            "tip": {
+              "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
+              "effects": null,
+              "textId": null
+            },
+            "orientation": 0
+          },
+          "blockScroll": false,
+          "blockClick": false,
+          "hideBg": true,
+          "digAHole": false,
+          "tutorialKey": 0,
+          "allUILayerUpData": {
+            "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.UILayerUpData, Assembly-CSharp]], mscorlib",
+            "$values": []
+          },
+          "framePosOffset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "frameSizeOffset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "checkFocusStable": false,
+          "focusStableData": {
+            "$type": "miHoYo.HYG.Tutorial.FocusStableData, Assembly-CSharp",
+            "stableNeedFrameCount": 1,
+            "checkPosition": true,
+            "positionMinDiff": -1.0,
+            "checkScale": false,
+            "scaleMinDiff": -1.0,
+            "checkRotation": false,
+            "rotationMinDiff": -1.0
+          },
+          "isShowGesture": false,
+          "gesture": {
+            "$type": "miHoYo.HYG.Tutorial.TutorialGesture, Assembly-CSharp",
+            "tutorialKey": 0,
+            "useBigFinger": false,
+            "flipFinger": false,
+            "type": 0,
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            }
+          },
+          "penetrateActions": {
+            "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+            "$values": []
+          }
+        },
+        "_output": -1,
+        "FinishConditions": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Tutorial.TimeElapsedCondition, Assembly-CSharp",
+              "timeInSeconds": 0.1
             }
           ]
         },
@@ -1571,42 +1151,585 @@
           "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialForceQuitProcessBase, Assembly-CSharp]], mscorlib",
           "$values": []
         },
-        "index": 15,
-        "parentIndex": 9,
-        "Guid": "02cd6695-73d4-425b-8777-fc44d4f2b250"
+        "index": 13,
+        "parentIndex": -1,
+        "Guid": "9fca7b67-6dd5-415e-8dea-fa18d816e547"
       },
       {
-        "$type": "miHoYo.HYG.Tutorial.CfgTutorialUnlockHandbook, Assembly-CSharp",
-        "unlockData": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.CfgTutorialUnlockHandbook+UnlockTutorialHandbookData, Assembly-CSharp]], mscorlib",
+        "$type": "miHoYo.HYG.Tutorial.CfgTutorialConditionSelector, Assembly-CSharp",
+        "conditions": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
           "$values": [
             {
-              "$type": "miHoYo.HYG.Tutorial.CfgTutorialUnlockHandbook+UnlockTutorialHandbookData, Assembly-CSharp",
-              "moduleId": 3,
-              "groupId": 7,
-              "tutorialId": 1
+              "$type": "miHoYo.HYG.Tutorial.TutorialQueryUIObject, Assembly-CSharp",
+              "tutorialKey": 3790671093,
+              "state": 0
             }
           ]
         },
-        "_output": 1,
+        "_trueOutput": 4,
+        "_falseOutput": 2,
+        "index": 14,
+        "parentIndex": -1,
+        "Guid": "7fe2353f-1a78-4436-a7d6-54a11b97d59f"
+      },
+      {
+        "$type": "miHoYo.HYG.Tutorial.CfgTutorialConditionSelector, Assembly-CSharp",
+        "conditions": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Tutorial.TutorialQueryUIObject, Assembly-CSharp",
+              "tutorialKey": 3790671093,
+              "state": 0
+            }
+          ]
+        },
+        "_trueOutput": 5,
+        "_falseOutput": 3,
+        "index": 15,
+        "parentIndex": -1,
+        "Guid": "20b82765-e600-4c0c-bcca-6f13c4953934"
+      },
+      {
+        "$type": "miHoYo.HYG.Tutorial.CfgWeakTutorial, Assembly-CSharp",
+        "data": {
+          "$type": "miHoYo.HYG.Tutorial.WeakTutorialData, Assembly-CSharp",
+          "showCompeteAni": false,
+          "type": 0,
+          "tip": null,
+          "gestureData": {
+            "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialShortcutDataBase, Assembly-CSharp]], mscorlib",
+            "$values": []
+          },
+          "shortcutCondition": null,
+          "showSubTip": false,
+          "subTipData": {
+            "$type": "miHoYo.HYG.Tutorial.TutorialSubTipData, Assembly-CSharp",
+            "tip": {
+              "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
+              "effects": null,
+              "textId": null
+            },
+            "orientation": 0
+          },
+          "lockInputWhenEnd": false,
+          "showWeakFocus": true,
+          "weakFocus": {
+            "$type": "miHoYo.HYG.Tutorial.TutorialTipWeakFocus, Assembly-CSharp",
+            "showTip": true,
+            "showHeadIcon": false,
+            "icon": null,
+            "tip": {
+              "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
+              "effects": {
+                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Localization.TextMapContentEffect, Assembly-CSharp]], mscorlib",
+                "$values": []
+              },
+              "textId": "ClothBag_2"
+            },
+            "dir": 2,
+            "showSubTip": false,
+            "subTipData": {
+              "$type": "miHoYo.HYG.Tutorial.TutorialSubTipData, Assembly-CSharp",
+              "tip": {
+                "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
+                "effects": null,
+                "textId": null
+              },
+              "orientation": 0
+            },
+            "tutorialKey": 1535440418,
+            "framePosOffset": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "frameSizeOffset": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "checkFocusStable": false,
+            "focusStableData": {
+              "$type": "miHoYo.HYG.Tutorial.FocusStableData, Assembly-CSharp",
+              "stableNeedFrameCount": 1,
+              "checkPosition": true,
+              "positionMinDiff": -1.0,
+              "checkScale": false,
+              "scaleMinDiff": -1.0,
+              "checkRotation": false,
+              "rotationMinDiff": -1.0
+            },
+            "isShowGesture": false,
+            "gesture": {
+              "$type": "miHoYo.HYG.Tutorial.TutorialGesture, Assembly-CSharp",
+              "tutorialKey": 0,
+              "useBigFinger": false,
+              "flipFinger": false,
+              "type": 0,
+              "offset": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+              }
+            }
+          },
+          "showTracking": false,
+          "removeTrackingWhenNodeEnd": false,
+          "isOpenOwnerLock": true,
+          "trackingData": null,
+          "showGraphic": false,
+          "graphicalData": null,
+          "showErrorTip": false,
+          "errorTipData": {
+            "$type": "miHoYo.HYG.Tutorial.ErrorTipData, Assembly-CSharp",
+            "condition": {
+              "$type": "miHoYo.HYG.Tutorial.TutorialErrorTipCondition, Assembly-CSharp",
+              "triggerConditions": {
+                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
+                "$values": []
+              },
+              "stateConditions": {
+                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
+                "$values": []
+              }
+            },
+            "content": null,
+            "duration": 1.0
+          },
+          "usePenetrate": false,
+          "penetrateActions": null,
+          "allUILayerUpData": null
+        },
+        "_output": 18,
+        "FinishConditions": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Tutorial.OrCondition, Assembly-CSharp",
+              "conditions": {
+                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.Tutorial.TutorialFinishButtonClickCondition, Assembly-CSharp",
+                    "uiElementKey": 1535440418,
+                    "findCompInChild": false
+                  },
+                  {
+                    "$type": "miHoYo.HYG.Tutorial.TutorialConditionTriggered, Assembly-CSharp",
+                    "conditions": {
+                      "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "miHoYo.HYG.Tutorial.TutorialQueryPage, Assembly-CSharp",
+                          "pageHash": 3409311733,
+                          "checkAnimation": false
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "FailedCondition": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Tutorial.QueryConditionLogicNot, Assembly-CSharp",
+              "condition": {
+                "$type": "miHoYo.HYG.Tutorial.TutorialQueryPage, Assembly-CSharp",
+                "pageHash": 454202711,
+                "checkAnimation": false
+              }
+            }
+          ]
+        },
+        "forceQuitProcess": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialForceQuitProcessBase, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
         "index": 16,
-        "parentIndex": 14,
-        "Guid": "752fef48-8f4b-4c71-94b9-20b6f9390626"
+        "parentIndex": 19,
+        "Guid": "3d80d6a7-8ee2-4ddb-a81f-e7788e13de8f"
+      },
+      {
+        "$type": "miHoYo.HYG.Tutorial.CfgWeakTutorial, Assembly-CSharp",
+        "data": {
+          "$type": "miHoYo.HYG.Tutorial.WeakTutorialData, Assembly-CSharp",
+          "showCompeteAni": false,
+          "type": 0,
+          "tip": null,
+          "gestureData": {
+            "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialShortcutDataBase, Assembly-CSharp]], mscorlib",
+            "$values": []
+          },
+          "shortcutCondition": null,
+          "showSubTip": false,
+          "subTipData": {
+            "$type": "miHoYo.HYG.Tutorial.TutorialSubTipData, Assembly-CSharp",
+            "tip": {
+              "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
+              "effects": null,
+              "textId": null
+            },
+            "orientation": 0
+          },
+          "lockInputWhenEnd": false,
+          "showWeakFocus": true,
+          "weakFocus": {
+            "$type": "miHoYo.HYG.Tutorial.TutorialTipWeakFocus, Assembly-CSharp",
+            "showTip": true,
+            "showHeadIcon": false,
+            "icon": null,
+            "tip": {
+              "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
+              "effects": {
+                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Localization.TextMapContentEffect, Assembly-CSharp]], mscorlib",
+                "$values": []
+              },
+              "textId": "ClothBag_2"
+            },
+            "dir": 2,
+            "showSubTip": false,
+            "subTipData": {
+              "$type": "miHoYo.HYG.Tutorial.TutorialSubTipData, Assembly-CSharp",
+              "tip": {
+                "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
+                "effects": null,
+                "textId": null
+              },
+              "orientation": 0
+            },
+            "tutorialKey": 1535440418,
+            "framePosOffset": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "frameSizeOffset": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "checkFocusStable": false,
+            "focusStableData": {
+              "$type": "miHoYo.HYG.Tutorial.FocusStableData, Assembly-CSharp",
+              "stableNeedFrameCount": 1,
+              "checkPosition": true,
+              "positionMinDiff": -1.0,
+              "checkScale": false,
+              "scaleMinDiff": -1.0,
+              "checkRotation": false,
+              "rotationMinDiff": -1.0
+            },
+            "isShowGesture": false,
+            "gesture": {
+              "$type": "miHoYo.HYG.Tutorial.TutorialGesture, Assembly-CSharp",
+              "tutorialKey": 0,
+              "useBigFinger": false,
+              "flipFinger": false,
+              "type": 0,
+              "offset": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+              }
+            }
+          },
+          "showTracking": false,
+          "removeTrackingWhenNodeEnd": false,
+          "isOpenOwnerLock": true,
+          "trackingData": null,
+          "showGraphic": false,
+          "graphicalData": null,
+          "showErrorTip": false,
+          "errorTipData": {
+            "$type": "miHoYo.HYG.Tutorial.ErrorTipData, Assembly-CSharp",
+            "condition": {
+              "$type": "miHoYo.HYG.Tutorial.TutorialErrorTipCondition, Assembly-CSharp",
+              "triggerConditions": {
+                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
+                "$values": []
+              },
+              "stateConditions": {
+                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
+                "$values": []
+              }
+            },
+            "content": null,
+            "duration": 1.0
+          },
+          "usePenetrate": false,
+          "penetrateActions": null,
+          "allUILayerUpData": null
+        },
+        "_output": 20,
+        "FinishConditions": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Tutorial.OrCondition, Assembly-CSharp",
+              "conditions": {
+                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.Tutorial.TutorialFinishButtonClickCondition, Assembly-CSharp",
+                    "uiElementKey": 1535440418,
+                    "findCompInChild": false
+                  },
+                  {
+                    "$type": "miHoYo.HYG.Tutorial.TutorialConditionTriggered, Assembly-CSharp",
+                    "conditions": {
+                      "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "miHoYo.HYG.Tutorial.TutorialQueryPage, Assembly-CSharp",
+                          "pageHash": 3409311733,
+                          "checkAnimation": false
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "FailedCondition": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Tutorial.QueryConditionLogicNot, Assembly-CSharp",
+              "condition": {
+                "$type": "miHoYo.HYG.Tutorial.TutorialQueryPage, Assembly-CSharp",
+                "pageHash": 454202711,
+                "checkAnimation": false
+              }
+            }
+          ]
+        },
+        "forceQuitProcess": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialForceQuitProcessBase, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "index": 17,
+        "parentIndex": 21,
+        "Guid": "10ae761f-cee2-4360-9cb3-9393fe3e5b53"
+      },
+      {
+        "$type": "miHoYo.HYG.Tutorial.CfgTutorialConditionSelector, Assembly-CSharp",
+        "conditions": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Tutorial.TutorialQueryPage, Assembly-CSharp",
+              "pageHash": 3409311733,
+              "checkAnimation": false
+            }
+          ]
+        },
+        "_trueOutput": 19,
+        "_falseOutput": 6,
+        "index": 18,
+        "parentIndex": 16,
+        "Guid": "9b59987e-a955-4169-8d89-5930ca5f8999"
+      },
+      {
+        "$type": "miHoYo.HYG.Tutorial.CfgWeakTutorial, Assembly-CSharp",
+        "data": {
+          "$type": "miHoYo.HYG.Tutorial.WeakTutorialData, Assembly-CSharp",
+          "showCompeteAni": false,
+          "type": 0,
+          "tip": null,
+          "gestureData": {
+            "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialShortcutDataBase, Assembly-CSharp]], mscorlib",
+            "$values": []
+          },
+          "shortcutCondition": null,
+          "showSubTip": false,
+          "subTipData": {
+            "$type": "miHoYo.HYG.Tutorial.TutorialSubTipData, Assembly-CSharp",
+            "tip": {
+              "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
+              "effects": null,
+              "textId": null
+            },
+            "orientation": 0
+          },
+          "lockInputWhenEnd": false,
+          "showWeakFocus": false,
+          "weakFocus": null,
+          "showTracking": false,
+          "removeTrackingWhenNodeEnd": false,
+          "isOpenOwnerLock": true,
+          "trackingData": null,
+          "showGraphic": false,
+          "graphicalData": null,
+          "showErrorTip": false,
+          "errorTipData": {
+            "$type": "miHoYo.HYG.Tutorial.ErrorTipData, Assembly-CSharp",
+            "condition": {
+              "$type": "miHoYo.HYG.Tutorial.TutorialErrorTipCondition, Assembly-CSharp",
+              "triggerConditions": {
+                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
+                "$values": []
+              },
+              "stateConditions": {
+                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
+                "$values": []
+              }
+            },
+            "content": null,
+            "duration": 1.0
+          },
+          "usePenetrate": false,
+          "penetrateActions": null,
+          "allUILayerUpData": null
+        },
+        "_output": 16,
+        "FinishConditions": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Tutorial.PageDisableCondition, Assembly-CSharp",
+              "pageHash": 3409311733
+            }
+          ]
+        },
+        "FailedCondition": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Tutorial.QueryConditionLogicNot, Assembly-CSharp",
+              "condition": {
+                "$type": "miHoYo.HYG.Tutorial.TutorialQueryPage, Assembly-CSharp",
+                "pageHash": 454202711,
+                "checkAnimation": false
+              }
+            }
+          ]
+        },
+        "forceQuitProcess": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialForceQuitProcessBase, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "index": 19,
+        "parentIndex": 18,
+        "Guid": "2b3f6144-4d37-4632-a74f-3a7d73721569"
+      },
+      {
+        "$type": "miHoYo.HYG.Tutorial.CfgTutorialConditionSelector, Assembly-CSharp",
+        "conditions": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Tutorial.TutorialQueryPage, Assembly-CSharp",
+              "pageHash": 3409311733,
+              "checkAnimation": false
+            }
+          ]
+        },
+        "_trueOutput": 21,
+        "_falseOutput": 7,
+        "index": 20,
+        "parentIndex": 17,
+        "Guid": "4f32981d-1ab3-4d13-952c-5b466786912d"
+      },
+      {
+        "$type": "miHoYo.HYG.Tutorial.CfgWeakTutorial, Assembly-CSharp",
+        "data": {
+          "$type": "miHoYo.HYG.Tutorial.WeakTutorialData, Assembly-CSharp",
+          "showCompeteAni": false,
+          "type": 0,
+          "tip": null,
+          "gestureData": {
+            "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialShortcutDataBase, Assembly-CSharp]], mscorlib",
+            "$values": []
+          },
+          "shortcutCondition": null,
+          "showSubTip": false,
+          "subTipData": {
+            "$type": "miHoYo.HYG.Tutorial.TutorialSubTipData, Assembly-CSharp",
+            "tip": {
+              "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
+              "effects": null,
+              "textId": null
+            },
+            "orientation": 0
+          },
+          "lockInputWhenEnd": false,
+          "showWeakFocus": false,
+          "weakFocus": null,
+          "showTracking": false,
+          "removeTrackingWhenNodeEnd": false,
+          "isOpenOwnerLock": true,
+          "trackingData": null,
+          "showGraphic": false,
+          "graphicalData": null,
+          "showErrorTip": false,
+          "errorTipData": {
+            "$type": "miHoYo.HYG.Tutorial.ErrorTipData, Assembly-CSharp",
+            "condition": {
+              "$type": "miHoYo.HYG.Tutorial.TutorialErrorTipCondition, Assembly-CSharp",
+              "triggerConditions": {
+                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
+                "$values": []
+              },
+              "stateConditions": {
+                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
+                "$values": []
+              }
+            },
+            "content": null,
+            "duration": 1.0
+          },
+          "usePenetrate": false,
+          "penetrateActions": null,
+          "allUILayerUpData": null
+        },
+        "_output": 17,
+        "FinishConditions": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialStateConditionBase, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Tutorial.PageDisableCondition, Assembly-CSharp",
+              "pageHash": 3409311733
+            }
+          ]
+        },
+        "FailedCondition": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Tutorial.QueryConditionLogicNot, Assembly-CSharp",
+              "condition": {
+                "$type": "miHoYo.HYG.Tutorial.TutorialQueryPage, Assembly-CSharp",
+                "pageHash": 454202711,
+                "checkAnimation": false
+              }
+            }
+          ]
+        },
+        "forceQuitProcess": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialForceQuitProcessBase, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "index": 21,
+        "parentIndex": 20,
+        "Guid": "86945e12-3d14-426c-ae7f-c07906df6fc9"
       }
     ]
   },
   "containers": null,
   "rootIndex": 0,
-  "nodesHash": -13532110,
+  "nodesHash": 1194172705,
   "editorData": {
     "$type": "miHoYo.HYG.JsonGraph.GraphEditorData, Assembly-CSharp",
     "danglingIndexes": {
       "$type": "System.Int32[], mscorlib",
       "$values": [
-        3,
-        7,
-        8,
-        10
+        13,
+        14,
+        15
       ]
     },
     "nodeInfos": {
@@ -1615,10 +1738,21 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": -1296.0,
-            "y": -288.0
+            "x": -1792.0,
+            "y": 288.0
           },
-          "guid": "d0e7e4f5-6112-46ff-ad61-10205dbbac5e",
+          "guid": "51f2a0d4-a5fe-4b92-aacd-9bf07ab6ce50",
+          "comment": "不考虑是否有可穿服装，性能压力太大\n之前的实现方式很怪，刷新服装页签才触发 但item绑静态key会导致一堆东西都有，需要去掉换成过渡检测",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -272.0,
+            "y": 288.0
+          },
+          "guid": "17f13198-8bfc-468a-949b-906ccea2f18e",
           "comment": "",
           "locked": false,
           "collapse": false
@@ -1626,10 +1760,10 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": 3936.0,
-            "y": -224.0
+            "x": 576.0,
+            "y": 2832.0
           },
-          "guid": "66b75a9b-c0d8-4290-b24e-df7fff161016",
+          "guid": "1bd7512d-297f-4edc-adb0-5f5134dc7fba",
           "comment": "",
           "locked": false,
           "collapse": false
@@ -1637,10 +1771,10 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": -592.0,
-            "y": -272.0
+            "x": 608.0,
+            "y": 3808.0
           },
-          "guid": "41dc8907-7274-438f-88f1-bce9e8566e72",
+          "guid": "36d3a22f-5862-4e20-befd-37e9495d7264",
           "comment": "",
           "locked": false,
           "collapse": false
@@ -1648,21 +1782,10 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": -64.0,
-            "y": 1168.0
+            "x": 1952.0,
+            "y": 2688.0
           },
-          "guid": "d53aec9c-30d8-4750-b5a5-78b1484570ed",
-          "comment": "老界面留档",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 560.0,
-            "y": 1184.0
-          },
-          "guid": "d7fc5d4d-2b29-4acd-9f70-18216cc10521",
+          "guid": "275a95e4-bd0b-482e-b668-d9733647416c",
           "comment": "",
           "locked": false,
           "collapse": false
@@ -1670,10 +1793,10 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": 1168.0,
-            "y": 1184.0
+            "x": 1888.0,
+            "y": 3776.0
           },
-          "guid": "4b6154d2-1aa1-43c0-a3a9-c1a8b8d3c4be",
+          "guid": "d3527925-848d-4b42-b883-48193fd70764",
           "comment": "",
           "locked": false,
           "collapse": false
@@ -1681,11 +1804,154 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": 1808.0,
-            "y": 1200.0
+            "x": 2672.0,
+            "y": -304.0
           },
-          "guid": "15f6f869-5179-4b22-8b10-952b37c52708",
+          "guid": "221ed4ee-1e22-4c66-ae44-b7e87c2cc4db",
           "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 2640.0,
+            "y": 1152.0
+          },
+          "guid": "4e547604-9047-4873-a55a-ca5c728c81f0",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 3712.0,
+            "y": 256.0
+          },
+          "guid": "fd73dd36-e254-407c-a53f-201596a25f0f",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 1264.0,
+            "y": 2768.0
+          },
+          "guid": "34a02931-0cb5-4c27-9673-5da868d4db2c",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 1232.0,
+            "y": 3056.0
+          },
+          "guid": "4ba2013c-63c4-4904-80ac-455ca890e859",
+          "comment": "如果点了服装，则必须穿上",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 1232.0,
+            "y": 3840.0
+          },
+          "guid": "87544bf7-992d-4822-a9b5-7f7c7fef19b5",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 1232.0,
+            "y": 4176.0
+          },
+          "guid": "3a2bdbca-1496-46a4-a7ec-3038a78eb581",
+          "comment": "如果点了服装，则必须穿上",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -1056.0,
+            "y": 448.0
+          },
+          "guid": "9fca7b67-6dd5-415e-8dea-fa18d816e547",
+          "comment": "等待动态key激活 会频繁硬控，废弃",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -208.0,
+            "y": 2544.0
+          },
+          "guid": "7fe2353f-1a78-4436-a7d6-54a11b97d59f",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -48.0,
+            "y": 3696.0
+          },
+          "guid": "20b82765-e600-4c0c-bcca-6f13c4953934",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 592.0,
+            "y": -416.0
+          },
+          "guid": "3d80d6a7-8ee2-4ddb-a81f-e7788e13de8f",
+          "comment": "每次开服装背包都提示点，直到真的点了",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 592.0,
+            "y": 848.0
+          },
+          "guid": "10ae761f-cee2-4360-9cb3-9393fe3e5b53",
+          "comment": "每次开服装背包都提示点，直到真的点了",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 1280.0,
+            "y": -384.0
+          },
+          "guid": "9b59987e-a955-4169-8d89-5930ca5f8999",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 1984.0,
+            "y": -528.0
+          },
+          "guid": "2b3f6144-4d37-4632-a74f-3a7d73721569",
+          "comment": "等待infodialog关闭",
           "locked": false,
           "collapse": false
         },
@@ -1693,9 +1959,9 @@
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
             "x": 1296.0,
-            "y": 2160.0
+            "y": 864.0
           },
-          "guid": "223f6d9e-d237-4708-b490-9043a9689fb2",
+          "guid": "4f32981d-1ab3-4d13-952c-5b466786912d",
           "comment": "",
           "locked": false,
           "collapse": false
@@ -1703,99 +1969,11 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": 640.0,
-            "y": 2160.0
+            "x": 2000.0,
+            "y": 720.0
           },
-          "guid": "6b0227c5-4b81-431f-9d79-3213cc54ff0b",
-          "comment": "弱引导留档",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 1152.0,
-            "y": -288.0
-          },
-          "guid": "816fcf92-5a36-49ab-84c1-9a9ba2985721",
-          "comment": "",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 2720.0,
-            "y": 1120.0
-          },
-          "guid": "645ffaf4-cf47-49b7-bb23-a2410c46e7f3",
-          "comment": "节点弹窗留档",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": -240.0,
-            "y": -1264.0
-          },
-          "guid": "9255f68c-aeaa-4bb6-b2c6-65afd061792b",
-          "comment": "",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 416.0,
-            "y": -320.0
-          },
-          "guid": "40f5351c-fbd0-4f7d-b628-a4d0ae183277",
-          "comment": "",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": -256.0,
-            "y": -112.0
-          },
-          "guid": "b1a101ab-71b3-44d4-a422-bff306655c97",
-          "comment": "",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 2416.0,
-            "y": -288.0
-          },
-          "guid": "5c9b68a9-8e56-4027-a4b5-40f8d6d58555",
-          "comment": "",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 1792.0,
-            "y": -272.0
-          },
-          "guid": "02cd6695-73d4-425b-8777-fc44d4f2b250",
-          "comment": "",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 3200.43555,
-            "y": -245.949951
-          },
-          "guid": "752fef48-8f4b-4c71-94b9-20b6f9390626",
-          "comment": null,
+          "guid": "86945e12-3d14-426c-ae7f-c07906df6fc9",
+          "comment": "等待infodialog关闭",
           "locked": false,
           "collapse": false
         }

@@ -3,8 +3,9 @@
   "id": 10000003000,
   "maxVoiceIdIndex": 1,
   "maxTextMapIdIndex": 1,
-  "name": "NPC事件模板0-背包溢出处理",
+  "name": "NPC事件模板0-送礼演出封装",
   "kmPageId": 0,
+  "kmEncId": null,
   "sheetName": null,
   "editRootPos": {
     "x": 0.0,
@@ -17,20 +18,14 @@
     "z": 0.0,
     "w": 0.0
   },
-  "performRoot": {
-    "$type": "miHoYo.HYG.StaticPosition, Assembly-CSharp",
-    "xPos": 0.0,
-    "yPos": 0.0,
-    "zPos": 0.0,
-    "yAngle": 0.0
-  },
+  "overrideGraphCfg": true,
   "graphCfgId": 0,
+  "UseFakeAvatar": false,
   "castDic": {
     "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Int32, mscorlib]], mscorlib"
   },
-  "actorDataDic_edit": {
-    "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.ActorDataPair, Assembly-CSharp]], mscorlib",
-    "$values": []
+  "editorEntityCast": {
+    "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.UInt64, mscorlib]], mscorlib"
   },
   "paramDic": {
     "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Int32, mscorlib]], mscorlib"
@@ -38,8 +33,26 @@
   "effectDic": {
     "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[miHoYo.HYG.Performance.DialogEffectCfg, Assembly-CSharp]], mscorlib"
   },
+  "performRoot": {
+    "$type": "miHoYo.HYG.StaticPosition, Assembly-CSharp",
+    "xPos": 0.0,
+    "yPos": 0.0,
+    "zPos": 0.0,
+    "yAngle": 0.0,
+    "galaxyPositionInfo": null
+  },
+  "blackboardConfigs": {
+    "$type": "miHoYo.HYG.DataSharing.BlackboardConfigPicker, Assembly-CSharp",
+    "paraKeys": null,
+    "configs": null,
+    "noSharingKeys": null
+  },
   "castDic_edit": {
     "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.StringIntPair, Assembly-CSharp]], mscorlib",
+    "$values": []
+  },
+  "editorEntityCast_edit": {
+    "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.EditorGuidPair, Assembly-CSharp]], mscorlib",
     "$values": []
   },
   "timbreDatas_edit": {
@@ -60,10 +73,9 @@
   },
   "selectItem_count": 0,
   "textNodeMaxIndex": 1,
-  "nodeMaxIndex": 1,
+  "nodeMaxIndex": 12,
   "testGMGroup": "",
   "desc": null,
-  "roots": null,
   "NewNodesPlaceholder": {
     "$type": "miHoYo.HYG.Performance.CfgPerformanceNode[], Assembly-CSharp",
     "$values": [
@@ -85,17 +97,514 @@
         "index": 0,
         "parentIndex": -1,
         "Guid": "a6169804-cbb7-4f9f-8070-d68ec2996ba7"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgNextSelector, Assembly-CSharp",
+        "selectors": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.SelectorItem, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.SelectorItem, Assembly-CSharp",
+              "id": 0,
+              "conditionWrapper": {
+                "$type": "miHoYo.HYG.SelectorCondition, Assembly-CSharp",
+                "desc": "赠送水果",
+                "condition": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarConfigHasTag, Assembly-CSharp",
+                  "_configId": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetWatcherUInt32, Assembly-CSharp",
+                    "key": {
+                      "$type": "miHoYo.HYG.WatcherKey, Assembly-CSharp",
+                      "key": 234,
+                      "name": "NpcEvent_送礼演出道具ID",
+                      "valueType": 5,
+                      "temp": true
+                    },
+                    "Override": false,
+                    "OverrideValue": false
+                  },
+                  "_exactMatch": null,
+                  "_tag": {
+                    "$type": "miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp",
+                    "TagId": 50049
+                  },
+                  "Override": false,
+                  "OverrideValue": false
+                }
+              },
+              "isExclusive": true,
+              "exclusivePossibility": 100,
+              "useConfigVarWeight": false,
+              "weight": 1.0,
+              "configVarWeight": null,
+              "record": false,
+              "memoryStrKey": null,
+              "memoryKey": 0,
+              "deltaWeight": 0.0
+            },
+            {
+              "$type": "miHoYo.HYG.SelectorItem, Assembly-CSharp",
+              "id": 0,
+              "conditionWrapper": {
+                "$type": "miHoYo.HYG.SelectorCondition, Assembly-CSharp",
+                "desc": "赠送作物果实",
+                "condition": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarConfigHasTag, Assembly-CSharp",
+                  "_configId": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetWatcherUInt32, Assembly-CSharp",
+                    "key": {
+                      "$type": "miHoYo.HYG.WatcherKey, Assembly-CSharp",
+                      "key": 234,
+                      "name": "NpcEvent_送礼演出道具ID",
+                      "valueType": 5,
+                      "temp": true
+                    },
+                    "Override": false,
+                    "OverrideValue": false
+                  },
+                  "_exactMatch": null,
+                  "_tag": {
+                    "$type": "miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp",
+                    "TagId": 1442426378
+                  },
+                  "Override": false,
+                  "OverrideValue": false
+                }
+              },
+              "isExclusive": true,
+              "exclusivePossibility": 100,
+              "useConfigVarWeight": false,
+              "weight": 1.0,
+              "configVarWeight": null,
+              "record": false,
+              "memoryStrKey": null,
+              "memoryKey": 0,
+              "deltaWeight": 0.0
+            },
+            {
+              "$type": "miHoYo.HYG.SelectorItem, Assembly-CSharp",
+              "id": 0,
+              "conditionWrapper": {
+                "$type": "miHoYo.HYG.SelectorCondition, Assembly-CSharp",
+                "desc": "流光电池-通行道具",
+                "condition": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarConfigHasTag, Assembly-CSharp",
+                  "_configId": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetWatcherUInt32, Assembly-CSharp",
+                    "key": {
+                      "$type": "miHoYo.HYG.WatcherKey, Assembly-CSharp",
+                      "key": 234,
+                      "name": "NpcEvent_送礼演出道具ID",
+                      "valueType": 5,
+                      "temp": true
+                    },
+                    "Override": false,
+                    "OverrideValue": false
+                  },
+                  "_exactMatch": null,
+                  "_tag": {
+                    "$type": "miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp",
+                    "TagId": 1834493908
+                  },
+                  "Override": false,
+                  "OverrideValue": false
+                }
+              },
+              "isExclusive": true,
+              "exclusivePossibility": 100,
+              "useConfigVarWeight": false,
+              "weight": 1.0,
+              "configVarWeight": null,
+              "record": false,
+              "memoryStrKey": null,
+              "memoryKey": 0,
+              "deltaWeight": 0.0
+            },
+            {
+              "$type": "miHoYo.HYG.SelectorItem, Assembly-CSharp",
+              "id": 0,
+              "conditionWrapper": {
+                "$type": "miHoYo.HYG.SelectorCondition, Assembly-CSharp",
+                "desc": "碎钱等-货币",
+                "condition": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarConfigHasTag, Assembly-CSharp",
+                  "_configId": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetWatcherUInt32, Assembly-CSharp",
+                    "key": {
+                      "$type": "miHoYo.HYG.WatcherKey, Assembly-CSharp",
+                      "key": 234,
+                      "name": "NpcEvent_送礼演出道具ID",
+                      "valueType": 5,
+                      "temp": true
+                    },
+                    "Override": false,
+                    "OverrideValue": false
+                  },
+                  "_exactMatch": null,
+                  "_tag": {
+                    "$type": "miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp",
+                    "TagId": 676664164
+                  },
+                  "Override": false,
+                  "OverrideValue": false
+                }
+              },
+              "isExclusive": true,
+              "exclusivePossibility": 100,
+              "useConfigVarWeight": false,
+              "weight": 1.0,
+              "configVarWeight": null,
+              "record": false,
+              "memoryStrKey": null,
+              "memoryKey": 0,
+              "deltaWeight": 0.0
+            },
+            {
+              "$type": "miHoYo.HYG.SelectorItem, Assembly-CSharp",
+              "id": 0,
+              "conditionWrapper": {
+                "$type": "miHoYo.HYG.SelectorCondition, Assembly-CSharp",
+                "desc": "其他内容",
+                "condition": null
+              },
+              "isExclusive": false,
+              "exclusivePossibility": 100,
+              "useConfigVarWeight": false,
+              "weight": 1.0,
+              "configVarWeight": null,
+              "record": false,
+              "memoryStrKey": null,
+              "memoryKey": 0,
+              "deltaWeight": 0.0
+            }
+          ]
+        },
+        "needCache": false,
+        "_branches": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            2,
+            4,
+            7,
+            6,
+            5
+          ]
+        },
+        "nodeId": 2,
+        "index": 1,
+        "parentIndex": -1,
+        "Guid": "59a5d21e-4d85-4d47-b33d-a7575044778c"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgLocalEntity, Assembly-CSharp",
+        "useConfigVarId": false,
+        "configId": 10274,
+        "configVarId": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarGetItemConfigIdByItemGuid, Assembly-CSharp",
+          "_guid": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetLastGiftCheckItemGuid, Assembly-CSharp",
+            "Override": false,
+            "OverrideValue": false
+          },
+          "Override": false,
+          "OverrideValue": false
+        },
+        "editorGuid": 12582916,
+        "useDefaultEIC": false,
+        "useDropType": false,
+        "position": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "euler": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "scaler": {
+          "x": 1.0,
+          "y": 1.0,
+          "z": 1.0
+        },
+        "initVisible": true,
+        "_output": 10,
+        "nodeId": 3,
+        "index": 2,
+        "parentIndex": 1,
+        "Guid": "6b2ae1f1-f31b-4bb4-a3fc-b5beabc9c247"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgExecuteCmdWait, Assembly-CSharp",
+        "isAsync": true,
+        "useCmdCfgId": true,
+        "cmdCfgId": 49,
+        "actorList": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": [
+            "PerformTrigger",
+            "Player"
+          ]
+        },
+        "itemList": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.UInt64, mscorlib]], Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarEditorGuidToGuid, Assembly-CSharp",
+              "editorGuidValue": 12582916,
+              "Override": false,
+              "OverrideValue": false
+            }
+          ]
+        },
+        "_output": 9,
+        "nodeId": 4,
+        "index": 3,
+        "parentIndex": 10,
+        "Guid": "de039709-a5d2-48b6-87d2-6d23f8a0b515"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgLocalEntity, Assembly-CSharp",
+        "useConfigVarId": false,
+        "configId": 10273,
+        "configVarId": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarGetItemConfigIdByItemGuid, Assembly-CSharp",
+          "_guid": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetLastGiftCheckItemGuid, Assembly-CSharp",
+            "Override": false,
+            "OverrideValue": false
+          },
+          "Override": false,
+          "OverrideValue": false
+        },
+        "editorGuid": 12582916,
+        "useDefaultEIC": false,
+        "useDropType": false,
+        "position": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "euler": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "scaler": {
+          "x": 1.0,
+          "y": 1.0,
+          "z": 1.0
+        },
+        "initVisible": true,
+        "_output": 10,
+        "nodeId": 5,
+        "index": 4,
+        "parentIndex": 1,
+        "Guid": "12e2139e-a14a-4f14-85d1-07baae3b7dc5"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgLocalEntity, Assembly-CSharp",
+        "useConfigVarId": true,
+        "configId": 10190,
+        "configVarId": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarGetWatcherUInt32, Assembly-CSharp",
+          "key": {
+            "$type": "miHoYo.HYG.WatcherKey, Assembly-CSharp",
+            "key": 234,
+            "name": "NpcEvent_送礼演出道具ID",
+            "valueType": 5,
+            "temp": true
+          },
+          "Override": false,
+          "OverrideValue": false
+        },
+        "editorGuid": 12582916,
+        "useDefaultEIC": false,
+        "useDropType": true,
+        "position": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "euler": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "scaler": {
+          "x": 1.0,
+          "y": 1.0,
+          "z": 1.0
+        },
+        "initVisible": true,
+        "_output": 10,
+        "nodeId": 6,
+        "index": 5,
+        "parentIndex": 1,
+        "Guid": "06bbd28b-7fc4-45d8-800a-cb301e12d446"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgLocalEntity, Assembly-CSharp",
+        "useConfigVarId": false,
+        "configId": 10275,
+        "configVarId": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarGetItemConfigIdByItemGuid, Assembly-CSharp",
+          "_guid": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetLastGiftCheckItemGuid, Assembly-CSharp",
+            "Override": false,
+            "OverrideValue": false
+          },
+          "Override": false,
+          "OverrideValue": false
+        },
+        "editorGuid": 12582916,
+        "useDefaultEIC": false,
+        "useDropType": false,
+        "position": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "euler": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "scaler": {
+          "x": 1.0,
+          "y": 1.0,
+          "z": 1.0
+        },
+        "initVisible": true,
+        "_output": 10,
+        "nodeId": 8,
+        "index": 6,
+        "parentIndex": 1,
+        "Guid": "8e42c130-b6a6-4854-9ce5-dfc37c155be0"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgLocalEntity, Assembly-CSharp",
+        "useConfigVarId": false,
+        "configId": 10190,
+        "configVarId": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarGetItemConfigIdByItemGuid, Assembly-CSharp",
+          "_guid": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetLastGiftCheckItemGuid, Assembly-CSharp",
+            "Override": false,
+            "OverrideValue": false
+          },
+          "Override": false,
+          "OverrideValue": false
+        },
+        "editorGuid": 12582916,
+        "useDefaultEIC": false,
+        "useDropType": false,
+        "position": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "euler": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "scaler": {
+          "x": 1.0,
+          "y": 1.0,
+          "z": 1.0
+        },
+        "initVisible": true,
+        "_output": 10,
+        "nodeId": 9,
+        "index": 7,
+        "parentIndex": 1,
+        "Guid": "ce64aad1-afcf-4164-8792-9581a4e7c59c"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgExecuteCmdWait, Assembly-CSharp",
+        "isAsync": true,
+        "useCmdCfgId": true,
+        "cmdCfgId": 49,
+        "actorList": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": [
+            "Player",
+            "PerformTrigger"
+          ]
+        },
+        "itemList": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.UInt64, mscorlib]], Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarEditorGuidToGuid, Assembly-CSharp",
+              "editorGuidValue": 12582916,
+              "Override": false,
+              "OverrideValue": false
+            }
+          ]
+        },
+        "_output": 9,
+        "nodeId": 10,
+        "index": 8,
+        "parentIndex": 10,
+        "Guid": "36bd7758-953d-4adf-ae0d-8b23644f9118"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgRemoveEntity, Assembly-CSharp",
+        "editorGuidValue": 12582916,
+        "_output": -1,
+        "nodeId": 11,
+        "index": 9,
+        "parentIndex": 8,
+        "Guid": "0537ce42-0606-4558-9d8f-03c9a7ac876e"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgSwitchUInt, Assembly-CSharp",
+        "value": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarGetWatcherUInt32, Assembly-CSharp",
+          "key": {
+            "$type": "miHoYo.HYG.WatcherKey, Assembly-CSharp",
+            "key": 235,
+            "name": "NpcEvent_送礼演出类型ID",
+            "valueType": 5,
+            "temp": true
+          },
+          "Override": false,
+          "OverrideValue": false
+        },
+        "results": {
+          "$type": "System.Collections.Generic.List`1[[System.UInt32, mscorlib]], mscorlib",
+          "$values": [
+            1,
+            2
+          ]
+        },
+        "_defaultOut": 8,
+        "_branches": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            8,
+            3
+          ]
+        },
+        "nodeId": 12,
+        "index": 10,
+        "parentIndex": 7,
+        "Guid": "6cefc537-f70e-4a4c-aa17-c9251884e0c6"
       }
     ]
   },
   "containers": null,
-  "rootIndex": 0,
-  "nodesHash": -962345078,
+  "rootIndex": 1,
+  "nodesHash": -639347957,
   "editorData": {
     "$type": "miHoYo.HYG.JsonGraph.GraphEditorData, Assembly-CSharp",
     "danglingIndexes": {
       "$type": "System.Int32[], mscorlib",
-      "$values": []
+      "$values": [
+        0
+      ]
     },
     "nodeInfos": {
       "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp]], mscorlib",
@@ -103,11 +612,121 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": -448.0,
-            "y": -336.0
+            "x": 336.0,
+            "y": 48.0
           },
           "guid": "a6169804-cbb7-4f9f-8070-d68ec2996ba7",
           "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -1152.0,
+            "y": 112.0
+          },
+          "guid": "59a5d21e-4d85-4d47-b33d-a7575044778c",
+          "comment": "水果和农作物单独用果箱创生模型",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -448.0,
+            "y": -304.0
+          },
+          "guid": "6b2ae1f1-f31b-4bb4-a3fc-b5beabc9c247",
+          "comment": "生成水果袋模型",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 976.0,
+            "y": 880.0
+          },
+          "guid": "de039709-a5d2-48b6-87d2-6d23f8a0b515",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -448.0,
+            "y": 128.0
+          },
+          "guid": "12e2139e-a14a-4f14-85d1-07baae3b7dc5",
+          "comment": "生成作物袋模型",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -432.0,
+            "y": 1408.0
+          },
+          "guid": "06bbd28b-7fc4-45d8-800a-cb301e12d446",
+          "comment": "生成本体赠礼模型",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -432.0,
+            "y": 992.0
+          },
+          "guid": "8e42c130-b6a6-4854-9ce5-dfc37c155be0",
+          "comment": "生成钱袋模型",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -432.0,
+            "y": 560.0
+          },
+          "guid": "ce64aad1-afcf-4164-8792-9581a4e7c59c",
+          "comment": "生成礼物盒模型",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 976.0,
+            "y": 448.0
+          },
+          "guid": "36bd7758-953d-4adf-ae0d-8b23644f9118",
+          "comment": "玩家给NPC钱",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 1536.0,
+            "y": 736.0
+          },
+          "guid": "0537ce42-0606-4558-9d8f-03c9a7ac876e",
+          "comment": "销毁模型",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 352.0,
+            "y": 592.0
+          },
+          "guid": "6cefc537-f70e-4a4c-aa17-c9251884e0c6",
+          "comment": null,
           "locked": false,
           "collapse": false
         }
@@ -117,5 +736,7 @@
   },
   "path": "Assets/MoleRes/Rel/SRes/Data/Json/Performance/10000003000.json",
   "errors": null,
-  "nodeErrors": null
+  "nodeErrors": {
+    "$type": "System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.String, mscorlib]], mscorlib"
+  }
 }

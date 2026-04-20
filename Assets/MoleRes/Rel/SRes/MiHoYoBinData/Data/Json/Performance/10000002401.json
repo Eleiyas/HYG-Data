@@ -3,7 +3,7 @@
   "id": 10000002401,
   "maxVoiceIdIndex": 1,
   "maxTextMapIdIndex": 1,
-  "name": "NPC星湾-喜恶标签点击对话",
+  "name": "NPC星湾-标签点击对话",
   "kmPageId": 0,
   "kmEncId": null,
   "sheetName": null,
@@ -20,6 +20,8 @@
   },
   "overrideGraphCfg": true,
   "graphCfgId": 2,
+  "UseFakeAvatar": false,
+  "ManualHideBlackScreen": false,
   "castDic": {
     "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Int32, mscorlib]], mscorlib"
   },
@@ -42,6 +44,12 @@
     "zPos": 0.0,
     "yAngle": 0.0,
     "galaxyPositionInfo": null
+  },
+  "blackboardConfigs": {
+    "$type": "miHoYo.HYG.DataSharing.BlackboardConfigPicker, Assembly-CSharp",
+    "paraKeys": null,
+    "configs": null,
+    "noSharingKeys": null
   },
   "castDic_edit": {
     "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.StringIntPair, Assembly-CSharp]], mscorlib",
@@ -75,15 +83,9 @@
     "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.DynamicKMInfoPair, Assembly-CSharp]], mscorlib",
     "$values": []
   },
-  "blackboardConfigs": {
-    "$type": "miHoYo.HYG.DataSharing.BlackboardConfigPicker, Assembly-CSharp",
-    "paraKeys": null,
-    "configs": null,
-    "noSharingKeys": null
-  },
   "selectItem_count": 0,
   "textNodeMaxIndex": 30,
-  "nodeMaxIndex": 33,
+  "nodeMaxIndex": 34,
   "testGMGroup": "",
   "desc": null,
   "NewNodesPlaceholder": {
@@ -567,7 +569,9 @@
       {
         "$type": "miHoYo.HYG.Performance.CfgSwitchUInt, Assembly-CSharp",
         "value": {
-          "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCompanionStarClickedLabelIndex, Assembly-CSharp"
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCompanionStarClickedLabelIndex, Assembly-CSharp",
+          "Override": false,
+          "OverrideValue": false
         },
         "results": {
           "$type": "System.Collections.Generic.List`1[[System.UInt32, mscorlib]], mscorlib",
@@ -612,13 +616,15 @@
         },
         "nodeId": 26,
         "index": 25,
-        "parentIndex": -1,
+        "parentIndex": 33,
         "Guid": "2f77a777-cbc1-4bc0-8f6e-d44e220e207f"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgSwitchUInt, Assembly-CSharp",
         "value": {
-          "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCompanionStarClickedLabelIndex, Assembly-CSharp"
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCompanionStarClickedLabelIndex, Assembly-CSharp",
+          "Override": false,
+          "OverrideValue": false
         },
         "results": {
           "$type": "System.Collections.Generic.List`1[[System.UInt32, mscorlib]], mscorlib",
@@ -677,7 +683,9 @@
             "$type": "miHoYo.HYG.DataSharing.IConfigVar[], Assembly-CSharp",
             "$values": [
               {
-                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCompanionStarClickedLabelIndex, Assembly-CSharp"
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCompanionStarClickedLabelIndex, Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false
               }
             ]
           }
@@ -796,12 +804,44 @@
         "index": 32,
         "parentIndex": 26,
         "Guid": "9811e083-0d69-497e-bde5-3a026647199e"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgPerformAction, Assembly-CSharp",
+        "action": {
+          "$type": "miHoYo.HYG.Performance.StopLoopATL, Assembly-CSharp",
+          "actorName": "PerformTrigger",
+          "atlName": "Reaction_Smile",
+          "atlTag": {
+            "$type": "miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp",
+            "TagId": 1239975826
+          },
+          "finishWithEnd": false
+        },
+        "infos": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
+              "content": "默认"
+            }
+          ]
+        },
+        "_branches": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            25
+          ]
+        },
+        "nodeId": 34,
+        "index": 33,
+        "parentIndex": -1,
+        "Guid": "3fde34d1-a5de-481a-b7db-2223ccf07add"
       }
     ]
   },
   "containers": null,
-  "rootIndex": 25,
-  "nodesHash": -1491056627,
+  "rootIndex": 33,
+  "nodesHash": -1251532887,
   "editorData": {
     "$type": "miHoYo.HYG.JsonGraph.GraphEditorData, Assembly-CSharp",
     "danglingIndexes": {
@@ -1171,6 +1211,17 @@
           },
           "guid": "9811e083-0d69-497e-bde5-3a026647199e",
           "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -2016.0,
+            "y": 1104.0
+          },
+          "guid": "3fde34d1-a5de-481a-b7db-2223ccf07add",
+          "comment": "置为idle",
           "locked": false,
           "collapse": false
         }

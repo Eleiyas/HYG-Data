@@ -16,8 +16,6 @@
         "goalName": "绵朵特殊捡草",
         "enabled": true,
         "goalType": 0,
-        "rank": 0,
-        "score": 0.0,
         "behaviourTreeInitializer": {
           "$type": "miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp",
           "parameters": {
@@ -36,34 +34,59 @@
           "$type": "miHoYo.HYG.GameplayAbilities.GameplayAbilityName, Assembly-CSharp",
           "_value": null
         },
+        "initScriptBt": {
+          "$type": "miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": []
+          },
+          "_assetGuid": null,
+          "_assetPath": null
+        },
         "predicates": {
           "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]], Assembly-CSharp]], mscorlib",
           "$values": [
             {
               "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckSceneBySceneType, Assembly-CSharp",
+              "Override": false,
+              "OverrideValue": false,
               "_callerGUID": {
-                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false
               },
               "_isEqual": {
                 "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false,
                 "_value": true
               },
               "_sceneType": 0
             },
             {
               "$type": "miHoYo.HYG.DataSharing.ConfigVarEqualToUInt32, Assembly-CSharp",
+              "Override": false,
+              "OverrideValue": false,
               "_lhs": {
-                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false
               },
               "_rhs": {
                 "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.UInt32, mscorlib]], Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false,
                 "_value": 12
               }
             },
             {
               "$type": "miHoYo.HYG.DataSharing.ConfigVarIsSpecialActivityActive, Assembly-CSharp",
+              "Override": false,
+              "OverrideValue": false,
               "_npcCfgId": {
-                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false
               },
               "_activityType": 3
             }
@@ -74,19 +97,27 @@
           "$values": [
             {
               "$type": "miHoYo.HYG.ConsiderationConstant, Assembly-CSharp",
-              "description": "偏好值",
+              "description": "弱日程",
               "conditions": {
                 "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]][], Assembly-CSharp",
                 "$values": [
                   {
                     "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+                    "Override": false,
+                    "OverrideValue": false,
                     "_operand": {
                       "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckGoalStateIsActive, Assembly-CSharp",
+                      "Override": false,
+                      "OverrideValue": false,
                       "_callerGUID": {
-                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp",
+                        "Override": false,
+                        "OverrideValue": false
                       },
                       "_targetGoalId": {
                         "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp",
+                        "Override": false,
+                        "OverrideValue": false,
                         "_callerGuid": null
                       }
                     }
@@ -95,7 +126,67 @@
               },
               "configVarInput": {
                 "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloat, Assembly-CSharp",
-                "_value": 500.0
+                "Override": false,
+                "OverrideValue": false,
+                "_value": 1.0
+              },
+              "configVarRank": null
+            },
+            {
+              "$type": "miHoYo.HYG.ConsiderationConstant, Assembly-CSharp",
+              "description": "Motive累加",
+              "conditions": {
+                "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]][], Assembly-CSharp",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+                    "Override": false,
+                    "OverrideValue": false,
+                    "_operand": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckGoalStateIsActive, Assembly-CSharp",
+                      "Override": false,
+                      "OverrideValue": false,
+                      "_callerGUID": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp",
+                        "Override": false,
+                        "OverrideValue": false
+                      },
+                      "_targetGoalId": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp",
+                        "Override": false,
+                        "OverrideValue": false,
+                        "_callerGuid": null
+                      }
+                    }
+                  }
+                ]
+              },
+              "configVarInput": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarSumFloatArray, Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false,
+                "inputs": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloatArray, Assembly-CSharp",
+                  "Override": false,
+                  "OverrideValue": false,
+                  "_values": {
+                    "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Single, mscorlib]][], Assembly-CSharp",
+                    "$values": [
+                      {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloat, Assembly-CSharp",
+                        "Override": false,
+                        "OverrideValue": false,
+                        "_value": 100.0
+                      },
+                      {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloat, Assembly-CSharp",
+                        "Override": false,
+                        "OverrideValue": false,
+                        "_value": 0.0
+                      }
+                    ]
+                  }
+                }
               },
               "configVarRank": null
             },
@@ -110,13 +201,21 @@
                 "$values": [
                   {
                     "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+                    "Override": false,
+                    "OverrideValue": false,
                     "_operand": {
                       "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckGoalStateIsActive, Assembly-CSharp",
+                      "Override": false,
+                      "OverrideValue": false,
                       "_callerGUID": {
-                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp",
+                        "Override": false,
+                        "OverrideValue": false
                       },
                       "_targetGoalId": {
                         "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp",
+                        "Override": false,
+                        "OverrideValue": false,
                         "_callerGuid": null
                       }
                     }
@@ -125,90 +224,93 @@
               },
               "configVarInput": {
                 "$type": "miHoYo.HYG.DataSharing.ConfigVarGetDurationSinceTimestamp, Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false,
                 "_timestamp": {
                   "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMemoryUlongValue, Assembly-CSharp",
+                  "Override": false,
+                  "OverrideValue": false,
                   "memoryType": 0,
                   "memoryKey": 15635,
                   "callerConfigId": {
-                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp",
+                    "Override": false,
+                    "OverrideValue": false
                   },
-                  "GetCurrSceneNpcMemory": true,
-                  "GetCurrSceneNpcMemoryNew": false
+                  "GetCurrSceneNpcMemory": true
                 }
               },
               "configVarRank": null
             },
             {
-              "$type": "miHoYo.HYG.ConsiderationConstant, Assembly-CSharp",
-              "description": "内驱力",
+              "$type": "miHoYo.HYG.ConsiderationLogistic, Assembly-CSharp",
+              "curveM": 10.0,
+              "curveK": 11.0,
+              "curveB": -1.1,
+              "curveC": -8.0,
+              "description": null,
               "conditions": {
                 "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]][], Assembly-CSharp",
                 "$values": [
                   {
                     "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckGoalStateIsActive, Assembly-CSharp",
+                    "Override": false,
+                    "OverrideValue": false,
                     "_callerGUID": {
-                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp",
+                      "Override": false,
+                      "OverrideValue": false
                     },
                     "_targetGoalId": {
                       "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp",
+                      "Override": false,
+                      "OverrideValue": false,
                       "_callerGuid": null
                     }
                   }
                 ]
               },
               "configVarInput": {
-                "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
-                "_value": 1.0
-              },
-              "configVarRank": {
-                "$type": "miHoYo.HYG.DataSharing.ConfigVarFloatToInt32, Assembly-CSharp",
-                "_operand": {
-                  "$type": "miHoYo.HYG.DataSharing.ConfigVarConsiderationLogistic, Assembly-CSharp",
-                  "inputVar": {
-                    "$type": "miHoYo.HYG.DataSharing.ConfigVarMultiplyFloat, Assembly-CSharp",
-                    "_lhs": {
-                      "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloat, Assembly-CSharp",
-                      "_value": 1.2E-05
-                    },
-                    "_rhs": {
-                      "$type": "miHoYo.HYG.DataSharing.ConfigVarMultiplyFloat, Assembly-CSharp",
-                      "_lhs": {
-                        "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
-                        "_value": 96.0
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarMultiplyFloat, Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false,
+                "_lhs": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloat, Assembly-CSharp",
+                  "Override": false,
+                  "OverrideValue": false,
+                  "_value": 1.2E-05
+                },
+                "_rhs": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarMultiplyFloat, Assembly-CSharp",
+                  "Override": false,
+                  "OverrideValue": false,
+                  "_lhs": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloat, Assembly-CSharp",
+                    "Override": false,
+                    "OverrideValue": false,
+                    "_value": 96.0
+                  },
+                  "_rhs": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetDurationSinceTimestamp, Assembly-CSharp",
+                    "Override": false,
+                    "OverrideValue": false,
+                    "_timestamp": {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMemoryUlongValue, Assembly-CSharp",
+                      "Override": false,
+                      "OverrideValue": false,
+                      "memoryType": 0,
+                      "memoryKey": 15634,
+                      "callerConfigId": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp",
+                        "Override": false,
+                        "OverrideValue": false
                       },
-                      "_rhs": {
-                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetDurationSinceTimestamp, Assembly-CSharp",
-                        "_timestamp": {
-                          "$type": "miHoYo.HYG.DataSharing.ConfigVarGetMemoryUlongValue, Assembly-CSharp",
-                          "memoryType": 0,
-                          "memoryKey": 15634,
-                          "callerConfigId": {
-                            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
-                          },
-                          "GetCurrSceneNpcMemory": true,
-                          "GetCurrSceneNpcMemoryNew": false
-                        }
-                      }
+                      "GetCurrSceneNpcMemory": true
                     }
-                  },
-                  "curveMVar": {
-                    "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
-                    "_value": 10.0
-                  },
-                  "curveKVar": {
-                    "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
-                    "_value": 11.0
-                  },
-                  "curveBVar": {
-                    "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
-                    "_value": -1.1
-                  },
-                  "curveCVar": {
-                    "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
-                    "_value": -8.0
                   }
                 }
-              }
+              },
+              "configVarRank": null
             }
           ]
         },

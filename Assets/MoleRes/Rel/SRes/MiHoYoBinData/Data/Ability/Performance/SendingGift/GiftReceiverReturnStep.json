@@ -13,7 +13,6 @@
       "_value": null
     }
   },
-  "_testVarInLifeStateAbility": 0,
   "_variableDefinitions": {
     "$type": "miHoYo.HYG.Scripting.HScriptVariableDefinition[], Assembly-CSharp",
     "$values": []
@@ -24,7 +23,6 @@
     "configs": null,
     "noSharingKeys": null
   },
-  "_testVarInHSA": 0,
   "_nodes": {
     "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Scripting.Node, Assembly-CSharp]], mscorlib",
     "$values": [
@@ -55,6 +53,10 @@
           "Mode": 0,
           "Guid": 1428079320
         },
+        "eventOutPort": {
+          "$type": "miHoYo.HYG.Scripting.OutEventPort, Assembly-CSharp",
+          "Guid": 1252532998
+        },
         "outExec": {
           "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
           "Guid": 2392135105
@@ -62,7 +64,7 @@
         "Guid": 545710754
       },
       {
-        "$type": "miHoYo.HYG.Scripting.GetOwnerEntityNode, Assembly-CSharp",
+        "$type": "miHoYo.HYG.Entities.GetOwnerEntityNode, Assembly-CSharp",
         "outDataResult": {
           "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], Assembly-CSharp",
           "Guid": 3998853630
@@ -81,8 +83,13 @@
         },
         "startTime": {
           "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Single, mscorlib]], Assembly-CSharp",
-          "_value": 0,
+          "_value": 0.0,
           "Guid": 1452743755
+        },
+        "startBlock": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.UInt32, mscorlib]], Assembly-CSharp",
+          "_value": 0,
+          "Guid": 3720899178
         },
         "OnATLPlayEvent": {
           "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
@@ -138,8 +145,13 @@
         },
         "startTime": {
           "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Single, mscorlib]], Assembly-CSharp",
-          "_value": 0,
+          "_value": 0.0,
           "Guid": 184036903
+        },
+        "startBlock": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.UInt32, mscorlib]], Assembly-CSharp",
+          "_value": 0,
+          "Guid": 831248420
         },
         "OnATLPlayEvent": {
           "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
@@ -185,10 +197,6 @@
       },
       {
         "$type": "miHoYo.HYG.GameplayAbilities.EndAbilityNode, Assembly-CSharp",
-        "inDataAbility": {
-          "$type": "miHoYo.HYG.Scripting.InDataPort`1[[miHoYo.HYG.GameplayAbilities.GameplayAbility, Assembly-CSharp]], Assembly-CSharp",
-          "Guid": 3063328651
-        },
         "OutExec": {
           "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
           "Guid": 3826826776
@@ -276,7 +284,7 @@
         "Guid": 3080134939
       },
       {
-        "$type": "miHoYo.HYG.Entities.SendEventActionNode, Assembly-CSharp",
+        "$type": "miHoYo.HYG.Entities.EntityCmdExtensionSendEventActionNode, Assembly-CSharp",
         "entity": {
           "$type": "miHoYo.HYG.Scripting.InDataEntityPort, Assembly-CSharp",
           "Guid": 3037572665
@@ -315,6 +323,39 @@
           "Guid": 3029049602
         },
         "Guid": 3497338331
+      },
+      {
+        "$type": "miHoYo.HYG.Entities.ATLStopActionNode, Assembly-CSharp",
+        "entity": {
+          "$type": "miHoYo.HYG.Scripting.InDataEntityPort, Assembly-CSharp",
+          "Guid": 2775713161
+        },
+        "hint": {
+          "$type": "miHoYo.HYG.Scripting.InDataPort`1[[miHoYo.HYG.ATL.ATLStateHint, Assembly-CSharp]], Assembly-CSharp",
+          "Guid": 1479895265
+        },
+        "OutExec": {
+          "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
+          "Guid": 1101859295
+        },
+        "inExec": {
+          "$type": "miHoYo.HYG.Scripting.InExecPort, Assembly-CSharp",
+          "Guid": 2836000265
+        },
+        "Guid": 2937843124
+      },
+      {
+        "$type": "miHoYo.HYG.ATL.ATLLibraryMakeHintFromSlotNamePureNode, Assembly-CSharp",
+        "autoGenResult": {
+          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.ATL.ATLStateHint, Assembly-CSharp]], Assembly-CSharp",
+          "Guid": 2329191410
+        },
+        "slotName": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.String, mscorlib]], Assembly-CSharp",
+          "_value": "TwoHand",
+          "Guid": 3565017961
+        },
+        "Guid": 3040691839
       }
     ]
   },
@@ -331,6 +372,7 @@
   "_tagsToCancelConfig": null,
   "_requiredTagsConfig": null,
   "_blockedByTagsConfig": null,
+  "_descriptiveTagsConfig": null,
   "_gameplayEventTriggersConfig": null,
   "Edges": {
     "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm]], mscorlib",
@@ -384,6 +426,16 @@
         "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
         "inputPort": 2584839735,
         "outputPort": 3147969513
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 1479895265,
+        "outputPort": 2329191410
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 2836000265,
+        "outputPort": 986458829
       }
     ]
   },
@@ -487,14 +539,38 @@
           "comment": "",
           "commentHeight": 0.0,
           "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 2937843124,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -1112.0,
+            "y": -440.0
+          },
+          "comment": null,
+          "commentHeight": 0.0,
+          "foldout": false
+        },
+        {
+          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
+          "guid": 3040691839,
+          "pos": {
+            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
+            "x": -1112.0,
+            "y": -315.199982
+          },
+          "comment": "",
+          "commentHeight": 0.0,
+          "foldout": false
         }
       ]
     },
     "comment": null,
     "position": {
       "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
-      "x": 1100.8,
-      "y": 288.8
+      "x": 1428.0,
+      "y": 690.4
     },
     "scale": 0.7561437
   },

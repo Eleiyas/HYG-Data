@@ -21,6 +21,16 @@
           "$type": "miHoYo.JsonPicker`1[[miHoYo.HYG.DataSharing.SingleBlackboardConfig, Assembly-CSharp]], Assembly-CSharp",
           "_assetGuid": "80f3b3ff76cf1d8498e0eba5c65bcc6d",
           "_assetPath": "Data/AI/Blackboard/v2/Utility/BB_UtilityManipulation.json"
+        },
+        {
+          "$type": "miHoYo.JsonPicker`1[[miHoYo.HYG.DataSharing.SingleBlackboardConfig, Assembly-CSharp]], Assembly-CSharp",
+          "_assetGuid": "3c77a46f968a1b64992fa81e0f0f2b0e",
+          "_assetPath": "Data/AI/02Blackboard/Gameplay/Partner/BB_Partner_v2.json"
+        },
+        {
+          "$type": "miHoYo.JsonPicker`1[[miHoYo.HYG.DataSharing.SingleBlackboardConfig, Assembly-CSharp]], Assembly-CSharp",
+          "_assetGuid": "d0086480f939447448063c86cf4694fb",
+          "_assetPath": "Data/AI/02Blackboard/Gameplay/Adv/BB_Initialization.json"
         }
       ]
     },
@@ -64,22 +74,35 @@
           "$values": [
             {
               "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedLogicOr, Assembly-CSharp",
+              "Override": false,
+              "OverrideValue": false,
               "_operands": {
                 "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]], Assembly-CSharp]], mscorlib",
                 "$values": [
                   {
                     "$type": "miHoYo.HYG.DataSharing.ConfigVarGreaterThanFloat, Assembly-CSharp",
+                    "Override": false,
+                    "OverrideValue": false,
                     "_lhs": {
                       "$type": "miHoYo.HYG.DataSharing.ConfigVarGetDistanceBetweenEntities, Assembly-CSharp",
+                      "Override": false,
+                      "OverrideValue": false,
                       "_fromEntityGuid": {
-                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp",
+                        "Override": false,
+                        "OverrideValue": false
                       },
                       "_toEntityGuid": {
-                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPlayerEntityGuid, Assembly-CSharp"
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerPlayerEntityByNpc, Assembly-CSharp",
+                        "Override": false,
+                        "OverrideValue": false,
+                        "_npcGuid": null
                       }
                     },
                     "_rhs": {
                       "$type": "miHoYo.HYG.DataSharing.ConfigVarBlackboardFloat, Assembly-CSharp",
+                      "Override": false,
+                      "OverrideValue": false,
                       "_key": {
                         "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
                         "keyName": "MaxFollowRange-b28bc76b1bdcb364a9840cb506b4ba82-0"
@@ -89,15 +112,63 @@
                   },
                   {
                     "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckGoalStateIsActive, Assembly-CSharp",
+                    "Override": false,
+                    "OverrideValue": false,
                     "_callerGUID": {
-                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp",
+                      "Override": false,
+                      "OverrideValue": false
                     },
                     "_targetGoalId": {
                       "$type": "miHoYo.HYG.DataSharing.ConfigVarGetCalculatingGoalId, Assembly-CSharp",
+                      "Override": false,
+                      "OverrideValue": false,
                       "_callerGuid": null
                     }
                   }
                 ]
+              }
+            },
+            {
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+              "Override": false,
+              "OverrideValue": false,
+              "_operand": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarIsNpcStellarSeaStatusEquals, Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false,
+                "_npcConfigId": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetAvatarConfigID, Assembly-CSharp",
+                  "Override": false,
+                  "OverrideValue": false,
+                  "_guid": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp",
+                    "Override": false,
+                    "OverrideValue": false
+                  }
+                },
+                "_status": 2
+              }
+            },
+            {
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+              "Override": false,
+              "OverrideValue": false,
+              "_operand": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarIsNpcStellarSeaStatusEquals, Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false,
+                "_npcConfigId": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetAvatarConfigID, Assembly-CSharp",
+                  "Override": false,
+                  "OverrideValue": false,
+                  "_guid": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp",
+                    "Override": false,
+                    "OverrideValue": false
+                  }
+                },
+                "_status": 3
               }
             }
           ]
@@ -111,6 +182,8 @@
               "conditions": null,
               "configVarInput": {
                 "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloat, Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false,
                 "_value": 1003.0
               },
               "configVarRank": null
@@ -136,8 +209,7 @@
                         "inWeight": 0.0,
                         "outWeight": 0.0,
                         "weightedMode": 0,
-                        "tangentMode": 0,
-                        "tangentModeInternal": 0
+                        "tangentMode": 0
                       },
                       {
                         "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
@@ -148,8 +220,7 @@
                         "inWeight": 0.0,
                         "outWeight": 0.0,
                         "weightedMode": 0,
-                        "tangentMode": 0,
-                        "tangentModeInternal": 0
+                        "tangentMode": 0
                       },
                       {
                         "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
@@ -160,11 +231,11 @@
                         "inWeight": 0.0,
                         "outWeight": 0.0,
                         "weightedMode": 0,
-                        "tangentMode": 0,
-                        "tangentModeInternal": 0
+                        "tangentMode": 0
                       }
                     ]
                   },
+                  "length": 3,
                   "preWrapMode": 8,
                   "postWrapMode": 8
                 }
@@ -173,11 +244,18 @@
               "conditions": null,
               "configVarInput": {
                 "$type": "miHoYo.HYG.DataSharing.ConfigVarGetDistanceBetweenEntities, Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false,
                 "_fromEntityGuid": {
-                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp",
+                  "Override": false,
+                  "OverrideValue": false
                 },
                 "_toEntityGuid": {
-                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPlayerEntityGuid, Assembly-CSharp"
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerPlayerEntityByNpc, Assembly-CSharp",
+                  "Override": false,
+                  "OverrideValue": false,
+                  "_npcGuid": null
                 }
               },
               "configVarRank": null
@@ -199,8 +277,8 @@
         "behaviourTreeInitializer": {
           "$type": "miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp",
           "parameters": null,
-          "_assetGuid": "a5a6f29986fa9d74abe0f42c6bb4144d",
-          "_assetPath": "Data/AI/BehaviourTree/Adventure/BTGraph_SimpleRelaxAdv.json"
+          "_assetGuid": "2a4588876bbddea44a6937402d067cc7",
+          "_assetPath": "Data/AI/01BehaviourTree/BehaviourTree/Adventure/BTGraph_SimpleRelaxAdv_v3.json"
         },
         "useSequencerBT": false,
         "sequencerBTInitializers": {
@@ -222,7 +300,24 @@
         },
         "predicates": {
           "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]], Assembly-CSharp]], mscorlib",
-          "$values": []
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarIsNpcStellarSeaStatusEquals, Assembly-CSharp",
+              "Override": false,
+              "OverrideValue": false,
+              "_npcConfigId": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetAvatarConfigID, Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false,
+                "_guid": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp",
+                  "Override": false,
+                  "OverrideValue": false
+                }
+              },
+              "_status": 1
+            }
+          ]
         },
         "considerations": {
           "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Consideration, Assembly-CSharp]], mscorlib",
@@ -233,10 +328,14 @@
               "conditions": null,
               "configVarInput": {
                 "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false,
                 "_value": 1.0
               },
               "configVarRank": {
                 "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Int32, mscorlib]], Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false,
                 "_value": 1
               }
             },
@@ -248,18 +347,26 @@
                 "$values": [
                   {
                     "$type": "miHoYo.HYG.DataSharing.ConfigVarIsCalculatingGoalActive, Assembly-CSharp",
+                    "Override": false,
+                    "OverrideValue": false,
                     "_caller": null
                   },
                   {
                     "$type": "miHoYo.HYG.DataSharing.ConfigVarCompareFloat, Assembly-CSharp",
+                    "Override": false,
+                    "OverrideValue": false,
                     "_lhs": {
                       "$type": "miHoYo.HYG.DataSharing.ConfigVarGetDurationSinceGoalTimestamp, Assembly-CSharp",
+                      "Override": false,
+                      "OverrideValue": false,
                       "_caller": null,
                       "_state": 0
                     },
                     "_operatorType": 4,
                     "_rhs": {
                       "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
+                      "Override": false,
+                      "OverrideValue": false,
                       "_value": 12.0
                     }
                   }
@@ -267,10 +374,14 @@
               },
               "configVarInput": {
                 "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false,
                 "_value": 1.0
               },
               "configVarRank": {
                 "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Int32, mscorlib]], Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false,
                 "_value": 3
               }
             },
@@ -282,18 +393,26 @@
                 "$values": [
                   {
                     "$type": "miHoYo.HYG.DataSharing.ConfigVarIsCalculatingGoalActive, Assembly-CSharp",
+                    "Override": false,
+                    "OverrideValue": false,
                     "_caller": null
                   }
                 ]
               },
               "configVarInput": {
                 "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false,
                 "_value": 1.0
               },
               "configVarRank": {
                 "$type": "miHoYo.HYG.DataSharing.ConfigVarFloatToInt32, Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false,
                 "_operand": {
                   "$type": "miHoYo.HYG.DataSharing.ConfigVarCurve, Assembly-CSharp",
+                  "Override": false,
+                  "OverrideValue": false,
                   "curve": {
                     "$type": "miHoYo.HYG.AI.AnimationCurveData, Assembly-CSharp",
                     "clampMin": 0.0,
@@ -313,8 +432,7 @@
                             "inWeight": 0.333333343,
                             "outWeight": 0.333333343,
                             "weightedMode": 0,
-                            "tangentMode": 0,
-                            "tangentModeInternal": 0
+                            "tangentMode": 0
                           },
                           {
                             "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
@@ -325,40 +443,341 @@
                             "inWeight": 0.333333343,
                             "outWeight": 0.333333343,
                             "weightedMode": 0,
-                            "tangentMode": 0,
-                            "tangentModeInternal": 0
+                            "tangentMode": 0
                           }
                         ]
                       },
+                      "length": 2,
                       "preWrapMode": 8,
                       "postWrapMode": 8
                     }
                   },
                   "_operand": {
                     "$type": "miHoYo.HYG.DataSharing.ConfigVarMapRangeClamped, Assembly-CSharp",
+                    "Override": false,
+                    "OverrideValue": false,
                     "_value": {
                       "$type": "miHoYo.HYG.DataSharing.ConfigVarGetDurationSinceGoalTimestamp, Assembly-CSharp",
+                      "Override": false,
+                      "OverrideValue": false,
                       "_caller": null,
                       "_state": 0
                     },
                     "_inRangeA": {
                       "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
+                      "Override": false,
+                      "OverrideValue": false,
                       "_value": 0.0
                     },
                     "_inRangeB": {
                       "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
+                      "Override": false,
+                      "OverrideValue": false,
                       "_value": 32.0
                     },
                     "_outRangeA": {
                       "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
+                      "Override": false,
+                      "OverrideValue": false,
                       "_value": 0.0
                     },
                     "_outRangeB": {
                       "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
+                      "Override": false,
+                      "OverrideValue": false,
                       "_value": 1.0
                     }
                   }
                 }
+              }
+            }
+          ]
+        },
+        "directSetPosWhenEnter": false,
+        "initPosRule": null,
+        "initSceneRule": null,
+        "startTimeStampKey": null,
+        "endTimeStampKey": null
+      },
+      {
+        "$type": "GoalData, Assembly-CSharp",
+        "goalId": 250000038,
+        "goalName": "OrderRelax",
+        "enabled": true,
+        "goalType": 0,
+        "behaviourTreeInitializer": {
+          "$type": "miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": []
+          },
+          "_assetGuid": "25981b6410a64c8490dc67e6c9e392f0",
+          "_assetPath": "Data/AI/01BehaviourTree/BehaviourTree/Adventure/BTGraph_SimpleRelaxAdv_v2.json"
+        },
+        "useSequencerBT": false,
+        "sequencerBTInitializers": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "abilityName": {
+          "$type": "miHoYo.HYG.GameplayAbilities.GameplayAbilityName, Assembly-CSharp",
+          "_value": null
+        },
+        "initScriptBt": {
+          "$type": "miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": []
+          },
+          "_assetGuid": null,
+          "_assetPath": null
+        },
+        "predicates": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]], Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarIsNpcStellarSeaStatusEquals, Assembly-CSharp",
+              "Override": false,
+              "OverrideValue": false,
+              "_npcConfigId": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetAvatarConfigID, Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false,
+                "_guid": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp",
+                  "Override": false,
+                  "OverrideValue": false
+                }
+              },
+              "_status": 0
+            }
+          ]
+        },
+        "considerations": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Consideration, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.ConsiderationConstant, Assembly-CSharp",
+              "description": "处于被玩家命令自由活动时，跑这个自由活动",
+              "conditions": {
+                "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]][], Assembly-CSharp",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+                    "Override": false,
+                    "OverrideValue": false,
+                    "_value": true
+                  }
+                ]
+              },
+              "configVarInput": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false,
+                "_value": 1.0
+              },
+              "configVarRank": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Int32, mscorlib]], Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false,
+                "_value": 9
+              }
+            }
+          ]
+        },
+        "directSetPosWhenEnter": false,
+        "initPosRule": null,
+        "initSceneRule": null,
+        "startTimeStampKey": null,
+        "endTimeStampKey": null
+      },
+      {
+        "$type": "GoalData, Assembly-CSharp",
+        "goalId": 250000039,
+        "goalName": "TreasureHunter",
+        "enabled": true,
+        "goalType": 0,
+        "behaviourTreeInitializer": {
+          "$type": "miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": []
+          },
+          "_assetGuid": "100fedd783314800b13244b2f2611b3e",
+          "_assetPath": "Data/AI/01BehaviourTree/Gameplay/Adv/AdvTreasureHunter/BTGraph_AdvFollowPlayerAndRun.json"
+        },
+        "useSequencerBT": false,
+        "sequencerBTInitializers": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "abilityName": {
+          "$type": "miHoYo.HYG.GameplayAbilities.GameplayAbilityName, Assembly-CSharp",
+          "_value": null
+        },
+        "initScriptBt": {
+          "$type": "miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": []
+          },
+          "_assetGuid": null,
+          "_assetPath": null
+        },
+        "predicates": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]], Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarBlackboardBool, Assembly-CSharp",
+              "Override": false,
+              "OverrideValue": false,
+              "_key": {
+                "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                "keyName": "IfTreasureHunter-3c77a46f968a1b64992fa81e0f0f2b0e-1"
+              },
+              "targetGuid": null
+            },
+            {
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarTemplateConfig`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+              "Override": false,
+              "OverrideValue": false,
+              "asset": {
+                "$type": "miHoYo.JsonPicker`1[[miHoYo.HYG.DataSharing.ConfigVarOfBbConfig, Assembly-CSharp]], Assembly-CSharp",
+                "_assetGuid": "9992ba136f864fb7bb99f8d28a2572c5",
+                "_assetPath": "Data/ConfigVarTemplates/IfNotTreasureHunterCD.json"
+              },
+              "param": {
+                "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+                "parameters": []
+              }
+            },
+            {
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarGreaterThanUInt64, Assembly-CSharp",
+              "Override": false,
+              "OverrideValue": false,
+              "_lhs": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarSubtractUInt64, Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false,
+                "_lhs": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetTodayTimestamp, Assembly-CSharp",
+                  "Override": false,
+                  "OverrideValue": false
+                },
+                "_rhs": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarBlackboardUInt64, Assembly-CSharp",
+                  "Override": false,
+                  "OverrideValue": false,
+                  "_key": {
+                    "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                    "keyName": "InitializationTimestamp-d0086480f939447448063c86cf4694fb-0"
+                  },
+                  "targetGuid": null
+                }
+              },
+              "_rhs": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.UInt64, mscorlib]], Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false,
+                "_value": 60
+              }
+            }
+          ]
+        },
+        "considerations": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Consideration, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.ConsiderationConstant, Assembly-CSharp",
+              "description": null,
+              "conditions": null,
+              "configVarInput": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloat, Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false,
+                "_value": 1.0
+              },
+              "configVarRank": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Int32, mscorlib]], Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false,
+                "_value": 10
+              }
+            }
+          ]
+        },
+        "directSetPosWhenEnter": false,
+        "initPosRule": null,
+        "initSceneRule": null,
+        "startTimeStampKey": null,
+        "endTimeStampKey": null
+      },
+      {
+        "$type": "GoalData, Assembly-CSharp",
+        "goalId": 250000040,
+        "goalName": "PuzzleHunter",
+        "enabled": true,
+        "goalType": 0,
+        "behaviourTreeInitializer": {
+          "$type": "miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": []
+          },
+          "_assetGuid": "809adcb5884d4524a899539116d0415e",
+          "_assetPath": "Data/AI/01BehaviourTree/Gameplay/Adv/AdvTreasureHunter/BTGraph_AdvFindPuzzle.json"
+        },
+        "useSequencerBT": false,
+        "sequencerBTInitializers": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "abilityName": {
+          "$type": "miHoYo.HYG.GameplayAbilities.GameplayAbilityName, Assembly-CSharp",
+          "_value": null
+        },
+        "initScriptBt": {
+          "$type": "miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": []
+          },
+          "_assetGuid": null,
+          "_assetPath": null
+        },
+        "predicates": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]], Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarBlackboardBool, Assembly-CSharp",
+              "Override": false,
+              "OverrideValue": false,
+              "_key": {
+                "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                "keyName": "IfPuzzleHunter-3c77a46f968a1b64992fa81e0f0f2b0e-0"
+              },
+              "targetGuid": null
+            }
+          ]
+        },
+        "considerations": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Consideration, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.ConsiderationConstant, Assembly-CSharp",
+              "description": null,
+              "conditions": null,
+              "configVarInput": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloat, Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false,
+                "_value": 1.0
+              },
+              "configVarRank": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Int32, mscorlib]], Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false,
+                "_value": 10
               }
             }
           ]

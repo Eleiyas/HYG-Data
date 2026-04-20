@@ -2,11 +2,11 @@
   "$type": "miHoYo.HYG.Performance.PerformanceGraph, Assembly-CSharp",
   "id": 1010132201,
   "maxVoiceIdIndex": 1,
-  "maxTextMapIdIndex": 1,
-  "name": "NPC特色交互-萨飞里-赌石",
+  "maxTextMapIdIndex": 53,
+  "name": "NPC特色交互-萨飞里-派遣",
   "kmPageId": 333096,
-  "kmEncId": "mhwhq89kg9mq",
-  "sheetName": "萨飞里",
+  "kmEncId": "mhwyo00izyfs",
+  "sheetName": "派遣对话",
   "editRootPos": {
     "x": 0.0,
     "y": 0.0,
@@ -20,6 +20,8 @@
   },
   "overrideGraphCfg": true,
   "graphCfgId": 0,
+  "UseFakeAvatar": false,
+  "ManualHideBlackScreen": false,
   "castDic": {
     "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Int32, mscorlib]], mscorlib",
     "萨飞里": 1013
@@ -32,12 +34,28 @@
   },
   "effectDic": {
     "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[miHoYo.HYG.Performance.DialogEffectCfg, Assembly-CSharp]], mscorlib",
-    "奖励石": {
+    "奖励名": {
       "$type": "miHoYo.HYG.Performance.DialogEffect_NPCPersonaGameRewardItemName, Assembly-CSharp",
       "isDynamic": true,
       "id": 0,
       "configVarId": {
-        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPerformanceTriggerConfigId, Assembly-CSharp"
+        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPerformanceTriggerConfigId, Assembly-CSharp",
+        "Override": false,
+        "OverrideValue": false
+      }
+    },
+    "地区名": {
+      "$type": "miHoYo.HYG.Performance.DialogEffect_GalaxyName, Assembly-CSharp",
+      "configVarGalaxyId": {
+        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetDispatchGalaxy, Assembly-CSharp",
+        "_specialInteractionId": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.UInt32, mscorlib]], Assembly-CSharp",
+          "_value": 9,
+          "Override": false,
+          "OverrideValue": false
+        },
+        "Override": false,
+        "OverrideValue": false
       }
     }
   },
@@ -48,6 +66,12 @@
     "zPos": 0.0,
     "yAngle": 0.0,
     "galaxyPositionInfo": null
+  },
+  "blackboardConfigs": {
+    "$type": "miHoYo.HYG.DataSharing.BlackboardConfigPicker, Assembly-CSharp",
+    "paraKeys": null,
+    "configs": null,
+    "noSharingKeys": null
   },
   "castDic_edit": {
     "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.StringIntPair, Assembly-CSharp]], mscorlib",
@@ -76,13 +100,33 @@
     "$values": [
       {
         "$type": "miHoYo.HYG.Performance.StringEffectPair, Assembly-CSharp",
-        "key": "奖励石",
+        "key": "奖励名",
         "value": {
           "$type": "miHoYo.HYG.Performance.DialogEffect_NPCPersonaGameRewardItemName, Assembly-CSharp",
           "isDynamic": true,
           "id": 0,
           "configVarId": {
-            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPerformanceTriggerConfigId, Assembly-CSharp"
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPerformanceTriggerConfigId, Assembly-CSharp",
+            "Override": false,
+            "OverrideValue": false
+          }
+        }
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.StringEffectPair, Assembly-CSharp",
+        "key": "地区名",
+        "value": {
+          "$type": "miHoYo.HYG.Performance.DialogEffect_GalaxyName, Assembly-CSharp",
+          "configVarGalaxyId": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetDispatchGalaxy, Assembly-CSharp",
+            "_specialInteractionId": {
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.UInt32, mscorlib]], Assembly-CSharp",
+              "_value": 9,
+              "Override": false,
+              "OverrideValue": false
+            },
+            "Override": false,
+            "OverrideValue": false
           }
         }
       }
@@ -92,15 +136,9 @@
     "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.DynamicKMInfoPair, Assembly-CSharp]], mscorlib",
     "$values": []
   },
-  "blackboardConfigs": {
-    "$type": "miHoYo.HYG.DataSharing.BlackboardConfigPicker, Assembly-CSharp",
-    "paraKeys": null,
-    "configs": null,
-    "noSharingKeys": null
-  },
   "selectItem_count": 0,
-  "textNodeMaxIndex": 9,
-  "nodeMaxIndex": 15,
+  "textNodeMaxIndex": 26,
+  "nodeMaxIndex": 45,
   "testGMGroup": "",
   "desc": null,
   "NewNodesPlaceholder": {
@@ -116,10 +154,60 @@
               "id": 0,
               "conditionWrapper": {
                 "$type": "miHoYo.HYG.SelectorCondition, Assembly-CSharp",
-                "desc": null,
-                "condition": null
+                "desc": "取消准备",
+                "condition": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarIsDispatchStatusPrepared, Assembly-CSharp",
+                  "_specialInteractionId": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.UInt32, mscorlib]], Assembly-CSharp",
+                    "_value": 9,
+                    "Override": false,
+                    "OverrideValue": false
+                  },
+                  "Override": false,
+                  "OverrideValue": false
+                }
               },
-              "isExclusive": false,
+              "isExclusive": true,
+              "exclusivePossibility": 100,
+              "useConfigVarWeight": false,
+              "weight": 1.0,
+              "configVarWeight": null,
+              "record": false,
+              "memoryStrKey": null,
+              "memoryKey": 0,
+              "deltaWeight": 0.0
+            },
+            {
+              "$type": "miHoYo.HYG.SelectorItem, Assembly-CSharp",
+              "id": 0,
+              "conditionWrapper": {
+                "$type": "miHoYo.HYG.SelectorCondition, Assembly-CSharp",
+                "desc": "新手引导",
+                "condition": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarEqualToBool, Assembly-CSharp",
+                  "_lhs": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetWatcherBool, Assembly-CSharp",
+                    "key": {
+                      "$type": "miHoYo.HYG.WatcherKey, Assembly-CSharp",
+                      "key": 213,
+                      "name": "萨飞里_派遣 新手引导",
+                      "valueType": 2,
+                      "temp": false
+                    },
+                    "Override": false,
+                    "OverrideValue": false
+                  },
+                  "_rhs": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+                    "_value": false,
+                    "Override": false,
+                    "OverrideValue": false
+                  },
+                  "Override": false,
+                  "OverrideValue": false
+                }
+              },
+              "isExclusive": true,
               "exclusivePossibility": 100,
               "useConfigVarWeight": false,
               "weight": 1.0,
@@ -154,19 +242,20 @@
           "$type": "System.Int32[], mscorlib",
           "$values": [
             1,
-            14
+            6,
+            19
           ]
         },
-        "nodeId": 1,
+        "nodeId": 16,
         "index": 0,
         "parentIndex": -1,
-        "Guid": "5d7f448c-b989-48e5-b0c8-f6874a1ecbc3"
+        "Guid": "44a847c3-bfbf-472e-a7a4-17f6bb3144f0"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgDialogGroup, Assembly-CSharp",
         "desc": null,
         "textMaxIndex": 0,
-        "textGroupId": "1010132201_1",
+        "textGroupId": "1010132201_10",
         "useFixedDialogGroup": false,
         "fixedDialogGroupId": 0,
         "dialogs": {
@@ -176,60 +265,190 @@
               "$type": "miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp",
               "textId": 0,
               "pTimelineId": "",
-              "speakerKey": "PerformTrigger",
+              "speakerKey": "萨飞里",
               "voiceId": "",
               "fakeName": null,
               "fakeName_l10n": {
                 "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
-                "textId": "Performance_1010132201_39781_fakeName",
-                "value": null
+                "textId": "Performance_1010132201_2330208951_fakeName",
+                "value": null,
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
               },
-              "content": "{A挑衅坏笑}库拉巴塔！看我手上这两个石头——\n左手，霉运走开，右手，好运降临，\n来吧，选一个？",
+              "content": "{A转耳朵}物资清点完毕，\n只是这次去{地区名}的路线，\n还需要些时间规划。",
               "content_l10n": {
                 "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
-                "textId": "Performance_1010132201_39781_content",
-                "value": "{A挑衅坏笑}库拉巴塔！看我手上这两个石头——\n左手，霉运走开，右手，好运降临，\n来吧，选一个？"
+                "textId": "Performance_1010132201_2330208951_content",
+                "value": "{A转耳朵}物资清点完毕，\n只是这次去{地区名}的路线，\n还需要些时间规划。",
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
               },
               "nextRule": 0,
               "guardPeriod": 0.0,
               "desc": null,
               "voiceText": null,
               "expressiveDesc": null,
-              "textGuid": 39781
+              "textGuid": 2330208951
+            },
+            {
+              "$type": "miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp",
+              "textId": 0,
+              "pTimelineId": "",
+              "speakerKey": "萨飞里",
+              "voiceId": "",
+              "fakeName": null,
+              "fakeName_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_1010132201_2330208952_fakeName",
+                "value": null,
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "content": "不用担心，\n等一切沉入夜色的时候，{A看我的}我会准时出发。",
+              "content_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_1010132201_2330208952_content",
+                "value": "不用担心，\n等一切沉入夜色的时候，{A看我的}我会准时出发。",
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "nextRule": 0,
+              "guardPeriod": 0.0,
+              "desc": null,
+              "voiceText": null,
+              "expressiveDesc": null,
+              "textGuid": 2330208952
             }
           ]
         },
         "banPT": false,
         "positionInfo": null,
-        "_output": 2,
-        "nodeId": 2,
+        "_output": 3,
+        "nodeId": 17,
         "index": 1,
         "parentIndex": 0,
-        "Guid": "7f533ed6-c3ce-4fa9-8fdc-75d9ad3f063c"
+        "Guid": "688f7947-8ab4-406c-a8ac-2423f4397c16"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgDialogGroup, Assembly-CSharp",
+        "desc": null,
+        "textMaxIndex": 0,
+        "textGroupId": "1010132201_11",
+        "useFixedDialogGroup": false,
+        "fixedDialogGroupId": 0,
+        "dialogs": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp",
+              "textId": 0,
+              "pTimelineId": "",
+              "speakerKey": "萨飞里",
+              "voiceId": "",
+              "fakeName": null,
+              "fakeName_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_1010132201_2330208940_fakeName",
+                "value": null,
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "content": "{A加油}哈！\n我们今天的探险计划是——？",
+              "content_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_1010132201_2330208940_content",
+                "value": "{A加油}哈！\n我们今天的探险计划是——？",
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "nextRule": 0,
+              "guardPeriod": 0.0,
+              "desc": null,
+              "voiceText": null,
+              "expressiveDesc": null,
+              "textGuid": 2330208940
+            },
+            {
+              "$type": "miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp",
+              "textId": 0,
+              "pTimelineId": "",
+              "speakerKey": "萨飞里",
+              "voiceId": "",
+              "fakeName": null,
+              "fakeName_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_1010132201_2330208941_fakeName",
+                "value": null,
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "content": "{A两眼放光}新航路，新发现，\n我已经开始期待这次的旅程了！",
+              "content_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_1010132201_2330208941_content",
+                "value": "{A两眼放光}新航路，新发现，\n我已经开始期待这次的旅程了！",
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "nextRule": 0,
+              "guardPeriod": 0.0,
+              "desc": null,
+              "voiceText": null,
+              "expressiveDesc": null,
+              "textGuid": 2330208941
+            }
+          ]
+        },
+        "banPT": false,
+        "positionInfo": null,
+        "_output": 9,
+        "nodeId": 18,
+        "index": 2,
+        "parentIndex": 19,
+        "Guid": "57c45040-59b9-492f-bbbc-568b034b76cc"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgChoiceGroup, Assembly-CSharp",
+        "showFavorTitle": false,
+        "showFavorLockTips": false,
+        "isShowOnlineBuyLimitInfo": false,
+        "optionPanelStyle": 0,
         "dynamicType": 0,
         "selectTimes": null,
         "selectTagCounts": null,
-        "avoidTags": null,
-        "additionTags": null,
+        "parentTagNew": {
+          "$type": "miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp",
+          "TagId": 0
+        },
+        "avoidTagsNew": null,
+        "additionTagsNew": null,
         "infos": {
           "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp]], mscorlib",
           "$values": [
             {
               "$type": "miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp",
               "condition": null,
-              "iconId": 0,
               "style": 0,
+              "newIconId": 0,
               "choiceContent": {
                 "$type": "miHoYo.HYG.Performance.ChoiceContent, Assembly-CSharp",
                 "useContentSelector": false,
-                "content": "左边",
+                "content": "计划有变，探险取消",
                 "content_l10n": {
                   "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
-                  "textId": "Performance_1010132201_39783_content",
-                  "value": "左边"
+                  "textId": "Performance_1010132201_2330208953_content",
+                  "value": "计划有变，探险取消",
+                  "duration": null,
+                  "durationMap": null,
+                  "chatType": 0
                 },
                 "contentSelector": {
                   "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.StringSelectorItem, Assembly-CSharp]], mscorlib",
@@ -237,23 +456,26 @@
                 },
                 "desc": null,
                 "textId": 0,
-                "textGuid": 39783
+                "textGuid": 2330208953
               },
               "choiceId": 1
             },
             {
               "$type": "miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp",
               "condition": null,
-              "iconId": 0,
               "style": 0,
+              "newIconId": 0,
               "choiceContent": {
                 "$type": "miHoYo.HYG.Performance.ChoiceContent, Assembly-CSharp",
                 "useContentSelector": false,
-                "content": "右边",
+                "content": "一路顺风，注意安全",
                 "content_l10n": {
                   "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
-                  "textId": "Performance_1010132201_39784_content",
-                  "value": "右边"
+                  "textId": "Performance_1010132201_2330208954_content",
+                  "value": "一路顺风，注意安全",
+                  "duration": null,
+                  "durationMap": null,
+                  "chatType": 0
                 },
                 "contentSelector": {
                   "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.StringSelectorItem, Assembly-CSharp]], mscorlib",
@@ -261,217 +483,874 @@
                 },
                 "desc": null,
                 "textId": 0,
-                "textGuid": 39784
+                "textGuid": 2330208954
               },
               "choiceId": 2
-            },
-            {
-              "$type": "miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp",
-              "condition": null,
-              "iconId": 0,
-              "style": 0,
-              "choiceContent": {
-                "$type": "miHoYo.HYG.Performance.ChoiceContent, Assembly-CSharp",
-                "useContentSelector": false,
-                "content": "你帮我选",
-                "content_l10n": {
-                  "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
-                  "textId": "Performance_1010132201_39785_content",
-                  "value": "你帮我选"
-                },
-                "contentSelector": {
-                  "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.StringSelectorItem, Assembly-CSharp]], mscorlib",
-                  "$values": []
-                },
-                "desc": null,
-                "textId": 0,
-                "textGuid": 39785
-              },
-              "choiceId": 3
             }
           ]
         },
-        "textGroupId": "1010132201_2",
+        "textGroupId": "1010132201_12",
         "textMaxIndex": 0,
-        "choiceMaxIndex": 3,
+        "choiceMaxIndex": 2,
         "_dynamicOut": -1,
         "_branches": {
           "$type": "System.Int32[], mscorlib",
           "$values": [
-            3,
-            10,
-            11
+            4,
+            5
           ]
         },
-        "nodeId": 3,
-        "index": 2,
-        "parentIndex": 14,
-        "Guid": "93b26760-e20e-4a01-97cd-6b8c86004623"
-      },
-      {
-        "$type": "miHoYo.HYG.Performance.CfgDialogGroup, Assembly-CSharp",
-        "desc": null,
-        "textMaxIndex": 0,
-        "textGroupId": "1010132201_3",
-        "useFixedDialogGroup": false,
-        "fixedDialogGroupId": 0,
-        "dialogs": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp]], mscorlib",
-          "$values": [
-            {
-              "$type": "miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp",
-              "textId": 0,
-              "pTimelineId": "",
-              "speakerKey": "PerformTrigger",
-              "voiceId": "",
-              "fakeName": null,
-              "fakeName_l10n": {
-                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
-                "textId": "Performance_1010132201_39786_fakeName",
-                "value": null
-              },
-              "content": "左边？按照我的习惯，遇到岔路先选左边。\n看来我们很有默契，那就，确——定了？\n好，我来看看！",
-              "content_l10n": {
-                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
-                "textId": "Performance_1010132201_39786_content",
-                "value": "左边？按照我的习惯，遇到岔路先选左边。\n看来我们很有默契，那就，确——定了？\n好，我来看看！"
-              },
-              "nextRule": 0,
-              "guardPeriod": 0.0,
-              "desc": null,
-              "voiceText": null,
-              "expressiveDesc": null,
-              "textGuid": 39786
-            }
-          ]
-        },
-        "banPT": false,
-        "positionInfo": null,
-        "_output": 4,
-        "nodeId": 4,
+        "nodeId": 19,
         "index": 3,
-        "parentIndex": 2,
-        "Guid": "a8a335b7-d7ae-4145-b5fb-7d20c8878a07"
-      },
-      {
-        "$type": "miHoYo.HYG.Performance.CfgBranch, Assembly-CSharp",
-        "condition": {
-          "$type": "miHoYo.HYG.DataSharing.ConfigVarCompareUInt32, Assembly-CSharp",
-          "_lhs": {
-            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetNpcPersonaGameRewardItemConfigId, Assembly-CSharp",
-            "_npcConfigID": {
-              "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPerformanceTriggerConfigId, Assembly-CSharp"
-            }
-          },
-          "_operatorType": 0,
-          "_rhs": {
-            "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUInt32, Assembly-CSharp",
-            "_value": 30131
-          }
-        },
-        "_successOut": 5,
-        "_failOut": 9,
-        "nodeId": 5,
-        "index": 4,
-        "parentIndex": 13,
-        "Guid": "6eceb36f-8a37-4326-9744-6b03f4ee580c"
-      },
-      {
-        "$type": "miHoYo.HYG.Performance.CfgDialogGroup, Assembly-CSharp",
-        "desc": null,
-        "textMaxIndex": 0,
-        "textGroupId": "1010132201_4",
-        "useFixedDialogGroup": false,
-        "fixedDialogGroupId": 0,
-        "dialogs": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp]], mscorlib",
-          "$values": [
-            {
-              "$type": "miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp",
-              "textId": 0,
-              "pTimelineId": "",
-              "speakerKey": "PerformTrigger",
-              "voiceId": "",
-              "fakeName": null,
-              "fakeName_l10n": {
-                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
-                "textId": "Performance_1010132201_39790_fakeName",
-                "value": null
-              },
-              "content": "{A虎啸}<style=SizeBig>哈——</style>\n是<style=Highlight>{奖励石}</style>！\n恭喜，好运果然降临了，库拉巴塔！",
-              "content_l10n": {
-                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
-                "textId": "Performance_1010132201_39790_content",
-                "value": "{A虎啸}<style=SizeBig>哈——</style>\n是<style=Highlight>{奖励石}</style>！\n恭喜，好运果然降临了，库拉巴塔！"
-              },
-              "nextRule": 0,
-              "guardPeriod": 0.0,
-              "desc": null,
-              "voiceText": null,
-              "expressiveDesc": null,
-              "textGuid": 39790
-            }
-          ]
-        },
-        "banPT": false,
-        "positionInfo": null,
-        "_output": 6,
-        "nodeId": 6,
-        "index": 5,
-        "parentIndex": 4,
-        "Guid": "9a3b7a5f-e8d1-45d3-a8d2-026cfe98aaf6"
+        "parentIndex": 1,
+        "Guid": "947ce485-9aa9-4bc9-a6a5-64ba322413cf"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgPerformAction, Assembly-CSharp",
         "action": {
-          "$type": "miHoYo.HYG.Performance.SaveToCache, Assembly-CSharp",
-          "key": "礼物ID",
-          "value": {
-            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetNpcPersonaGameRewardItemConfigId, Assembly-CSharp",
-            "_npcConfigID": {
-              "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPerformanceTriggerConfigId, Assembly-CSharp"
-            }
-          },
-          "forceOverride": false
+          "$type": "miHoYo.HYG.Performance.Dispatch_CancelAndRefund, Assembly-CSharp",
+          "specialInteractionId": 9
         },
         "infos": {
           "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp]], mscorlib",
           "$values": [
             {
               "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
-              "content": "默认"
+              "content": "成功"
+            },
+            {
+              "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
+              "content": "失败"
             }
           ]
         },
         "_branches": {
           "$type": "System.Int32[], mscorlib",
           "$values": [
-            7
+            22,
+            22
           ]
         },
-        "nodeId": 7,
-        "index": 6,
-        "parentIndex": 9,
-        "Guid": "05fc5708-4d95-4834-81b1-4b9c43bcc994"
+        "nodeId": 20,
+        "index": 4,
+        "parentIndex": 3,
+        "Guid": "bd12d56b-ed78-41b9-a5ad-3ce7a9a087e1"
       },
       {
-        "$type": "miHoYo.HYG.Performance.CfgPerformJumper, Assembly-CSharp",
-        "useStaticId": true,
-        "performId": 1000002201,
-        "speakerKey": null,
-        "topicIndex": 0,
-        "_output": 8,
-        "nodeId": 8,
+        "$type": "miHoYo.HYG.Performance.CfgDialogGroup, Assembly-CSharp",
+        "desc": null,
+        "textMaxIndex": 0,
+        "textGroupId": "1010132201_13",
+        "useFixedDialogGroup": false,
+        "fixedDialogGroupId": 0,
+        "dialogs": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp",
+              "textId": 0,
+              "pTimelineId": "",
+              "speakerKey": "萨飞里",
+              "voiceId": "",
+              "fakeName": null,
+              "fakeName_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_1010132201_2330208956_fakeName",
+                "value": null,
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "content": "{A笑哈哈}没问题！\n保证平安回来。\n已经等不及想和你分享这次旅途的收获了。",
+              "content_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_1010132201_2330208956_content",
+                "value": "{A笑哈哈}没问题！\n保证平安回来。\n已经等不及想和你分享这次旅途的收获了。",
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "nextRule": 0,
+              "guardPeriod": 0.0,
+              "desc": null,
+              "voiceText": null,
+              "expressiveDesc": null,
+              "textGuid": 2330208956
+            }
+          ]
+        },
+        "banPT": false,
+        "positionInfo": null,
+        "_output": -1,
+        "nodeId": 21,
+        "index": 5,
+        "parentIndex": 3,
+        "Guid": "e0c743da-d3ae-49ce-b86f-07cec7b4ebcf"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgDialogGroup, Assembly-CSharp",
+        "desc": null,
+        "textMaxIndex": 0,
+        "textGroupId": "1010132201_14",
+        "useFixedDialogGroup": false,
+        "fixedDialogGroupId": 0,
+        "dialogs": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp",
+              "textId": 0,
+              "pTimelineId": "",
+              "speakerKey": "萨飞里",
+              "voiceId": "",
+              "fakeName": null,
+              "fakeName_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_1010132201_2330208928_fakeName",
+                "value": null,
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "content": "{A加油}<style=PlayerName>{玩家昵称}</style>——\n准备好开始我们的第一次，\n特别合作探险了吗？",
+              "content_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_1010132201_2330208928_content",
+                "value": "{A加油}<style=PlayerName>{玩家昵称}</style>——\n准备好开始我们的第一次，\n特别合作探险了吗？",
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "nextRule": 0,
+              "guardPeriod": 0.0,
+              "desc": null,
+              "voiceText": null,
+              "expressiveDesc": null,
+              "textGuid": 2330208928
+            },
+            {
+              "$type": "miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp",
+              "textId": 0,
+              "pTimelineId": "",
+              "speakerKey": "萨飞里",
+              "voiceId": "",
+              "fakeName": null,
+              "fakeName_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_1010132201_1959605920_fakeName",
+                "value": null,
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "content": "{A笑哈哈}不用紧张，“特别合作”的意思其实是——\n你只需要<style=Highlight>准备物资、指定目的地</style>，\n而规划路线、外出探险的事，交给我就好！",
+              "content_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_1010132201_1959605920_content",
+                "value": "{A笑哈哈}不用紧张，“特别合作”的意思其实是——\n你只需要<style=Highlight>准备物资、指定目的地</style>，\n而规划路线、外出探险的事，交给我就好！",
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "nextRule": 0,
+              "guardPeriod": 0.0,
+              "desc": null,
+              "voiceText": null,
+              "expressiveDesc": null,
+              "textGuid": 1959605920
+            },
+            {
+              "$type": "miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp",
+              "textId": 0,
+              "pTimelineId": "",
+              "speakerKey": "萨飞里",
+              "voiceId": "",
+              "fakeName": null,
+              "fakeName_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_1010132201_2330208929_fakeName",
+                "value": null,
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "content": "需要注意的是，物资里<style=Highlight>必备2份食物</style>——\n{A点头}吃得够多才能走得够远。\n可以的话，再备些常用<style=Highlight>材料</style>作为<style=Highlight>应急物资</style>。",
+              "content_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_1010132201_2330208929_content",
+                "value": "需要注意的是，物资里<style=Highlight>必备2份食物</style>——\n{A点头}吃得够多才能走得够远。\n可以的话，再备些常用<style=Highlight>材料</style>作为<style=Highlight>应急物资</style>。",
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "nextRule": 0,
+              "guardPeriod": 0.0,
+              "desc": null,
+              "voiceText": null,
+              "expressiveDesc": null,
+              "textGuid": 2330208929
+            },
+            {
+              "$type": "miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp",
+              "textId": 0,
+              "pTimelineId": "",
+              "speakerKey": "萨飞里",
+              "voiceId": "",
+              "fakeName": null,
+              "fakeName_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_1010132201_2330208930_fakeName",
+                "value": null,
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "content": "整备完成后，就可以指定这次的目的地了。\n{A看我的}至于<style=Highlight>我的出发时间</style>——\n当然是一切都<style=Highlight>沉入夜色的时候</style>最，安全！",
+              "content_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_1010132201_2330208930_content",
+                "value": "整备完成后，就可以指定这次的目的地了。\n{A看我的}至于<style=Highlight>我的出发时间</style>——\n当然是一切都<style=Highlight>沉入夜色的时候</style>最，安全！",
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "nextRule": 0,
+              "guardPeriod": 0.0,
+              "desc": null,
+              "voiceText": null,
+              "expressiveDesc": null,
+              "textGuid": 2330208930
+            },
+            {
+              "$type": "miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp",
+              "textId": 0,
+              "pTimelineId": "",
+              "speakerKey": "萨飞里",
+              "voiceId": "",
+              "fakeName": null,
+              "fakeName_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_1010132201_2330208931_fakeName",
+                "value": null,
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "content": "最后最关键的——旅途中的收获，\n{A笑哈哈}我会寄飞件给你，这样就不怕遗漏了。\n总之一切有我，不用担心，库拉巴塔！",
+              "content_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_1010132201_2330208931_content",
+                "value": "最后最关键的——旅途中的收获，\n{A笑哈哈}我会寄飞件给你，这样就不怕遗漏了。\n总之一切有我，不用担心，库拉巴塔！",
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "nextRule": 0,
+              "guardPeriod": 0.0,
+              "desc": null,
+              "voiceText": null,
+              "expressiveDesc": null,
+              "textGuid": 2330208931
+            }
+          ]
+        },
+        "banPT": false,
+        "positionInfo": null,
+        "_output": 7,
+        "nodeId": 22,
+        "index": 6,
+        "parentIndex": 7,
+        "Guid": "658b98f0-c08b-4b0e-99ae-034a328c864e"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgChoiceGroup, Assembly-CSharp",
+        "showFavorTitle": false,
+        "showFavorLockTips": false,
+        "isShowOnlineBuyLimitInfo": false,
+        "optionPanelStyle": 0,
+        "dynamicType": 0,
+        "selectTimes": null,
+        "selectTagCounts": null,
+        "parentTagNew": {
+          "$type": "miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp",
+          "TagId": 0
+        },
+        "avoidTagsNew": null,
+        "additionTagsNew": null,
+        "infos": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp",
+              "condition": null,
+              "style": 0,
+              "newIconId": 0,
+              "choiceContent": {
+                "$type": "miHoYo.HYG.Performance.ChoiceContent, Assembly-CSharp",
+                "useContentSelector": false,
+                "content": "我完全明白了！",
+                "content_l10n": {
+                  "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                  "textId": "Performance_1010132201_2330208932_content",
+                  "value": "我完全明白了！",
+                  "duration": null,
+                  "durationMap": null,
+                  "chatType": 0
+                },
+                "contentSelector": {
+                  "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.StringSelectorItem, Assembly-CSharp]], mscorlib",
+                  "$values": []
+                },
+                "desc": null,
+                "textId": 0,
+                "textGuid": 2330208932
+              },
+              "choiceId": 1
+            },
+            {
+              "$type": "miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp",
+              "condition": null,
+              "style": 0,
+              "newIconId": 0,
+              "choiceContent": {
+                "$type": "miHoYo.HYG.Performance.ChoiceContent, Assembly-CSharp",
+                "useContentSelector": false,
+                "content": "可以再讲一遍吗？",
+                "content_l10n": {
+                  "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                  "textId": "Performance_1010132201_2330208933_content",
+                  "value": "可以再讲一遍吗？",
+                  "duration": null,
+                  "durationMap": null,
+                  "chatType": 0
+                },
+                "contentSelector": {
+                  "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.StringSelectorItem, Assembly-CSharp]], mscorlib",
+                  "$values": []
+                },
+                "desc": null,
+                "textId": 0,
+                "textGuid": 2330208933
+              },
+              "choiceId": 2
+            }
+          ]
+        },
+        "textGroupId": "1010132201_15",
+        "textMaxIndex": 0,
+        "choiceMaxIndex": 2,
+        "_dynamicOut": -1,
+        "_branches": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            8,
+            6
+          ]
+        },
+        "nodeId": 23,
         "index": 7,
         "parentIndex": 6,
-        "Guid": "8e2216b4-e695-415f-aab1-f9f908dbdb52"
+        "Guid": "642ce742-bdeb-4f6d-8f1d-47f4b9c70f05"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgPerformWatcher, Assembly-CSharp",
+        "key": {
+          "$type": "miHoYo.HYG.WatcherKey, Assembly-CSharp",
+          "key": 213,
+          "name": "萨飞里_派遣 新手引导",
+          "valueType": 2,
+          "temp": false
+        },
+        "configVarValue": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "_value": true,
+          "Override": false,
+          "OverrideValue": false
+        },
+        "_output": 19,
+        "_failedOut": 19,
+        "nodeId": 24,
+        "index": 8,
+        "parentIndex": 7,
+        "Guid": "5574ea3e-c390-4a8d-af06-c28889da50e9"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgPerformAction, Assembly-CSharp",
         "action": {
-          "$type": "miHoYo.HYG.Performance.FinishNPCPersonaGame, Assembly-CSharp",
-          "guid": {
-            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPerformanceTrigger, Assembly-CSharp"
+          "$type": "miHoYo.HYG.Performance.OpenUI_NpcDispatchPacketPage, Assembly-CSharp",
+          "specialInteractionId": 9
+        },
+        "infos": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
+              "content": "关闭-准备未完成"
+            },
+            {
+              "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
+              "content": "关闭-准备完成"
+            }
+          ]
+        },
+        "_branches": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            10,
+            14
+          ]
+        },
+        "nodeId": 25,
+        "index": 9,
+        "parentIndex": 26,
+        "Guid": "37d6638a-3a72-4733-b55f-49157d294609"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgDialogGroup, Assembly-CSharp",
+        "desc": null,
+        "textMaxIndex": 0,
+        "textGroupId": "1010132201_16",
+        "useFixedDialogGroup": false,
+        "fixedDialogGroupId": 0,
+        "dialogs": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp",
+              "textId": 0,
+              "pTimelineId": "",
+              "speakerKey": "萨飞里",
+              "voiceId": "",
+              "fakeName": null,
+              "fakeName_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_1010132201_2330208946_fakeName",
+                "value": null,
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "content": "{A点头}探险前需要充足的准备和计划，\n慢慢来不着急，库拉巴塔！",
+              "content_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_1010132201_2330208946_content",
+                "value": "{A点头}探险前需要充足的准备和计划，\n慢慢来不着急，库拉巴塔！",
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "nextRule": 0,
+              "guardPeriod": 0.0,
+              "desc": null,
+              "voiceText": null,
+              "expressiveDesc": null,
+              "textGuid": 2330208946
+            }
+          ]
+        },
+        "banPT": false,
+        "positionInfo": null,
+        "_output": 11,
+        "nodeId": 26,
+        "index": 10,
+        "parentIndex": 9,
+        "Guid": "6d46b6f8-bb17-451a-8e03-c4978784a92e"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgChoiceGroup, Assembly-CSharp",
+        "showFavorTitle": false,
+        "showFavorLockTips": false,
+        "isShowOnlineBuyLimitInfo": false,
+        "optionPanelStyle": 0,
+        "dynamicType": 0,
+        "selectTimes": null,
+        "selectTagCounts": null,
+        "parentTagNew": {
+          "$type": "miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp",
+          "TagId": 0
+        },
+        "avoidTagsNew": null,
+        "additionTagsNew": null,
+        "infos": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp",
+              "condition": null,
+              "style": 0,
+              "newIconId": 0,
+              "choiceContent": {
+                "$type": "miHoYo.HYG.Performance.ChoiceContent, Assembly-CSharp",
+                "useContentSelector": false,
+                "content": "继续整备物资",
+                "content_l10n": {
+                  "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                  "textId": "Performance_1010132201_2330208947_content",
+                  "value": "继续整备物资",
+                  "duration": null,
+                  "durationMap": null,
+                  "chatType": 0
+                },
+                "contentSelector": {
+                  "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.StringSelectorItem, Assembly-CSharp]], mscorlib",
+                  "$values": []
+                },
+                "desc": null,
+                "textId": 0,
+                "textGuid": 2330208947
+              },
+              "choiceId": 1
+            },
+            {
+              "$type": "miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp",
+              "condition": null,
+              "style": 0,
+              "newIconId": 0,
+              "choiceContent": {
+                "$type": "miHoYo.HYG.Performance.ChoiceContent, Assembly-CSharp",
+                "useContentSelector": false,
+                "content": "取消旅行计划",
+                "content_l10n": {
+                  "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                  "textId": "Performance_1010132201_2330208948_content",
+                  "value": "取消旅行计划",
+                  "duration": null,
+                  "durationMap": null,
+                  "chatType": 0
+                },
+                "contentSelector": {
+                  "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.StringSelectorItem, Assembly-CSharp]], mscorlib",
+                  "$values": []
+                },
+                "desc": null,
+                "textId": 0,
+                "textGuid": 2330208948
+              },
+              "choiceId": 2
+            }
+          ]
+        },
+        "textGroupId": "1010132201_17",
+        "textMaxIndex": 0,
+        "choiceMaxIndex": 2,
+        "_dynamicOut": -1,
+        "_branches": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            12,
+            13
+          ]
+        },
+        "nodeId": 27,
+        "index": 11,
+        "parentIndex": 10,
+        "Guid": "da02af98-ff1e-4224-a990-68ce8a56091e"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgDialogGroup, Assembly-CSharp",
+        "desc": null,
+        "textMaxIndex": 0,
+        "textGroupId": "1010132201_18",
+        "useFixedDialogGroup": false,
+        "fixedDialogGroupId": 0,
+        "dialogs": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp",
+              "textId": 0,
+              "pTimelineId": "",
+              "speakerKey": "萨飞里",
+              "voiceId": "",
+              "fakeName": null,
+              "fakeName_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_1010132201_2330208949_fakeName",
+                "value": null,
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "content": "{A笑哈哈}没问题！\n备上足够的物资——\n给我们的探险开个好头。",
+              "content_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_1010132201_2330208949_content",
+                "value": "{A笑哈哈}没问题！\n备上足够的物资——\n给我们的探险开个好头。",
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "nextRule": 0,
+              "guardPeriod": 0.0,
+              "desc": null,
+              "voiceText": null,
+              "expressiveDesc": null,
+              "textGuid": 2330208949
+            }
+          ]
+        },
+        "banPT": false,
+        "positionInfo": null,
+        "_output": 9,
+        "nodeId": 28,
+        "index": 12,
+        "parentIndex": 11,
+        "Guid": "83a56a33-6d4d-42eb-ba91-6df1f442da62"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgDialogGroup, Assembly-CSharp",
+        "desc": null,
+        "textMaxIndex": 0,
+        "textGroupId": "1010132201_19",
+        "useFixedDialogGroup": false,
+        "fixedDialogGroupId": 0,
+        "dialogs": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp",
+              "textId": 0,
+              "pTimelineId": "",
+              "speakerKey": "萨飞里",
+              "voiceId": "",
+              "fakeName": null,
+              "fakeName_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_1010132201_2330208950_fakeName",
+                "value": null,
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "content": "{A点头}了解！<style=PlayerName>{玩家昵称}</style>要是有其他计划，\n尽管告诉我——\n我和我的耳朵随时都在。",
+              "content_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_1010132201_2330208950_content",
+                "value": "{A点头}了解！<style=PlayerName>{玩家昵称}</style>要是有其他计划，\n尽管告诉我——\n我和我的耳朵随时都在。",
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "nextRule": 0,
+              "guardPeriod": 0.0,
+              "desc": null,
+              "voiceText": null,
+              "expressiveDesc": null,
+              "textGuid": 2330208950
+            }
+          ]
+        },
+        "banPT": false,
+        "positionInfo": null,
+        "_output": 27,
+        "nodeId": 29,
+        "index": 13,
+        "parentIndex": 11,
+        "Guid": "3f4e4d99-88de-4024-9715-605ab7301c59"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgDialogGroup, Assembly-CSharp",
+        "desc": null,
+        "textMaxIndex": 0,
+        "textGroupId": "1010132201_20",
+        "useFixedDialogGroup": false,
+        "fixedDialogGroupId": 0,
+        "dialogs": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp",
+              "textId": 0,
+              "pTimelineId": "",
+              "speakerKey": "萨飞里",
+              "voiceId": "",
+              "fakeName": null,
+              "fakeName_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_1010132201_2330208942_fakeName",
+                "value": null,
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "content": "{A点头}旅行物资整备完成！那么——\n<style=PlayerName>{玩家昵称}</style>，来指定这次的目的地吧！",
+              "content_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_1010132201_2330208942_content",
+                "value": "{A点头}旅行物资整备完成！那么——\n<style=PlayerName>{玩家昵称}</style>，来指定这次的目的地吧！",
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "nextRule": 0,
+              "guardPeriod": 0.0,
+              "desc": null,
+              "voiceText": null,
+              "expressiveDesc": null,
+              "textGuid": 2330208942
+            }
+          ]
+        },
+        "banPT": false,
+        "positionInfo": null,
+        "_output": 15,
+        "nodeId": 30,
+        "index": 14,
+        "parentIndex": 9,
+        "Guid": "f9b1a170-4928-4fe2-8d2a-08968872d786"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgChoiceGroup, Assembly-CSharp",
+        "showFavorTitle": false,
+        "showFavorLockTips": false,
+        "isShowOnlineBuyLimitInfo": false,
+        "optionPanelStyle": 0,
+        "dynamicType": 0,
+        "selectTimes": null,
+        "selectTagCounts": null,
+        "parentTagNew": {
+          "$type": "miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp",
+          "TagId": 0
+        },
+        "avoidTagsNew": null,
+        "additionTagsNew": null,
+        "infos": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp",
+              "condition": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedLogicOr, Assembly-CSharp",
+                "_operands": {
+                  "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]], Assembly-CSharp]], mscorlib",
+                  "$values": [
+                    {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarIsSelectedGalaxyTypeEqual, Assembly-CSharp",
+                      "_galaxyType": 1,
+                      "Override": false,
+                      "OverrideValue": false
+                    },
+                    {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarDidPlayerVisitGalaxyStarSea, Assembly-CSharp",
+                      "_id": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.UInt32, mscorlib]], Assembly-CSharp",
+                        "_value": 1,
+                        "Override": false,
+                        "OverrideValue": false
+                      },
+                      "Override": false,
+                      "OverrideValue": false
+                    }
+                  ]
+                },
+                "Override": false,
+                "OverrideValue": false
+              },
+              "style": 0,
+              "newIconId": 0,
+              "choiceContent": {
+                "$type": "miHoYo.HYG.Performance.ChoiceContent, Assembly-CSharp",
+                "useContentSelector": false,
+                "content": "禾夏",
+                "content_l10n": {
+                  "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                  "textId": "Performance_1010132201_2330208943_content",
+                  "value": "禾夏",
+                  "duration": null,
+                  "durationMap": null,
+                  "chatType": 0
+                },
+                "contentSelector": {
+                  "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.StringSelectorItem, Assembly-CSharp]], mscorlib",
+                  "$values": []
+                },
+                "desc": null,
+                "textId": 0,
+                "textGuid": 2330208943
+              },
+              "choiceId": 1
+            },
+            {
+              "$type": "miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp",
+              "condition": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedLogicOr, Assembly-CSharp",
+                "_operands": {
+                  "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]], Assembly-CSharp]], mscorlib",
+                  "$values": [
+                    {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarIsSelectedGalaxyTypeEqual, Assembly-CSharp",
+                      "_galaxyType": 2,
+                      "Override": false,
+                      "OverrideValue": false
+                    },
+                    {
+                      "$type": "miHoYo.HYG.DataSharing.ConfigVarDidPlayerVisitGalaxyStarSea, Assembly-CSharp",
+                      "_id": {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.UInt32, mscorlib]], Assembly-CSharp",
+                        "_value": 2,
+                        "Override": false,
+                        "OverrideValue": false
+                      },
+                      "Override": false,
+                      "OverrideValue": false
+                    }
+                  ]
+                },
+                "Override": false,
+                "OverrideValue": false
+              },
+              "style": 0,
+              "newIconId": 0,
+              "choiceContent": {
+                "$type": "miHoYo.HYG.Performance.ChoiceContent, Assembly-CSharp",
+                "useContentSelector": false,
+                "content": "塔法",
+                "content_l10n": {
+                  "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                  "textId": "Performance_1010132201_2330208944_content",
+                  "value": "塔法",
+                  "duration": null,
+                  "durationMap": null,
+                  "chatType": 0
+                },
+                "contentSelector": {
+                  "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.StringSelectorItem, Assembly-CSharp]], mscorlib",
+                  "$values": []
+                },
+                "desc": null,
+                "textId": 0,
+                "textGuid": 2330208944
+              },
+              "choiceId": 2
+            }
+          ]
+        },
+        "textGroupId": "1010132201_21",
+        "textMaxIndex": 0,
+        "choiceMaxIndex": 2,
+        "_dynamicOut": -1,
+        "_branches": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            16,
+            17
+          ]
+        },
+        "nodeId": 31,
+        "index": 15,
+        "parentIndex": 14,
+        "Guid": "8e1b25c8-be84-480e-bbe0-0732fac6726c"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgPerformAction, Assembly-CSharp",
+        "action": {
+          "$type": "miHoYo.HYG.Performance.Dispatch_SelectGalaxy, Assembly-CSharp",
+          "specialInteractionId": 9,
+          "galaxyConfigVar": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedInt32, Assembly-CSharp",
+            "_value": 1,
+            "Override": false,
+            "OverrideValue": false
           }
         },
         "infos": {
@@ -479,110 +1358,93 @@
           "$values": [
             {
               "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
-              "content": "成功打开"
+              "content": "成功"
+            },
+            {
+              "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
+              "content": "失败"
             }
           ]
         },
         "_branches": {
           "$type": "System.Int32[], mscorlib",
           "$values": [
-            -1
+            18,
+            18
           ]
         },
-        "nodeId": 9,
-        "index": 8,
-        "parentIndex": 7,
-        "Guid": "7c80599b-bc63-41be-af07-17bb22ae5e6c"
+        "nodeId": 32,
+        "index": 16,
+        "parentIndex": 15,
+        "Guid": "8ab2965a-869d-464b-a070-1947a8206a12"
       },
       {
-        "$type": "miHoYo.HYG.Performance.CfgDialogGroup, Assembly-CSharp",
-        "desc": null,
-        "textMaxIndex": 0,
-        "textGroupId": "1010132201_5",
-        "useFixedDialogGroup": false,
-        "fixedDialogGroupId": 0,
-        "dialogs": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp]], mscorlib",
+        "$type": "miHoYo.HYG.Performance.CfgPerformAction, Assembly-CSharp",
+        "action": {
+          "$type": "miHoYo.HYG.Performance.Dispatch_SelectGalaxy, Assembly-CSharp",
+          "specialInteractionId": 9,
+          "galaxyConfigVar": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedInt32, Assembly-CSharp",
+            "_value": 2,
+            "Override": false,
+            "OverrideValue": false
+          }
+        },
+        "infos": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp]], mscorlib",
           "$values": [
             {
-              "$type": "miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp",
-              "textId": 0,
-              "pTimelineId": "",
-              "speakerKey": "PerformTrigger",
-              "voiceId": "",
-              "fakeName": null,
-              "fakeName_l10n": {
-                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
-                "textId": "Performance_1010132201_39791_fakeName",
-                "value": null
-              },
-              "content": "库拉巴塔——\n{A点头}是<style=Highlight>{奖励石}</style>！\n不错，霉运消失，今天也会顺利度过！",
-              "content_l10n": {
-                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
-                "textId": "Performance_1010132201_39791_content",
-                "value": "库拉巴塔——\n{A点头}是<style=Highlight>{奖励石}</style>！\n不错，霉运消失，今天也会顺利度过！"
-              },
-              "nextRule": 0,
-              "guardPeriod": 0.0,
-              "desc": null,
-              "voiceText": null,
-              "expressiveDesc": null,
-              "textGuid": 39791
+              "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
+              "content": "成功"
+            },
+            {
+              "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
+              "content": "失败"
             }
           ]
         },
-        "banPT": false,
-        "positionInfo": null,
-        "_output": 6,
-        "nodeId": 10,
-        "index": 9,
-        "parentIndex": 4,
-        "Guid": "80771233-c204-4cb5-81db-19e6e22c3d75"
+        "_branches": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            20,
+            20
+          ]
+        },
+        "nodeId": 33,
+        "index": 17,
+        "parentIndex": 15,
+        "Guid": "7f188173-e548-4769-9c10-d2d45396f4cc"
       },
       {
-        "$type": "miHoYo.HYG.Performance.CfgDialogGroup, Assembly-CSharp",
-        "desc": null,
-        "textMaxIndex": 0,
-        "textGroupId": "1010132201_6",
-        "useFixedDialogGroup": false,
-        "fixedDialogGroupId": 0,
-        "dialogs": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp]], mscorlib",
+        "$type": "miHoYo.HYG.Performance.CfgPerformAction, Assembly-CSharp",
+        "action": {
+          "$type": "miHoYo.HYG.Performance.Dispatch_DeductMaterials, Assembly-CSharp",
+          "specialInteractionId": 9
+        },
+        "infos": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp]], mscorlib",
           "$values": [
             {
-              "$type": "miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp",
-              "textId": 0,
-              "pTimelineId": "",
-              "speakerKey": "PerformTrigger",
-              "voiceId": "",
-              "fakeName": null,
-              "fakeName_l10n": {
-                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
-                "textId": "Performance_1010132201_39787_fakeName",
-                "value": null
-              },
-              "content": "右边？是你的耳朵告诉你的吗？\n确——定了？\n好，我来看看！",
-              "content_l10n": {
-                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
-                "textId": "Performance_1010132201_39787_content",
-                "value": "右边？是你的耳朵告诉你的吗？\n确——定了？\n好，我来看看！"
-              },
-              "nextRule": 0,
-              "guardPeriod": 0.0,
-              "desc": null,
-              "voiceText": null,
-              "expressiveDesc": null,
-              "textGuid": 39787
+              "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
+              "content": "成功"
+            },
+            {
+              "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
+              "content": "失败"
             }
           ]
         },
-        "banPT": false,
-        "positionInfo": null,
-        "_output": 4,
-        "nodeId": 11,
-        "index": 10,
-        "parentIndex": 2,
-        "Guid": "6603a8b3-4664-48eb-b457-9cb2ef2c985d"
+        "_branches": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            21,
+            21
+          ]
+        },
+        "nodeId": 34,
+        "index": 18,
+        "parentIndex": 16,
+        "Guid": "9d159cee-4b89-4d39-8c8a-0f00c5475ccf"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgNextSelector, Assembly-CSharp",
@@ -594,10 +1456,59 @@
               "id": 0,
               "conditionWrapper": {
                 "$type": "miHoYo.HYG.SelectorCondition, Assembly-CSharp",
-                "desc": null,
-                "condition": null
+                "desc": "首次解锁塔法",
+                "condition": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedLogicAnd, Assembly-CSharp",
+                  "_operands": {
+                    "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]], Assembly-CSharp]], mscorlib",
+                    "$values": [
+                      {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarEqualToBool, Assembly-CSharp",
+                        "_lhs": {
+                          "$type": "miHoYo.HYG.DataSharing.ConfigVarGetWatcherBool, Assembly-CSharp",
+                          "key": {
+                            "$type": "miHoYo.HYG.WatcherKey, Assembly-CSharp",
+                            "key": 215,
+                            "name": "萨飞里_派遣  首次可去塔法",
+                            "valueType": 2,
+                            "temp": false
+                          },
+                          "Override": false,
+                          "OverrideValue": false
+                        },
+                        "_rhs": {
+                          "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+                          "_value": false,
+                          "Override": false,
+                          "OverrideValue": false
+                        },
+                        "Override": false,
+                        "OverrideValue": false
+                      },
+                      {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarIsSelectedGalaxyTypeEqual, Assembly-CSharp",
+                        "_galaxyType": 1,
+                        "Override": false,
+                        "OverrideValue": false
+                      },
+                      {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarDidPlayerVisitGalaxyStarSea, Assembly-CSharp",
+                        "_id": {
+                          "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.UInt32, mscorlib]], Assembly-CSharp",
+                          "_value": 2,
+                          "Override": false,
+                          "OverrideValue": false
+                        },
+                        "Override": false,
+                        "OverrideValue": false
+                      }
+                    ]
+                  },
+                  "Override": false,
+                  "OverrideValue": false
+                }
               },
-              "isExclusive": false,
+              "isExclusive": true,
               "exclusivePossibility": 100,
               "useConfigVarWeight": false,
               "weight": 1.0,
@@ -612,7 +1523,74 @@
               "id": 0,
               "conditionWrapper": {
                 "$type": "miHoYo.HYG.SelectorCondition, Assembly-CSharp",
-                "desc": null,
+                "desc": "首次解锁禾夏",
+                "condition": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedLogicAnd, Assembly-CSharp",
+                  "_operands": {
+                    "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]], Assembly-CSharp]], mscorlib",
+                    "$values": [
+                      {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarEqualToBool, Assembly-CSharp",
+                        "_lhs": {
+                          "$type": "miHoYo.HYG.DataSharing.ConfigVarGetWatcherBool, Assembly-CSharp",
+                          "key": {
+                            "$type": "miHoYo.HYG.WatcherKey, Assembly-CSharp",
+                            "key": 214,
+                            "name": "萨飞里_派遣  首次可去禾夏",
+                            "valueType": 2,
+                            "temp": false
+                          },
+                          "Override": false,
+                          "OverrideValue": false
+                        },
+                        "_rhs": {
+                          "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+                          "_value": false,
+                          "Override": false,
+                          "OverrideValue": false
+                        },
+                        "Override": false,
+                        "OverrideValue": false
+                      },
+                      {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarIsSelectedGalaxyTypeEqual, Assembly-CSharp",
+                        "_galaxyType": 2,
+                        "Override": false,
+                        "OverrideValue": false
+                      },
+                      {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarDidPlayerVisitGalaxyStarSea, Assembly-CSharp",
+                        "_id": {
+                          "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.UInt32, mscorlib]], Assembly-CSharp",
+                          "_value": 1,
+                          "Override": false,
+                          "OverrideValue": false
+                        },
+                        "Override": false,
+                        "OverrideValue": false
+                      }
+                    ]
+                  },
+                  "Override": false,
+                  "OverrideValue": false
+                }
+              },
+              "isExclusive": true,
+              "exclusivePossibility": 100,
+              "useConfigVarWeight": false,
+              "weight": 1.0,
+              "configVarWeight": null,
+              "record": false,
+              "memoryStrKey": null,
+              "memoryKey": 0,
+              "deltaWeight": 0.0
+            },
+            {
+              "$type": "miHoYo.HYG.SelectorItem, Assembly-CSharp",
+              "id": 0,
+              "conditionWrapper": {
+                "$type": "miHoYo.HYG.SelectorCondition, Assembly-CSharp",
+                "desc": "通用引入语",
                 "condition": null
               },
               "isExclusive": false,
@@ -631,20 +1609,52 @@
         "_branches": {
           "$type": "System.Int32[], mscorlib",
           "$values": [
-            12,
-            13
+            23,
+            24,
+            2
           ]
         },
-        "nodeId": 12,
-        "index": 11,
-        "parentIndex": 2,
-        "Guid": "826b379b-5c5e-498e-a2e5-6f72f62a16ec"
+        "nodeId": 36,
+        "index": 19,
+        "parentIndex": 8,
+        "Guid": "35bb56cd-db0d-4f3e-8ca1-fd00d17d55c8"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgPerformAction, Assembly-CSharp",
+        "action": {
+          "$type": "miHoYo.HYG.Performance.Dispatch_DeductMaterials, Assembly-CSharp",
+          "specialInteractionId": 9
+        },
+        "infos": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
+              "content": "成功"
+            },
+            {
+              "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
+              "content": "失败"
+            }
+          ]
+        },
+        "_branches": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            21,
+            21
+          ]
+        },
+        "nodeId": 37,
+        "index": 20,
+        "parentIndex": 17,
+        "Guid": "d7ad43e8-4c20-4234-8830-fe3859d49b4e"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgDialogGroup, Assembly-CSharp",
         "desc": null,
         "textMaxIndex": 0,
-        "textGroupId": "1010132201_7",
+        "textGroupId": "1010132201_23",
         "useFixedDialogGroup": false,
         "fixedDialogGroupId": 0,
         "dialogs": {
@@ -654,42 +1664,79 @@
               "$type": "miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp",
               "textId": 0,
               "pTimelineId": "",
-              "speakerKey": "PerformTrigger",
+              "speakerKey": "萨飞里",
               "voiceId": "",
               "fakeName": null,
               "fakeName_l10n": {
                 "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
-                "textId": "Performance_1010132201_39788_fakeName",
-                "value": null
+                "textId": "Performance_1010132201_2330208945_fakeName",
+                "value": null,
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
               },
-              "content": "我来选？\n耳朵告诉我今天的好运在左边，\n咳咳，那就——左边！",
+              "content": "{A看我的}没问题！\n我这就去规划这次{地区名}探险之旅的——\n最佳路线，库拉巴塔！",
               "content_l10n": {
                 "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
-                "textId": "Performance_1010132201_39788_content",
-                "value": "我来选？\n耳朵告诉我今天的好运在左边，\n咳咳，那就——左边！"
+                "textId": "Performance_1010132201_2330208945_content",
+                "value": "{A看我的}没问题！\n我这就去规划这次{地区名}探险之旅的——\n最佳路线，库拉巴塔！",
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
               },
               "nextRule": 0,
               "guardPeriod": 0.0,
               "desc": null,
               "voiceText": null,
               "expressiveDesc": null,
-              "textGuid": 39788
+              "textGuid": 2330208945
+            },
+            {
+              "$type": "miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp",
+              "textId": 0,
+              "pTimelineId": "",
+              "speakerKey": "萨飞里",
+              "voiceId": "",
+              "fakeName": null,
+              "fakeName_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_1010132201_1959605921_fakeName",
+                "value": null,
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "content": "对了，我会等到<style=Highlight>晚上</style>合适的时间再<style=Highlight>出发</style>，\n{A点头}在那之前，你可以随时找我调整计划。\n有其他需要我的地方，也尽管告诉我。",
+              "content_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_1010132201_1959605921_content",
+                "value": "对了，我会等到<style=Highlight>晚上</style>合适的时间再<style=Highlight>出发</style>，\n{A点头}在那之前，你可以随时找我调整计划。\n有其他需要我的地方，也尽管告诉我。",
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "nextRule": 0,
+              "guardPeriod": 0.0,
+              "desc": null,
+              "voiceText": null,
+              "expressiveDesc": null,
+              "textGuid": 1959605921
             }
           ]
         },
         "banPT": false,
         "positionInfo": null,
-        "_output": 4,
-        "nodeId": 13,
-        "index": 12,
-        "parentIndex": 11,
-        "Guid": "3bb820de-d490-4894-848a-ce7142a8752c"
+        "_output": -1,
+        "nodeId": 38,
+        "index": 21,
+        "parentIndex": 20,
+        "Guid": "1a37df22-86a6-4b7d-b117-d18e7709f2a0"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgDialogGroup, Assembly-CSharp",
         "desc": null,
         "textMaxIndex": 0,
-        "textGroupId": "1010132201_8",
+        "textGroupId": "1010132201_24",
         "useFixedDialogGroup": false,
         "fixedDialogGroupId": 0,
         "dialogs": {
@@ -699,42 +1746,48 @@
               "$type": "miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp",
               "textId": 0,
               "pTimelineId": "",
-              "speakerKey": "PerformTrigger",
+              "speakerKey": "萨飞里",
               "voiceId": "",
               "fakeName": null,
               "fakeName_l10n": {
                 "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
-                "textId": "Performance_1010132201_39789_fakeName",
-                "value": null
+                "textId": "Performance_1010132201_2330208955_fakeName",
+                "value": null,
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
               },
-              "content": "我来选？说起来，我们草原上有句话，\n“追随右边的人都会成功”——\n那就，右边！",
+              "content": "{A点头}了解，\n那么之前备好的物资，都还给你。\n要是有其他计划，随时可以告诉我。",
               "content_l10n": {
                 "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
-                "textId": "Performance_1010132201_39789_content",
-                "value": "我来选？说起来，我们草原上有句话，\n“追随右边的人都会成功”——\n那就，右边！"
+                "textId": "Performance_1010132201_2330208955_content",
+                "value": "{A点头}了解，\n那么之前备好的物资，都还给你。\n要是有其他计划，随时可以告诉我。",
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
               },
               "nextRule": 0,
               "guardPeriod": 0.0,
               "desc": null,
               "voiceText": null,
               "expressiveDesc": null,
-              "textGuid": 39789
+              "textGuid": 2330208955
             }
           ]
         },
         "banPT": false,
         "positionInfo": null,
-        "_output": 4,
-        "nodeId": 14,
-        "index": 13,
-        "parentIndex": 11,
-        "Guid": "d4a8deea-a6c1-463e-9d84-ec4a261a16be"
+        "_output": -1,
+        "nodeId": 39,
+        "index": 22,
+        "parentIndex": 4,
+        "Guid": "bc63ea04-9a9b-4969-881c-8b9d0b7046e1"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgDialogGroup, Assembly-CSharp",
         "desc": null,
         "textMaxIndex": 0,
-        "textGroupId": "1010132201_9",
+        "textGroupId": "1010132201_25",
         "useFixedDialogGroup": false,
         "fixedDialogGroupId": 0,
         "dialogs": {
@@ -744,42 +1797,293 @@
               "$type": "miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp",
               "textId": 0,
               "pTimelineId": "",
-              "speakerKey": "PerformTrigger",
+              "speakerKey": "萨飞里",
               "voiceId": "",
               "fakeName": null,
               "fakeName_l10n": {
                 "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
-                "textId": "Performance_1010132201_39782_fakeName",
-                "value": null
+                "textId": "Performance_1010132201_2330208934_fakeName",
+                "value": null,
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
               },
-              "content": "{A挑衅坏笑}打开石头，发现内里奥秘的瞬间，\n就像第一次登上未知星球一样刺激！\n闭眼选一个吧——试试你的手气！",
+              "content": "{A庆祝}祝贺你！\n开拓了新的星海区域！\n怎么样，有没有感受到塔法的热——情？",
               "content_l10n": {
                 "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
-                "textId": "Performance_1010132201_39782_content",
-                "value": "{A挑衅坏笑}打开石头，发现内里奥秘的瞬间，\n就像第一次登上未知星球一样刺激！\n闭眼选一个吧——试试你的手气！"
+                "textId": "Performance_1010132201_2330208934_content",
+                "value": "{A庆祝}祝贺你！\n开拓了新的星海区域！\n怎么样，有没有感受到塔法的热——情？",
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
               },
               "nextRule": 0,
               "guardPeriod": 0.0,
               "desc": null,
               "voiceText": null,
               "expressiveDesc": null,
-              "textGuid": 39782
+              "textGuid": 2330208934
+            },
+            {
+              "$type": "miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp",
+              "textId": 0,
+              "pTimelineId": "",
+              "speakerKey": "萨飞里",
+              "voiceId": "",
+              "fakeName": null,
+              "fakeName_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_1010132201_2330208935_fakeName",
+                "value": null,
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "content": "我家乡就在塔法，\n那里有金灿灿的玉米，\n还有天上的星子落下铺成的砂砾。",
+              "content_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_1010132201_2330208935_content",
+                "value": "我家乡就在塔法，\n那里有金灿灿的玉米，\n还有天上的星子落下铺成的砂砾。",
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "nextRule": 0,
+              "guardPeriod": 0.0,
+              "desc": null,
+              "voiceText": null,
+              "expressiveDesc": null,
+              "textGuid": 2330208935
+            },
+            {
+              "$type": "miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp",
+              "textId": 0,
+              "pTimelineId": "",
+              "speakerKey": "萨飞里",
+              "voiceId": "",
+              "fakeName": null,
+              "fakeName_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_1010132201_2330208936_fakeName",
+                "value": null,
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "content": "总之，\n我们以后可以选择<style=Highlight>塔法</style>作为目的地。\n我已经开始期待更多新发现了！",
+              "content_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_1010132201_2330208936_content",
+                "value": "总之，\n我们以后可以选择<style=Highlight>塔法</style>作为目的地。\n我已经开始期待更多新发现了！",
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "nextRule": 0,
+              "guardPeriod": 0.0,
+              "desc": null,
+              "voiceText": null,
+              "expressiveDesc": null,
+              "textGuid": 2330208936
             }
           ]
         },
         "banPT": false,
         "positionInfo": null,
-        "_output": 2,
-        "nodeId": 15,
-        "index": 14,
-        "parentIndex": 0,
-        "Guid": "ab123629-13bf-4791-aa4a-0b97d4e05de2"
+        "_output": 25,
+        "nodeId": 41,
+        "index": 23,
+        "parentIndex": 19,
+        "Guid": "5272b863-5dfd-4860-a3e5-3bd8ce333701"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgDialogGroup, Assembly-CSharp",
+        "desc": null,
+        "textMaxIndex": 0,
+        "textGroupId": "1010132201_26",
+        "useFixedDialogGroup": false,
+        "fixedDialogGroupId": 0,
+        "dialogs": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp",
+              "textId": 0,
+              "pTimelineId": "",
+              "speakerKey": "萨飞里",
+              "voiceId": "",
+              "fakeName": null,
+              "fakeName_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_1010132201_2330208937_fakeName",
+                "value": null,
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "content": "{A庆祝}祝贺你！\n开拓了新的星海区域！\n怎么样，有没有感受到禾夏的清——新？",
+              "content_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_1010132201_2330208937_content",
+                "value": "{A庆祝}祝贺你！\n开拓了新的星海区域！\n怎么样，有没有感受到禾夏的清——新？",
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "nextRule": 0,
+              "guardPeriod": 0.0,
+              "desc": null,
+              "voiceText": null,
+              "expressiveDesc": null,
+              "textGuid": 2330208937
+            },
+            {
+              "$type": "miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp",
+              "textId": 0,
+              "pTimelineId": "",
+              "speakerKey": "萨飞里",
+              "voiceId": "",
+              "fakeName": null,
+              "fakeName_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_1010132201_2330208938_fakeName",
+                "value": null,
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "content": "印象里，\n禾夏有大片大片的青绿色——\n风吹过的时候还会有好听的“沙沙”声。",
+              "content_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_1010132201_2330208938_content",
+                "value": "印象里，\n禾夏有大片大片的青绿色——\n风吹过的时候还会有好听的“沙沙”声。",
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "nextRule": 0,
+              "guardPeriod": 0.0,
+              "desc": null,
+              "voiceText": null,
+              "expressiveDesc": null,
+              "textGuid": 2330208938
+            },
+            {
+              "$type": "miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp",
+              "textId": 0,
+              "pTimelineId": "",
+              "speakerKey": "萨飞里",
+              "voiceId": "",
+              "fakeName": null,
+              "fakeName_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_1010132201_2330208939_fakeName",
+                "value": null,
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "content": "总之，\n我们以后可以选择<style=Highlight>禾夏</style>作为目的地。\n一定会有更多新发现！",
+              "content_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_1010132201_2330208939_content",
+                "value": "总之，\n我们以后可以选择<style=Highlight>禾夏</style>作为目的地。\n一定会有更多新发现！",
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "nextRule": 0,
+              "guardPeriod": 0.0,
+              "desc": null,
+              "voiceText": null,
+              "expressiveDesc": null,
+              "textGuid": 2330208939
+            }
+          ]
+        },
+        "banPT": false,
+        "positionInfo": null,
+        "_output": 26,
+        "nodeId": 42,
+        "index": 24,
+        "parentIndex": 19,
+        "Guid": "a70e0cf7-4322-49ca-8078-40fee198c7d5"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgPerformWatcher, Assembly-CSharp",
+        "key": {
+          "$type": "miHoYo.HYG.WatcherKey, Assembly-CSharp",
+          "key": 215,
+          "name": "萨飞里_派遣  首次可去塔法",
+          "valueType": 2,
+          "temp": false
+        },
+        "configVarValue": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "_value": true,
+          "Override": false,
+          "OverrideValue": false
+        },
+        "_output": 9,
+        "_failedOut": 9,
+        "nodeId": 43,
+        "index": 25,
+        "parentIndex": 23,
+        "Guid": "08e3f940-1b57-415f-9e11-c9a2b501fea8"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgPerformWatcher, Assembly-CSharp",
+        "key": {
+          "$type": "miHoYo.HYG.WatcherKey, Assembly-CSharp",
+          "key": 214,
+          "name": "萨飞里_派遣  首次可去禾夏",
+          "valueType": 2,
+          "temp": false
+        },
+        "configVarValue": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "_value": true,
+          "Override": false,
+          "OverrideValue": false
+        },
+        "_output": 9,
+        "_failedOut": 9,
+        "nodeId": 44,
+        "index": 26,
+        "parentIndex": 24,
+        "Guid": "c61d2dbd-7185-4131-aa37-9ecd9bd4b2c3"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgPerformAction, Assembly-CSharp",
+        "action": {
+          "$type": "miHoYo.HYG.Performance.Dispatch_ClearMaterialsCache, Assembly-CSharp",
+          "specialInteractionId": 9
+        },
+        "infos": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
+              "content": "成功"
+            }
+          ]
+        },
+        "_branches": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            -1
+          ]
+        },
+        "nodeId": 45,
+        "index": 27,
+        "parentIndex": 13,
+        "Guid": "f9625dfd-5fa3-4eb8-b1d4-2bd73927cb3f"
       }
     ]
   },
   "containers": null,
   "rootIndex": 0,
-  "nodesHash": -977148491,
+  "nodesHash": 836669650,
   "editorData": {
     "$type": "miHoYo.HYG.JsonGraph.GraphEditorData, Assembly-CSharp",
     "danglingIndexes": {
@@ -792,10 +2096,87 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": -1728.0,
-            "y": -32.0
+            "x": -3552.0,
+            "y": 1136.0
           },
-          "guid": "5d7f448c-b989-48e5-b0c8-f6874a1ecbc3",
+          "guid": "44a847c3-bfbf-472e-a7a4-17f6bb3144f0",
+          "comment": "物资准备 or 新手引导",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -2128.0,
+            "y": 992.0
+          },
+          "guid": "688f7947-8ab4-406c-a8ac-2423f4397c16",
+          "comment": "已经完成物资准备",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -2304.0,
+            "y": 3248.0
+          },
+          "guid": "57c45040-59b9-492f-bbbc-568b034b76cc",
+          "comment": "通用引入语",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -1360.0,
+            "y": 976.0
+          },
+          "guid": "947ce485-9aa9-4bc9-a6a5-64ba322413cf",
+          "comment": "玩家选择是否旅行",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -528.0,
+            "y": 1008.0
+          },
+          "guid": "bd12d56b-ed78-41b9-a5ad-3ce7a9a087e1",
+          "comment": "退还玩家道具",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -576.0,
+            "y": 1360.0
+          },
+          "guid": "e0c743da-d3ae-49ce-b86f-07cec7b4ebcf",
+          "comment": "维持原状 退出对话",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -2096.0,
+            "y": 1824.0
+          },
+          "guid": "658b98f0-c08b-4b0e-99ae-034a328c864e",
+          "comment": "新手引导",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -1424.0,
+            "y": 1824.0
+          },
+          "guid": "642ce742-bdeb-4f6d-8f1d-47f4b9c70f05",
           "comment": "",
           "locked": false,
           "collapse": false
@@ -803,10 +2184,10 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": -1008.0,
-            "y": -224.0
+            "x": -720.0,
+            "y": 1856.0
           },
-          "guid": "7f533ed6-c3ce-4fa9-8fdc-75d9ad3f063c",
+          "guid": "5574ea3e-c390-4a8d-af06-c28889da50e9",
           "comment": "",
           "locked": false,
           "collapse": false
@@ -814,10 +2195,186 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": -176.0,
-            "y": -320.0
+            "x": -1360.0,
+            "y": 3264.0
           },
-          "guid": "93b26760-e20e-4a01-97cd-6b8c86004623",
+          "guid": "37d6638a-3a72-4733-b55f-49157d294609",
+          "comment": "打开背包UI",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -912.0,
+            "y": 3264.0
+          },
+          "guid": "6d46b6f8-bb17-451a-8e03-c4978784a92e",
+          "comment": "未完成物资准备",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -160.0,
+            "y": 3216.0
+          },
+          "guid": "da02af98-ff1e-4224-a990-68ce8a56091e",
+          "comment": "确定是否继续旅行",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 624.0,
+            "y": 3264.0
+          },
+          "guid": "83a56a33-6d4d-42eb-ba91-6df1f442da62",
+          "comment": "继续旅行 返回准备",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 624.0,
+            "y": 3712.0
+          },
+          "guid": "3f4e4d99-88de-4024-9715-605ab7301c59",
+          "comment": "结束旅行 退出玩法",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -912.0,
+            "y": 4048.0
+          },
+          "guid": "f9b1a170-4928-4fe2-8d2a-08968872d786",
+          "comment": "物资准备完成",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -160.0,
+            "y": 4032.0
+          },
+          "guid": "8e1b25c8-be84-480e-bbe0-0732fac6726c",
+          "comment": "选择派遣地区",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 640.0,
+            "y": 4080.0
+          },
+          "guid": "8ab2965a-869d-464b-a070-1947a8206a12",
+          "comment": "去禾夏",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 640.0,
+            "y": 4416.0
+          },
+          "guid": "7f188173-e548-4769-9c10-d2d45396f4cc",
+          "comment": "去塔法",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 1184.0,
+            "y": 4080.0
+          },
+          "guid": "9d159cee-4b89-4d39-8c8a-0f00c5475ccf",
+          "comment": "扣除物资",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -3040.0,
+            "y": 2224.0
+          },
+          "guid": "35bb56cd-db0d-4f3e-8ca1-fd00d17d55c8",
+          "comment": "首次解锁塔法 or 禾夏的特殊引入语&普通引入语",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 1168.0,
+            "y": 4464.0
+          },
+          "guid": "d7ad43e8-4c20-4234-8830-fe3859d49b4e",
+          "comment": "扣除物资",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 1616.0,
+            "y": 4448.0
+          },
+          "guid": "1a37df22-86a6-4b7d-b117-d18e7709f2a0",
+          "comment": "出行结语",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -48.0,
+            "y": 1024.0
+          },
+          "guid": "bc63ea04-9a9b-4969-881c-8b9d0b7046e1",
+          "comment": "退还结语",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -2288.0,
+            "y": 2464.0
+          },
+          "guid": "5272b863-5dfd-4860-a3e5-3bd8ce333701",
+          "comment": "首次可去塔法",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -2288.0,
+            "y": 2816.0
+          },
+          "guid": "a70e0cf7-4322-49ca-8078-40fee198c7d5",
+          "comment": "首次可去禾夏",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -1584.0,
+            "y": 2464.0
+          },
+          "guid": "08e3f940-1b57-415f-9e11-c9a2b501fea8",
           "comment": "",
           "locked": false,
           "collapse": false
@@ -825,10 +2382,10 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": 544.0,
-            "y": -272.0
+            "x": -1584.0,
+            "y": 2816.0
           },
-          "guid": "a8a335b7-d7ae-4145-b5fb-7d20c8878a07",
+          "guid": "c61d2dbd-7185-4131-aa37-9ecd9bd4b2c3",
           "comment": "",
           "locked": false,
           "collapse": false
@@ -836,121 +2393,11 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": 1456.0,
-            "y": 112.0
+            "x": 1408.0,
+            "y": 3712.0
           },
-          "guid": "6eceb36f-8a37-4326-9744-6b03f4ee580c",
-          "comment": "",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 1936.0,
-            "y": -80.0
-          },
-          "guid": "9a3b7a5f-e8d1-45d3-a8d2-026cfe98aaf6",
-          "comment": "",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 2592.0,
-            "y": 464.0
-          },
-          "guid": "05fc5708-4d95-4834-81b1-4b9c43bcc994",
-          "comment": "",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 2672.0,
-            "y": 208.0
-          },
-          "guid": "8e2216b4-e695-415f-aab1-f9f908dbdb52",
-          "comment": "",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 3024.0,
-            "y": 160.0
-          },
-          "guid": "7c80599b-bc63-41be-af07-17bb22ae5e6c",
-          "comment": "",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 1952.0,
-            "y": 368.0
-          },
-          "guid": "80771233-c204-4cb5-81db-19e6e22c3d75",
-          "comment": "",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 544.0,
-            "y": -32.0
-          },
-          "guid": "6603a8b3-4664-48eb-b457-9cb2ef2c985d",
-          "comment": "",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 208.0,
-            "y": 512.0
-          },
-          "guid": "826b379b-5c5e-498e-a2e5-6f72f62a16ec",
-          "comment": "",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 784.0,
-            "y": 496.0
-          },
-          "guid": "3bb820de-d490-4894-848a-ce7142a8752c",
-          "comment": "",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 768.0,
-            "y": 752.0
-          },
-          "guid": "d4a8deea-a6c1-463e-9d84-ec4a261a16be",
-          "comment": "",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": -1008.0,
-            "y": 144.0
-          },
-          "guid": "ab123629-13bf-4791-aa4a-0b97d4e05de2",
-          "comment": "",
+          "guid": "f9625dfd-5fa3-4eb8-b1d4-2bd73927cb3f",
+          "comment": null,
           "locked": false,
           "collapse": false
         }
@@ -960,5 +2407,7 @@
   },
   "path": "Assets/MoleRes/Rel/SRes/Data/Json/Performance/1010132201.json",
   "errors": null,
-  "nodeErrors": null
+  "nodeErrors": {
+    "$type": "System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.String, mscorlib]], mscorlib"
+  }
 }

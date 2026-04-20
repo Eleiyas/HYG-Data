@@ -85,6 +85,10 @@
       },
       {
         "$type": "miHoYo.HYG.GameplayAbilities.PlayATLTaskNode, Assembly-CSharp",
+        "Entity": {
+          "$type": "miHoYo.HYG.Scripting.InDataEntityPort, Assembly-CSharp",
+          "Guid": 3158942858
+        },
         "ATLTag": {
           "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp]], Assembly-CSharp",
           "_value": {
@@ -98,10 +102,15 @@
           "_value": 0.0,
           "Guid": 3179310061
         },
-        "startBlock": {
-          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.UInt32, mscorlib]], Assembly-CSharp",
+        "StartBlockIndex": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Int32, mscorlib]], Assembly-CSharp",
           "_value": 0,
-          "Guid": 2335440402
+          "Guid": 289289162
+        },
+        "ContinuePlayingWhenTaskEnds": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "_value": false,
+          "Guid": 219436006
         },
         "OnATLPlayEvent": {
           "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
@@ -206,10 +215,6 @@
       },
       {
         "$type": "miHoYo.HYG.GameplayAbilities.EndAbilityNode, Assembly-CSharp",
-        "inDataAbility": {
-          "$type": "miHoYo.HYG.Scripting.InDataPort`1[[miHoYo.HYG.GameplayAbilities.GameplayAbility, Assembly-CSharp]], Assembly-CSharp",
-          "Guid": 1002016864
-        },
         "OutExec": {
           "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
           "Guid": 4156402641
@@ -221,7 +226,7 @@
         "Guid": 197013770
       },
       {
-        "$type": "miHoYo.HYG.Entities.SendEventActionNode, Assembly-CSharp",
+        "$type": "miHoYo.HYG.Entities.EntityCmdExtensionSendEventActionNode, Assembly-CSharp",
         "entity": {
           "$type": "miHoYo.HYG.Scripting.InDataEntityPort, Assembly-CSharp",
           "Guid": 3162756236
@@ -318,11 +323,15 @@
         "Guid": 3968092915
       },
       {
-        "$type": "miHoYo.HYG.Scripting.LiteralBoolNode, Assembly-CSharp",
-        "inDataValue": true,
-        "outDataResult": {
+        "$type": "miHoYo.HYG.Scripting.BooleanLibraryMakeLiteralPureNode, Assembly-CSharp",
+        "autoGenResult": {
           "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.Boolean, mscorlib]], Assembly-CSharp",
           "Guid": 622497244
+        },
+        "value": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "_value": true,
+          "Guid": 3567961244
         },
         "Guid": 3567493797
       },
@@ -345,11 +354,15 @@
         "Guid": 96090066
       },
       {
-        "$type": "miHoYo.HYG.Scripting.LiteralBoolNode, Assembly-CSharp",
-        "inDataValue": false,
-        "outDataResult": {
+        "$type": "miHoYo.HYG.Scripting.BooleanLibraryMakeLiteralPureNode, Assembly-CSharp",
+        "autoGenResult": {
           "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.Boolean, mscorlib]], Assembly-CSharp",
           "Guid": 2207026117
+        },
+        "value": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "_value": false,
+          "Guid": 2369667565
         },
         "Guid": 461087539
       },
@@ -384,7 +397,7 @@
         "Guid": 678660197
       },
       {
-        "$type": "miHoYo.HYG.Entities.SendEventActionNode, Assembly-CSharp",
+        "$type": "miHoYo.HYG.Entities.EntityCmdExtensionSendEventActionNode, Assembly-CSharp",
         "entity": {
           "$type": "miHoYo.HYG.Scripting.InDataEntityPort, Assembly-CSharp",
           "Guid": 2516039817
@@ -426,14 +439,22 @@
       }
     ]
   },
-  "_stateTagsConfig": null,
+  "_stateTagsConfig": {
+    "$type": "miHoYo.HYG.GameplayTags.TagContainerConfig, Assembly-CSharp",
+    "_tagIds": {
+      "$type": "System.Collections.Generic.List`1[[System.UInt32, mscorlib]], mscorlib",
+      "$values": [
+        355285320
+      ]
+    }
+  },
   "_tagsToBlockConfig": {
     "$type": "miHoYo.HYG.GameplayTags.TagContainerConfig, Assembly-CSharp",
     "_tagIds": {
       "$type": "System.Collections.Generic.List`1[[System.UInt32, mscorlib]], mscorlib",
       "$values": [
         2028080100,
-        560580898,
+        163496291,
         2044165831
       ]
     }
@@ -585,7 +606,7 @@
           "pos": {
             "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
             "x": 1396.8,
-            "y": 37.6
+            "y": 37.6000023
           },
           "comment": "",
           "commentHeight": 0.0,
@@ -609,7 +630,7 @@
           "pos": {
             "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
             "x": 2196.8,
-            "y": 37.6
+            "y": 37.6000023
           },
           "comment": "",
           "commentHeight": 0.0,
@@ -621,7 +642,7 @@
           "pos": {
             "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
             "x": 2379.2,
-            "y": 553.6
+            "y": 553.600037
           },
           "comment": null,
           "commentHeight": 0.0,
@@ -633,7 +654,7 @@
           "pos": {
             "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
             "x": 2753.6,
-            "y": 553.6
+            "y": 553.600037
           },
           "comment": "",
           "commentHeight": 0.0,
@@ -645,7 +666,7 @@
           "pos": {
             "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
             "x": 2872.0,
-            "y": 37.6
+            "y": 37.6000023
           },
           "comment": "",
           "commentHeight": 0.0,
@@ -681,7 +702,7 @@
           "pos": {
             "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
             "x": 378.4,
-            "y": 403.199982
+            "y": 403.2
           },
           "comment": "",
           "commentHeight": 0.0,
@@ -693,7 +714,7 @@
           "pos": {
             "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
             "x": 1523.2,
-            "y": 360.8
+            "y": 360.800018
           },
           "comment": null,
           "commentHeight": 0.0,
@@ -705,7 +726,7 @@
           "pos": {
             "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
             "x": 1282.4,
-            "y": 614.399963
+            "y": 614.4
           },
           "comment": "",
           "commentHeight": 0.0,

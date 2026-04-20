@@ -4,6 +4,12 @@
   "authoringData": {
     "$type": "miHoYo.HYG.Entities.EICNpcAuthoring, Assembly-CSharp",
     "stateTagRelationshipsId": 1,
+    "defaultBeginInteractionAbility": {
+      "_value": "GA_Interaction_DefaultBegin"
+    },
+    "defaultEndInteractionAbility": {
+      "_value": "GA_Interaction_DefaultEnd"
+    },
     "OwnAbilities": {
       "_abilities": [
         {
@@ -26,53 +32,93 @@
         },
         {
           "_value": "CrossRightMove"
+        },
+        {
+          "_value": "GA_DynamicBehaviors_ByHoldables"
         }
       ]
     },
     "ShowPerformanceCondition": {
       "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedLogicAnd, Assembly-CSharp",
+      "Override": false,
+      "OverrideValue": false,
       "_operands": [
         {
           "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+          "Override": false,
+          "OverrideValue": false,
           "_operand": {
             "$type": "miHoYo.HYG.DataSharing.ConfigVarIsStarSeaBuddy, Assembly-CSharp",
+            "Override": false,
+            "OverrideValue": false,
             "_npcId": {
-              "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp",
+              "Override": false,
+              "OverrideValue": false
             }
           }
         },
         {
-          "$type": "miHoYo.HYG.DataSharing.ConfigVarTernaryOperatorBool, Assembly-CSharp",
-          "_a": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+          "Override": false,
+          "OverrideValue": false,
+          "_operand": {
             "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedLogicAnd, Assembly-CSharp",
+            "Override": false,
+            "OverrideValue": false,
             "_operands": [
               {
-                "$type": "miHoYo.HYG.DataSharing.ConfigVarIsMultiplayerMode, Assembly-CSharp"
-              },
-              {
                 "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false,
                 "_operand": {
-                  "$type": "miHoYo.HYG.DataSharing.ConfigVarHasAuthority, Assembly-CSharp",
-                  "_target": {
-                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
-                  }
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarIsLocalPlayerWorldOwner, Assembly-CSharp",
+                  "Override": false,
+                  "OverrideValue": false
                 }
               },
               {
                 "$type": "miHoYo.HYG.DataSharing.ConfigVarIsNpcInWorldIncident, Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false,
                 "_entityGuid": {
-                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp"
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp",
+                  "Override": false,
+                  "OverrideValue": false
                 }
               }
             ]
-          },
-          "_b": {
-            "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedBool, Assembly-CSharp",
-            "_value": false
-          },
-          "_c": {
-            "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedBool, Assembly-CSharp",
-            "_value": true
+          }
+        },
+        {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+          "Override": false,
+          "OverrideValue": false,
+          "_operand": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarIsNpcOccupyTypeEquals, Assembly-CSharp",
+            "Override": false,
+            "OverrideValue": false,
+            "_guid": {
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp",
+              "Override": false,
+              "OverrideValue": false
+            },
+            "_occupyType": 9
+          }
+        },
+        {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+          "Override": false,
+          "OverrideValue": false,
+          "_operand": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarNpcInSpecialInteractionAbility, Assembly-CSharp",
+            "Override": false,
+            "OverrideValue": false,
+            "_guid": {
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp",
+              "Override": false,
+              "OverrideValue": false
+            }
           }
         }
       ]
@@ -88,33 +134,97 @@
           "desc": null,
           "condition": {
             "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedLogicAnd, Assembly-CSharp",
+            "Override": false,
+            "OverrideValue": false,
+            "_operands": [
+              {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarEqualToUInt32, Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false,
+                "_lhs": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp",
+                  "Override": false,
+                  "OverrideValue": false
+                },
+                "_rhs": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.UInt32, mscorlib]], Assembly-CSharp",
+                  "Override": false,
+                  "OverrideValue": false,
+                  "_value": 16
+                }
+              },
+              {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false,
+                "_operand": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckTaskState_IgnoreConfigVar, Assembly-CSharp",
+                  "Override": false,
+                  "OverrideValue": false,
+                  "_taskID": 13004,
+                  "_targetState": 2
+                }
+              }
+            ]
+          }
+        },
+        "isExclusive": true,
+        "exclusivePossibility": 100,
+        "useConfigVarWeight": false,
+        "weight": 1.0,
+        "configVarWeight": null,
+        "record": false,
+        "memoryStrKey": null,
+        "memoryKey": 0,
+        "deltaWeight": 0.0
+      },
+      {
+        "content": {
+          "effects": [],
+          "textId": "NPC_NoConnect_Choice"
+        },
+        "id": 0,
+        "conditionWrapper": {
+          "desc": null,
+          "condition": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedLogicAnd, Assembly-CSharp",
+            "Override": false,
+            "OverrideValue": false,
             "_operands": [
               {
                 "$type": "miHoYo.HYG.DataSharing.ConfigVarEqualToInt32, Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false,
                 "_lhs": {
                   "$type": "miHoYo.HYG.DataSharing.ConfigVarGetNPCIdentityType, Assembly-CSharp",
+                  "Override": false,
+                  "OverrideValue": false,
                   "_npcId": {
-                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp",
+                    "Override": false,
+                    "OverrideValue": false
                   }
                 },
                 "_rhs": {
                   "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedInt32, Assembly-CSharp",
+                  "Override": false,
+                  "OverrideValue": false,
                   "_value": 2
                 }
               },
               {
                 "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false,
                 "_operand": {
                   "$type": "miHoYo.HYG.DataSharing.ConfigVarNpcIsObtained, Assembly-CSharp",
+                  "Override": false,
+                  "OverrideValue": false,
                   "_npcId": {
-                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp"
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerConfigIdEntity, Assembly-CSharp",
+                    "Override": false,
+                    "OverrideValue": false
                   }
-                }
-              },
-              {
-                "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
-                "_operand": {
-                  "$type": "miHoYo.HYG.DataSharing.ConfigVarIsMultiplayerMode, Assembly-CSharp"
                 }
               }
             ]

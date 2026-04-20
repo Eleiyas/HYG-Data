@@ -5,8 +5,32 @@
   "desc": null,
   "type": 3,
   "sortIndex": 1,
-  "triggerType": 1,
-  "trackingPoint": 0,
+  "triggerType": 2,
+  "trackingPoints": {
+    "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialTrackingPointEntry, Assembly-CSharp]], mscorlib",
+    "$values": [
+      {
+        "$type": "miHoYo.HYG.Tutorial.TutorialTrackingPointEntry, Assembly-CSharp",
+        "trackingPointId": 3179300268,
+        "pendingTriggerFrames": 60,
+        "delayTriggerFrames": 3,
+        "trackingData": {
+          "$type": "miHoYo.HYG.Tutorial.TutorialTrackingPointDataForPage, Assembly-CSharp",
+          "pageHash": 2788530902
+        }
+      },
+      {
+        "$type": "miHoYo.HYG.Tutorial.TutorialTrackingPointEntry, Assembly-CSharp",
+        "trackingPointId": 3192155788,
+        "pendingTriggerFrames": 0,
+        "delayTriggerFrames": 0,
+        "trackingData": {
+          "$type": "miHoYo.HYG.Tutorial.TutorialTrackingPointDataForPerformance, Assembly-CSharp",
+          "performanceId": 300201
+        }
+      }
+    ]
+  },
   "forceQuitProcess": {
     "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialForceQuitProcessBase, Assembly-CSharp]], mscorlib",
     "$values": [
@@ -36,6 +60,9 @@
     "netFilter": {
       "$type": "miHoYo.HYG.Tutorial.TutorialTriggerOfflineFilter, Assembly-CSharp"
     },
+    "networkRoleFilter": {
+      "$type": "miHoYo.HYG.Tutorial.TutorialTriggerNetworkRoleAuthorityFilter, Assembly-CSharp"
+    },
     "taskFilter": {
       "$type": "miHoYo.HYG.Tutorial.TutorialTaskFilterById_And, Assembly-CSharp",
       "tasks": {
@@ -43,12 +70,15 @@
         "$values": [
           {
             "$type": "miHoYo.HYG.Tutorial.TutorialTaskFilterData, Assembly-CSharp",
-            "taskId": 3002,
+            "taskId": 3026,
             "state": 2,
-            "isNot": false
+            "isNot": true
           }
         ]
       }
+    },
+    "tutorialCompleteFilter": {
+      "$type": "miHoYo.HYG.Tutorial.TutorialTriggerNoTutorialCompleteFilter, Assembly-CSharp"
     }
   },
   "finishConditions": {
@@ -57,7 +87,13 @@
   },
   "globalFinishConditions": {
     "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
-    "$values": []
+    "$values": [
+      {
+        "$type": "miHoYo.HYG.Tutorial.TutorialQueryTask, Assembly-CSharp",
+        "taskId": 3026,
+        "state": 2
+      }
+    ]
   },
   "finishProcesses": {
     "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialForceQuitProcessBase, Assembly-CSharp]], mscorlib",
@@ -76,14 +112,15 @@
           "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialQueryConditionBase, Assembly-CSharp]], mscorlib",
           "$values": [
             {
-              "$type": "miHoYo.HYG.Tutorial.TutorialQueryTask, Assembly-CSharp",
-              "taskId": 3002,
-              "state": 2
-            },
-            {
               "$type": "miHoYo.HYG.Tutorial.TutorialQueryPage, Assembly-CSharp",
               "pageHash": 2788530902,
               "checkAnimation": false
+            },
+            {
+              "$type": "miHoYo.HYG.Tutorial.QueryConditionLogicNot, Assembly-CSharp",
+              "condition": {
+                "$type": "miHoYo.HYG.Tutorial.TutorialQueryIsInPerformance, Assembly-CSharp"
+              }
             }
           ]
         },
@@ -100,7 +137,10 @@
           "type": 2,
           "tip": {
             "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
-            "effects": null,
+            "effects": {
+              "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Localization.TextMapContentEffect, Assembly-CSharp]], mscorlib",
+              "$values": []
+            },
             "textId": "Tutorial_Rotate"
           },
           "gestureData": {
@@ -119,11 +159,22 @@
               "$values": []
             }
           },
+          "showSubTip": false,
+          "subTipData": {
+            "$type": "miHoYo.HYG.Tutorial.TutorialSubTipData, Assembly-CSharp",
+            "tip": {
+              "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
+              "effects": null,
+              "textId": null
+            },
+            "orientation": 0
+          },
           "lockInputWhenEnd": false,
           "showWeakFocus": false,
           "weakFocus": null,
           "showTracking": false,
           "removeTrackingWhenNodeEnd": false,
+          "isOpenOwnerLock": true,
           "trackingData": null,
           "showGraphic": false,
           "graphicalData": null,
@@ -243,8 +294,11 @@
           "type": 2,
           "tip": {
             "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
-            "effects": null,
-            "textId": "Tutorial_Rotate_phone"
+            "effects": {
+              "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Localization.TextMapContentEffect, Assembly-CSharp]], mscorlib",
+              "$values": []
+            },
+            "textId": "Tutorial_Rotate"
           },
           "gestureData": {
             "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialShortcutDataBase, Assembly-CSharp]], mscorlib",
@@ -257,17 +311,39 @@
               "$values": []
             }
           },
+          "showSubTip": false,
+          "subTipData": {
+            "$type": "miHoYo.HYG.Tutorial.TutorialSubTipData, Assembly-CSharp",
+            "tip": {
+              "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
+              "effects": null,
+              "textId": null
+            },
+            "orientation": 0
+          },
           "lockInputWhenEnd": false,
           "showWeakFocus": true,
           "weakFocus": {
             "$type": "miHoYo.HYG.Tutorial.TutorialTipWeakFocus, Assembly-CSharp",
             "showTip": false,
+            "showHeadIcon": false,
+            "icon": null,
             "tip": {
               "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
               "effects": null,
               "textId": null
             },
             "dir": 0,
+            "showSubTip": false,
+            "subTipData": {
+              "$type": "miHoYo.HYG.Tutorial.TutorialSubTipData, Assembly-CSharp",
+              "tip": {
+                "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
+                "effects": null,
+                "textId": null
+              },
+              "orientation": 0
+            },
             "tutorialKey": 0,
             "framePosOffset": {
               "x": 0.0,
@@ -304,6 +380,7 @@
           },
           "showTracking": false,
           "removeTrackingWhenNodeEnd": false,
+          "isOpenOwnerLock": true,
           "trackingData": null,
           "showGraphic": false,
           "graphicalData": null,
@@ -421,17 +498,42 @@
               "$values": []
             }
           },
+          "showSubTip": false,
+          "subTipData": {
+            "$type": "miHoYo.HYG.Tutorial.TutorialSubTipData, Assembly-CSharp",
+            "tip": {
+              "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
+              "effects": null,
+              "textId": null
+            },
+            "orientation": 0
+          },
           "lockInputWhenEnd": false,
           "showWeakFocus": true,
           "weakFocus": {
             "$type": "miHoYo.HYG.Tutorial.TutorialTipWeakFocus, Assembly-CSharp",
             "showTip": true,
+            "showHeadIcon": false,
+            "icon": null,
             "tip": {
               "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
-              "effects": null,
-              "textId": "Tutorial_Move_phone"
+              "effects": {
+                "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Localization.TextMapContentEffect, Assembly-CSharp]], mscorlib",
+                "$values": []
+              },
+              "textId": "Tutorial_Move"
             },
             "dir": 1,
+            "showSubTip": false,
+            "subTipData": {
+              "$type": "miHoYo.HYG.Tutorial.TutorialSubTipData, Assembly-CSharp",
+              "tip": {
+                "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
+                "effects": null,
+                "textId": null
+              },
+              "orientation": 0
+            },
             "tutorialKey": 2604124054,
             "framePosOffset": {
               "x": 0.0,
@@ -468,6 +570,7 @@
           },
           "showTracking": false,
           "removeTrackingWhenNodeEnd": false,
+          "isOpenOwnerLock": true,
           "trackingData": null,
           "showGraphic": false,
           "graphicalData": null,
@@ -552,7 +655,7 @@
               "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Localization.TextMapContentEffect, Assembly-CSharp]], mscorlib",
               "$values": []
             },
-            "textId": "Tutorial_Move_NPC"
+            "textId": "Tutorial_Move"
           },
           "gestureData": {
             "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Tutorial.TutorialShortcutDataBase, Assembly-CSharp]], mscorlib",
@@ -570,11 +673,22 @@
               "$values": []
             }
           },
+          "showSubTip": false,
+          "subTipData": {
+            "$type": "miHoYo.HYG.Tutorial.TutorialSubTipData, Assembly-CSharp",
+            "tip": {
+              "$type": "miHoYo.HYG.Localization.TextMapContent, Assembly-CSharp",
+              "effects": null,
+              "textId": null
+            },
+            "orientation": 0
+          },
           "lockInputWhenEnd": false,
           "showWeakFocus": false,
           "weakFocus": null,
           "showTracking": false,
           "removeTrackingWhenNodeEnd": false,
+          "isOpenOwnerLock": true,
           "trackingData": null,
           "showGraphic": false,
           "graphicalData": null,

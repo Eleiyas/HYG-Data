@@ -20,6 +20,8 @@
   },
   "overrideGraphCfg": true,
   "graphCfgId": 0,
+  "UseFakeAvatar": false,
+  "ManualHideBlackScreen": false,
   "castDic": {
     "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Int32, mscorlib]], mscorlib"
   },
@@ -37,9 +39,8 @@
       "id": 0,
       "configVarId": {
         "$type": "miHoYo.HYG.DataSharing.ConfigVarGetNpcSendGiftItemCfgId, Assembly-CSharp",
-        "_npcConfigId": {
-          "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPerformanceTriggerConfigId, Assembly-CSharp"
-        }
+        "Override": false,
+        "OverrideValue": false
       }
     },
     "物品": {
@@ -48,10 +49,11 @@
         "$type": "miHoYo.HYG.DataSharing.ConfigVarGetRecipeName, Assembly-CSharp",
         "_id": {
           "$type": "miHoYo.HYG.DataSharing.ConfigVarGetNpcSendGiftItemCfgId, Assembly-CSharp",
-          "_npcConfigId": {
-            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPerformanceTriggerConfigId, Assembly-CSharp"
-          }
-        }
+          "Override": false,
+          "OverrideValue": false
+        },
+        "Override": false,
+        "OverrideValue": false
       }
     }
   },
@@ -62,6 +64,12 @@
     "zPos": 0.0,
     "yAngle": 0.0,
     "galaxyPositionInfo": null
+  },
+  "blackboardConfigs": {
+    "$type": "miHoYo.HYG.DataSharing.BlackboardConfigPicker, Assembly-CSharp",
+    "paraKeys": null,
+    "configs": null,
+    "noSharingKeys": null
   },
   "castDic_edit": {
     "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.StringIntPair, Assembly-CSharp]], mscorlib",
@@ -91,9 +99,8 @@
           "id": 0,
           "configVarId": {
             "$type": "miHoYo.HYG.DataSharing.ConfigVarGetNpcSendGiftItemCfgId, Assembly-CSharp",
-            "_npcConfigId": {
-              "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPerformanceTriggerConfigId, Assembly-CSharp"
-            }
+            "Override": false,
+            "OverrideValue": false
           }
         }
       },
@@ -106,10 +113,11 @@
             "$type": "miHoYo.HYG.DataSharing.ConfigVarGetRecipeName, Assembly-CSharp",
             "_id": {
               "$type": "miHoYo.HYG.DataSharing.ConfigVarGetNpcSendGiftItemCfgId, Assembly-CSharp",
-              "_npcConfigId": {
-                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPerformanceTriggerConfigId, Assembly-CSharp"
-              }
-            }
+              "Override": false,
+              "OverrideValue": false
+            },
+            "Override": false,
+            "OverrideValue": false
           }
         }
       }
@@ -119,15 +127,9 @@
     "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.DynamicKMInfoPair, Assembly-CSharp]], mscorlib",
     "$values": []
   },
-  "blackboardConfigs": {
-    "$type": "miHoYo.HYG.DataSharing.BlackboardConfigPicker, Assembly-CSharp",
-    "paraKeys": null,
-    "configs": null,
-    "noSharingKeys": null
-  },
   "selectItem_count": 0,
   "textNodeMaxIndex": 7,
-  "nodeMaxIndex": 20,
+  "nodeMaxIndex": 24,
   "testGMGroup": "",
   "desc": null,
   "NewNodesPlaceholder": {
@@ -153,13 +155,19 @@
               "fakeName_l10n": {
                 "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                 "textId": "Performance_11000123007_25867_fakeName",
-                "value": null
+                "value": null,
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
               },
-              "content": "织一层毛茸茸……再揪出来的话，\n就会变成拉绒的毛毛，软~乎~乎~哒！\n咩……欸欸？是<style=PlayerName>{玩家昵称}</style>！",
+              "content": "<style=PlayerName>{玩家昵称}</style>，\n你知道咩，织一层毛茸茸……再揪出来，\n就会变成拉绒的毛毛，软~乎~乎~！",
               "content_l10n": {
                 "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                 "textId": "Performance_11000123007_25867_content",
-                "value": "织一层毛茸茸……再揪出来的话，\n就会变成拉绒的毛毛，软~乎~乎~哒！\n咩……欸欸？是<style=PlayerName>{玩家昵称}</style>！"
+                "value": "<style=PlayerName>{玩家昵称}</style>，\n你知道咩，织一层毛茸茸……再揪出来，\n就会变成拉绒的毛毛，软~乎~乎~！",
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
               },
               "nextRule": 0,
               "guardPeriod": 0.0,
@@ -175,32 +183,44 @@
         "_output": 1,
         "nodeId": 2,
         "index": 0,
-        "parentIndex": 15,
+        "parentIndex": 8,
         "Guid": "dca009cf-a6a3-4e15-aee9-7cdb63b437ae"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgChoiceGroup, Assembly-CSharp",
+        "showFavorTitle": false,
+        "showFavorLockTips": false,
+        "isShowOnlineBuyLimitInfo": false,
+        "optionPanelStyle": 0,
         "dynamicType": 0,
         "selectTimes": null,
         "selectTagCounts": null,
-        "avoidTags": null,
-        "additionTags": null,
+        "parentTagNew": {
+          "$type": "miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp",
+          "TagId": 0
+        },
+        "avoidTagsNew": null,
+        "additionTagsNew": null,
         "infos": {
           "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp]], mscorlib",
           "$values": [
             {
               "$type": "miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp",
               "condition": null,
-              "iconId": 0,
+              "isSubordinateOption": false,
               "style": 0,
+              "newIconId": 0,
               "choiceContent": {
                 "$type": "miHoYo.HYG.Performance.ChoiceContent, Assembly-CSharp",
                 "useContentSelector": false,
-                "content": "你在做什么？",
+                "content": "你在想什么？",
                 "content_l10n": {
                   "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                   "textId": "Performance_11000123007_25868_content",
-                  "value": "你在做什么？"
+                  "value": "你在想什么？",
+                  "duration": null,
+                  "durationMap": null,
+                  "chatType": 0
                 },
                 "contentSelector": {
                   "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.StringSelectorItem, Assembly-CSharp]], mscorlib",
@@ -215,16 +235,20 @@
             {
               "$type": "miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp",
               "condition": null,
-              "iconId": 0,
+              "isSubordinateOption": false,
               "style": 0,
+              "newIconId": 0,
               "choiceContent": {
                 "$type": "miHoYo.HYG.Performance.ChoiceContent, Assembly-CSharp",
                 "useContentSelector": false,
-                "content": "你好像很忙。",
+                "content": "那是什么？",
                 "content_l10n": {
                   "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                   "textId": "Performance_11000123007_25869_content",
-                  "value": "你好像很忙。"
+                  "value": "那是什么？",
+                  "duration": null,
+                  "durationMap": null,
+                  "chatType": 0
                 },
                 "contentSelector": {
                   "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.StringSelectorItem, Assembly-CSharp]], mscorlib",
@@ -246,7 +270,7 @@
           "$type": "System.Int32[], mscorlib",
           "$values": [
             2,
-            11
+            6
           ]
         },
         "nodeId": 3,
@@ -274,13 +298,19 @@
               "fakeName_l10n": {
                 "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                 "textId": "Performance_11000123007_25870_fakeName",
-                "value": null
+                "value": null,
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
               },
-              "content": "我正在设计手工打造的东西……\n{A害羞挠头}一旦有了灵感，\n就完全沉浸起来了呐。",
+              "content": "我在想一个，手工咩的灵感……\n不说出来的话，\n{A害羞挠头}我怕我就要忘了呐。",
               "content_l10n": {
                 "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                 "textId": "Performance_11000123007_25870_content",
-                "value": "我正在设计手工打造的东西……\n{A害羞挠头}一旦有了灵感，\n就完全沉浸起来了呐。"
+                "value": "我在想一个，手工咩的灵感……\n不说出来的话，\n{A害羞挠头}我怕我就要忘了呐。",
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
               },
               "nextRule": 0,
               "guardPeriod": 0.0,
@@ -299,13 +329,19 @@
               "fakeName_l10n": {
                 "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                 "textId": "Performance_11000123007_25871_fakeName",
-                "value": null
+                "value": null,
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
               },
-              "content": "对了，为了防止忘记，\n<style=Highlight>{物品}</style>的灵感，\n我记录在创想卡上了，正好分享给你。",
+              "content": "{A灵光一现}为了防止忘记，\n<style=Highlight>{物品}</style>的灵感，\n我记录在了创想卡上，正好分享给你。",
               "content_l10n": {
                 "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                 "textId": "Performance_11000123007_25871_content",
-                "value": "对了，为了防止忘记，\n<style=Highlight>{物品}</style>的灵感，\n我记录在创想卡上了，正好分享给你。"
+                "value": "{A灵光一现}为了防止忘记，\n<style=Highlight>{物品}</style>的灵感，\n我记录在了创想卡上，正好分享给你。",
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
               },
               "nextRule": 0,
               "guardPeriod": 0.0,
@@ -324,13 +360,19 @@
               "fakeName_l10n": {
                 "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                 "textId": "Performance_11000123007_25872_fakeName",
-                "value": null
+                "value": null,
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
               },
-              "content": "因为是手工打造的东西，\n{A笑眯眯}所以也可以自由定制~咩哒。\n这样，会设计出适合自己的、蓬~松松的家。",
+              "content": "因为是手工打造的东西，\n{A笑眯眯}所以也可以自由定制~咩哒。\n这样，说不定会设计出很适合自己的东西！",
               "content_l10n": {
                 "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                 "textId": "Performance_11000123007_25872_content",
-                "value": "因为是手工打造的东西，\n{A笑眯眯}所以也可以自由定制~咩哒。\n这样，会设计出适合自己的、蓬~松松的家。"
+                "value": "因为是手工打造的东西，\n{A笑眯眯}所以也可以自由定制~咩哒。\n这样，说不定会设计出很适合自己的东西！",
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
               },
               "nextRule": 0,
               "guardPeriod": 0.0,
@@ -351,19 +393,28 @@
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgChoiceGroup, Assembly-CSharp",
+        "showFavorTitle": false,
+        "showFavorLockTips": false,
+        "isShowOnlineBuyLimitInfo": false,
+        "optionPanelStyle": 0,
         "dynamicType": 0,
         "selectTimes": null,
         "selectTagCounts": null,
-        "avoidTags": null,
-        "additionTags": null,
+        "parentTagNew": {
+          "$type": "miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp",
+          "TagId": 0
+        },
+        "avoidTagsNew": null,
+        "additionTagsNew": null,
         "infos": {
           "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp]], mscorlib",
           "$values": [
             {
               "$type": "miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp",
               "condition": null,
-              "iconId": 0,
+              "isSubordinateOption": false,
               "style": 0,
+              "newIconId": 0,
               "choiceContent": {
                 "$type": "miHoYo.HYG.Performance.ChoiceContent, Assembly-CSharp",
                 "useContentSelector": false,
@@ -371,7 +422,10 @@
                 "content_l10n": {
                   "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                   "textId": "Performance_11000123007_25876_content",
-                  "value": "谢谢！"
+                  "value": "谢谢！",
+                  "duration": null,
+                  "durationMap": null,
+                  "chatType": 0
                 },
                 "contentSelector": {
                   "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.StringSelectorItem, Assembly-CSharp]], mscorlib",
@@ -386,16 +440,20 @@
             {
               "$type": "miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp",
               "condition": null,
-              "iconId": 0,
+              "isSubordinateOption": false,
               "style": 0,
+              "newIconId": 0,
               "choiceContent": {
                 "$type": "miHoYo.HYG.Performance.ChoiceContent, Assembly-CSharp",
                 "useContentSelector": false,
-                "content": "那不打扰你了。",
+                "content": "期待启发！",
                 "content_l10n": {
                   "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                   "textId": "Performance_11000123007_25877_content",
-                  "value": "那不打扰你了。"
+                  "value": "期待启发！",
+                  "duration": null,
+                  "durationMap": null,
+                  "chatType": 0
                 },
                 "contentSelector": {
                   "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.StringSelectorItem, Assembly-CSharp]], mscorlib",
@@ -422,7 +480,7 @@
         },
         "nodeId": 5,
         "index": 3,
-        "parentIndex": 11,
+        "parentIndex": 6,
         "Guid": "9b251900-47b4-4bc1-a537-ea7d6327c1fb"
       },
       {
@@ -445,13 +503,19 @@
               "fakeName_l10n": {
                 "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                 "textId": "Performance_11000123007_25878_fakeName",
-                "value": null
+                "value": null,
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
               },
-              "content": "不客气哒，\n在手工图桌消磨时间，是最~快乐的事了，\n{A笑眯眯}希望你也拥有这样的幸福。",
+              "content": "不客气呐，\n把灵感传递给别人，是最~快乐的事了，\n{A笑眯眯}希望你也拥有这样的幸福。",
               "content_l10n": {
                 "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                 "textId": "Performance_11000123007_25878_content",
-                "value": "不客气哒，\n在手工图桌消磨时间，是最~快乐的事了，\n{A笑眯眯}希望你也拥有这样的幸福。"
+                "value": "不客气呐，\n把灵感传递给别人，是最~快乐的事了，\n{A笑眯眯}希望你也拥有这样的幸福。",
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
               },
               "nextRule": 0,
               "guardPeriod": 0.0,
@@ -464,7 +528,7 @@
         },
         "banPT": false,
         "positionInfo": null,
-        "_output": 13,
+        "_output": 12,
         "nodeId": 6,
         "index": 4,
         "parentIndex": 3,
@@ -490,13 +554,19 @@
               "fakeName_l10n": {
                 "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                 "textId": "Performance_11000123007_25879_fakeName",
-                "value": null
+                "value": null,
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
               },
-              "content": "咩哒咩哒，\n我正好也稍微休息了一下，\n{A笑眯眯}放松……不让脑袋绕圈圈。",
+              "content": "好呐好呐，创想传递……\n就像是把美好的记忆，延续下去。\n{A笑眯眯}如果能做出合适的东西，我也会感到幸福的。",
               "content_l10n": {
                 "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                 "textId": "Performance_11000123007_25879_content",
-                "value": "咩哒咩哒，\n我正好也稍微休息了一下，\n{A笑眯眯}放松……不让脑袋绕圈圈。"
+                "value": "好呐好呐，创想传递……\n就像是把美好的记忆，延续下去。\n{A笑眯眯}如果能做出合适的东西，我也会感到幸福的。",
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
               },
               "nextRule": 0,
               "guardPeriod": 0.0,
@@ -509,130 +579,11 @@
         },
         "banPT": false,
         "positionInfo": null,
-        "_output": 13,
+        "_output": 12,
         "nodeId": 7,
         "index": 5,
         "parentIndex": 3,
         "Guid": "70e0fcfb-02fa-4a61-9639-6a9fb92890b0"
-      },
-      {
-        "$type": "miHoYo.HYG.Performance.CfgPerformAction, Assembly-CSharp",
-        "action": {
-          "$type": "miHoYo.HYG.Performance.FinishNpcDailyEvent, Assembly-CSharp",
-          "IsDynamic": false,
-          "configIdVar": null
-        },
-        "infos": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp]], mscorlib",
-          "$values": [
-            {
-              "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
-              "content": "成功"
-            },
-            {
-              "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
-              "content": "失败"
-            }
-          ]
-        },
-        "_branches": {
-          "$type": "System.Int32[], mscorlib",
-          "$values": [
-            12,
-            -1
-          ]
-        },
-        "nodeId": 10,
-        "index": 6,
-        "parentIndex": 10,
-        "Guid": "137f37db-45fa-4f86-a5cf-cb914a16b0c8"
-      },
-      {
-        "$type": "miHoYo.HYG.Performance.CfgLocalEntity, Assembly-CSharp",
-        "useConfigVarId": true,
-        "configId": 10190,
-        "configVarId": {
-          "$type": "miHoYo.HYG.DataSharing.ConfigVarGetNpcSendGiftItemCfgId, Assembly-CSharp",
-          "_npcConfigId": {
-            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPerformanceTriggerConfigId, Assembly-CSharp"
-          }
-        },
-        "editorGuid": 5242882,
-        "useDefaultEIC": false,
-        "useDropType": true,
-        "position": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        },
-        "euler": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        },
-        "scaler": {
-          "x": 1.0,
-          "y": 1.0,
-          "z": 1.0
-        },
-        "initVisible": true,
-        "_output": 8,
-        "nodeId": 12,
-        "index": 7,
-        "parentIndex": 13,
-        "Guid": "fd92fd98-51e0-45d8-abfe-fd07323eb431"
-      },
-      {
-        "$type": "miHoYo.HYG.Performance.CfgExecuteCmdWait, Assembly-CSharp",
-        "isAsync": true,
-        "useCmdCfgId": true,
-        "cmd": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.CmdConfig, Assembly-CSharp]], mscorlib",
-          "$values": []
-        },
-        "cmdCfgId": 49,
-        "actorList": {
-          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-          "$values": [
-            "PerformTrigger",
-            "Player"
-          ]
-        },
-        "itemList": {
-          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.UInt64, mscorlib]], Assembly-CSharp]], mscorlib",
-          "$values": [
-            {
-              "$type": "miHoYo.HYG.DataSharing.ConfigVarEditorGuidToGuid, Assembly-CSharp",
-              "editorGuidValue": 5242882
-            }
-          ]
-        },
-        "_output": 9,
-        "nodeId": 13,
-        "index": 8,
-        "parentIndex": 7,
-        "Guid": "74427f4b-bcf7-46f6-a45f-e9d3120a4297"
-      },
-      {
-        "$type": "miHoYo.HYG.Performance.CfgRemoveEntity, Assembly-CSharp",
-        "editorGuidValue": 5242882,
-        "_output": 6,
-        "nodeId": 14,
-        "index": 9,
-        "parentIndex": 8,
-        "Guid": "ed955d77-0e3f-4085-980c-27ec8fb4e512"
-      },
-      {
-        "$type": "miHoYo.HYG.Performance.CfgPerformJumper, Assembly-CSharp",
-        "useStaticId": true,
-        "performId": 1000003000,
-        "speakerKey": null,
-        "topicIndex": 0,
-        "_output": 6,
-        "nodeId": 15,
-        "index": 10,
-        "parentIndex": 13,
-        "Guid": "a3796b73-54f8-4800-9d2a-ae733e132e7f"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgDialogGroup, Assembly-CSharp",
@@ -654,13 +605,19 @@
               "fakeName_l10n": {
                 "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                 "textId": "Performance_11000123007_25873_fakeName",
-                "value": null
+                "value": null,
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
               },
-              "content": "被你发现了……\n一旦开始进入手工图桌的范围，\n{A豆豆眼}我好像就不由自主地陷进手工里了……",
+              "content": "啊，是我在想手工咩的灵感……\n刚才看到你的时候，\n我突然想到……",
               "content_l10n": {
                 "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                 "textId": "Performance_11000123007_25873_content",
-                "value": "被你发现了……\n一旦开始进入手工图桌的范围，\n{A豆豆眼}我好像就不由自主地陷进手工里了……"
+                "value": "啊，是我在想手工咩的灵感……\n刚才看到你的时候，\n我突然想到……",
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
               },
               "nextRule": 0,
               "guardPeriod": 0.0,
@@ -679,13 +636,19 @@
               "fakeName_l10n": {
                 "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                 "textId": "Performance_11000123007_25874_fakeName",
-                "value": null
+                "value": null,
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
               },
-              "content": "不……想……在……灵……感……里……\n绕……圈圈……\n所以，我准备了创想卡来整理灵感！",
+              "content": "{A灵光一现}可以用创想卡来整理灵感！\n这个<style=Highlight>{创想卡}</style>，正好给你。\n或许，会对你的创想有一点启发。",
               "content_l10n": {
                 "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                 "textId": "Performance_11000123007_25874_content",
-                "value": "不……想……在……灵……感……里……\n绕……圈圈……\n所以，我准备了创想卡来整理灵感！"
+                "value": "{A灵光一现}可以用创想卡来整理灵感！\n这个<style=Highlight>{创想卡}</style>，正好给你。\n或许，会对你的创想有一点启发。",
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
               },
               "nextRule": 0,
               "guardPeriod": 0.0,
@@ -693,31 +656,6 @@
               "voiceText": null,
               "expressiveDesc": null,
               "textGuid": 25874
-            },
-            {
-              "$type": "miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp",
-              "textId": 0,
-              "pTimelineId": "",
-              "speakerKey": "PerformTrigger",
-              "voiceId": "",
-              "fakeName": null,
-              "fakeName_l10n": {
-                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
-                "textId": "Performance_11000123007_25875_fakeName",
-                "value": null
-              },
-              "content": "{A灵光一现}这个<style=Highlight>{创想卡}</style>，\n正好给你。\n或许，会对你的创想有所启发！",
-              "content_l10n": {
-                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
-                "textId": "Performance_11000123007_25875_content",
-                "value": "{A灵光一现}这个<style=Highlight>{创想卡}</style>，\n正好给你。\n或许，会对你的创想有所启发！"
-              },
-              "nextRule": 0,
-              "guardPeriod": 0.0,
-              "desc": null,
-              "voiceText": null,
-              "expressiveDesc": null,
-              "textGuid": 25875
             }
           ]
         },
@@ -725,60 +663,9 @@
         "positionInfo": null,
         "_output": 3,
         "nodeId": 16,
-        "index": 11,
+        "index": 6,
         "parentIndex": 1,
         "Guid": "21455a29-858b-49ab-90eb-d053821ec28a"
-      },
-      {
-        "$type": "miHoYo.HYG.Performance.CfgSaveMemory, Assembly-CSharp",
-        "memoryStrKey": "Npc/FavorEvent/NpcAffair_IsTrigger_Int",
-        "memoryKey": 15570,
-        "isNpc": true,
-        "useDynamicId": false,
-        "dynamicId": null,
-        "memoryTime": 900,
-        "operateType": 0,
-        "useConfigVarAsNewValue": false,
-        "newValue": 1,
-        "configVarValue": null,
-        "_output": 14,
-        "nodeId": 17,
-        "index": 12,
-        "parentIndex": 6,
-        "Guid": "d5681ebf-fc56-44d6-baf5-d6fe2f456594"
-      },
-      {
-        "$type": "miHoYo.HYG.Performance.CfgBranch, Assembly-CSharp",
-        "condition": {
-          "$type": "miHoYo.HYG.DataSharing.ConfigVarLessThanInt32, Assembly-CSharp",
-          "_lhs": {
-            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetBagCanAddItemNumByCfgId, Assembly-CSharp",
-            "_addConfigId": {
-              "$type": "miHoYo.HYG.DataSharing.ConfigVarGetNpcSendGiftItemCfgId, Assembly-CSharp",
-              "_npcConfigId": {
-                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPerformanceTriggerConfigId, Assembly-CSharp"
-              }
-            },
-            "_addNum": {
-              "$type": "miHoYo.HYG.DataSharing.ConfigVarGetNpcSendGiftItemCount, Assembly-CSharp",
-              "_npcConfigId": {
-                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPerformanceTriggerConfigId, Assembly-CSharp"
-              }
-            },
-            "_remConfigId": null,
-            "_remNum": null
-          },
-          "_rhs": {
-            "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Int32, mscorlib]], Assembly-CSharp",
-            "_value": 0
-          }
-        },
-        "_successOut": 10,
-        "_failOut": 7,
-        "nodeId": 18,
-        "index": 13,
-        "parentIndex": 5,
-        "Guid": "35d0496d-b0e1-456f-9fa3-70c1da3911ca"
       },
       {
         "$type": "miHoYo.HYG.Performance.CfgPerformAction, Assembly-CSharp",
@@ -787,24 +674,32 @@
           "npcData": {
             "$type": "GameModules.CompanionStar.Data.NpcStarLogEditorData, Assembly-CSharp",
             "npcId": {
-              "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPerformanceTriggerConfigId, Assembly-CSharp"
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPerformanceTriggerConfigId, Assembly-CSharp",
+              "Override": false,
+              "OverrideValue": false
             },
-            "sourceSystemType": 1,
+            "sourceSystemId": 1,
             "npcLogSystemEntry": 7,
             "conditions": {
               "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.UInt32, mscorlib]], Assembly-CSharp]], mscorlib",
               "$values": [
                 {
                   "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.UInt32, mscorlib]], Assembly-CSharp",
-                  "_value": 0
+                  "_value": 0,
+                  "Override": false,
+                  "OverrideValue": false
                 },
                 {
                   "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.UInt32, mscorlib]], Assembly-CSharp",
-                  "_value": 0
+                  "_value": 0,
+                  "Override": false,
+                  "OverrideValue": false
                 },
                 {
                   "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.UInt32, mscorlib]], Assembly-CSharp",
-                  "_value": 0
+                  "_value": 0,
+                  "Override": false,
+                  "OverrideValue": false
                 }
               ]
             },
@@ -819,7 +714,9 @@
                     "name": "NpcLog_数据[0]Uint值",
                     "valueType": 5,
                     "temp": true
-                  }
+                  },
+                  "Override": false,
+                  "OverrideValue": false
                 }
               ]
             }
@@ -846,8 +743,8 @@
           ]
         },
         "nodeId": 19,
-        "index": 14,
-        "parentIndex": 12,
+        "index": 7,
+        "parentIndex": 10,
         "Guid": "93084566-0d1f-4182-952d-1b38a16c7be2"
       },
       {
@@ -861,22 +758,110 @@
         },
         "configVarValue": {
           "$type": "miHoYo.HYG.DataSharing.ConfigVarGetNpcSendGiftItemCfgId, Assembly-CSharp",
-          "_npcConfigId": {
-            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPerformanceTriggerConfigId, Assembly-CSharp"
-          }
+          "Override": false,
+          "OverrideValue": false
         },
         "_output": 0,
         "_failedOut": -1,
         "nodeId": 20,
-        "index": 15,
+        "index": 8,
         "parentIndex": -1,
         "Guid": "cf272bf0-4491-4d11-b514-29a2e95b4def"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgPerformWatcher, Assembly-CSharp",
+        "key": {
+          "$type": "miHoYo.HYG.WatcherKey, Assembly-CSharp",
+          "key": 234,
+          "name": "NpcEvent_送礼演出道具ID",
+          "valueType": 5,
+          "temp": true
+        },
+        "configVarValue": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarGetNpcSendGiftItemCfgId, Assembly-CSharp",
+          "Override": false,
+          "OverrideValue": false
+        },
+        "_output": 11,
+        "_failedOut": -1,
+        "nodeId": 21,
+        "index": 9,
+        "parentIndex": 12,
+        "Guid": "a5e10125-86b0-4c1c-831c-a9b46a0ba98f"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgPerformAction, Assembly-CSharp",
+        "action": {
+          "$type": "miHoYo.HYG.Performance.FinishNpcDailyEvent, Assembly-CSharp",
+          "configIdVar": null,
+          "affairId": null
+        },
+        "infos": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
+              "content": "成功"
+            },
+            {
+              "$type": "miHoYo.HYG.Performance.StringInOdinList, Assembly-CSharp",
+              "content": "失败"
+            }
+          ]
+        },
+        "_branches": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            7,
+            -1
+          ]
+        },
+        "nodeId": 22,
+        "index": 10,
+        "parentIndex": 11,
+        "Guid": "06026d93-1c5d-4b8d-9b82-d5fd170d0076"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgPerformJumper, Assembly-CSharp",
+        "useStaticId": true,
+        "useConfigVarId": false,
+        "performId": 10000003000,
+        "configVarId": null,
+        "speakerKey": null,
+        "topicIndex": 0,
+        "_output": 10,
+        "nodeId": 23,
+        "index": 11,
+        "parentIndex": 9,
+        "Guid": "3480b1ea-bf64-4309-8a27-c9bcd72125e1"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgPerformWatcher, Assembly-CSharp",
+        "key": {
+          "$type": "miHoYo.HYG.WatcherKey, Assembly-CSharp",
+          "key": 235,
+          "name": "NpcEvent_送礼演出类型ID",
+          "valueType": 5,
+          "temp": true
+        },
+        "configVarValue": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUInt32, Assembly-CSharp",
+          "_value": 2,
+          "Override": false,
+          "OverrideValue": false
+        },
+        "_output": 9,
+        "_failedOut": -1,
+        "nodeId": 24,
+        "index": 12,
+        "parentIndex": 5,
+        "Guid": "1e475296-ac6f-42cc-81e7-97071c8a86d3"
       }
     ]
   },
   "containers": null,
-  "rootIndex": 15,
-  "nodesHash": 484566515,
+  "rootIndex": 8,
+  "nodesHash": -953347293,
   "editorData": {
     "$type": "miHoYo.HYG.JsonGraph.GraphEditorData, Assembly-CSharp",
     "danglingIndexes": {
@@ -955,61 +940,6 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": 1776.0,
-            "y": 960.0
-          },
-          "guid": "137f37db-45fa-4f86-a5cf-cb914a16b0c8",
-          "comment": "",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 272.0,
-            "y": 1200.0
-          },
-          "guid": "fd92fd98-51e0-45d8-abfe-fd07323eb431",
-          "comment": "",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 816.0,
-            "y": 1216.0
-          },
-          "guid": "74427f4b-bcf7-46f6-a45f-e9d3120a4297",
-          "comment": "赠送",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 1248.0,
-            "y": 1232.0
-          },
-          "guid": "ed955d77-0e3f-4085-980c-27ec8fb4e512",
-          "comment": "",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 272.0,
-            "y": 944.0
-          },
-          "guid": "a3796b73-54f8-4800-9d2a-ae733e132e7f",
-          "comment": null,
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
             "x": -2304.0,
             "y": 1024.0
           },
@@ -1021,30 +951,8 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": 2160.0,
-            "y": 976.0
-          },
-          "guid": "d5681ebf-fc56-44d6-baf5-d6fe2f456594",
-          "comment": "设置NPC个人CD",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": -192.0,
+            "x": 1552.0,
             "y": 960.0
-          },
-          "guid": "35d0496d-b0e1-456f-9fa3-70c1da3911ca",
-          "comment": "",
-          "locked": false,
-          "collapse": false
-        },
-        {
-          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
-          "pos": {
-            "x": 2672.0,
-            "y": 976.0
           },
           "guid": "93084566-0d1f-4182-952d-1b38a16c7be2",
           "comment": "记录Log",
@@ -1059,6 +967,50 @@
           },
           "guid": "cf272bf0-4491-4d11-b514-29a2e95b4def",
           "comment": "提前存储送礼道具Id数据",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 384.0,
+            "y": 944.0
+          },
+          "guid": "a5e10125-86b0-4c1c-831c-a9b46a0ba98f",
+          "comment": null,
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 1216.0,
+            "y": 944.0
+          },
+          "guid": "06026d93-1c5d-4b8d-9b82-d5fd170d0076",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 896.0,
+            "y": 944.0
+          },
+          "guid": "3480b1ea-bf64-4309-8a27-c9bcd72125e1",
+          "comment": null,
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -128.0,
+            "y": 944.0
+          },
+          "guid": "1e475296-ac6f-42cc-81e7-97071c8a86d3",
+          "comment": "",
           "locked": false,
           "collapse": false
         }

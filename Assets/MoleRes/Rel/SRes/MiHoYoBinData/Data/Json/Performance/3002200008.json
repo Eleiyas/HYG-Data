@@ -2,7 +2,7 @@
   "$type": "miHoYo.HYG.Performance.PerformanceGraph, Assembly-CSharp",
   "id": 3002200008,
   "maxVoiceIdIndex": 1,
-  "maxTextMapIdIndex": 7,
+  "maxTextMapIdIndex": 9,
   "name": "星海汽车对话",
   "kmPageId": 333096,
   "kmEncId": null,
@@ -20,6 +20,8 @@
   },
   "overrideGraphCfg": true,
   "graphCfgId": 0,
+  "UseFakeAvatar": false,
+  "ManualHideBlackScreen": false,
   "castDic": {
     "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Int32, mscorlib]], mscorlib"
   },
@@ -36,7 +38,9 @@
       "isDynamic": true,
       "id": 0,
       "configVarId": {
-        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetEncounterNpcId, Assembly-CSharp"
+        "$type": "miHoYo.HYG.DataSharing.ConfigVarGetEncounterNpcId, Assembly-CSharp",
+        "Override": false,
+        "OverrideValue": false
       }
     }
   },
@@ -47,6 +51,12 @@
     "zPos": 0.0,
     "yAngle": 0.0,
     "galaxyPositionInfo": null
+  },
+  "blackboardConfigs": {
+    "$type": "miHoYo.HYG.DataSharing.BlackboardConfigPicker, Assembly-CSharp",
+    "paraKeys": null,
+    "configs": null,
+    "noSharingKeys": null
   },
   "castDic_edit": {
     "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.StringIntPair, Assembly-CSharp]], mscorlib",
@@ -75,7 +85,9 @@
           "isDynamic": true,
           "id": 0,
           "configVarId": {
-            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetEncounterNpcId, Assembly-CSharp"
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetEncounterNpcId, Assembly-CSharp",
+            "Override": false,
+            "OverrideValue": false
           }
         }
       }
@@ -85,15 +97,9 @@
     "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.DynamicKMInfoPair, Assembly-CSharp]], mscorlib",
     "$values": []
   },
-  "blackboardConfigs": {
-    "$type": "miHoYo.HYG.DataSharing.BlackboardConfigPicker, Assembly-CSharp",
-    "paraKeys": null,
-    "configs": null,
-    "noSharingKeys": null
-  },
   "selectItem_count": 0,
-  "textNodeMaxIndex": 4,
-  "nodeMaxIndex": 11,
+  "textNodeMaxIndex": 5,
+  "nodeMaxIndex": 15,
   "testGMGroup": "",
   "desc": null,
   "NewNodesPlaceholder": {
@@ -101,6 +107,10 @@
     "$values": [
       {
         "$type": "miHoYo.HYG.Performance.CfgChoiceGroup, Assembly-CSharp",
+        "showFavorTitle": false,
+        "showFavorLockTips": false,
+        "isShowOnlineBuyLimitInfo": false,
+        "optionPanelStyle": 0,
         "dynamicType": 0,
         "selectTimes": null,
         "selectTagCounts": null,
@@ -108,16 +118,22 @@
           "$type": "miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp",
           "TagId": 0
         },
-        "avoidTagsNew": null,
-        "additionTagsNew": null,
+        "avoidTagsNew": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
+        "additionTagsNew": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp]], mscorlib",
+          "$values": []
+        },
         "infos": {
           "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp]], mscorlib",
           "$values": [
             {
               "$type": "miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp",
               "condition": null,
-              "iconId": 0,
               "style": 0,
+              "newIconId": 0,
               "choiceContent": {
                 "$type": "miHoYo.HYG.Performance.ChoiceContent, Assembly-CSharp",
                 "useContentSelector": false,
@@ -125,7 +141,10 @@
                 "content_l10n": {
                   "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                   "textId": "Performance_3002200008_2_textmap_1",
-                  "value": "离开星屿"
+                  "value": "离开星屿",
+                  "duration": null,
+                  "durationMap": null,
+                  "chatType": 0
                 },
                 "contentSelector": {
                   "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.StringSelectorItem, Assembly-CSharp]], mscorlib",
@@ -140,8 +159,8 @@
             {
               "$type": "miHoYo.HYG.Performance.CfgChoiceInfo, Assembly-CSharp",
               "condition": null,
-              "iconId": 0,
               "style": 0,
+              "newIconId": 0,
               "choiceContent": {
                 "$type": "miHoYo.HYG.Performance.ChoiceContent, Assembly-CSharp",
                 "useContentSelector": false,
@@ -149,7 +168,10 @@
                 "content_l10n": {
                   "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                   "textId": "Performance_3002200008_2_textmap_2",
-                  "value": "再逛逛"
+                  "value": "再逛逛",
+                  "duration": null,
+                  "durationMap": null,
+                  "chatType": 0
                 },
                 "contentSelector": {
                   "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.StringSelectorItem, Assembly-CSharp]], mscorlib",
@@ -224,13 +246,19 @@
               "fakeName_l10n": {
                 "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                 "textId": "Performance_3002200008_4_textmap_3",
-                "value": ""
+                "value": "",
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
               },
               "content": "要离开了吗？",
               "content_l10n": {
                 "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                 "textId": "Performance_3002200008_4_textmap_4",
-                "value": "要离开了吗？"
+                "value": "要离开了吗？",
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
               },
               "nextRule": 0,
               "guardPeriod": 0.0,
@@ -269,13 +297,19 @@
               "fakeName_l10n": {
                 "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                 "textId": "Performance_3002200008_6_textmap_5",
-                "value": ""
+                "value": "",
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
               },
               "content": "等一等……\r\n<style=NpcName>{偶遇NPC名字}</style>好像还在等我，去看看吧！",
               "content_l10n": {
                 "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
                 "textId": "Performance_3002200008_6_textmap_6",
-                "value": "等一等……\r\n<style=NpcName>{偶遇NPC名字}</style>好像还在等我，去看看吧！"
+                "value": "等一等……\r\n<style=NpcName>{偶遇NPC名字}</style>好像还在等我，去看看吧！",
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
               },
               "nextRule": 0,
               "guardPeriod": 0.0,
@@ -304,6 +338,142 @@
               "id": 0,
               "conditionWrapper": {
                 "$type": "miHoYo.HYG.SelectorCondition, Assembly-CSharp",
+                "desc": "星海 不让下车",
+                "condition": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedLogicAnd, Assembly-CSharp",
+                  "_operands": {
+                    "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]], Assembly-CSharp]], mscorlib",
+                    "$values": [
+                      {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarIsNpcFirstInteraction, Assembly-CSharp",
+                        "_configId": {
+                          "$type": "miHoYo.HYG.DataSharing.ConfigVarGetEncounterNpcId, Assembly-CSharp",
+                          "Override": false,
+                          "OverrideValue": false
+                        },
+                        "Override": false,
+                        "OverrideValue": false
+                      },
+                      {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+                        "_operand": {
+                          "$type": "miHoYo.HYG.DataSharing.ConfigVarIsNpcExchangedContact, Assembly-CSharp",
+                          "_configId": {
+                            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetEncounterNpcId, Assembly-CSharp",
+                            "Override": false,
+                            "OverrideValue": false
+                          },
+                          "Override": false,
+                          "OverrideValue": false
+                        },
+                        "Override": false,
+                        "OverrideValue": false
+                      },
+                      {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarNotEqualToUInt32, Assembly-CSharp",
+                        "_lhs": {
+                          "$type": "miHoYo.HYG.DataSharing.ConfigVarGetEncounterNpcId, Assembly-CSharp",
+                          "Override": false,
+                          "OverrideValue": false
+                        },
+                        "_rhs": {
+                          "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUInt32, Assembly-CSharp",
+                          "_value": 0,
+                          "Override": false,
+                          "OverrideValue": false
+                        },
+                        "Override": false,
+                        "OverrideValue": false
+                      }
+                    ]
+                  },
+                  "Override": false,
+                  "OverrideValue": false
+                }
+              },
+              "isExclusive": true,
+              "exclusivePossibility": 100,
+              "useConfigVarWeight": false,
+              "weight": 1.0,
+              "configVarWeight": null,
+              "record": false,
+              "memoryStrKey": null,
+              "memoryKey": 0,
+              "deltaWeight": 0.0
+            },
+            {
+              "$type": "miHoYo.HYG.SelectorItem, Assembly-CSharp",
+              "id": 0,
+              "conditionWrapper": {
+                "$type": "miHoYo.HYG.SelectorCondition, Assembly-CSharp",
+                "desc": null,
+                "condition": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedLogicAnd, Assembly-CSharp",
+                  "_operands": {
+                    "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]], Assembly-CSharp]], mscorlib",
+                    "$values": [
+                      {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarIsNpcSecondaryEncounter, Assembly-CSharp",
+                        "_configId": {
+                          "$type": "miHoYo.HYG.DataSharing.ConfigVarGetEncounterNpcId, Assembly-CSharp",
+                          "Override": false,
+                          "OverrideValue": false
+                        },
+                        "Override": false,
+                        "OverrideValue": false
+                      },
+                      {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+                        "_operand": {
+                          "$type": "miHoYo.HYG.DataSharing.ConfigVarIsNpcFinishSecondaryEncounter, Assembly-CSharp",
+                          "_configId": {
+                            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetEncounterNpcId, Assembly-CSharp",
+                            "Override": false,
+                            "OverrideValue": false
+                          },
+                          "Override": false,
+                          "OverrideValue": false
+                        },
+                        "Override": false,
+                        "OverrideValue": false
+                      },
+                      {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarNotEqualToUInt32, Assembly-CSharp",
+                        "_lhs": {
+                          "$type": "miHoYo.HYG.DataSharing.ConfigVarGetEncounterNpcId, Assembly-CSharp",
+                          "Override": false,
+                          "OverrideValue": false
+                        },
+                        "_rhs": {
+                          "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUInt32, Assembly-CSharp",
+                          "_value": 0,
+                          "Override": false,
+                          "OverrideValue": false
+                        },
+                        "Override": false,
+                        "OverrideValue": false
+                      }
+                    ]
+                  },
+                  "Override": false,
+                  "OverrideValue": false
+                }
+              },
+              "isExclusive": true,
+              "exclusivePossibility": 100,
+              "useConfigVarWeight": false,
+              "weight": 1.0,
+              "configVarWeight": null,
+              "record": false,
+              "memoryStrKey": null,
+              "memoryKey": 0,
+              "deltaWeight": 0.0
+            },
+            {
+              "$type": "miHoYo.HYG.SelectorItem, Assembly-CSharp",
+              "id": 0,
+              "conditionWrapper": {
+                "$type": "miHoYo.HYG.SelectorCondition, Assembly-CSharp",
                 "desc": "偶遇玩法 发创想卡",
                 "condition": {
                   "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedLogicAnd, Assembly-CSharp",
@@ -317,20 +487,57 @@
                           "memoryType": 2,
                           "memoryKey": 562949953421837,
                           "callerConfigId": null,
-                          "GetCurrSceneNpcMemory": true
-                        }
+                          "GetCurrSceneNpcMemory": true,
+                          "Override": false,
+                          "OverrideValue": false
+                        },
+                        "Override": false,
+                        "OverrideValue": false
                       },
                       {
                         "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
                         "_operand": {
                           "$type": "miHoYo.HYG.DataSharing.ConfigVarIsNpcFirstInteraction, Assembly-CSharp",
                           "_configId": {
-                            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetEncounterNpcId, Assembly-CSharp"
-                          }
-                        }
+                            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetEncounterNpcId, Assembly-CSharp",
+                            "Override": false,
+                            "OverrideValue": false
+                          },
+                          "Override": false,
+                          "OverrideValue": false
+                        },
+                        "Override": false,
+                        "OverrideValue": false
+                      },
+                      {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarIsNpcSecondaryEncounterAndLeave, Assembly-CSharp",
+                        "_configId": {
+                          "$type": "miHoYo.HYG.DataSharing.ConfigVarGetPerformanceTriggerConfigId, Assembly-CSharp",
+                          "Override": false,
+                          "OverrideValue": false
+                        },
+                        "Override": false,
+                        "OverrideValue": false
+                      },
+                      {
+                        "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+                        "_operand": {
+                          "$type": "miHoYo.HYG.DataSharing.ConfigVarIsNpcSecondaryEncounter, Assembly-CSharp",
+                          "_configId": {
+                            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetEncounterNpcId, Assembly-CSharp",
+                            "Override": false,
+                            "OverrideValue": false
+                          },
+                          "Override": false,
+                          "OverrideValue": false
+                        },
+                        "Override": false,
+                        "OverrideValue": false
                       }
                     ]
-                  }
+                  },
+                  "Override": false,
+                  "OverrideValue": false
                 }
               },
               "isExclusive": true,
@@ -367,6 +574,8 @@
         "_branches": {
           "$type": "System.Int32[], mscorlib",
           "$values": [
+            5,
+            5,
             3,
             2
           ]
@@ -375,12 +584,63 @@
         "index": 4,
         "parentIndex": -1,
         "Guid": "84a95cd1-74df-4190-ab48-95a275b55f73"
+      },
+      {
+        "$type": "miHoYo.HYG.Performance.CfgDialogGroup, Assembly-CSharp",
+        "desc": null,
+        "textMaxIndex": 0,
+        "textGroupId": "3002200008_5",
+        "useFixedDialogGroup": false,
+        "fixedDialogGroupId": 0,
+        "dialogs": {
+          "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp]], mscorlib",
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.Performance.DialogCfg, Assembly-CSharp",
+              "textId": 0,
+              "pTimelineId": "",
+              "speakerKey": "Player",
+              "voiceId": "",
+              "fakeName": "",
+              "fakeName_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_3002200008_textmap_7",
+                "value": "",
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "content": "这里似乎还有值得遇见的人和事，回头看看吧。",
+              "content_l10n": {
+                "$type": "miHoYo.HYG.Localization.LocalizationString, Assembly-Common",
+                "textId": "Performance_3002200008_textmap_8",
+                "value": "这里似乎还有值得遇见的人和事，回头看看吧。",
+                "duration": null,
+                "durationMap": null,
+                "chatType": 0
+              },
+              "nextRule": 0,
+              "guardPeriod": 0.0,
+              "desc": null,
+              "voiceText": null,
+              "expressiveDesc": null,
+              "textGuid": 0
+            }
+          ]
+        },
+        "banPT": false,
+        "positionInfo": null,
+        "_output": -1,
+        "nodeId": 12,
+        "index": 5,
+        "parentIndex": 4,
+        "Guid": "36c13af1-f41a-49cd-bdb1-e1f1813b8131"
       }
     ]
   },
   "containers": null,
   "rootIndex": 4,
-  "nodesHash": 246347674,
+  "nodesHash": -1316725588,
   "editorData": {
     "$type": "miHoYo.HYG.JsonGraph.GraphEditorData, Assembly-CSharp",
     "danglingIndexes": {
@@ -393,8 +653,8 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": 485.199951,
-            "y": -174.299988
+            "x": 528.0,
+            "y": -176.0
           },
           "guid": "1f4a3165-7296-4c57-a60a-a3160e230264",
           "comment": "",
@@ -437,10 +697,21 @@
         {
           "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
           "pos": {
-            "x": -1168.0,
-            "y": -288.0
+            "x": -1712.0,
+            "y": -656.0
           },
           "guid": "84a95cd1-74df-4190-ab48-95a275b55f73",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -288.0,
+            "y": -496.0
+          },
+          "guid": "36c13af1-f41a-49cd-bdb1-e1f1813b8131",
           "comment": "",
           "locked": false,
           "collapse": false
@@ -451,7 +722,5 @@
   },
   "path": "Assets/MoleRes/Rel/SRes/Data/Json/Performance/3002200008.json",
   "errors": null,
-  "nodeErrors": {
-    "$type": "System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.String, mscorlib]], mscorlib"
-  }
+  "nodeErrors": null
 }

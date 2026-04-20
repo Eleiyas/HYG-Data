@@ -12,15 +12,15 @@
       "configs": [
         {
           "$type": "miHoYo.HYG.HYGCamera.HYGCameraFOVConfig, Assembly-CSharp",
-          "fov": 24.0
+          "fov": 42.0
         },
         {
           "$type": "miHoYo.HYG.HYGCamera.HYGCameraFollowOffsetConfig, Assembly-CSharp",
           "UseSpherical": false,
           "followOffset": {
-            "x": -1.8,
-            "y": 2.25,
-            "z": -4.0
+            "x": 0.7,
+            "y": 1.3,
+            "z": -1.8
           },
           "followOffsetMode": 7,
           "angleX": 0.0,
@@ -32,33 +32,35 @@
           "$type": "miHoYo.HYG.HYGCamera.HYGCameraLookAtOffsetConfig, Assembly-CSharp",
           "lookAtOffset": {
             "x": 0.0,
-            "y": 0.7,
+            "y": 0.45,
             "z": 0.6
           }
         },
         {
           "$type": "miHoYo.HYG.HYGCamera.HYGCameraAimScreenConfig, Assembly-CSharp",
           "overrideScreenX": true,
-          "screenX": 0.3,
+          "screenX": 0.73,
           "overrideScreenY": true,
           "screenY": 0.5
         }
-      ]
+      ],
+      "applyOnceEnter": false
     },
     {
       "$type": "miHoYo.HYG.HYGCamera.HYGCameraInitWithTransposer, Assembly-CSharp",
+      "applyOnceEnter": false,
       "followTransposers": [
         {
           "$type": "miHoYo.HYG.HYGCamera.HYGCameraTargetFollow, Assembly-CSharp",
-          "posFollowType": 1,
-          "rotFollowType": 1
+          "usePosition": true,
+          "useRotation": true
         }
       ],
       "lookAtTransposers": [
         {
           "$type": "miHoYo.HYG.HYGCamera.HYGCameraTargetFollow, Assembly-CSharp",
-          "posFollowType": 1,
-          "rotFollowType": 1
+          "usePosition": true,
+          "useRotation": true
         }
       ]
     },
@@ -81,17 +83,79 @@
           "y": 1.0
         },
         "blurIntensity": 0.0,
-        "blurSmoothness": 1.0
+        "blurSmoothness": 1.0,
+        "focusDistance": 0.0
       },
       "useFreelookRigSetting": false,
       "freelookSetting": null,
+      "lerpWithStateBlend": false,
+      "blendCurve": {
+        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
+        "keys": {
+          "$type": "UnityEngine.Keyframe[], UnityEngine.CoreModule",
+          "$values": [
+            {
+              "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+              "time": 0.0,
+              "value": 0.0,
+              "inTangent": 0.0,
+              "outTangent": 1.0,
+              "inWeight": 0.0,
+              "outWeight": 0.0,
+              "weightedMode": 0,
+              "tangentMode": 0
+            },
+            {
+              "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+              "time": 1.0,
+              "value": 1.0,
+              "inTangent": 1.0,
+              "outTangent": 0.0,
+              "inWeight": 0.0,
+              "outWeight": 0.0,
+              "weightedMode": 0,
+              "tangentMode": 0
+            }
+          ]
+        },
+        "length": 2,
+        "preWrapMode": 8,
+        "postWrapMode": 8
+      },
       "zeroOnMobile": false
+    },
+    {
+      "$type": "miHoYo.HYG.HYGCamera.HYGCameraVolumeDither, Assembly-CSharp",
+      "ditherContextName": "cameraVolumeDither",
+      "shapeType": 1,
+      "sphereDitherConfig": null,
+      "boxDitherConfig": {
+        "Offset": {
+          "x": 0.0,
+          "y": -0.5,
+          "z": 1.5
+        },
+        "Rotaton": {
+          "x": -0.169012114,
+          "y": 0.2863884,
+          "z": -0.0454703867,
+          "w": 0.941992044
+        },
+        "BoxSize": {
+          "x": 2.5,
+          "y": 1.1,
+          "z": 0.62
+        }
+      },
+      "delayUpdate": 0.0
     }
   ],
-  "useProtect": true,
+  "useProtect": false,
   "useDither": true,
   "sphereCenterType": 2,
   "overrideSphereIntensity": false,
   "sphereIntensity": 0.0,
+  "shouldOverrideDitherTime": false,
+  "ditherTime": 0.0,
   "useExternalVCam": false
 }

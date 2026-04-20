@@ -1,6 +1,6 @@
 {
   "$type": "miHoYo.HYG.AI.UtilityAIConfig, Assembly-CSharp",
-  "description": "什么逻辑也没有",
+  "description": "什么逻辑也没有（有播气泡）",
   "blackboardConfigs": {
     "$type": "miHoYo.HYG.DataSharing.BlackboardConfigPicker, Assembly-CSharp",
     "paraKeys": null,
@@ -14,41 +14,81 @@
         "$type": "GoalData, Assembly-CSharp",
         "goalId": 27,
         "goalName": "DoNothing",
-        "enabled": false,
+        "enabled": true,
         "goalType": 0,
         "behaviourTreeInitializer": {
           "$type": "miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp",
           "parameters": null,
-          "_assetGuid": "2a9fb1f4d0976e141a33976cea617dea",
-          "_assetPath": "Data/AI/BehaviourTree/00General/BTState_Idle.json"
+          "_assetGuid": "7691faff83834013a85f76b09c6e0c18",
+          "_assetPath": "Data/AI/01BehaviourTree/BehaviourTree/Adventure/BTGraph_WaitPlayer_Adv.json"
         },
         "useSequencerBT": false,
         "sequencerBTInitializers": {
           "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp]], mscorlib",
           "$values": []
         },
-        "stateScriptInitializer": {
-          "$type": "miHoYo.HYG.Statescript.StatescriptInitializer, Assembly-CSharp",
+        "abilityName": {
+          "$type": "miHoYo.HYG.GameplayAbilities.GameplayAbilityName, Assembly-CSharp",
+          "_value": null
+        },
+        "initScriptBt": {
+          "$type": "miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp",
           "parameters": {
             "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
             "parameters": []
           },
-          "scriptnew": 0
+          "_assetGuid": null,
+          "_assetPath": null
         },
         "predicates": {
           "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]], Assembly-CSharp]], mscorlib",
-          "$values": []
+          "$values": [
+            {
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarIsNpcStellarSeaStatusEquals, Assembly-CSharp",
+              "Override": false,
+              "OverrideValue": false,
+              "_npcConfigId": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarGetAvatarConfigID, Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false,
+                "_guid": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp",
+                  "Override": false,
+                  "OverrideValue": false
+                }
+              },
+              "_status": 3
+            }
+          ]
         },
         "considerations": {
           "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Consideration, Assembly-CSharp]], mscorlib",
           "$values": [
             {
               "$type": "miHoYo.HYG.ConsiderationConstant, Assembly-CSharp",
-              "description": null,
-              "conditions": null,
+              "description": "处于原地等待状态时，一定原地等待",
+              "conditions": {
+                "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]][], Assembly-CSharp",
+                "$values": [
+                  {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+                    "Override": false,
+                    "OverrideValue": false,
+                    "_value": true
+                  }
+                ]
+              },
               "configVarInput": {
-                "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloat, Assembly-CSharp",
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false,
                 "_value": 1.0
+              },
+              "configVarRank": {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Int32, mscorlib]], Assembly-CSharp",
+                "Override": false,
+                "OverrideValue": false,
+                "_value": 9
               }
             }
           ]

@@ -17,6 +17,10 @@
     "$type": "miHoYo.HYG.Scripting.HScriptVariableDefinition[], Assembly-CSharp",
     "$values": []
   },
+  "_customNodeDefinitions": {
+    "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.Scripting.HScriptCustomNodeDefinition, Assembly-CSharp]], mscorlib",
+    "$values": []
+  },
   "_blackboardConfig": {
     "$type": "miHoYo.HYG.DataSharing.BlackboardConfigPicker, Assembly-CSharp",
     "paraKeys": null,
@@ -65,6 +69,10 @@
       },
       {
         "$type": "miHoYo.HYG.GameplayAbilities.PlayATLTaskNode, Assembly-CSharp",
+        "Entity": {
+          "$type": "miHoYo.HYG.Scripting.InDataEntityPort, Assembly-CSharp",
+          "Guid": 1046014530
+        },
         "ATLTag": {
           "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp]], Assembly-CSharp",
           "_value": {
@@ -78,10 +86,15 @@
           "_value": 0.0,
           "Guid": 3926362097
         },
-        "startBlock": {
-          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.UInt32, mscorlib]], Assembly-CSharp",
+        "StartBlockIndex": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Int32, mscorlib]], Assembly-CSharp",
           "_value": 0,
-          "Guid": 1984189854
+          "Guid": 1162501488
+        },
+        "ContinuePlayingWhenTaskEnds": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "_value": false,
+          "Guid": 1127615154
         },
         "OnATLPlayEvent": {
           "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
@@ -161,6 +174,10 @@
       },
       {
         "$type": "miHoYo.HYG.GameplayAbilities.PlayATLTaskNode, Assembly-CSharp",
+        "Entity": {
+          "$type": "miHoYo.HYG.Scripting.InDataEntityPort, Assembly-CSharp",
+          "Guid": 1280614051
+        },
         "ATLTag": {
           "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[miHoYo.HYG.GameplayTags.GameplayTag, Assembly-CSharp]], Assembly-CSharp",
           "_value": {
@@ -174,10 +191,15 @@
           "_value": 0.0,
           "Guid": 3605391092
         },
-        "startBlock": {
-          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.UInt32, mscorlib]], Assembly-CSharp",
+        "StartBlockIndex": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Int32, mscorlib]], Assembly-CSharp",
           "_value": 0,
-          "Guid": 3583545164
+          "Guid": 4132435225
+        },
+        "ContinuePlayingWhenTaskEnds": {
+          "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+          "_value": false,
+          "Guid": 2279012550
         },
         "OnATLPlayEvent": {
           "$type": "miHoYo.HYG.Scripting.OutExecPort, Assembly-CSharp",
@@ -222,24 +244,16 @@
         "Guid": 2152591497
       },
       {
-        "$type": "miHoYo.HYG.Entities.ShovelGetEntityGuidPureNode, Assembly-CSharp",
+        "$type": "miHoYo.HYG.Entities.EntityLibraryGetGuidPureNode, Assembly-CSharp",
         "autoGenResult": {
           "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[System.UInt64, mscorlib]], Assembly-CSharp",
           "Guid": 207164975
         },
-        "e": {
+        "entity": {
           "$type": "miHoYo.HYG.Scripting.InDataEntityPort, Assembly-CSharp",
-          "Guid": 2453968361
+          "Guid": 3286770379
         },
         "Guid": 1960684997
-      },
-      {
-        "$type": "miHoYo.HYG.Scripting.GetOwnerEntityNode, Assembly-CSharp",
-        "outDataResult": {
-          "$type": "miHoYo.HYG.Scripting.OutDataPort`1[[miHoYo.HYG.Entities.Entity, Assembly-CSharp]], Assembly-CSharp",
-          "Guid": 3646123384
-        },
-        "Guid": 3237565223
       },
       {
         "$type": "miHoYo.HYG.GameplayAbilities.ScriptOnAddAbility, Assembly-CSharp",
@@ -254,7 +268,7 @@
         "Guid": 3911384509
       },
       {
-        "$type": "miHoYo.HYG.Entities.ChangeUIControlModeActionNode, Assembly-CSharp",
+        "$type": "miHoYo.HYG.Entities.ToolChangeUIControlModeActionNode, Assembly-CSharp",
         "mode": {
           "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[miHoYo.HYG.Input.PlayerCtrlUIMode, Assembly-CSharp]], Assembly-CSharp",
           "_value": 1074153246,
@@ -283,7 +297,7 @@
         "Guid": 26069682
       },
       {
-        "$type": "miHoYo.HYG.Entities.ChangeUIControlModeActionNode, Assembly-CSharp",
+        "$type": "miHoYo.HYG.Entities.ToolChangeUIControlModeActionNode, Assembly-CSharp",
         "mode": {
           "$type": "miHoYo.HYG.Scripting.InDataPortWithField`1[[miHoYo.HYG.Input.PlayerCtrlUIMode, Assembly-CSharp]], Assembly-CSharp",
           "_value": -531261136,
@@ -397,62 +411,68 @@
       {
         "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
         "inputPort": 3396470542,
-        "outputPort": 2966016003
+        "outputPort": 2966016003,
+        "castHint": null
       },
       {
         "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
         "inputPort": 1618598000,
-        "outputPort": 776137658
+        "outputPort": 776137658,
+        "castHint": null
       },
       {
         "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
         "inputPort": 573854369,
-        "outputPort": 366570250
+        "outputPort": 366570250,
+        "castHint": null
       },
       {
         "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
         "inputPort": 1784277859,
-        "outputPort": 207164975
-      },
-      {
-        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
-        "inputPort": 2453968361,
-        "outputPort": 3646123384
-      },
-      {
-        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
-        "inputPort": 1471169896,
-        "outputPort": 1801594570
+        "outputPort": 207164975,
+        "castHint": null
       },
       {
         "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
         "inputPort": 1082862877,
-        "outputPort": 513700863
+        "outputPort": 513700863,
+        "castHint": null
       },
       {
         "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
         "inputPort": 4143236417,
-        "outputPort": 2291013992
+        "outputPort": 2291013992,
+        "castHint": null
       },
       {
         "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
         "inputPort": 127184258,
-        "outputPort": 1055423317
+        "outputPort": 1055423317,
+        "castHint": null
       },
       {
         "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
         "inputPort": 991406063,
-        "outputPort": 3295628700
+        "outputPort": 3295628700,
+        "castHint": null
       },
       {
         "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
         "inputPort": 1730758418,
-        "outputPort": 272102837
+        "outputPort": 272102837,
+        "castHint": null
       },
       {
         "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
         "inputPort": 2458448331,
-        "outputPort": 2425883785
+        "outputPort": 2425883785,
+        "castHint": null
+      },
+      {
+        "$type": "miHoYo.HYG.FGraph.FasterGraphEdge, FGraphAsm",
+        "inputPort": 1471169896,
+        "outputPort": 1801594570,
+        "castHint": null
       }
     ]
   },
@@ -466,8 +486,8 @@
           "guid": 1063051466,
           "pos": {
             "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
-            "x": -402.4,
-            "y": 368.0
+            "x": -1252.0,
+            "y": 133.599991
           },
           "comment": null,
           "commentHeight": 0.0,
@@ -478,8 +498,8 @@
           "guid": 2985293111,
           "pos": {
             "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
-            "x": 1156.0,
-            "y": 456.0
+            "x": 965.6,
+            "y": 221.599991
           },
           "comment": "",
           "commentHeight": 0.0,
@@ -490,8 +510,8 @@
           "guid": 3942577212,
           "pos": {
             "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
-            "x": 778.4,
-            "y": 355.2
+            "x": 626.4,
+            "y": 153.599991
           },
           "comment": null,
           "commentHeight": 0.0,
@@ -502,8 +522,8 @@
           "guid": 158328239,
           "pos": {
             "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
-            "x": 528.0,
-            "y": 724.8
+            "x": 173.6,
+            "y": 268.800018
           },
           "comment": null,
           "commentHeight": 0.0,
@@ -514,8 +534,8 @@
           "guid": 2152591497,
           "pos": {
             "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
-            "x": 1156.0,
-            "y": 110.399994
+            "x": 965.6,
+            "y": -115.2
           },
           "comment": "",
           "commentHeight": 0.0,
@@ -526,20 +546,8 @@
           "guid": 1960684997,
           "pos": {
             "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
-            "x": 90.4,
-            "y": 724.8
-          },
-          "comment": null,
-          "commentHeight": 0.0,
-          "foldout": false
-        },
-        {
-          "$type": "miHoYo.HYG.FGraph.FasterNodeEditorData, FGraphAsm",
-          "guid": 3237565223,
-          "pos": {
-            "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
-            "x": -289.6,
-            "y": 724.8
+            "x": -216.0,
+            "y": 282.400024
           },
           "comment": null,
           "commentHeight": 0.0,
@@ -550,8 +558,8 @@
           "guid": 3911384509,
           "pos": {
             "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
-            "x": -402.4,
-            "y": 48.0000038
+            "x": -1252.0,
+            "y": -309.599976
           },
           "comment": null,
           "commentHeight": 0.0,
@@ -562,8 +570,8 @@
           "guid": 2907706959,
           "pos": {
             "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
-            "x": 475.2,
-            "y": 48.0000038
+            "x": -374.4,
+            "y": -309.599976
           },
           "comment": "",
           "commentHeight": 0.0,
@@ -574,8 +582,8 @@
           "guid": 26069682,
           "pos": {
             "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
-            "x": -368.8,
-            "y": 1012.8
+            "x": -1252.0,
+            "y": 643.2
           },
           "comment": null,
           "commentHeight": 0.0,
@@ -586,8 +594,8 @@
           "guid": 108951431,
           "pos": {
             "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
-            "x": 584.0,
-            "y": 983.2
+            "x": -299.2,
+            "y": 613.600037
           },
           "comment": "",
           "commentHeight": 0.0,
@@ -598,8 +606,8 @@
           "guid": 3042124413,
           "pos": {
             "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
-            "x": 95.2,
-            "y": 31.2
+            "x": -754.4,
+            "y": -326.4
           },
           "comment": null,
           "commentHeight": 0.0,
@@ -610,8 +618,8 @@
           "guid": 1251256679,
           "pos": {
             "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
-            "x": -94.4,
-            "y": 182.4
+            "x": -973.6,
+            "y": -180.8
           },
           "comment": null,
           "commentHeight": 0.0,
@@ -622,8 +630,8 @@
           "guid": 4111537864,
           "pos": {
             "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
-            "x": 230.4,
-            "y": 1012.8
+            "x": -652.8,
+            "y": 643.2
           },
           "comment": null,
           "commentHeight": 0.0,
@@ -634,8 +642,8 @@
           "guid": 3112589029,
           "pos": {
             "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
-            "x": -19.2,
-            "y": 1168.79993
+            "x": -901.6,
+            "y": 799.2
           },
           "comment": null,
           "commentHeight": 0.0,
@@ -646,10 +654,10 @@
     "comment": null,
     "position": {
       "$type": "UnityEngine.Vector2, UnityEngine.CoreModule",
-      "x": 598.4,
-      "y": 196.8
+      "x": 540.8,
+      "y": 359.2
     },
-    "scale": 0.432327569
+    "scale": 0.25
   },
   "FilePath": "Assets/MoleRes/Rel/SRes/Data/Ability/Player&NPC/Tools/Shovel/GA_ShovelIdle.json",
   "InputBindings": null,

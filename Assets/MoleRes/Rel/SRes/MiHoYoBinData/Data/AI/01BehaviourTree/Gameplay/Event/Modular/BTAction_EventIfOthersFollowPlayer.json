@@ -1,0 +1,216 @@
+{
+  "$type": "miHoYo.HYG.AI.BT.BehaviourTreeGraph, Assembly-CSharp",
+  "redirectData": null,
+  "blackboardConfigs": {
+    "$type": "miHoYo.HYG.DataSharing.BlackboardConfigPicker, Assembly-CSharp",
+    "paraKeys": null,
+    "configs": {
+      "$type": "System.Collections.Generic.List`1[[miHoYo.JsonPicker`1[[miHoYo.HYG.DataSharing.SingleBlackboardConfig, Assembly-CSharp]], Assembly-CSharp]], mscorlib",
+      "$values": [
+        {
+          "$type": "miHoYo.JsonPicker`1[[miHoYo.HYG.DataSharing.SingleBlackboardConfig, Assembly-CSharp]], Assembly-CSharp",
+          "_assetGuid": "6c972cb83532ca34f81236f11d7d9cbb",
+          "_assetPath": "Data/AI/02Blackboard/Gameplay/Task/BB_IfFollowPlayer.json"
+        }
+      ]
+    },
+    "noSharingKeys": {
+      "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.BlackboardConfigData, Assembly-CSharp]], mscorlib",
+      "$values": [
+        {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardConfigData, Assembly-CSharp",
+          "isStatic": false,
+          "mustNoSharing": true,
+          "showName": "NPCArray",
+          "DataType": 133,
+          "sharingStrategy": 1,
+          "category": null,
+          "comment": "在场所有NPC的列表",
+          "nameHistory": {
+            "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+            "$values": [
+              "instance-5b7597ca-4471-4920-a792-fb7b9c56b34f"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "NewNodesPlaceholder": {
+    "$type": "miHoYo.HYG.AI.BT.CfgBTBehaviourTreeNode[], Assembly-CSharp",
+    "$values": [
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTSequencerNode, Assembly-CSharp",
+        "_Children": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            1,
+            2
+          ]
+        },
+        "_Services": null,
+        "index": 0,
+        "parentIndex": -1,
+        "Guid": "cb0c6913-d2f3-4696-8ef2-a7f7dd6f1b5e"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTSetBlackboardNode, Assembly-CSharp",
+        "targetKey": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "instance-5b7597ca-4471-4920-a792-fb7b9c56b34f"
+        },
+        "value": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarGetNpcEntities, Assembly-CSharp"
+        },
+        "index": 1,
+        "parentIndex": 0,
+        "Guid": "c27a6535-5cde-4ab2-835d-8b151b6dc82d"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTSimpleIfElseNode, Assembly-CSharp",
+        "_True": 3,
+        "_False": 4,
+        "_condition": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedLogicAnd, Assembly-CSharp",
+          "_operands": {
+            "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.IConfigVar`1[[System.Boolean, mscorlib]], Assembly-CSharp]], mscorlib",
+            "$values": [
+              {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckBlackboardBool, Assembly-CSharp",
+                "_key": {
+                  "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                  "keyName": "IfFollowPlayerEvent-6c972cb83532ca34f81236f11d7d9cbb-0"
+                },
+                "_targets": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarBlackboardEntityArray, Assembly-CSharp",
+                  "_key": {
+                    "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                    "keyName": "instance-5b7597ca-4471-4920-a792-fb7b9c56b34f"
+                  }
+                },
+                "_value": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+                  "_value": false
+                },
+                "_opt": 1
+              },
+              {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckBlackboardBool, Assembly-CSharp",
+                "_key": {
+                  "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                  "keyName": "IfFollowPlayerTask-6c972cb83532ca34f81236f11d7d9cbb-0"
+                },
+                "_targets": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarBlackboardEntityArray, Assembly-CSharp",
+                  "_key": {
+                    "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                    "keyName": "instance-5b7597ca-4471-4920-a792-fb7b9c56b34f"
+                  }
+                },
+                "_value": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+                  "_value": false
+                },
+                "_opt": 1
+              }
+            ]
+          }
+        },
+        "_defaultRes": false,
+        "index": 2,
+        "parentIndex": 0,
+        "Guid": "0243bd27-e5af-4516-b586-51a62687b121"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTCustomResultNode, Assembly-CSharp",
+        "result": 1,
+        "index": 3,
+        "parentIndex": 2,
+        "Guid": "2c4b4623-2ce3-4c9e-be96-af37978f9ce1"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTCustomResultNode, Assembly-CSharp",
+        "result": 0,
+        "index": 4,
+        "parentIndex": 2,
+        "Guid": "3abfce68-5954-43ba-ba93-8ffbbf9a7b27"
+      }
+    ]
+  },
+  "containers": null,
+  "rootIndex": 0,
+  "nodesHash": -241423770,
+  "editorData": {
+    "$type": "miHoYo.HYG.JsonGraph.GraphEditorData, Assembly-CSharp",
+    "danglingIndexes": {
+      "$type": "System.Int32[], mscorlib",
+      "$values": []
+    },
+    "nodeInfos": {
+      "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp]], mscorlib",
+      "$values": [
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -464.0,
+            "y": -64.0
+          },
+          "guid": "cb0c6913-d2f3-4696-8ef2-a7f7dd6f1b5e",
+          "comment": null,
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -128.0,
+            "y": -320.0
+          },
+          "guid": "c27a6535-5cde-4ab2-835d-8b151b6dc82d",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": -176.0,
+            "y": -32.0
+          },
+          "guid": "0243bd27-e5af-4516-b586-51a62687b121",
+          "comment": "所有人身上的FollowPlayerTask和Event都是false，意味着没有人在跟随玩家，那么返回failure",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 128.0,
+            "y": -80.0
+          },
+          "guid": "2c4b4623-2ce3-4c9e-be96-af37978f9ce1",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 128.0,
+            "y": 48.0
+          },
+          "guid": "3abfce68-5954-43ba-ba93-8ffbbf9a7b27",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        }
+      ]
+    },
+    "comment": null
+  },
+  "path": "Assets/MoleRes/Rel/SRes/Data/AI/01BehaviourTree/Gameplay/Event/Modular/BTAction_EventIfOthersFollowPlayer.json",
+  "errors": null,
+  "nodeErrors": {
+    "$type": "System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.String, mscorlib]], mscorlib"
+  }
+}

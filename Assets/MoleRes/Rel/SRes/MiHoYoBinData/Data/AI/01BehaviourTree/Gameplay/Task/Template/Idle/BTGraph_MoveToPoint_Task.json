@@ -1,0 +1,1426 @@
+{
+  "$type": "miHoYo.HYG.AI.BT.BehaviourTreeGraph, Assembly-CSharp",
+  "redirectData": null,
+  "blackboardConfigs": {
+    "$type": "miHoYo.HYG.DataSharing.BlackboardConfigPicker, Assembly-CSharp",
+    "paraKeys": {
+      "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.BlackboardSelectKeyParameterSetting, Assembly-CSharp]], mscorlib",
+      "$values": [
+        {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKeyParameterSetting, Assembly-CSharp",
+          "key": {
+            "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+            "keyName": "instance-22c04fe0-6e67-487c-b7cd-7f557d2c89f5"
+          },
+          "var": null
+        },
+        {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKeyParameterSetting, Assembly-CSharp",
+          "key": {
+            "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+            "keyName": "instance-8997140f-d627-4dd0-8455-2fb8689b04bd"
+          },
+          "var": null
+        },
+        {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKeyParameterSetting, Assembly-CSharp",
+          "key": {
+            "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+            "keyName": "instance-ce20d4e1-182b-4b33-ae80-764be0e506f2"
+          },
+          "var": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarArrayFixedGameplayTag, Assembly-CSharp",
+            "Override": false,
+            "OverrideValue": false
+          }
+        },
+        {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKeyParameterSetting, Assembly-CSharp",
+          "key": {
+            "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+            "keyName": "instance-88323586-8514-4fd8-a650-b9e627cbcdea"
+          },
+          "var": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarArrayFixedInt32, Assembly-CSharp",
+            "Override": false,
+            "OverrideValue": false
+          }
+        }
+      ]
+    },
+    "configs": {
+      "$type": "System.Collections.Generic.List`1[[miHoYo.JsonPicker`1[[miHoYo.HYG.DataSharing.SingleBlackboardConfig, Assembly-CSharp]], Assembly-CSharp]], mscorlib",
+      "$values": []
+    },
+    "noSharingKeys": {
+      "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.DataSharing.BlackboardConfigData, Assembly-CSharp]], mscorlib",
+      "$values": [
+        {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardConfigData, Assembly-CSharp",
+          "isStatic": false,
+          "mustNoSharing": true,
+          "showName": "TargetPos",
+          "DataType": 11,
+          "sharingStrategy": 1,
+          "category": null,
+          "comment": "必传。需要NPC站的目标点",
+          "nameHistory": {
+            "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+            "$values": [
+              "instance-22c04fe0-6e67-487c-b7cd-7f557d2c89f5"
+            ]
+          }
+        },
+        {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardConfigData, Assembly-CSharp",
+          "isStatic": false,
+          "mustNoSharing": true,
+          "showName": "TargetRotation",
+          "DataType": 11,
+          "sharingStrategy": 1,
+          "defaultValue": {
+            "$type": "miHoYo.HYG.DataSharing.UnionDefaultVector3, Assembly-CSharp",
+            "_value": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            }
+          },
+          "category": null,
+          "comment": "必传。需要NPC站的Rotation（Unity里的朝向XYZ)",
+          "nameHistory": {
+            "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+            "$values": [
+              "instance-8997140f-d627-4dd0-8455-2fb8689b04bd"
+            ]
+          }
+        },
+        {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardConfigData, Assembly-CSharp",
+          "isStatic": false,
+          "mustNoSharing": true,
+          "showName": "StandingRange",
+          "DataType": 4,
+          "sharingStrategy": 1,
+          "category": null,
+          "comment": "可选参数。允许NPC以比较低的频率（大于30s一次）在这个小范围内踱步（但是最终朝向不变）。默认值为0，则不允许移动，也必须站在这个点上才播气泡和动作。",
+          "nameHistory": {
+            "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+            "$values": [
+              "instance-f70d683b-e865-4809-929d-720249471b93"
+            ]
+          }
+        },
+        {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardConfigData, Assembly-CSharp",
+          "isStatic": false,
+          "mustNoSharing": true,
+          "showName": "MoveType",
+          "DataType": 2,
+          "sharingStrategy": 1,
+          "defaultValue": {
+            "$type": "miHoYo.HYG.DataSharing.UnionDefaultInt32, Assembly-CSharp",
+            "_value": 2
+          },
+          "category": null,
+          "comment": "可选参数。1慢走，2走，3跑，4冲刺，默认走。",
+          "nameHistory": {
+            "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+            "$values": [
+              "instance-07886134-dc73-4ea8-924d-08abfcba28f1"
+            ]
+          }
+        },
+        {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardConfigData, Assembly-CSharp",
+          "isStatic": false,
+          "mustNoSharing": true,
+          "showName": "ToolId",
+          "DataType": 3,
+          "sharingStrategy": 1,
+          "defaultValue": {
+            "$type": "miHoYo.HYG.DataSharing.UnionDefaultUInt32, Assembly-CSharp",
+            "_value": 0
+          },
+          "category": null,
+          "comment": "可选参数。手上拿什么工具或手持物。默认为空手。",
+          "nameHistory": {
+            "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+            "$values": [
+              "instance-01c5e550-fc4d-4012-96b1-c871fb28f669"
+            ]
+          }
+        },
+        {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardConfigData, Assembly-CSharp",
+          "isStatic": false,
+          "mustNoSharing": true,
+          "showName": "bUseTool",
+          "DataType": 1,
+          "sharingStrategy": 1,
+          "defaultValue": {
+            "$type": "miHoYo.HYG.DataSharing.UnionDefaultBool, Assembly-CSharp",
+            "_value": false
+          },
+          "category": null,
+          "nameHistory": {
+            "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+            "$values": [
+              "instance-11d6d954-0331-4d7d-bc8b-b2997893a8ad"
+            ]
+          }
+        },
+        {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardConfigData, Assembly-CSharp",
+          "isStatic": false,
+          "mustNoSharing": true,
+          "showName": "CachedPos",
+          "DataType": 11,
+          "sharingStrategy": 1,
+          "category": null,
+          "nameHistory": {
+            "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+            "$values": [
+              "instance-f4c49000-82f0-4cd2-8a06-0c9e13bfdc41"
+            ]
+          }
+        },
+        {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardConfigData, Assembly-CSharp",
+          "isStatic": false,
+          "mustNoSharing": true,
+          "showName": "BubbleIDList",
+          "DataType": 129,
+          "sharingStrategy": 1,
+          "category": null,
+          "comment": "如果有多个希望随机播放的气泡就传这个。",
+          "nameHistory": {
+            "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+            "$values": [
+              "instance-88323586-8514-4fd8-a650-b9e627cbcdea"
+            ]
+          }
+        },
+        {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardConfigData, Assembly-CSharp",
+          "isStatic": false,
+          "mustNoSharing": true,
+          "showName": "LongATLTagList",
+          "DataType": 130,
+          "sharingStrategy": 1,
+          "category": null,
+          "comment": "List<ATLTag>的形式，如果有多个希望随机播放的动画就传这个。",
+          "nameHistory": {
+            "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+            "$values": [
+              "instance-ce20d4e1-182b-4b33-ae80-764be0e506f2"
+            ]
+          }
+        },
+        {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardConfigData, Assembly-CSharp",
+          "isStatic": false,
+          "mustNoSharing": true,
+          "showName": "ShortATLTagList",
+          "DataType": 130,
+          "sharingStrategy": 1,
+          "category": null,
+          "comment": "List<ATLTag>的形式，几秒钟或是一次性的动画。",
+          "nameHistory": {
+            "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+            "$values": [
+              "instance-fa1eed0b-35e2-4635-86e1-ea75eb49501f"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "NewNodesPlaceholder": {
+    "$type": "miHoYo.HYG.AI.BT.CfgBTBehaviourTreeNode[], Assembly-CSharp",
+    "$values": [
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTSequencerNode, Assembly-CSharp",
+        "_Children": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            1,
+            7,
+            14
+          ]
+        },
+        "index": 0,
+        "parentIndex": -1,
+        "Guid": "de8f95ab-bbc4-4feb-990f-0ea57dd9fe39"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTSubGraphNode, Assembly-CSharp",
+        "SubGraphInitializer": {
+          "$type": "miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": [
+              {
+                "$type": "miHoYo.HYG.DataSharing.BbVarSetter, Assembly-CSharp",
+                "key": {
+                  "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                  "keyName": "instance-2027e343-a772-4e97-8f04-46415de2c3e7"
+                },
+                "value": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarBlackboardUInt32, Assembly-CSharp",
+                  "_key": {
+                    "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                    "keyName": "instance-01c5e550-fc4d-4012-96b1-c871fb28f669"
+                  },
+                  "targetGuid": null,
+                  "Override": false,
+                  "OverrideValue": false
+                }
+              }
+            ]
+          },
+          "_assetGuid": "cfc32077d13924a4fb1de90c0237dcc8",
+          "_assetPath": "Data/AI/BehaviourTree/AtomTree/Atom_SwitchTool.json"
+        },
+        "index": 1,
+        "parentIndex": 0,
+        "Guid": "e5baa49b-75a1-42d4-a8a5-ef81318bcfcf"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTSequencerNode, Assembly-CSharp",
+        "_Children": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            20,
+            3,
+            4
+          ]
+        },
+        "index": 2,
+        "parentIndex": 17,
+        "Guid": "35a359c5-43de-448f-b463-8c88ae413dc1"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTSubGraphNode, Assembly-CSharp",
+        "SubGraphInitializer": {
+          "$type": "miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": [
+              {
+                "$type": "miHoYo.HYG.DataSharing.BbVarSetter, Assembly-CSharp",
+                "key": {
+                  "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                  "keyName": "instance-a8fb4294-8660-4ddf-bdb4-f494446a7074"
+                },
+                "value": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloat, Assembly-CSharp",
+                  "_value": 7.0,
+                  "Override": false,
+                  "OverrideValue": false
+                }
+              },
+              {
+                "$type": "miHoYo.HYG.DataSharing.BbVarSetter, Assembly-CSharp",
+                "key": {
+                  "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                  "keyName": "instance-0747a558-2931-4186-8ccd-acf2c6f57d5e"
+                },
+                "value": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloat, Assembly-CSharp",
+                  "_value": 10.0,
+                  "Override": false,
+                  "OverrideValue": false
+                }
+              },
+              {
+                "$type": "miHoYo.HYG.DataSharing.BbVarSetter, Assembly-CSharp",
+                "key": {
+                  "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                  "keyName": "instance-890ca910-56d1-4d42-b744-97d241b26bef"
+                },
+                "value": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedBool, Assembly-CSharp",
+                  "_value": true,
+                  "Override": false,
+                  "OverrideValue": false
+                }
+              },
+              {
+                "$type": "miHoYo.HYG.DataSharing.BbVarSetter, Assembly-CSharp",
+                "key": {
+                  "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                  "keyName": "instance-bded9658-eb5f-437d-992b-efac4c4d459c"
+                },
+                "value": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarArrayRandomChoice`1[[System.UInt32, mscorlib]], Assembly-CSharp",
+                  "Source": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarBlackboardUInt32Array, Assembly-CSharp",
+                    "_key": {
+                      "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                      "keyName": "instance-ce20d4e1-182b-4b33-ae80-764be0e506f2"
+                    },
+                    "Override": false,
+                    "OverrideValue": false
+                  },
+                  "Override": false,
+                  "OverrideValue": false
+                }
+              },
+              {
+                "$type": "miHoYo.HYG.DataSharing.BbVarSetter, Assembly-CSharp",
+                "key": {
+                  "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                  "keyName": "instance-91634b42-54d8-40c6-a9a4-cb8d70964f8b"
+                },
+                "value": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedBool, Assembly-CSharp",
+                  "_value": false,
+                  "Override": false,
+                  "OverrideValue": false
+                }
+              },
+              {
+                "$type": "miHoYo.HYG.DataSharing.BbVarSetter, Assembly-CSharp",
+                "key": {
+                  "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                  "keyName": "instance-46abcd27-9e5a-4855-9677-df3a113f7370"
+                },
+                "value": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedBool, Assembly-CSharp",
+                  "_value": false,
+                  "Override": false,
+                  "OverrideValue": false
+                }
+              },
+              {
+                "$type": "miHoYo.HYG.DataSharing.BbVarSetter, Assembly-CSharp",
+                "key": {
+                  "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                  "keyName": "instance-efc19599-3386-4db9-aee6-5002cb4b55b5"
+                },
+                "value": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedBool, Assembly-CSharp",
+                  "_value": false,
+                  "Override": false,
+                  "OverrideValue": false
+                }
+              },
+              {
+                "$type": "miHoYo.HYG.DataSharing.BbVarSetter, Assembly-CSharp",
+                "key": {
+                  "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                  "keyName": "instance-89a19058-2d7a-4c4c-9f77-55beab9dcc9a"
+                },
+                "value": null
+              }
+            ]
+          },
+          "_assetGuid": "7a6455b2e5d74e18af62fb3862965ff6",
+          "_assetPath": "Data/AI/BehaviourTree/BTv3_RefreshNew/BTA/BTAction_PlayATL_v3.json"
+        },
+        "index": 3,
+        "parentIndex": 2,
+        "Guid": "fc97e13e-c0f0-4c3c-8fa9-b497fe0102f5"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTWaitBBNode, Assembly-CSharp",
+        "WaitTime": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarRandomFloat, Assembly-CSharp",
+          "_minInclusive": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloat, Assembly-CSharp",
+            "_value": 2.0,
+            "Override": false,
+            "OverrideValue": false
+          },
+          "_maxInclusive": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloat, Assembly-CSharp",
+            "_value": 4.0,
+            "Override": false,
+            "OverrideValue": false
+          },
+          "Override": false,
+          "OverrideValue": false
+        },
+        "index": 4,
+        "parentIndex": 2,
+        "Guid": "be310c14-d252-4931-81ae-7cd3cb736d61"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTSubGraphNode, Assembly-CSharp",
+        "SubGraphInitializer": {
+          "$type": "miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": [
+              {
+                "$type": "miHoYo.HYG.DataSharing.BbVarSetter, Assembly-CSharp",
+                "key": {
+                  "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                  "keyName": "BubbleID-006131b57a23c974da31f85fa03a5309-0"
+                },
+                "value": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarArrayRandomChoice`1[[System.Int32, mscorlib]], Assembly-CSharp",
+                  "Source": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarBlackboardInt32Array, Assembly-CSharp",
+                    "_key": {
+                      "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                      "keyName": "instance-88323586-8514-4fd8-a650-b9e627cbcdea"
+                    },
+                    "Override": false,
+                    "OverrideValue": false
+                  },
+                  "Override": false,
+                  "OverrideValue": false
+                }
+              },
+              {
+                "$type": "miHoYo.HYG.DataSharing.BbVarSetter, Assembly-CSharp",
+                "key": {
+                  "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                  "keyName": "instance-c8ddcaab-b998-44dc-b05c-0fdfe4cbf2cb"
+                },
+                "value": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
+                  "_value": 3.0,
+                  "Override": false,
+                  "OverrideValue": false
+                }
+              },
+              {
+                "$type": "miHoYo.HYG.DataSharing.BbVarSetter, Assembly-CSharp",
+                "key": {
+                  "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                  "keyName": "SuccessRate-006131b57a23c974da31f85fa03a5309-0"
+                },
+                "value": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloat, Assembly-CSharp",
+                  "_value": 1.0,
+                  "Override": false,
+                  "OverrideValue": false
+                }
+              }
+            ]
+          },
+          "_assetGuid": "de855cb965099a645aa2c0cb8e21d8ad",
+          "_assetPath": "Data/AI/BehaviourTree/00General/BubbleSystem/Atom_PlayBubble.json"
+        },
+        "index": 5,
+        "parentIndex": 18,
+        "Guid": "413a014c-534d-4988-9ed6-2a748716f717"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTSubGraphNode, Assembly-CSharp",
+        "SubGraphInitializer": {
+          "$type": "miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": [
+              {
+                "$type": "miHoYo.HYG.DataSharing.BbVarSetter, Assembly-CSharp",
+                "key": {
+                  "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                  "keyName": "TargetPosition-dcc082f862ed96a438214fd5ad221607-0"
+                },
+                "value": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarBlackboardVector3, Assembly-CSharp",
+                  "_key": {
+                    "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                    "keyName": "instance-22c04fe0-6e67-487c-b7cd-7f557d2c89f5"
+                  },
+                  "targetGuid": null,
+                  "Override": false,
+                  "OverrideValue": false
+                }
+              },
+              {
+                "$type": "miHoYo.HYG.DataSharing.BbVarSetter, Assembly-CSharp",
+                "key": {
+                  "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                  "keyName": "MoveCmdType-dcc082f862ed96a438214fd5ad221607-0"
+                },
+                "value": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarBlackboardInt32, Assembly-CSharp",
+                  "_key": {
+                    "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                    "keyName": "instance-07886134-dc73-4ea8-924d-08abfcba28f1"
+                  },
+                  "targetGuid": null,
+                  "Override": false,
+                  "OverrideValue": false
+                }
+              },
+              {
+                "$type": "miHoYo.HYG.DataSharing.BbVarSetter, Assembly-CSharp",
+                "key": {
+                  "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                  "keyName": "RotationMode-dcc082f862ed96a438214fd5ad221607-0"
+                },
+                "value": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarConvertEnumToInt32, Assembly-CSharp",
+                  "_arg": 1,
+                  "_argEnumType": "miHoYo.HYG.AI.BT.LookForwardMode",
+                  "Override": false,
+                  "OverrideValue": false
+                }
+              },
+              {
+                "$type": "miHoYo.HYG.DataSharing.BbVarSetter, Assembly-CSharp",
+                "key": {
+                  "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                  "keyName": "TargetRotation-dcc082f862ed96a438214fd5ad221607-0"
+                },
+                "value": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarBlackboardVector3, Assembly-CSharp",
+                  "_key": {
+                    "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                    "keyName": "instance-8997140f-d627-4dd0-8455-2fb8689b04bd"
+                  },
+                  "targetGuid": null,
+                  "Override": false,
+                  "OverrideValue": false
+                }
+              },
+              {
+                "$type": "miHoYo.HYG.DataSharing.BbVarSetter, Assembly-CSharp",
+                "key": {
+                  "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                  "keyName": "AcceptableRadius-dcc082f862ed96a438214fd5ad221607-0"
+                },
+                "value": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarMaxFloat, Assembly-CSharp",
+                  "_lhs": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarBlackboardFloat, Assembly-CSharp",
+                    "_key": {
+                      "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                      "keyName": "instance-f70d683b-e865-4809-929d-720249471b93"
+                    },
+                    "targetGuid": null,
+                    "Override": false,
+                    "OverrideValue": false
+                  },
+                  "_rhs": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
+                    "_value": 0.1,
+                    "Override": false,
+                    "OverrideValue": false
+                  },
+                  "Override": false,
+                  "OverrideValue": false
+                }
+              }
+            ]
+          },
+          "_assetGuid": "639c29b833af79f43a808ee993bb6f51",
+          "_assetPath": "Data/AI/01BehaviourTree/_Modular/Navigation/BTAction_NaviToPosAndRotate.json"
+        },
+        "index": 6,
+        "parentIndex": 7,
+        "Guid": "48b9a4ba-60a9-487f-8377-85ff83f360f4"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTSelectorNode, Assembly-CSharp",
+        "_Children": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            6,
+            8
+          ]
+        },
+        "index": 7,
+        "parentIndex": 0,
+        "Guid": "6f626358-13bb-42b9-bf18-66fc663ffd8e"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTSequencerNode, Assembly-CSharp",
+        "_Children": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            9,
+            10,
+            13
+          ]
+        },
+        "index": 8,
+        "parentIndex": 7,
+        "Guid": "c61c5d16-0b00-415a-9b10-752d6cdbed39"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTWaitNode, Assembly-CSharp",
+        "WaitTime": 1.0,
+        "IsRandom": false,
+        "MinWaitTime": 0.0,
+        "MaxWaitTime": 0.0,
+        "index": 9,
+        "parentIndex": 8,
+        "Guid": "eeaf1459-722b-455c-a605-cf812cbfdade"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTConditionDecoratorNode, Assembly-CSharp",
+        "primitive": null,
+        "key": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": null
+        },
+        "FinishMode": 0,
+        "_Condition": 11,
+        "_Child": 12,
+        "index": 10,
+        "parentIndex": 8,
+        "Guid": "43057a82-cf87-49fe-9019-b4c53ce91649"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTCommonConditionNode, Assembly-CSharp",
+        "ConditionGraph": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarLogicNot, Assembly-CSharp",
+          "_operand": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarNpcCanStandOnPointExceptMyself, Assembly-CSharp",
+            "_queryPoint": {
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarBlackboardVector3, Assembly-CSharp",
+              "_key": {
+                "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                "keyName": "instance-22c04fe0-6e67-487c-b7cd-7f557d2c89f5"
+              },
+              "targetGuid": null,
+              "Override": false,
+              "OverrideValue": false
+            },
+            "_otherNpcDis": {
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
+              "_value": 0.0,
+              "Override": false,
+              "OverrideValue": false
+            },
+            "_ownerId": {
+              "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp",
+              "Override": false,
+              "OverrideValue": false
+            },
+            "Override": false,
+            "OverrideValue": false
+          },
+          "Override": false,
+          "OverrideValue": false
+        },
+        "index": 11,
+        "parentIndex": 10,
+        "Guid": "890864b1-1e43-4155-9b4d-70ba1316c5c0"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTCustomResultNode, Assembly-CSharp",
+        "result": 2,
+        "index": 12,
+        "parentIndex": 10,
+        "Guid": "8b6a8b5e-b7cd-406b-a0b1-e0a96ea77e0b"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTCustomResultNode, Assembly-CSharp",
+        "result": 1,
+        "index": 13,
+        "parentIndex": 8,
+        "Guid": "2f2cde6d-0ab9-4034-9efb-3ac432bb4fbc"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTConditionDecoratorNode, Assembly-CSharp",
+        "primitive": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarGetEntityPosition, Assembly-CSharp",
+          "_entityGuid": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarGetOwnerEntity, Assembly-CSharp",
+            "Override": false,
+            "OverrideValue": false
+          },
+          "Override": false,
+          "OverrideValue": false
+        },
+        "key": {
+          "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+          "keyName": "instance-f4c49000-82f0-4cd2-8a06-0c9e13bfdc41"
+        },
+        "FinishMode": 0,
+        "_Condition": 15,
+        "_Child": 16,
+        "index": 14,
+        "parentIndex": 0,
+        "Guid": "9377b433-eeb6-45d4-b6a1-d4c282160205"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTCommonConditionNode, Assembly-CSharp",
+        "ConditionGraph": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckDistanceBetweenEntityAndPoint, Assembly-CSharp",
+          "_callerGuid": null,
+          "_targetPoint": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarBlackboardVector3, Assembly-CSharp",
+            "_key": {
+              "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+              "keyName": "instance-f4c49000-82f0-4cd2-8a06-0c9e13bfdc41"
+            },
+            "targetGuid": null,
+            "Override": false,
+            "OverrideValue": false
+          },
+          "_compareToDistance": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
+            "_value": 0.154,
+            "Override": false,
+            "OverrideValue": false
+          },
+          "_onlyXZ": {
+            "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Boolean, mscorlib]], Assembly-CSharp",
+            "_value": false,
+            "Override": false,
+            "OverrideValue": false
+          },
+          "__operatorType": 4,
+          "Override": false,
+          "OverrideValue": false
+        },
+        "index": 15,
+        "parentIndex": 14,
+        "Guid": "dacd27f6-f97b-46b8-b5e7-710d764c11b9"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTRepeatNode, Assembly-CSharp",
+        "RepeaterMode": 2,
+        "isDynamic": false,
+        "RepeatCount": 0,
+        "targetRepeatCount": null,
+        "RepeatLimit": -1,
+        "UntilResult": 0,
+        "_Child": 17,
+        "index": 16,
+        "parentIndex": 14,
+        "Guid": "4424f997-abe3-468d-b7fb-48c94f992d37"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTRandomWeightSelectorNode, Assembly-CSharp",
+        "Weights": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloatArray, Assembly-CSharp",
+          "_values": {
+            "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Single, mscorlib]][], Assembly-CSharp",
+            "$values": [
+              {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
+                "_value": 4.0,
+                "Override": false,
+                "OverrideValue": false
+              },
+              {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarTernaryOperatorFloat, Assembly-CSharp",
+                "_a": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckArrayLength, Assembly-CSharp",
+                  "_array": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarBlackboardUInt32Array, Assembly-CSharp",
+                    "_key": {
+                      "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                      "keyName": "instance-ce20d4e1-182b-4b33-ae80-764be0e506f2"
+                    },
+                    "Override": false,
+                    "OverrideValue": false
+                  },
+                  "operatorType": 3,
+                  "value": 0,
+                  "Override": false,
+                  "OverrideValue": false
+                },
+                "_b": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
+                  "_value": 2.0,
+                  "Override": false,
+                  "OverrideValue": false
+                },
+                "_c": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
+                  "_value": 0.0,
+                  "Override": false,
+                  "OverrideValue": false
+                },
+                "Override": false,
+                "OverrideValue": false
+              },
+              {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarTernaryOperatorFloat, Assembly-CSharp",
+                "_a": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckArrayLength, Assembly-CSharp",
+                  "_array": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarBlackboardInt32Array, Assembly-CSharp",
+                    "_key": {
+                      "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                      "keyName": "instance-88323586-8514-4fd8-a650-b9e627cbcdea"
+                    },
+                    "Override": false,
+                    "OverrideValue": false
+                  },
+                  "operatorType": 3,
+                  "value": 0,
+                  "Override": false,
+                  "OverrideValue": false
+                },
+                "_b": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
+                  "_value": 2.0,
+                  "Override": false,
+                  "OverrideValue": false
+                },
+                "_c": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
+                  "_value": 0.0,
+                  "Override": false,
+                  "OverrideValue": false
+                },
+                "Override": false,
+                "OverrideValue": false
+              }
+            ]
+          },
+          "Override": false,
+          "OverrideValue": false
+        },
+        "_Children": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            22,
+            2,
+            18
+          ]
+        },
+        "index": 17,
+        "parentIndex": 16,
+        "Guid": "eed58ef3-c598-4bff-a758-4d8963aa7175"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTSequencerNode, Assembly-CSharp",
+        "_Children": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            5,
+            19
+          ]
+        },
+        "index": 18,
+        "parentIndex": 17,
+        "Guid": "dd22b580-3649-471a-92c9-ceb5a36e3be8"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTWaitNode, Assembly-CSharp",
+        "WaitTime": 0.0,
+        "IsRandom": true,
+        "MinWaitTime": 3.0,
+        "MaxWaitTime": 6.0,
+        "index": 19,
+        "parentIndex": 18,
+        "Guid": "295f02c6-1589-4a9b-bf02-d99c0be07a27"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTWaitNode, Assembly-CSharp",
+        "WaitTime": 0.0,
+        "IsRandom": true,
+        "MinWaitTime": 1.0,
+        "MaxWaitTime": 2.0,
+        "index": 20,
+        "parentIndex": 2,
+        "Guid": "6b20ecfc-dfd6-41a7-a5df-7dbe213a5640"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTWaitNode, Assembly-CSharp",
+        "WaitTime": 0.0,
+        "IsRandom": true,
+        "MinWaitTime": 3.0,
+        "MaxWaitTime": 6.0,
+        "index": 21,
+        "parentIndex": 23,
+        "Guid": "57948cd7-bf92-4514-80b7-d560240b79aa"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTSequencerNode, Assembly-CSharp",
+        "_Children": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            23
+          ]
+        },
+        "index": 22,
+        "parentIndex": 17,
+        "Guid": "8227d567-d89b-4145-bc04-bd4c737c6dca"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTRandomWeightSelectorNode, Assembly-CSharp",
+        "Weights": {
+          "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloatArray, Assembly-CSharp",
+          "_values": {
+            "$type": "miHoYo.HYG.DataSharing.IConfigVar`1[[System.Single, mscorlib]][], Assembly-CSharp",
+            "$values": [
+              {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
+                "_value": 4.0,
+                "Override": false,
+                "OverrideValue": false
+              },
+              {
+                "$type": "miHoYo.HYG.DataSharing.ConfigVarTernaryOperatorFloat, Assembly-CSharp",
+                "_a": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarCheckArrayLength, Assembly-CSharp",
+                  "_array": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarBlackboardUInt32Array, Assembly-CSharp",
+                    "_key": {
+                      "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                      "keyName": "instance-fa1eed0b-35e2-4635-86e1-ea75eb49501f"
+                    },
+                    "Override": false,
+                    "OverrideValue": false
+                  },
+                  "operatorType": 3,
+                  "value": 0,
+                  "Override": false,
+                  "OverrideValue": false
+                },
+                "_b": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
+                  "_value": 2.0,
+                  "Override": false,
+                  "OverrideValue": false
+                },
+                "_c": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedUnmanaged`1[[System.Single, mscorlib]], Assembly-CSharp",
+                  "_value": 0.0,
+                  "Override": false,
+                  "OverrideValue": false
+                },
+                "Override": false,
+                "OverrideValue": false
+              }
+            ]
+          },
+          "Override": false,
+          "OverrideValue": false
+        },
+        "_Children": {
+          "$type": "System.Int32[], mscorlib",
+          "$values": [
+            24,
+            21
+          ]
+        },
+        "index": 23,
+        "parentIndex": 22,
+        "Guid": "9c963283-e874-48f9-9e10-6b4da61a9657"
+      },
+      {
+        "$type": "miHoYo.HYG.AI.BT.CfgBTSubGraphNode, Assembly-CSharp",
+        "SubGraphInitializer": {
+          "$type": "miHoYo.HYG.AI.BT.BehaviourTreeInitializer, Assembly-CSharp",
+          "parameters": {
+            "$type": "miHoYo.HYG.DataSharing.BbVarParams, Assembly-CSharp",
+            "parameters": [
+              {
+                "$type": "miHoYo.HYG.DataSharing.BbVarSetter, Assembly-CSharp",
+                "key": {
+                  "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                  "keyName": "instance-a8fb4294-8660-4ddf-bdb4-f494446a7074"
+                },
+                "value": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloat, Assembly-CSharp",
+                  "_value": 3.0,
+                  "Override": false,
+                  "OverrideValue": false
+                }
+              },
+              {
+                "$type": "miHoYo.HYG.DataSharing.BbVarSetter, Assembly-CSharp",
+                "key": {
+                  "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                  "keyName": "instance-0747a558-2931-4186-8ccd-acf2c6f57d5e"
+                },
+                "value": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedFloat, Assembly-CSharp",
+                  "_value": 5.0,
+                  "Override": false,
+                  "OverrideValue": false
+                }
+              },
+              {
+                "$type": "miHoYo.HYG.DataSharing.BbVarSetter, Assembly-CSharp",
+                "key": {
+                  "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                  "keyName": "instance-890ca910-56d1-4d42-b744-97d241b26bef"
+                },
+                "value": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedBool, Assembly-CSharp",
+                  "_value": true,
+                  "Override": false,
+                  "OverrideValue": false
+                }
+              },
+              {
+                "$type": "miHoYo.HYG.DataSharing.BbVarSetter, Assembly-CSharp",
+                "key": {
+                  "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                  "keyName": "instance-bded9658-eb5f-437d-992b-efac4c4d459c"
+                },
+                "value": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarArrayRandomChoice`1[[System.UInt32, mscorlib]], Assembly-CSharp",
+                  "Source": {
+                    "$type": "miHoYo.HYG.DataSharing.ConfigVarBlackboardUInt32Array, Assembly-CSharp",
+                    "_key": {
+                      "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                      "keyName": "instance-fa1eed0b-35e2-4635-86e1-ea75eb49501f"
+                    },
+                    "Override": false,
+                    "OverrideValue": false
+                  },
+                  "Override": false,
+                  "OverrideValue": false
+                }
+              },
+              {
+                "$type": "miHoYo.HYG.DataSharing.BbVarSetter, Assembly-CSharp",
+                "key": {
+                  "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                  "keyName": "instance-91634b42-54d8-40c6-a9a4-cb8d70964f8b"
+                },
+                "value": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedBool, Assembly-CSharp",
+                  "_value": false,
+                  "Override": false,
+                  "OverrideValue": false
+                }
+              },
+              {
+                "$type": "miHoYo.HYG.DataSharing.BbVarSetter, Assembly-CSharp",
+                "key": {
+                  "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                  "keyName": "instance-46abcd27-9e5a-4855-9677-df3a113f7370"
+                },
+                "value": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedBool, Assembly-CSharp",
+                  "_value": false,
+                  "Override": false,
+                  "OverrideValue": false
+                }
+              },
+              {
+                "$type": "miHoYo.HYG.DataSharing.BbVarSetter, Assembly-CSharp",
+                "key": {
+                  "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                  "keyName": "instance-efc19599-3386-4db9-aee6-5002cb4b55b5"
+                },
+                "value": {
+                  "$type": "miHoYo.HYG.DataSharing.ConfigVarFixedBool, Assembly-CSharp",
+                  "_value": false,
+                  "Override": false,
+                  "OverrideValue": false
+                }
+              },
+              {
+                "$type": "miHoYo.HYG.DataSharing.BbVarSetter, Assembly-CSharp",
+                "key": {
+                  "$type": "miHoYo.HYG.DataSharing.BlackboardSelectKey, Assembly-CSharp",
+                  "keyName": "instance-89a19058-2d7a-4c4c-9f77-55beab9dcc9a"
+                },
+                "value": null
+              }
+            ]
+          },
+          "_assetGuid": "7a6455b2e5d74e18af62fb3862965ff6",
+          "_assetPath": "Data/AI/BehaviourTree/BTv3_RefreshNew/BTA/BTAction_PlayATL_v3.json"
+        },
+        "index": 24,
+        "parentIndex": 23,
+        "Guid": "ee5041c0-f7ee-4e06-a44a-391bd69f0e40"
+      }
+    ]
+  },
+  "containers": null,
+  "rootIndex": 0,
+  "nodesHash": 1529030723,
+  "editorData": {
+    "$type": "miHoYo.HYG.JsonGraph.GraphEditorData, Assembly-CSharp",
+    "danglingIndexes": {
+      "$type": "System.Int32[], mscorlib",
+      "$values": []
+    },
+    "nodeInfos": {
+      "$type": "System.Collections.Generic.List`1[[miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp]], mscorlib",
+      "$values": [
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 0.0,
+            "y": 1182.67749
+          },
+          "guid": "de8f95ab-bbc4-4feb-990f-0ea57dd9fe39",
+          "comment": "走到目标点后，站定不动\n\n适合让NPC从上一环任务的位置走到下一环的目标位置",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 240.000015,
+            "y": 0.0
+          },
+          "guid": "e5baa49b-75a1-42d4-a8a5-ef81318bcfcf",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 979.2001,
+            "y": 3025.0
+          },
+          "guid": "35a359c5-43de-448f-b463-8c88ae413dc1",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 1219.20007,
+            "y": 2654.3
+          },
+          "guid": "fc97e13e-c0f0-4c3c-8fa9-b497fe0102f5",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 1219.20007,
+            "y": 3546.40015
+          },
+          "guid": "be310c14-d252-4931-81ae-7cd3cb736d61",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 1219.20007,
+            "y": 3725.7002
+          },
+          "guid": "413a014c-534d-4988-9ed6-2a748716f717",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 480.000031,
+            "y": 240.900024
+          },
+          "guid": "48b9a4ba-60a9-487f-8377-85ff83f360f4",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 240.000015,
+            "y": 697.675049
+          },
+          "guid": "6f626358-13bb-42b9-bf18-66fc663ffd8e",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 480.000031,
+            "y": 1132.45007
+          },
+          "guid": "c61c5d16-0b00-415a-9b10-752d6cdbed39",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 720.000061,
+            "y": 974.600037
+          },
+          "guid": "eeaf1459-722b-455c-a605-cf812cbfdade",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 720.000061,
+            "y": 1094.5
+          },
+          "guid": "43057a82-cf87-49fe-9019-b4c53ce91649",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 969.6001,
+            "y": 1048.3
+          },
+          "guid": "890864b1-1e43-4155-9b4d-70ba1316c5c0",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 969.6001,
+            "y": 1267.20007
+          },
+          "guid": "8b6a8b5e-b7cd-406b-a0b1-e0a96ea77e0b",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 720.000061,
+            "y": 1340.90015
+          },
+          "guid": "2f2cde6d-0ab9-4034-9efb-3ac432bb4fbc",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 240.000015,
+            "y": 2113.375
+          },
+          "guid": "9377b433-eeb6-45d4-b6a1-d4c282160205",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 489.600037,
+            "y": 1460.8
+          },
+          "guid": "dacd27f6-f97b-46b8-b5e7-710d764c11b9",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 489.600037,
+            "y": 2945.25
+          },
+          "guid": "4424f997-abe3-468d-b7fb-48c94f992d37",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 739.2001,
+            "y": 2641.1
+          },
+          "guid": "eed58ef3-c598-4bff-a758-4d8963aa7175",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 979.2001,
+            "y": 3942.9502
+          },
+          "guid": "dd22b580-3649-471a-92c9-ceb5a36e3be8",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 1219.20007,
+            "y": 4166.80029
+          },
+          "guid": "295f02c6-1589-4a9b-bf02-d99c0be07a27",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 1219.20007,
+            "y": 2503.6
+          },
+          "guid": "6b20ecfc-dfd6-41a7-a5df-7dbe213a5640",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 1459.20007,
+            "y": 2352.90015
+          },
+          "guid": "57948cd7-bf92-4514-80b7-d560240b79aa",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 979.2001,
+            "y": 1918.95007
+          },
+          "guid": "8227d567-d89b-4145-bc04-bd4c737c6dca",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 1219.20007,
+            "y": 1740.20007
+          },
+          "guid": "9c963283-e874-48f9-9e10-6b4da61a9657",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        },
+        {
+          "$type": "miHoYo.HYG.JsonGraph.NodeEditorData, Assembly-CSharp",
+          "pos": {
+            "x": 1459.20007,
+            "y": 1460.8
+          },
+          "guid": "ee5041c0-f7ee-4e06-a44a-391bd69f0e40",
+          "comment": "",
+          "locked": false,
+          "collapse": false
+        }
+      ]
+    },
+    "comment": "收起手中道具，走到目标点后，\n1. 播动作，可以随机在动作列表里播\n2. 播气泡，可以随机在气泡列表里播"
+  },
+  "path": "Assets/MoleRes/Rel/SRes/Data/AI/01BehaviourTree/Gameplay/Task/Template/Idle/BTGraph_MoveToPoint_Task.json",
+  "errors": null,
+  "nodeErrors": null
+}
