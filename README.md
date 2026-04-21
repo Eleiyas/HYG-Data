@@ -3,9 +3,9 @@
 Game-Data for a particular cozy anime game.
 
 ## Notes
-* Data: ~~1,823~~ 991 unsorted files.
+* Data: ~~1,823~~ ~~991~~ 367 unsorted files.
 * Lua: 33 unsorted files (unchanged).
-* _Bin: ~~253~~ 168 unsorted files.
+* _Bin: ~~253~~ ~~168~~ 157 unsorted files.
 
 ## Changelog
 - 20/04/2026 - Stardrift Test (0.92.7) 
