@@ -1,0 +1,5 @@
+spring_festival_tassel_shop_module = spring_festival_tassel_shop_module or {}
+spring_festival_tassel_shop_module._cname = "spring_festival_tassel_shop_module"
+lua_module_mgr:require("UI/MainActivity_y1/SpringFestival/TasselShop/Module/SpringFestivalTasselShopData")
+lua_module_mgr:require("UI/MainActivity_y1/SpringFestival/TasselShop/Module/SpringFestivalTasselShopMain")
+return spring_festival_tassel_shop_module

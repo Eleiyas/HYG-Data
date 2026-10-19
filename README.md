@@ -2,13 +2,16 @@
 
 Game-Data for a particular cozy anime game.
 
-## Notes
+## CB3
 
-* CB2 changed how ExcelData was stored. They are no longer inside BinData, but inside .obb files. I've dumped what I can, but I do not promise they are complete.
-* TextMaps show no changes, but according to new ExcelData, they now follow Genshin's style of having Hash-IDs, not Strings. TextMaps likely need to be redumped in the same way ExcelData is.
-* Maybe due to dumping method, some desc_ and textmap_ tags are pre-mapped to English. Don't ask me to fix it, getting this far already took me the best part of a day.
+Provided as-is. No TextMap or other JSON, just Excels & most Lua.
 
-## Unsorted
+* ~25 Excels did not dump this time around.
+
+## CB2
+
+Changed how Excels were stored. No longer in binData, but in "GeneratedAssets/ed.obb".
+TextMaps show no changes, but according to new ExcelData, they now follow Genshin's style of having Hash-IDs, not Strings. TextMaps likely need to be redumped in the same way ExcelData is.
 
 * Data: ~~1,823~~ ~~991~~ 367 files.
 * Lua: 33 files (unchanged).
@@ -17,6 +20,7 @@ Game-Data for a particular cozy anime game.
 
 ## Changelog
 
+- 19/10/2026 - Final Beta Test (0.95.2) - Uploaded after Beta Ended
 - 20/04/2026 - Stardrift Test (0.92.7)
 - 25/11/2025 - Coziness Test (0.83.5)
 
